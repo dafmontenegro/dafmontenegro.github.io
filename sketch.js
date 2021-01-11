@@ -1,3 +1,5 @@
+// original idea(Daniel Shiffman-The Coding Train): https://www.youtube.com/watch?v=17WoOqgXsRM&ab_channel=TheCodingTrain
+
 class Star {
 
   constructor() {
