@@ -6,19 +6,15 @@ permalink: /404.html
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
     <title>404 Page not found</title>
     <meta name="author" content="Daniel Felipe Montenegro">
     <meta name="description" content="404 Page not found">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.min.js"></script>
-    <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+    
 </head>
 
 <body>
@@ -31,13 +27,13 @@ permalink: /404.html
                 this.y = windowHeight / 2;
                 this.movX = random(-11, 12);
                 this.movY = random(-11, 12);
-                this.size = min(windowWidth, windowHeight) / 21;
                 this.randomColor();
             }
 
             move() {
                 fill(ball.color);
                 stroke(ball.invColor);
+                this.size = min(windowWidth, windowHeight) / 21;
                 ellipse(this.x, this.y, this.size);
                 this.x += this.movX;
                 this.y += this.movY;
@@ -52,10 +48,6 @@ permalink: /404.html
             }
 
             randomColor() {
-                this.size--;
-                if (this.size < 6) {
-                    location.href = "https://www.dafmontenegro.com/";
-                }
                 let r = random(256);
                 let g = random(256);
                 let b = random(256);

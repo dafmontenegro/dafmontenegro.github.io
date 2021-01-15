@@ -1,74 +1,71 @@
-// original idea(Daniel Shiffman-The Coding Train): https://www.youtube.com/watch?v=17WoOqgXsRM&ab_channel=TheCodingTrain
+class Node {
 
-class Star {
-
-  constructor() {
-    this.update();
-  }
-
-  update() {  
-    this.radio = random(1, 3);
-    this.x = random(-width / 2, width / 2);
-    this.y = random(-height / 2, height / 2);
-    this.px = random(this.x, width / 2);
-    this.py = random(this.y, height / 2);
-  }
-
-  show(speed) {
-    if (dist(0, 0, this.x, this.y) < mag(width / 2, height / 2)) {
-      this.color = map(dist(0, 0, this.x, this.y), 0, 300, 128, 255, true);
-      fill(this.color);
-      stroke(this.color);
-      this.px = this.x;
-      this.py = this.y;
-      this.x *= speed;
-      this.y *= speed;
-      this.radio *= speed;
-      ellipse(this.x, this.y, this.radio, this.radio);
-      line(this.px, this.py, this.x, this.y);
-    } else {
-      this.update();
+    constructor() {
+        this.x = random(windowWidth);
+        this.y = random(windowHeight);
+        this.movX = random(-2, 3);
+        this.movY = random(-2, 3);
     }
-  }
+
+    move() {
+        this.x += this.movX;
+        this.y += this.movY;
+        if (this.x < 0 || windowWidth < this.x) {
+            this.movX *= -1;
+        }
+        if (this.y < 0 || windowHeight < this.y) {
+            this.movY *= -1;
+        }
+        point(this.x, this.y);
+    }
 
 }
 
-var stars = [];
+class Structure {
+
+    constructor() {
+        this.reload();
+    }
+
+    move() {
+        strokeWeight(6);
+        for (let i = 0; i < this.nodes.length; i++) {
+            this.nodes[i].move();
+        }
+        strokeWeight(1);
+        this.nodes.sort((a, b) => a.x - b.x);
+        let distance = windowWidth/12;
+        for (let i = 0; i < this.nodes.length-1; i++) {
+            for (let j = i+1; j < this.nodes.length && this.nodes[i].x - this.nodes[j].x < distance; j++) {
+                if (dist(this.nodes[i].x, this.nodes[i].y, this.nodes[j].x, this.nodes[j].y) < distance) {
+                    line(this.nodes[i].x, this.nodes[i].y, this.nodes[j].x, this.nodes[j].y);
+                }
+            }
+        }
+    }
+
+    reload(){
+        this.nodes = [];
+        for (let i = 0; i < windowWidth/12; i++) {
+            this.nodes.push(new Node());
+        }
+    }
+
+}
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  for (var i = 0; i < 210; i++) {
-    stars[i] = new Star();
-  }
+    createCanvas(windowWidth, windowHeight);
+    structure = new Structure(120);
+    strokeWeight(1);
+    frameRate(21);
 }
 
 function draw() {
-  background(0);
-  translate(width / 2, height / 2);
-  for (var i = 0; i < stars.length; i++) {
-    stars[i].show(mouseDistance());
-  }
-  fill(255);
-  let distance = map(mouseDistance(), 1, 1.1, 32, 3);
-  ellipse(0, 0, distance, distance);
-  if (distance > 24) {
-    push();
-    stroke(0);
-    strokeWeight(3);
-    textSize(48);
-    textStyle(BOLD);
-    textFont('Georgia');
-    textAlign(CENTER, CENTER);
-    fill(255, 255, 0);
-    text('Coming Soon!', 0, 0);
-    pop();
-  }
-}
-
-function mouseDistance() {
-  return map(dist(width / 2, height / 2, mouseX, mouseY), 0, 300, 1, 1.1, true);
+    background(255);
+    structure.move();
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas(windowWidth, windowHeight);
+    structure.reload();
 }
