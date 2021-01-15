@@ -54,10 +54,7 @@ permalink: /404.html
             randomColor() {
                 this.size--;
                 if (this.size < 6) {
-                    history.back();
-                    if (!history.back()) {
-                        location.reload();
-                    }
+                    location.href = "https://www.dafmontenegro.com/";
                 }
                 let r = random(256);
                 let g = random(256);
