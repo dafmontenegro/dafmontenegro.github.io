@@ -14,72 +14,14 @@ permalink: /404.html
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.min.js"></script>
-    
+
 </head>
 
 <body>
 
-    <script>
-        class Ball {
-
-            constructor() {
-                this.x = windowWidth / 2;
-                this.y = windowHeight / 2;
-                this.movX = random(-11, 12);
-                this.movY = random(-11, 12);
-                this.randomColor();
-            }
-
-            move() {
-                fill(ball.color);
-                stroke(ball.invColor);
-                this.size = min(windowWidth, windowHeight) / 21;
-                ellipse(this.x, this.y, this.size);
-                this.x += this.movX;
-                this.y += this.movY;
-                if (this.x > windowWidth - this.size || this.x < this.size) {
-                    this.movX *= -1;
-                    this.randomColor();
-                }
-                if (this.y > windowHeight - this.size || this.y < this.size) {
-                    this.movY *= -1;
-                    this.randomColor();
-                }
-            }
-
-            randomColor() {
-                let r = random(256);
-                let g = random(256);
-                let b = random(256);
-                this.color = color(r, g, b);
-                this.invColor = color(255 - r, 255 - g, 255 - b);
-            }
-
-        }
-
-        let ball;
-
-        function setup() {
-            createCanvas(windowWidth, windowHeight);
-            ball = new Ball(32);
-            textAlign(CENTER, CENTER);
-            textFont('Georgia');
-            ellipseMode(RADIUS);
-            strokeWeight(3);
-            frameRate(30);
-        }
-
-        function draw() {
-            background(ball.invColor);
-            ball.move();
-            textSize(ball.size * 12);
-            text('404', windowWidth / 2, windowHeight / 2);
-        }
-
-        function windowResized() {
-            resizeCanvas(windowWidth, windowHeight);
-        }
-    </script>
+    <script src="js/404.js"></script>
+    <script src="js/Node.js"> </script>
+    <script src="js/Structure.js"> </script>
 
 </body>
 
