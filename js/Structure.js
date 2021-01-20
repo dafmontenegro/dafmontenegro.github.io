@@ -27,10 +27,11 @@ class Structure {
 
     createNodes() {
         this.nodes = [];
-        this.unit = (windowWidth * windowHeight) / 17280;
+        this.unit = min(windowWidth, windowHeight) / 9;
         for (let i = 1; i < this.unit; i++) {
             this.nodes.push(new Node());
         }
+        console.log(this.unit);
     }
 
 }
