@@ -1,24 +1,67 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-    <title>Daniel Felipe Montenegro</title>
+    <title>Daniel Montenegro</title>
+    <meta name="robots" content="index, follow">
     <meta name="author" content="Daniel Felipe Montenegro">
-    <meta name="description" content="My personal web site.">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.min.js"></script>
-    
+    <meta name="description" content="Your friendly neighbourhood Software Developer.">
+    <script src="sketch.js"></script>
+    <link rel="stylesheet" href="./mobile.css">
+    <link rel="stylesheet" href="./tablet.css" media="screen and (min-width: 480px)">
+    <link rel="stylesheet" href="./desktop.css" media="screen and (min-width: 960px)">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-
-    <script src="sketch.js"> </script>
-    <script src="js/Node.js"> </script>
-    <script src="js/Structure.js"> </script>
-
+    <header>
+        <nav>
+            <div class="nav-default">
+                <a href="#about">MONTENEGRO</a>
+                <a href="javascript:void(0);" onclick="menuController()">A/B/C</a>
+            </div>
+            <ul class="nav-bar" id="ABC-bar">
+                <li>
+                    <a href="#about" onclick="menuController()">About</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" onclick="menuController()">Blog</a>
+                </li>
+                <li>
+                    <a href="#contact" onclick="menuController()">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <span id="mode-icon" onclick="changeMode(this)" class="material-icons">light_mode</span>
+            <article>
+                <h1>Hey! My name is</h1>
+                <h2>DANIEL FELIPE MONTENEGRO</h2>
+                <p>Your friendly neighbourhood Software Developer.</p>
+                <a class="getInTouch" href="#contact">Get in touch</a>
+            </article>
+            <h3>Available for new projects</h3>
+        </section>
+        <section id="about">
+            <article>
+                <h2>Work in Progress</h2>
+                <span class="material-icons">sentiment_satisfied_alt</span>
+            </article>
+        </section>
+        <section id="contact">
+            <article>
+                <h2>Work in Progress</h2>
+                <span class="material-icons">sentiment_satisfied_alt</span>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <p>Made with ❤ by Daniel Montenegro</p>
+    </footer>
 </body>
 
 </html>
