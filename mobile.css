@@ -14,7 +14,6 @@ body {
   font-family: 'Times New Roman', Times, serif;
   color: var(--ft-color);
   background-color: var(--bg-color);
-  height: 100%;
 }
 
 a {
