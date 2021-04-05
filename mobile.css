@@ -92,10 +92,10 @@ main {
   padding: 3%;
   background: var(--ft-color);
   width: 100vw;
-  height: 100%;
+  height: 100vh;
 }
 
-main #about {
+main section {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -110,15 +110,15 @@ footer {
   padding: 0 3%;
   background: var(--bd-color);
   width: 100vw;
-  height: 100%;
+  height: 100vh;
 }
 
-footer #contact {
+footer section {
   padding: 3% 0;
   height: 94%;
 }
 
-footer #contact article {
+footer section article {
   display: flex;
   flex-direction: column;
   justify-content: center;
