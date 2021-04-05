@@ -108,7 +108,7 @@ main section {
   height: 100%;
 }
 
-main .rotate-screen, main .unsupported-screen {
+main .rotate-screen, .unsupported-screen {
   display: none;
   flex-direction: column;
   justify-content: center;
