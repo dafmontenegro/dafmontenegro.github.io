@@ -1,3 +1,23 @@
-body {
+html {
     font-size: 1.2rem;
+}
+
+header nav {
+    padding: 0 2%;
+}
+
+main {
+    padding: 2%;
+}
+
+footer {
+    padding: 0 2%;
+}
+
+footer #contact {
+    padding: 2% 0;
+}
+
+.getInTouch {
+    padding: 1.2%;
 }

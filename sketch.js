@@ -9,10 +9,10 @@ function menuController() {
 
 function changeMode(icon) {
     let element = document.body;
-    element.classList.toggle("light-mode");
-    if (icon.textContent === 'light_mode') {
-        icon.textContent = 'dark_mode';
-    } else {
+    element.classList.toggle("dark-mode");
+    if (icon.textContent === 'dark_mode') {
         icon.textContent = 'light_mode';
+    } else {
+        icon.textContent = 'dark_mode';
     }
 }

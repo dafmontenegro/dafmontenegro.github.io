@@ -1,0 +1,23 @@
+html {
+    font-size: 1.6rem;
+}
+
+header nav {
+    padding: 0 1%;
+}
+
+main {
+    padding: 1%;
+}
+
+footer {
+    padding: 0 1%;
+}
+
+footer #contact {
+    padding: 1% 0;
+}
+
+.getInTouch {
+    padding: 0.6%;
+}
