@@ -13,13 +13,14 @@ html,
 body {
   text-align: center;
   font-family: 'Times New Roman', Times, serif;
+  width: 100%;
   height: 100%;
 }
 
 header {
   color: var(--bd-color);
   background: var(--ft-color);
-  width: 100vw;
+  width: 100%;
   height: 100%;
 }
 
@@ -66,7 +67,7 @@ header section .triangle-top {
   width: 0;
   height: 12%;
   border-top: 9vh solid var(--ft-color);
-  border-right: 100vw solid var(--bd-color);
+  border-right: 96vw solid var(--bd-color);
 }
 
 header section article {
@@ -78,6 +79,7 @@ header section article {
   line-height: 1.2;
   color: var(--ft-color);
   background: var(--bd-color);
+  width: 96vw;
   height: 40%;
 }
 
@@ -85,13 +87,13 @@ header section .triangle-botton {
   width: 0;
   height: 12%;
   border-bottom: 9vh solid var(--ft-color);
-  border-left: 100vw solid var(--bd-color);
+  border-left: 96vw solid var(--bd-color);
 }
 
 main {
   padding: 3%;
   background: var(--ft-color);
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 }
 
@@ -109,7 +111,7 @@ main section {
 footer {
   padding: 0 3%;
   background: var(--bd-color);
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 }
 

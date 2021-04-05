@@ -6,6 +6,10 @@ header nav {
     padding: 0 1%;
 }
 
+header nav .nav-bar {
+    width: 98%;
+}
+
 main {
     padding: 1%;
 }
@@ -14,8 +18,12 @@ footer {
     padding: 0 1%;
 }
 
-footer #contact {
+footer section {
     padding: 1% 0;
+}
+
+a {
+    font-size: 0.8rem;
 }
 
 .getInTouch {
