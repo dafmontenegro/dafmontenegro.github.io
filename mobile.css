@@ -108,6 +108,19 @@ main section {
   height: 100%;
 }
 
+main .rotate-screen {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 2.1;
+  font-weight: bold;
+  color: var(--ft-color);
+  background: var(--bd-color);
+  width: 100vw;
+  height: 100vh;
+}
+
 footer {
   padding: 0 3%;
   background: var(--bd-color);
