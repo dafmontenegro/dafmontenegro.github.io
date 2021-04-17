@@ -123,25 +123,20 @@ main .rotate-screen, .unsupported-screen {
 
 footer {
   padding: 0 3%;
-  background: var(--bd-color);
+  background: var(--ft-color);
   width: 100%;
   height: 100vh;
 }
 
 footer section {
   padding: 3% 0;
-  height: 94%;
-}
-
-footer section article {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 12px;
   color: var(--bd-color);
-  background: var(--ft-color);
-  height: 100%;
+  height: 94%;
 }
 
 footer .bottom {
@@ -149,8 +144,8 @@ footer .bottom {
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  border-top: 1px solid var(--ft-color);
-  color: var(--ft-color);
+  border-top: 1px solid var(--bd-color);
+  color: var(--bd-color);
   height: 6%;
 }
 
@@ -195,7 +190,7 @@ ul {
   color: var(--ft-color);
 }
 
-.dark-mode {
+.light-mode {
   --bd-color: black;
   --ft-color: white;
 }
