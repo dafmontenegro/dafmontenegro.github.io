@@ -1,0 +1,33 @@
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+header section {
+    display: none;
+}
+
+header nav .nav-default {
+    height: 21%;
+}
+
+header nav .nav-default #menu-icon {
+    display: none;
+}
+
+header .rotate-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+    font-size: 2.1rem;
+    font-weight: bold;
+    color: var(--white-21);
+    height: 21%;
+}
+
+header .rotate-screen span {
+    color: var(--azure);
+}

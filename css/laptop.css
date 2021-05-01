@@ -1,0 +1,61 @@
+header nav {
+    padding: 0 4.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--black-21);
+    height: 12%;
+}
+
+header nav .nav-default {
+    padding: 0;
+    width: 240px;
+}
+
+header nav .nav-default #menu-icon {
+    display: none;
+}
+
+header nav .nav-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background: none;
+}
+
+header nav .nav-menu li {
+    padding: 0 0 0 4.8rem;
+}
+
+header section article {
+    padding: 0 4.8rem;
+    max-width: none;
+}
+
+header section article .about-info {
+    height: 60%;
+}
+
+header section article .about-info h1 {
+    font-size: 5.6rem;
+    max-width: 936px;
+}
+
+header section article .about-info p {
+    font-size: 2.8rem;
+    max-width: 960px;
+}
+
+header section article .about-info a {
+    font-size: 3rem;
+    border-radius: 3rem;
+}
+
+header section article .about-top-botton {
+    height: 20%;  
+}
+
+header section article .about-top-botton a {
+    font-size: 2.8rem;
+}

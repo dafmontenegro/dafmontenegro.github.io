@@ -1,0 +1,170 @@
+:root {
+  --black-12: #0C0C0C;
+  --black-21: #151515;
+  --azure: #386BAD;
+  --white-21: #EAEAEA;
+  --white-12: #F3F3F3;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Poppins', sans-serif;
+  background: var(--black-21);
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  width: 100%;
+  height: 100%;
+}
+
+header nav {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+header nav .nav-default {
+  padding: 0 2.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--black-21);
+  width: 100%;
+  height: 16%;
+}
+
+header nav .nav-default a {
+  padding: 0.9rem;
+  font-size: 2.1rem;
+  font-weight: bold;
+  font-family: 'Teko', sans-serif;
+  letter-spacing: 0.3rem;
+  line-height: 2.1rem;
+  border: 0.4rem solid var(--azure);
+  border-radius: 1.2rem;
+  color: var(--azure);
+}
+
+header nav .nav-default span {
+  color: var(--white-21);
+}
+
+header nav .nav-menu {
+  display: none;
+  background: var(--black-12);
+  width: 100%;
+  height: 84%;
+}
+
+header nav .nav-menu li {
+  padding: 2.1rem 0 0 2.1rem;
+}
+
+header nav .nav-menu li a {
+  font-size: 2.1rem;
+  font-weight: bold;
+  color: var(--white-12);
+}
+
+header section {
+  width: 100%;
+  height: 100%;
+}
+
+header section article {
+  padding: 0 2.1rem;
+  width: 100%;
+  height: 100%;
+}
+
+header section article .about-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 60%;
+}
+
+header section article .about-info h1 {
+  font-size: 2.7rem;
+  font-weight: bold;
+  color: var(--white-12);
+  max-width: 300px;
+}
+
+header section article .about-info h1 u {
+  color: var(--azure);
+}
+
+header section article .about-info p {
+  font-size: 1.4rem;
+  color: var(--white-21);
+}
+
+header section article .about-info p span {
+  font-weight: bold;
+  color: var(--white-12);
+}
+
+header section article .about-info a {
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 2rem;
+  background: var(--azure);
+  color: var(--white-12);
+}
+
+header section article .about-top-botton {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 20%;
+}
+
+header section article .about-top-botton a {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--white-12);
+}
+
+header section figure {
+  display: none;
+}
+
+header .rotate-screen {
+  display: none;
+}
+
+header .unsupported-screen {
+  display: none;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.material-icons.md-36 { 
+  font-size: 3.6rem; 
+}

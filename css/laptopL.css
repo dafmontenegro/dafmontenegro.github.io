@@ -1,0 +1,60 @@
+:root {
+    --black-21: #111113;
+}
+
+header nav {
+    padding: 0 7.2rem;
+}
+
+header nav .nav-menu li {
+    padding: 0 0 0 7.2rem;
+}
+
+header section {
+    padding: 0 7.2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header section article {
+    padding: 0;
+}
+
+header section article .about-info {
+    height: 70%;
+}
+
+header section figure {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+
+header section figure img {
+    height: 88%;
+}
+
+header section article .about-info h1 {
+    font-size: 6.4rem;
+    max-width: 1069px;
+}
+
+header section article .about-info p {
+    font-size: 3.2rem;
+    max-width: 1082px;
+}
+
+header section article .about-info a {
+    font-size: 3.4rem;
+}
+
+header section article .about-top-botton {
+    height: 15%;  
+}
+
+header section article .about-top-botton a {
+    font-size: 3.2rem;
+}

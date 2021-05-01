@@ -1,83 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Daniel Montenegro</title>
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Daniel Felipe Montenegro">
-    <meta name="description" content="Your friendly neighbourhood Software Developer.">
-    <script src="sketch.js"></script>
-    <link rel="stylesheet" href="./mobile.css">
-    <link rel="stylesheet" href="./tablet.css" media="screen and (min-width: 480px)">
-    <link rel="stylesheet" href="./desktop.css" media="screen and (min-width: 960px)">
-    <link rel="stylesheet" href="./landscape.css" media="screen and (max-height: 480px)">
-    <link rel="stylesheet" href="./unsupported.css" media="screen and (max-width: 320px)">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Daniel Montenegro</title>
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Daniel Felipe Montenegro" />
+  <meta name="description" content="Your friendly neighbourhood Software Developer." />
+  <script src="sketch.js"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="./css/mobile.css" />
+  <link rel="stylesheet" href="./css/mobileL.css" media="screen and (min-width: 375px)" />
+  <link rel="stylesheet" href="./css/tablet.css" media="screen and (min-width: 425px)" />
+  <link rel="stylesheet" href="./css/tabletL.css" media="screen and (min-width: 595px)" />
+  <link rel="stylesheet" href="./css/laptop.css" media="screen and (min-width: 840px)" />
+  <link rel="stylesheet" href="./css/laptopL.css" media="screen and (min-width: 1356px)" />
+  <link rel="stylesheet" href="./css/landscape.css" media="screen and (max-height: 479px)" />
+  <link rel="stylesheet" href="./css/unsupported.css" media="screen and (max-width: 319px)" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Teko:wght@700&display=swap"
+    rel="stylesheet">
 </head>
 
 <body translate="no">
-    <header>
-        <nav>
-            <div class="nav-default">
-                <a href="#about">MONTENEGRO</a>
-                <a href="javascript:void(0);" onclick="menuController()">A/B/C</a>
-            </div>
-            <ul class="nav-bar" id="ABC-bar">
-                <li>
-                    <a href="#about" onclick="menuController()">About</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" onclick="menuController()">Blog</a>
-                </li>
-                <li>
-                    <a href="#contact" onclick="menuController()">Contact</a>
-                </li>
-            </ul>
-        </nav>
-        <section>
-            <div class="flcece">
-                <span id="mode-icon" onclick="changeMode(this)" class="material-icons">light_mode</span>
-            </div>
-            <div class="triangle-top"></div>
-            <article>
-                <div>
-                    <h2>Hey! My name is</h2>
-                    <h1 class="sd-color">DANIEL FELIPE MONTENEGRO</h1>
-                    <p>Your friendly neighbourhood Software Developer.</p>
-                </div>
-                <a class="getInTouch" href="#contact">Get in touch</a>
-            </article>
-            <div class="triangle-botton"></div>
-            <div class="flcece">
-                <p class="avaible">Available for new projects in April</p>
-            </div>
-        </section>
-    </header>
-    <main id="about">
-        <section>
-            <article>
-                <span class="material-icons">build</span>
-            </article>
-        </section>
-        <div class="rotate-screen">
-            <p>Rotate your screen</p>
-            <span class="material-icons">loop</span>
+  <header>
+    <nav>
+      <div class="nav-default">
+        <a href="#about">MONTENEGRO</a>
+        <span id="menu-icon" onclick="menuController()" class="material-icons md-36">menu</span>
+      </div>
+      <ul id="menu-bar" class="nav-menu">
+        <li>
+          <a href="#about" onclick="menuController()">Sobre mí</a>
+        </li>
+        <li>
+          <a href="#about" onclick="menuController()">Blog</a>
+        </li>
+        <li>
+          <a href="#about" onclick="menuController()">Contacto</a>
+        </li>
+      </ul>
+    </nav>
+    <section id="about">
+      <article>
+        <div class="about-top-botton">
         </div>
-        <div class="unsupported-screen">
-            <p>Unsupported</p>
-            <span class="material-icons">phonelink_erase</span>
+        <div class="about-info">
+          <h1>Tu amigable <u>Software Developer</u> del vecindario.</h1>
+          <p>
+            Mi nombre es <span>Daniel Felipe Montenegro</span> un ingeniero en formación con sede en Bogotá, Colombia,
+            donde actualmente me encuentro cursando un pregrado de ingeniería de sistemas y computación en la
+            <span>Universidad Nacional de Colombia (UNAL)</span>.
+          </p>
+          <a href="javascript:void(0);">Contactar</a>
         </div>
-    </main>
-    <footer id="contact">
-        <section>
-            <span class="material-icons">build</span>
-        </section>
-        <div class="bottom">
-            <p>Made with ❤ by Daniel Montenegro</p>
+        <div class="about-top-botton">
+          <a href="javascript:void(0);">Visitar el blog ></a>
         </div>
-    </footer>
+      </article>
+      <figure>
+        <img src="../assets/imgs/blueparrot.jpg" alt="blue parrot" />
+      </figure>
+    </section>
+    <div class="rotate-screen">
+      <p>Rotate your screen</p>
+      <span class="material-icons md-36">loop</span>
+    </div>
+    <div class="unsupported-screen">
+      <p>Unsupported</p>
+      <span class="material-icons md-36">phonelink_erase</span>
+    </div>
+  </header>
+  <main>
+  </main>
+  <footer>
+  </footer>
 </body>
 
 </html>

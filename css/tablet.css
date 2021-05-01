@@ -1,0 +1,54 @@
+header nav .nav-default {
+    padding: 0 3.2rem;
+}
+
+header nav .nav-default a {
+    padding: 1.2rem;
+    font-size: 2.4rem;
+    letter-spacing: 0.34rem;
+    line-height: 2.4rem;
+    border: 0.45rem solid var(--azure);
+    border-radius: 1.37rem;
+    color: var(--azure);
+}
+
+header nav .nav-menu li {
+    padding: 3.2rem 0 0 3.2rem;
+}
+
+header nav .nav-menu li a {
+    font-size: 2.4rem;
+}
+
+header section article {
+    padding: 0 3.2rem;
+}
+
+header section article .about-info {
+    height: 50%;
+}
+
+header section article .about-info h1 {
+    font-size: 3.5rem;
+    max-width: 394px;
+}
+
+header section article .about-info p {
+    font-size: 1.8rem;
+}
+
+header section article .about-info a {
+    font-size: 2rem;
+}
+
+header section article .about-top-botton {
+    height: 25%;
+}
+
+header section article .about-top-botton a {
+    font-size: 1.8rem;
+}
+
+.material-icons.md-36 { 
+    font-size: 4.11rem; 
+}
