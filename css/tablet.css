@@ -28,25 +28,8 @@ header section article .about-info {
     height: 50%;
 }
 
-header section article .about-info h1 {
-    font-size: 3.5rem;
-    max-width: 394px;
-}
-
-header section article .about-info p {
-    font-size: 1.8rem;
-}
-
-header section article .about-info a {
-    font-size: 2rem;
-}
-
 header section article .about-top-botton {
     height: 25%;
-}
-
-header section article .about-top-botton a {
-    font-size: 1.8rem;
 }
 
 .material-icons.md-36 { 

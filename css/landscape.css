@@ -9,11 +9,22 @@ header section {
     display: none;
 }
 
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 21%;
+}
+
 header nav .nav-default {
     height: 21%;
 }
 
 header nav .nav-default #menu-icon {
+    display: none;
+}
+
+header nav .nav-menu {
     display: none;
 }
 
