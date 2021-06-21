@@ -1,0 +1,253 @@
+:root {
+    --pearl-night-blue: #102c54;
+    --scarlet: #ff0040;
+    --white-12: #F3F3F3;
+    --small-letter: 2.1vw;
+    --medium-letter: 2.4vw;
+    --large-letter: 4.2vw;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: var(--pearl-night-blue);
+    font-family: 'Spartan', sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+header {
+    background-color: var(--pearl-night-blue);
+    display: grid;
+    grid-template-columns: 1fr 1fr 9fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    height: 12.5%;
+    left: 0;
+    min-height: 60px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+header nav {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    grid-column: 2;
+    grid-row: 2;
+    min-height: 36px;
+}
+
+header nav a {
+    height: 100%;
+}
+
+header nav a figure {
+    height: 100%;
+}
+
+header nav a figure img {
+    height: 100%;
+}
+
+header nav #menu-icon {
+    color: var(--white-12);
+    display: none;
+}
+
+header ul {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    grid-column: 3;
+    grid-row: 2;
+    justify-content: flex-end;
+}
+
+header ul li {
+    margin-left: 3vw;
+}
+
+header ul li a {
+    color: var(--white-12);
+    font-size: var(--medium-letter);
+    font-weight: bold;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-rows: 100%;
+    height: 100%;
+}
+
+main #home {
+    display: grid;
+    grid-area: 1 / 2;
+    grid-auto-flow: column;
+    grid-template-columns: 6fr 4fr;
+    grid-template-rows: 12% 1fr;
+    height: 100%;
+    place-items: center;
+}
+
+main #home article {
+    color: var(--white-12);
+    display: flex;
+    flex-direction: column;
+    grid-area: 2 / 1;
+    height: 72vh;
+    justify-content: space-evenly;
+}
+
+main #home article h1 {
+    font-size: var(--large-letter);
+    font-weight: bold;
+}
+
+main #home article h1 u {
+    color: var(--scarlet);
+    display: block;
+}
+
+main #home article p {
+    font-size: var(--small-letter);
+}
+
+main #home article p span {
+    font-weight: bold;
+}
+
+main #home article a {
+    font-size: var(--small-letter);
+    font-weight: bold;
+    color: var(--scarlet);
+}
+
+main #home figure {
+    align-items: center;
+    display: flex;
+    grid-area: 2 / 2;
+    width: 100%;
+}
+
+main #home figure img {
+    max-height: 72vh;
+    width: 100%;
+}
+
+main #about {
+    color: var(--white-12);
+    display: grid;
+    grid-area: 2 / 2;
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+}
+
+main #about article {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 90%;
+}
+
+main #about article h2 {
+    color: var(--scarlet);
+    font-size: var(--large-letter);
+    font-weight: bold;
+}
+
+main #about article p {
+    font-size: var(--small-letter);
+}
+
+main #about article a {
+    color: var(--white-12);
+    font-size: var(--small-letter);
+    font-weight: bold;
+}
+
+main #about div {
+    display: grid;
+    grid-auto-rows: 12vw;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 9vw;
+    height: auto;
+}
+
+main #about div h3 {
+    align-self: center;
+    font-size: var(--medium-letter);
+    font-weight: bold;
+    grid-area: 1 / 1 / 2 / 4;
+}
+
+main #about div figure {
+    height: auto;
+    place-self: center;
+    width: 72%;
+}
+
+main #about div figure img {
+    width: 100%;
+}
+
+main #about .height60vw {
+    height: auto;
+}
+
+main #pnf {
+    grid-area: 1 / 2;
+}
+
+main #pnf article {
+    align-items: center;
+    color: var(--white-12);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+
+main #pnf article h2 {
+    font-size: 12vh;
+    font-weight: bold;
+}
+
+main #pnf article h2 u {
+    color: var(--scarlet);
+    text-decoration: none;
+}
+
+main #pnf article p {
+    font-size: 3vh;
+    font-weight: bold;
+}
+
+footer {
+    display: none;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}

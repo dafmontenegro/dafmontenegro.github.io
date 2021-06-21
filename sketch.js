@@ -1,5 +1,5 @@
 function menuController() {
-    if (screen.width < 840) {
+    if (window.innerHeight >= window.innerWidth) {
         let icon = document.getElementById('menu-icon');
         if (icon.textContent === "menu") {
             icon.textContent = "close";
@@ -7,10 +7,10 @@ function menuController() {
             icon.textContent = "menu";
         }
         let menu = document.getElementById('menu-bar');
-        if (menu.style.display === 'block') {
+        if (menu.style.display === 'grid') {
             menu.style.display = 'none';
         } else {
-            menu.style.display = 'block';
+            menu.style.display = 'grid';
         }
     }
 }

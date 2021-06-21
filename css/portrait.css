@@ -1,0 +1,12 @@
+:root {
+    --pearl-night-blue: #102c54;
+    --scarlet: #ff0040;
+    --white-12: #F3F3F3;
+    --small-letter: 3.6vw;
+    --medium-letter: 4.8vw;
+    --large-letter: 7.2vw;
+}
+
+main #about .height4860vw {
+    height: 60vw;
+}

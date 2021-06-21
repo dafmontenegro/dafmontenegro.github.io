@@ -1,44 +1,31 @@
+:root {
+    --pearl-night-blue: #102c54;
+    --scarlet: #ff0040;
+    --white-12: #F3F3F3;
+    --small-letter: 2.6vh;
+    --medium-letter: 3.2vh;
+    --large-letter: 5.2vh;
+}
+
 header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
+    grid-template-columns: 2fr 1fr 7fr 2fr;
 }
 
-header section {
-    display: none;
+main {
+    grid-template-columns: 2fr 8fr 2fr;
 }
 
-header nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 21%;
+main #home article p {
+    width: 90%;
 }
 
-header nav .nav-default {
-    height: 21%;
+main #about div {
+    grid-auto-rows: 9vw;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 7.2vw;
 }
 
-header nav .nav-default #menu-icon {
-    display: none;
+main #about div h3 {
+    grid-area: 1 / 1 / 2 / 5;
 }
 
-header nav .nav-menu {
-    display: none;
-}
-
-header .rotate-screen {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center; 
-    font-size: 2.1rem;
-    font-weight: bold;
-    color: var(--white-21);
-    height: 21%;
-}
-
-header .rotate-screen span {
-    color: var(--azure);
-}
