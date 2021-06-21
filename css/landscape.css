@@ -29,3 +29,10 @@ main #about div h3 {
     grid-area: 1 / 1 / 2 / 5;
 }
 
+@media screen and (max-height: 320px) {
+
+    main #home figure img {
+        max-height: 60vh;
+    }
+    
+}
