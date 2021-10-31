@@ -1,0 +1,11 @@
+body {
+    width: 48%;
+}
+
+footer #info {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+footer #info #lucky {
+    grid-column: 2;
+}

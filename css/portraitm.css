@@ -1,0 +1,32 @@
+:root {
+    --small-letter: 1.8vh;
+    --medium-letter: 2.7vh;
+    --large-letter: 3.6vh;
+}
+
+body {
+    width: calc(100vh * 0.4);
+}
+
+header {
+    height: auto;
+}
+
+header #home {
+    grid-template-rows: 60vh 1fr;
+}
+
+header #home article {
+    grid-row: 1;
+    justify-content: flex-end;
+}
+
+header #home figure {
+    grid-row: 2;
+    padding-top: 4.5vh;
+}
+
+header #home figure img {
+    margin: 0 auto;
+    width: calc(100vh / 3);
+}

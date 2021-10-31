@@ -1,0 +1,21 @@
+body {
+    width: calc(100vh * 0.5);
+}
+
+header #home {
+    margin: 0 auto;
+    width: calc(100vh * 0.4);
+}
+
+main #technologies div {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+main #activities div figure {
+    grid-template-columns: 4fr 6fr;
+}
+
+main #music iframe {
+    margin: 0 auto;
+    width: calc(100vh * 0.4);
+}
