@@ -1,0 +1,11 @@
+baseURL = "https://dafmontenegro.github.io/"
+defaultContentLanguage = "en"
+
+enableRobotsTXT = true
+paginate = 10
+summaryLength = 0
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+googleAnalytics = "G-NPX8KTDYVB"
