@@ -1,0 +1,22 @@
+languageCode = "en"
+languageName = "English"
+languageDirection = "ltr"
+weight = 1
+
+title = "Daniel Felipe Montenegro"
+copyright = "© 2024 🍀 Daniel Felipe Montenegro"
+
+[params]
+  dateFormat = "2 January 2006"
+  description = "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
+
+[params.author]
+  name = "Daniel Felipe Montenegro"
+  headline = "Your friendly neighborhood software engineer."
+  bio = "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
+  links = [    
+    { github = "https://github.com/dafmontenegro" },
+    { telegram = "https://t.me/dafmontenegro" },
+    { x-twitter = "https://x.com/dafmontenegro" },
+    { youtube = "https://youtube.com/@MiAmigoMelquiades" },
+  ]

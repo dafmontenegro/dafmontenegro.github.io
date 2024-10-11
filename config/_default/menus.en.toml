@@ -1,0 +1,26 @@
+[[main]]
+  name = "About"
+  pageRef = "about"
+  weight = 10
+
+# [[main]]
+#   name = "Blog"
+#   url = "https://www.youtube.com/@MiAmigoMelquiades"
+#   weight = 20
+
+# [[main]]
+#   name = "Projects"
+#   url = "https://github.com/dafmontenegro"
+#   weight = 30
+
+[[main]]
+  identifier = "search"
+  weight = 99
+  [main.params]
+    action = "search"
+
+[[main]]
+  identifier = "locale"
+  weight = 100
+  [main.params]
+    action = "locale"
