@@ -8,4 +8,6 @@ summaryLength = 0
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
-googleAnalytics = "G-NPX8KTDYVB"
+[services]
+  [services.googleAnalytics]
+    ID = "G-NPX8KTDYVB"

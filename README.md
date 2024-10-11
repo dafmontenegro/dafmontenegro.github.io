@@ -1,4 +1,3 @@
 # dafmontenegro.github.io
 
-http://montenegrodanielfelipe.com/
-https://dafmontenegro.com/
+montenegrodanielfelipe.com/
