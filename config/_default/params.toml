@@ -1,8 +1,8 @@
 colorScheme = "cherry"
-defaultAppearance = "light"
+defaultAppearance = "dark"
 autoSwitchAppearance = true
 
-defaultThemeColor = "#FFFFFF"
+defaultThemeColor = "#000000"
 
 enableSearch = false
 enableCodeCopy = true
@@ -13,8 +13,8 @@ fingerprintAlgorithm = "sha256"
 
 [header]
   layout = "hybrid"
-  logo = "img/dark-montenegro100.png"
-  logoDark = "img/light-montenegro100.png"
+  logo = "img/whiteMontenegro100.png"
+  logoDark = "img/blackMontenegro100.png"
   showTitle = false
 
 [footer]
