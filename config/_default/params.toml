@@ -1,6 +1,6 @@
 colorScheme = "cherry"
 defaultAppearance = "dark"
-autoSwitchAppearance = true
+autoSwitchAppearance = false
 
 defaultThemeColor = "#000000"
 
@@ -13,14 +13,12 @@ fingerprintAlgorithm = "sha256"
 
 [header]
   layout = "hybrid"
-  logo = "img/whiteMontenegro100.png"
-  logoDark = "img/blackMontenegro100.png"
+  logo = "img/caesars-window100.png"
   showTitle = false
 
 [footer]
   showCopyright = true
   showThemeAttribution = true
-  showAppearanceSwitcher = true
   showScrollToTop = true
 
 [homepage]
@@ -30,7 +28,7 @@ fingerprintAlgorithm = "sha256"
 
 [article]
   showDate = true
-  showDateUpdated = false
+  showDateUpdated = true
   showAuthor = true
   showBreadcrumbs = true
   showDraftLabel = true
@@ -41,13 +39,13 @@ fingerprintAlgorithm = "sha256"
   invertPagination = false
   showReadingTime = true
   showTableOfContents = true
-  showTaxonomies = false
+  showTaxonomies = true
   showWordCount = false
   showComments = false
 
 [list]
   showBreadcrumbs = true
-  showSummary = false
+  showSummary = true
   showTableOfContents = false
   showTaxonomies = false
   groupByYear = true
