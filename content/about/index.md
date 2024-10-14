@@ -1,8 +1,13 @@
 ---
 title: "Who am I?"
 description: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
+summary: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
+Date: "2024-10-12"
+lastmod: "2024-10-14"
+tags: ["spider-man", "puss-in-boots"]
 showBreadcrumbs: false
 showReadingTime: false
+showDateUpdated: false
 showDate: false
 ---
 Well, let's just say I'm your friendly neighborhood **software engineer.**
@@ -14,9 +19,9 @@ To do the character justice (**and for having borrowed his catchphrase**), I'm g
 > ...But I handled it like a champion. 'Cause you know what? No matter how many times I get hit, I always get back up.
 > — <cite>Peter B. Parker[^1]</cite>
 
-![Peter B. Parker crying](spider-man-crying.gif)
-
 [^1]: Spider-Man: Into the Spider-Verse (2018) | Animation, Action, Adventure. (2018, 14 diciembre). IMDb. https://www.imdb.com/title/tt4633694/
+
+![Peter B. Parker crying](spider-man-crying.gif)
 
 ## About Me
 My name is **Daniel Felipe Montenegro.**
