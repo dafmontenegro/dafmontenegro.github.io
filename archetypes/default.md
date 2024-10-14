@@ -1,5 +1,11 @@
 +++
-title = '{{ replace .File.ContentBaseName "-" " " | title }}'
+title = "{{ replace .File.ContentBaseName "-" " " | title }}"
+description = ""
+summary = ""
 date = {{ .Date }}
-draft = true
+lastmod = {{ .Date }}
+coverCaption = ""
+featureAlt = ""
+categories = []
+tags = []
 +++
