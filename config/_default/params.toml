@@ -1,10 +1,10 @@
 colorScheme = "cherry"
 defaultAppearance = "dark"
-autoSwitchAppearance = false
+autoSwitchAppearance = true
 
 defaultThemeColor = "#000000"
 
-enableSearch = false
+enableSearch = true
 enableCodeCopy = true
 enableImageLazyLoading = true
 enableImageWebp = true
@@ -13,17 +13,19 @@ fingerprintAlgorithm = "sha256"
 
 [header]
   layout = "hybrid"
-  logo = "img/caesars-window100.png"
+  logo = "img/white-caesars-window100.png"
+  logoDark = "img/black-caesars-window100.png"
   showTitle = false
 
 [footer]
   showCopyright = true
   showThemeAttribution = true
+  showAppearanceSwitcher = true
   showScrollToTop = true
 
 [homepage]
   layout = "profile"
-  showRecent = false
+  showRecent = true
   recentLimit = 5
 
 [article]
@@ -39,7 +41,7 @@ fingerprintAlgorithm = "sha256"
   invertPagination = false
   showReadingTime = true
   showTableOfContents = true
-  showTaxonomies = true
+  showTaxonomies = false
   showWordCount = false
   showComments = false
 
@@ -48,7 +50,7 @@ fingerprintAlgorithm = "sha256"
   showSummary = true
   showTableOfContents = false
   showTaxonomies = false
-  groupByYear = true
+  groupByYear = false
   paginationWidth = 1
 
 [sitemap]

@@ -1,6 +1,6 @@
 ---
 title: "Privacy Policy"
-description: "Privacy policy detailing the data usage on montenegrodanielfelipe.com and dafmontenegro.com."
+description: "Privacy Policy detailing the data usage on montenegrodanielfelipe.com and dafmontenegro.com."
 date: 2024-10-12
 lastmod: 2024-10-15
 showReadingTime: false
