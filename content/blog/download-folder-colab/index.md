@@ -58,4 +58,6 @@ shutil.make_archive("dir_to_compress", "zip", "name_zip")
 files.download("name_zip.zip")
 ```
 
+{{< lead >}}
 I've written other articles about Google Colab that you might find helpful. You can explore them all by browsing the articles under the [Google-Colab tag](/tags/google-colab/).
+{{< /lead >}}
