@@ -45,3 +45,7 @@ If you want to know something more about me, you should know that the **most imp
 ![Spirit: Stallion of the Cimarron](spirit.gif)
 
 Everything is an **ephemeral moment**, but that is what makes it beautiful and worthy of ***being appreciated***. Nothing is as **trivial** as it seems and when **we realize** all the things that had to **fall into place** to make this instant **possible**; we can live with **fascination** this beautiful experience ***that is life.***
+
+## To be continued?
+Definitely yes, and to continue, there are plenty of related sections:
+- All my thoughts in [/thoughts](/thoughts).
