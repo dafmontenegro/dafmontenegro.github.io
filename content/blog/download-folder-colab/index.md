@@ -21,7 +21,7 @@ After waiting a while for my code to finish executing, I tried to download the r
 Downloading a file using code is **very easy**, we only need to use:
 
 ```python
-google.colab import files
+from google.colab import files
 
 files.download("data.csv")
 ```
@@ -43,7 +43,7 @@ shutil.make_archive("dir_to_compress", "zip", "name_zip")
 Now you only have to use `files.download()` to download the compressed file we generated in the **previous section**.
 
 ```python
-google.colab import files
+from google.colab import files
 
 files.download("name_zip.zip")
 ```
@@ -51,7 +51,7 @@ files.download("name_zip.zip")
 Finally you just have to **unzip the file locally** on your computer. If you need the complete code it is here:
 
 ```python
-google.colab import files
+from google.colab import files
 import shutil
 
 shutil.make_archive("dir_to_compress", "zip", "name_zip")
