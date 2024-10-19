@@ -9,7 +9,7 @@ coverAlt: "Gabriel García Márquez"
 coverCaption: "Gabriel García Márquez"
 thumbnailAlt: "Gabriel García Márquez"
 categories: ["software"]
-tags: ["web-scraping", "nomic", "chinkig", "retriever", "rag", "gabriel-garcia-marquez", "llm", "langchain", "chromadb", "retrieval-augmented-generation", "ollama", "llama3-1", "llama3-2"]
+tags: ["web-scraping", "nomic", "chunkig", "retriever", "rag", "gabriel-garcia-marquez", "llm", "langchain", "chromadb", "retrieval-augmented-generation", "ollama", "llama3-1", "llama3-2"]
 ---
 # Gabo RAG
 **'Gabo'** is a **RAG (Retrieval-Augmented Generation)** system designed to enhance the capabilities of **LLMs (Large Language Models)** such as **'Llama 3.2'** or **'Phi 3.5**'. This project honors Colombian author **Gabriel García Márquez** by marking the tenth anniversary of his death, creating a specialized assistant to answer questions about his work, and using new technologies to further reveal his literary legacy.
