@@ -2,7 +2,7 @@
 title: "Gabo RAG"
 description: "'Gabo' is a RAG (Retrieval-Augmented Generation) system designed to enhance the capabilities of LLMs (Large Language Models) such as 'Llama 3.2' or 'Phi 3.5'. This project honors Colombian author Gabriel García Márquez by marking the tenth anniversary of his death."
 summary: "'Gabo' is a RAG (Retrieval-Augmented Generation) system designed to enhance the capabilities of LLMs (Large Language Models) such as 'Llama 3.2' or 'Phi 3.5'. This project honors Colombian author Gabriel García Márquez by marking the tenth anniversary of his death."
-date: 2024-10-19
+date: 2024-09-21
 lastmod: 2024-10-19
 featureAlt: "Gabriel García Márquez"
 coverAlt: "Gabriel García Márquez"
