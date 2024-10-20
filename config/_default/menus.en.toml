@@ -22,16 +22,6 @@
 
 
 [[footer]]
-  name = "Tags"
-  pageRef = "tags"
-  weight = 97
-
-[[footer]]
-  name = "Categories"
-  pageRef = "categories"
-  weight = 98
-
-[[footer]]
   name = "Thoughts"
   pageRef = "thoughts"
   weight = 99
