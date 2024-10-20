@@ -22,6 +22,11 @@
 
 
 [[footer]]
+  name = "Music"
+  pageRef = "music"
+  weight = 98
+
+[[footer]]
   name = "Thoughts"
   pageRef = "thoughts"
   weight = 99
