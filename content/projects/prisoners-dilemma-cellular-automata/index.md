@@ -2,7 +2,7 @@
 title: "Prisoners-Dilemma-Cellular-Automata"
 description: "A Python project that explores the dynamics of cooperation and competition through the lens of game theory. Employing cellular automata and classic tactics like Tit For Tat, the project investigates the performance of various strategies in the context of the Prisoner's Dilemma."
 summary: "A Python project that explores the dynamics of cooperation and competition through the lens of game theory. Employing cellular automata and classic tactics like Tit For Tat, the project investigates the performance of various strategies in the context of the Prisoner's Dilemma."
-date: 2024-10-18
+date: 2024-03-29
 lastmod: 2024-10-18
 featureAlt: "Prisoner's Dilemma Illustration from Wireless Philosophy"
 coverAlt: "Prisoner's Dilemma Illustration from Wireless Philosophy"
