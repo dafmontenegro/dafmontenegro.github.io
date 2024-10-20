@@ -40,7 +40,7 @@ In this section, I highlight my favorite artist or band. Discover what makes the
 > En 1999 en el barrio Aranjuez, Medellín, Colombia, inició lo que hoy conocemos como Alcolirykoz, y fue en el 2005 cuando se configuró la alineación que hasta hoy conserva la banda. "Gambeta", "Kaztro" y "Fazeta" lograron hacer todo con nada.
 > — <cite>AlcolirykoZ[^1]</cite>
 
-[^1]: Alcolirykoz. (1999). Alcolirykoz [YouTube channel]. YouTube. https://www.youtube.com/channel/UCMYPtnaZAFHETOknwvqw2qQ
+[^1]: [AlcolirykoZ youtube channel](https://www.youtube.com/channel/UCMYPtnaZAFHETOknwvqw2qQ)
 
 ## Mi Amigo Melquiades
 These are songs and compositions that most of them I find inspiring and intense. They are part of the playlist of my youtube channel.

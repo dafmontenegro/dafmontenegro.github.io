@@ -18,7 +18,7 @@ To do the character justice (**and for having borrowed his catchphrase**), I'm g
 > ...But I handled it like a champion. 'Cause you know what? No matter how many times I get hit, I always get back up.
 > — <cite>Peter B. Parker[^1]</cite>
 
-[^1]: Spider-Man: Into the Spider-Verse (2018) | Animation, Action, Adventure. (2018, 14 diciembre). IMDb. https://www.imdb.com/title/tt4633694/
+[^1]: [Spider-Man: Into the Spider-Verse (2018)](https://www.imdb.com/title/tt4633694/) | Animation, Action, Adventure. (2018, 14 diciembre). IMDb.
 
 ![Peter B. Parker crying](spider-man-crying.gif)
 
@@ -32,7 +32,7 @@ By day, I'm a passionate **software developer** who loves to dive into code with
 > Puss in Boots: No... just one. I'm done running.
 > — <cite>Puss in Boots: The Last Wish[^2]</cite>
 
-[^2]: Puss in Boots: The Last Wish (2022) - Quotes - IMDb. (s. f.). IMDb. https://www.imdb.com/title/tt3915174/quotes/
+[^2]: [Puss in Boots: The Last Wish (2022)](https://www.imdb.com/title/tt3915174/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
 ![Puss in Boots: The Last Wish](puss-in-boots-vs-wolf.gif)
 

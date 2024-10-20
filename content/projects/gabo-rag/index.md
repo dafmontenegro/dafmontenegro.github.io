@@ -359,12 +359,12 @@ print(f"\nANSWER: {response['answer']}\nCONTEXT: {response['context'][0].page_co
     
 
 ## 8. References
-[1] **Ollama. (s. f.). ollama/docs/tutorials/langchainpy.md at main · ollama/ollama. GitHub.** https://github.com/ollama/ollama/blob/main/docs/tutorials/langchainpy.md
+[1] [Using LangChain with Ollama in Python](https://github.com/ollama/ollama/blob/main/docs/tutorials/langchainpy.md)
 
-[2] **FullStackRetrieval-Com. (s. f.). RetrievalTutorials/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb at main · FullStackRetrieval-com/RetrievalTutorials. GitHub.** https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb
+[2] [5 Levels Of Text Splitting](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb)
 
-[3] **How to split text based on semantic similarity | 🦜️🔗 LangChain. (s. f.).** https://python.langchain.com/docs/how_to/semantic-chunker/
+[3] [How to split text based on semantic similarity](https://python.langchain.com/docs/how_to/semantic-chunker/)
 
-[4] **Chroma — 🦜🔗 LangChain  documentation. (s. f.).** https://python.langchain.com/v0.2/api_reference/chroma/vectorstores/langchain_chroma.vectorstores.Chroma.html
+[4] [Chroma LangChain documentation](https://python.langchain.com/v0.2/api_reference/chroma/vectorstores/langchain_chroma.vectorstores.Chroma.html)
 
-[5] **Build a Retrieval Augmented Generation (RAG) App | 🦜️🔗 LangChain. (s. f.).** https://python.langchain.com/docs/tutorials/rag/
+[5] [Build a Retrieval Augmented Generation (RAG) App](https://python.langchain.com/docs/tutorials/rag/)

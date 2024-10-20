@@ -528,8 +528,8 @@ So, beyond this simulation, ***I love to keep the idea that where we all win, we
 **Contributions to prisoners-dilemma-cellular-automata are welcome** from researchers, developers, and enthusiasts interested in game theory, computational modeling, and strategic analysis. Collaborative efforts to expand the project's scope, refine simulation methodologies, and interpret results are **encouraged and appreciated.**
 
 ## 7. References
-[1] **Wolfram Research, Inc. (s. f.). Elementary Cellular Automaton -- from Wolfram MathWorld.** https://mathworld.wolfram.com/ElementaryCellularAutomaton.html
+[1] [Elementary Cellular Automaton | Wolfram MathWorld](https://mathworld.wolfram.com/ElementaryCellularAutomaton.html)
 
-[2] **Prisoner’s Dilemma (Stanford Encyclopedia of Philosophy). (2019, 2 abril).** https://plato.stanford.edu/entries/prisoner-dilemma/
+[2] [Prisoner’s Dilemma (Stanford Encyclopedia of Philosophy). (2019, 2 abril).](https://plato.stanford.edu/entries/prisoner-dilemma/)
 
-[3] **Veritasium. (2023, 23 diciembre). What Game Theory Reveals About Life, The Universe, and Everything [Vídeo]. YouTube.** https://www.youtube.com/watch?v=mScpHTIi-kM
+[3] [What Game Theory Reveals About Life, The Universe, and Everything | Veritasium YouTube](https://www.youtube.com/watch?v=mScpHTIi-kM)

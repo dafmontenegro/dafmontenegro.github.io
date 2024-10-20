@@ -369,8 +369,8 @@ guard_thread.start()
 Contributions to **FLDSMDFR** (the alternative name for the project) are welcome from developers, researchers, and enthusiasts interested in real-time object detection, parallel computing, and Raspberry Pi applications. We encourage collaborative efforts to enhance the system's features, optimize performance, and improve usability.
 
 ## 6. References
-[1] Tensorflow. (s. f.). examples/lite/examples/object_detection/raspberry_pi at master · tensorflow/examples. GitHub. https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/raspberry_pi
+[1] [TensorFlow Lite Python object detection example with Raspberry Pi](https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/raspberry_pi)
 
-[2] Paul McWhorter. (2023, 25 mayo). Raspberry Pi LESSON 63: Object Detection on Raspberry Pi Using Tensorflow Lite [Vídeo]. YouTube. https://www.youtube.com/watch?v=yE7Ve3U5Slw
+[2] [Raspberry Pi LESSON 63: Object Detection on Raspberry Pi Using Tensorflow Lite](https://www.youtube.com/watch?v=yE7Ve3U5Slw)
 
-[3] Object detection task guide. (s. f.). Google AI For Developers. https://ai.google.dev/edge/mediapipe/solutions/vision/object_detector#configurations_options
+[3] [Object detection task guide | Google AI For Developers](https://ai.google.dev/edge/mediapipe/solutions/vision/object_detector#configurations_options)
