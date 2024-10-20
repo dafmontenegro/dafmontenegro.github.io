@@ -1,0 +1,22 @@
+<!--
+    Parameters:
+        type - (Required) album / track / playlist / artist
+        id - (Required) Target ID
+        height - (Optional) normal / compact
+-->
+
+{{ $height := 352 }} {{/* Default height */}}
+{{ if eq (lower (.Get "height")) "compact" }}
+    {{ $height = 152 }}
+{{ end }}
+
+<iframe 
+    style="border-radius:12px"
+    src="https://open.spotify.com/embed/{{ .Get "type" }}/{{ .Get "id" }}"
+    width="100%" 
+    height="{{ $height }}" 
+    frameBorder="0" 
+    allowfullscreen="" 
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy">
+</iframe>

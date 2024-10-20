@@ -3,13 +3,11 @@ title: "Who am I?"
 description: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
 summary: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
 Date: 2024-10-12
-lastmod: 2024-10-14
+lastmod: 2024-10-20
 tags: ["spider-man", "puss-in-boots"]
 showBreadcrumbs: false
 showReadingTime: false
-showDateUpdated: false
 showPagination: false
-showDate: false
 ---
 Well, let's just say I'm your friendly neighborhood **software engineer.**
 
@@ -48,4 +46,5 @@ Everything is an **ephemeral moment**, but that is what makes it beautiful and w
 
 ## To be continued?
 Definitely yes, and to continue, there are plenty of related sections:
+- My music space in [/music](/music).
 - All my thoughts in [/thoughts](/thoughts).
