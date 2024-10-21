@@ -38,6 +38,7 @@ In this section, I highlight my favorite artist or band. Discover what makes the
 ![](img/AlcolirykoZ.jpg "AlcolirykoZ de la A a la Z")
 
 > En 1999 en el barrio Aranjuez, Medellín, Colombia, inició lo que hoy conocemos como Alcolirykoz, y fue en el 2005 cuando se configuró la alineación que hasta hoy conserva la banda. "Gambeta", "Kaztro" y "Fazeta" lograron hacer todo con nada.
+> 
 > — <cite>AlcolirykoZ[^1]</cite>
 
 [^1]: [AlcolirykoZ youtube channel](https://www.youtube.com/channel/UCMYPtnaZAFHETOknwvqw2qQ)
