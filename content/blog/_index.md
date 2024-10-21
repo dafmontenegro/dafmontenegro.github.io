@@ -8,4 +8,4 @@ tags: []
 ---
 Welcome to **my little corner of the internet**! Feel free to explore anything that catches **your attention**. You can use the [tags](/tags) and [categories](/categories) sections to help you find what you're looking for.
 
-You can also visit the **related sections**: [Music Space](/music) | [Thoughts](/thoughts)
+You can also visit the **related sections**: [music space](/music) | [thoughts](/thoughts)
