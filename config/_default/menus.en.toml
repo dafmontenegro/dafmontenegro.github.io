@@ -14,17 +14,17 @@
   weight = 30
 
 [[main]]
+  name = "Spaces"
+  pageRef = "spaces"
+  weight = 40
+
+[[main]]
   identifier = "search"
   weight = 99
   [main.params]
     action = "search"
 
 
-
-[[footer]]
-  name = "Music"
-  pageRef = "music"
-  weight = 98
 
 [[footer]]
   name = "Thoughts"

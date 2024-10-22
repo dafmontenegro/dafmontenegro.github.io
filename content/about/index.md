@@ -50,5 +50,5 @@ Everything is an **ephemeral moment**, but that is what makes it beautiful and w
 
 ## To be continued?
 Definitely yes, and to continue, there are plenty of **related sections**:
-- My music space in [/music](/music).
+- My music space in [/spaces/music](spaces/music).
 - All my thoughts in [/thoughts](/thoughts).
