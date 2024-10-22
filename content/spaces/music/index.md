@@ -3,7 +3,11 @@ title: "Music Space"
 description: "These are the soundtracks of my life, carefully selected for appropriate character development and growth in each arc."
 summary: "These are the soundtracks of my life, carefully selected for appropriate character development and growth in each arc."
 date: 2024-10-12
-lastmod: 2024-10-19
+lastmod: 2024-10-21
+featureAlt: "LA LA LAND"
+coverAlt: "LA LA LAND"
+coverCaption: "LA LA LAND"
+thumbnailAlt: "LA LA LAND"
 categories: ["music"]
 tags: ["alcolirykoz"]
 showReadingTime: false
@@ -52,3 +56,7 @@ These are songs and compositions that most of them I find inspiring and intense.
 A selection of songs that I like and would like to share; showcasing a variety of tracks that reflect my musical taste. These songs hide little stories.
 
 {{< spotify type="playlist" id="0SU2Pha8YEpl5DK9Z3lEyV" height="compact" >}}
+
+{{< lead >}}
+Discover everything related to music in the [music category](/categories/music/).
+{{< /lead >}}
