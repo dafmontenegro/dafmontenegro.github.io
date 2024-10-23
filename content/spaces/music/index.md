@@ -10,8 +10,6 @@ coverCaption: "LA LA LAND"
 thumbnailAlt: "LA LA LAND"
 categories: ["music"]
 tags: ["alcolirykoz"]
-showReadingTime: false
-showPagination: false
 ---
 {{< lead >}}
 These are the soundtracks of my life, carefully selected for appropriate **character development** and **growth** in each arc.
