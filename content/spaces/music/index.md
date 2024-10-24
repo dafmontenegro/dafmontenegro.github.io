@@ -15,20 +15,28 @@ tags: ["alcolirykoz"]
 These are the soundtracks of my life, carefully selected for appropriate **character development** and **growth** in each arc.
 {{< /lead >}}
 
+---
+
 ## Jam of the Moment
 Enjoy the song I can't stop listening to right now! This track is my current obsession.
 
 {{< youtube a4na2opArGY >}}
+
+---
 
 ## Jam of the Moment Archive
 Explore past tracks that were once my Jam of the Moment. A look back at my evolving favorites!
 
 {{< spotify type="playlist" id="1xcvqlcz2FGdd0zfMVp5m9" height="compact" >}}
 
+---
+
 ## Tune Vault
 A collection of songs that are meaningful to me or hold personal significance, reflecting moments and experiences that resonate with me.
 
 {{< spotify type="playlist" id="018WsGTpLS5KHq4tv430Tm" height="compact" >}}
+
+---
 
 ## Artist Spotlight
 In this section, I highlight my favorite artist or band. Discover what makes their music special to me.
@@ -45,15 +53,21 @@ In this section, I highlight my favorite artist or band. Discover what makes the
 
 [^1]: [AlcolirykoZ youtube channel](https://www.youtube.com/channel/UCMYPtnaZAFHETOknwvqw2qQ)
 
+---
+
 ## Mi Amigo Melquiades
 These are songs and compositions that most of them I find inspiring and intense. They are part of the playlist of my youtube channel.
 
 {{< spotify type="playlist" id="64o3GsdskFESAIdIkhb3LI" height="compact" >}}
 
+---
+
 ## Vibe Repository
 A selection of songs that I like and would like to share; showcasing a variety of tracks that reflect my musical taste. These songs hide little stories.
 
 {{< spotify type="playlist" id="0SU2Pha8YEpl5DK9Z3lEyV" height="compact" >}}
+
+---
 
 {{< lead >}}
 Discover everything related to music in the [music category](/categories/music/).
