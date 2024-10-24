@@ -9,5 +9,3 @@ All my thoughts in [/thoughts](/thoughts).
 {{< alert "lightbulb" >}}
 I watched 🤖[**The Wild Robot**](https://www.imdb.com/title/tt29623480/)🦆 and **I loved it**!
 {{< /alert >}}
-
-
