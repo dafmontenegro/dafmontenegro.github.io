@@ -3,13 +3,13 @@ title: "Cinema Space"
 description: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 summary: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 date: 2024-10-21
-lastmod: 2024-10-24
+lastmod: 2024-10-30
 featureAlt: "Manny from Babylon"
 coverAlt: "Manny from Babylon"
 coverCaption: "Manny from Babylon"
 thumbnailAlt: "Manny from Babylon"
 categories: ["cinema"]
-tags: ["babylon", "memories-of-murder", "planet-of-the-apes", "everything-everywhere-all-at-once", "lego-batman", "the-devil-all-the-time", "top-gun-maverick", "puss-in-boots"]
+tags: ["babylon", "memories-of-murder", "planet-of-the-apes", "everything-everywhere-all-at-once", "lego-batman", "the-devil-all-the-time", "top-gun-maverick", "puss-in-boots", "la-la-land"]
 ---
 I want to start with something that ***Jack Conrad says in Babylon*** about what cinema is; something that, for me, **embodies** its *true essence*: something **beautiful** and **magical**... something **full of meaning**.
 
@@ -120,7 +120,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 ## Favorite Psychological Film
 
-### Main Pick: Nightcrawler (2014)
+### Main Pick: The Devil All the Time (2020)
 
 ![The Devil All the Time poster](img/the-devil-all-the-time.jpg "[The Devil All the Time (2020). IMDb](https://www.imdb.com/title/tt7395114/)")
 
@@ -169,6 +169,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 ![Puss in Boots: The Last Wish poster](img/puss-in-boots.jpg "[Puss in Boots: The Last Wish (2022). IMDb](https://www.imdb.com/title/tt3915174/)")
 
 ### Honorable Mentions:
+- **The Little Prince (2015).** 🦊 *Voici mon secret. Il est très simple : on ne voit bien qu’avec le cœur. L’essentiel est invisible pour les yeux.*
 - **Spirit: Stallion of the Cimarron (2002).** Never gonna give in, never gonna give it up no! You can't take me I'm free!
 - **The Wild Robot (2024).** Being a mother is a beautiful feat... 🤖❤️
 - **Kung Fu Panda (2008 - 2016): 1 (best), 2, and 3**
@@ -193,7 +194,41 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 [^7]: [Kung Fu Panda (2008)](https://www.imdb.com/title/tt0441773/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
-- **Up (2009).** Will we ever have a little house in the air?
+- **Up (2009).** 🏠🎈 *Will we ever have our little house in the air?*
+- **Meet the Robinsons (2007)**
+
+> Lewis: Look, I'm sorry your life turned out so bad. But don't blame me you messed it up yourself. You just focused on the bad stuff when all you had to do was... let go of the past and keep moving forward...
+> 
+> Bowler Hat Guy: Hmm, let's see... take responsiblity for my own life or blame you? Dingdingdingdingding! Blame you wins hands down!
+>
+> — <cite>Meet the Robinsons (2007)[^8]</cite>
+
+[^8]: [Meet the Robinsons (2007)](https://www.imdb.com/title/tt0396555/quotes/) - Quotes - IMDb. (s. f.). IMDb.
+
+- **Treasure Planet (2002).**
+
+> John Silver: Now you listen to me, James Hawkins. You got the makings of greatness in you, but you got to take the helm and chart your own course. Stick to it, no matter the squalls! And when the time comes you get the chance to really test the cut of your sails, and show what you're made of... well, I hope I'm there, catching some of the light coming off you that day.
+>
+> — <cite>Treasure Planet (2002)[^9]</cite>
+
+[^9]: [Treasure Planet (2002)](https://www.imdb.com/title/tt0133240/quotes/) - Quotes - IMDb. (s. f.). IMDb.
+
+---
+
+## Favorite Musical Film
+
+### Main Pick: "La La Land (2016)"
+
+![La La Land poster](img/la-la-land.jpg "[La La Land (2016). IMDb](https://www.imdb.com/title/tt3783958/)")
+
+### Honorable Mentions:
+- **Sing (2016-2021): 1, and 2 (best)**
+
+> Buster Moon: When you've reached rock bottom, there's only one way to go, and that's up!
+>
+> — <cite>Sing (2016)[^10]</cite>
+
+[^10]: [Sing (2016)](https://www.imdb.com/title/tt3470600/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
 ---
 
