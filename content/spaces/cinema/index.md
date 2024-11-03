@@ -212,7 +212,10 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 ![Puss in Boots: The Last Wish poster](img/puss-in-boots.jpg "[Puss in Boots: The Last Wish (2022). IMDb](https://www.imdb.com/title/tt3915174/)")
 
 ### Honorable Mentions:
-- **The Little Prince (2015).** 🦊 *Voici mon secret. Il est très simple : on ne voit bien qu’avec le cœur. L’essentiel est invisible pour les yeux.*
+- **The Little Prince (2015).** 🦊 *Voici mon secret. Il est très simple : on ne voit bien qu’avec le cœur. L’essentiel est invisible pour les yeux.<cite>[^9]</cite>*
+
+[^9]: [Chapitre XXI - Le Petit Prince](/blog/le-petit-prince-chapitre-21/)
+
 - **Spirit: Stallion of the Cimarron (2002).** Never gonna give in, never gonna give it up no! You can't take me I'm free!
 - **The Wild Robot (2024).** Being a mother is a beautiful feat... 🤖❤️
 - **Kung Fu Panda (2008 - 2016): 1 (best), 2, and 3**
@@ -233,9 +236,9 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 > 
 > Oogway: Ah, yes. But no matter what you do, that seed will grow to be a peach tree. You may wish for an apple or an orange, but you will get a peach.
 > 
-> — <cite>Kung Fu Panda (2008)[^9]</cite>
+> — <cite>Kung Fu Panda (2008)[^10]</cite>
 
-[^9]: [Kung Fu Panda (2008)](https://www.imdb.com/title/tt0441773/quotes/) - Quotes - IMDb. (s. f.). IMDb.
+[^10]: [Kung Fu Panda (2008)](https://www.imdb.com/title/tt0441773/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
 - **Up (2009).** 🏠🎈 *Will we ever have our little house in the air?*
 - **Meet the Robinsons (2007)**
@@ -244,17 +247,17 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 > 
 > Bowler Hat Guy: Hmm, let's see... take responsiblity for my own life or blame you? Dingdingdingdingding! Blame you wins hands down!
 >
-> — <cite>Meet the Robinsons (2007)[^10]</cite>
+> — <cite>Meet the Robinsons (2007)[^11]</cite>
 
-[^10]: [Meet the Robinsons (2007)](https://www.imdb.com/title/tt0396555/quotes/) - Quotes - IMDb. (s. f.). IMDb.
+[^11]: [Meet the Robinsons (2007)](https://www.imdb.com/title/tt0396555/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
 - **Treasure Planet (2002).**
 
 > John Silver: Now you listen to me, James Hawkins. You got the makings of greatness in you, but you got to take the helm and chart your own course. Stick to it, no matter the squalls! And when the time comes you get the chance to really test the cut of your sails, and show what you're made of... well, I hope I'm there, catching some of the light coming off you that day.
 >
-> — <cite>Treasure Planet (2002)[^11]</cite>
+> — <cite>Treasure Planet (2002)[^12]</cite>
 
-[^11]: [Treasure Planet (2002)](https://www.imdb.com/title/tt0133240/quotes/) - Quotes - IMDb. (s. f.). IMDb.
+[^12]: [Treasure Planet (2002)](https://www.imdb.com/title/tt0133240/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
 ---
 
@@ -269,9 +272,9 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 > Buster Moon: When you've reached rock bottom, there's only one way to go, and that's up!
 >
-> — <cite>Sing (2016)[^12]</cite>
+> — <cite>Sing (2016)[^13]</cite>
 
-[^12]: [Sing (2016)](https://www.imdb.com/title/tt3470600/quotes/) - Quotes - IMDb. (s. f.). IMDb.
+[^13]: [Sing (2016)](https://www.imdb.com/title/tt3470600/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
 ---
 
@@ -288,12 +291,12 @@ The monologue in chapter six is too honest: [Donny Dunn Breaks Down On Stage](ht
 ### Honorable Mentions:
 - **The Last of Us (2023).** Episode 3: Wow! My favorite game is the second one, so I’m really looking forward to the second season.
 - **Love, Death & Robots (2019).** My Favorite Episodes:
-    - S1.E7 ∙ Beyond the Aquila Rift
-    - S1.E14 ∙ Zima Blue **(best)**
-    - S1.E18 ∙ The Secret War
-    - S2.E3 ∙ Pop Squad
-    - S2.E4 ∙ Snow in the Desert
-    - S3.E2 ∙ Bad Travelling **(second favorite after Zima Blue)**
+    - **S1.E7** ∙ Beyond the Aquila Rift
+    - **S1.E14** ∙ Zima Blue **(best)**
+    - **S1.E18** ∙ The Secret War
+    - **S2.E3** ∙ Pop Squad
+    - **S2.E4** ∙ Snow in the Desert
+    - **S3.E2** ∙ Bad Travelling **(second favorite after Zima Blue)**
 - **True Detective (2014).** First season.
 - **Arcane (2021)**
 - **The Mandalorian (2019).** This is the way!
