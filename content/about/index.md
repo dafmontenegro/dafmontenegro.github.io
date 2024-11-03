@@ -49,15 +49,15 @@ If you want to know something more about me, you should know that the **most imp
 Everything is an **ephemeral moment**, but that is what makes it beautiful and worthy of ***being appreciated***. Nothing is as **trivial** as it seems and when **we realize** all the things that had to **fall into place** to make this instant **possible**; we can live with **fascination** this beautiful experience ***that is life.***
 
 ## Caesar's window
-Caesar's window is a hypocycloid that he draws while locked in captivity to remember his home. Later, the other apes will remember this symbol as a representation of Caesar and his essence.
+Caesar's window is a hypocycloid that he draws while locked in captivity to **remember his home**. Later, the other apes will remember this symbol as a representation of Caesar and *his essence*.
 
 ![Maurice and Caesar in Rise of the Planet of the Apes](img/maurice-caesar.jpg "Maurice and Caesar in Rise of the Planet of the Apes")
 
-Caesar from the Planet of the Apes trilogy is my favorite fictional character, and one with which I feel deeply identified. If I must confess, at this moment in my life, I feel like Caesar when he talks to Maurice and tells him, “Apes Together Strong”, after joining several pieces of branches to demonstrate that they are stronger together than alone. I firmly believe in collaboration and teamwork; sometimes it seems that we can go faster alone, but I am sure that together we can always go further.
+Caesar from the Planet of the Apes trilogy is **my favorite fictional character**, and one with which I feel deeply identified. If I must confess, at this moment in my life, I feel like Caesar when he talks to Maurice and tells him, ***“Apes Together Strong”***, after joining several pieces of branches to demonstrate that **they are stronger together than alone**. I firmly believe in collaboration and teamwork; sometimes it seems that we can go faster alone, but I am sure that **together we can always go further**.
 
 ![Caesar in War for the Planet of the Apes](img/caesar-ape.jpg "Caesar in War for the Planet of the Apes")
 
-For these reasons, I decided to make Caesar's symbol my personal symbol as well, because I believe in others as much as I believe in myself, and because I dream to be a great leader one day. I prepare myself every day with all my efforts to be worthy of that dream and many others that I carry in my heart.
+For these reasons, I decided to make Caesar's symbol **my personal symbol** as well, because I believe in others as much as I believe in myself, and because **I dream to be a great leader one day**. I prepare myself every day with all my efforts to be worthy of that dream and many others that I carry **in my heart**.
 
 ![Apes Together Strong: Apes making Caesar's symbol with their arms](img/apes-together-strong.jpg "Apes Together Strong: Apes making Caesar's symbol with their arms")
 
