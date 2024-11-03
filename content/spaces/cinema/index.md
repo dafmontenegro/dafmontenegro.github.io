@@ -163,6 +163,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 [^7]: [The White Tiger (2019)](https://www.imdb.com/title/tt6571548/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
+- **We Bought a Zoo (2011).** 20 seconds of insane courage!
 - **Babylon (2012)**
 - **Aftersun (2012)**
 
