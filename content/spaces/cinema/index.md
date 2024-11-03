@@ -306,6 +306,7 @@ The monologue in chapter six is too honest: [Donny Dunn Breaks Down On Stage](ht
 - **True Detective (2014).** First season.
 - **Arcane (2021)**
 - **The Mandalorian (2019).** This is the way!
+
 ---
 
 ## Favorite Workplace Drama Film
