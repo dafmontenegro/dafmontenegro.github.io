@@ -3,13 +3,13 @@ title: "Cinema Space"
 description: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 summary: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 date: 2024-10-21
-lastmod: 2024-10-30
+lastmod: 2024-11-02
 featureAlt: "Manny from Babylon"
 coverAlt: "Manny from Babylon"
 coverCaption: "Manny from Babylon"
 thumbnailAlt: "Manny from Babylon"
 categories: ["cinema"]
-tags: ["babylon", "memories-of-murder", "planet-of-the-apes", "everything-everywhere-all-at-once", "lego-batman", "the-devil-all-the-time", "top-gun-maverick", "puss-in-boots", "la-la-land"]
+tags: ["babylon", "memories-of-murder", "planet-of-the-apes", "everything-everywhere-all-at-once", "lego-batman", "the-devil-all-the-time", "green-book", "top-gun-maverick", "spy-x-family", "puss-in-boots", "la-la-land"]
 ---
 I want to start with something that ***Jack Conrad says in Babylon*** about what cinema is; something that, for me, **embodies** its *true essence*: something **beautiful** and **magical**... something **full of meaning**.
 
@@ -141,6 +141,32 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 ---
 
+## Favorite Drama Film
+
+### Main Pick: Green Book (2018)
+
+![Green Book poster](img/green-book.jpg "[Green Book (2018). IMDb](https://www.imdb.com/title/tt6966692/)")
+
+### Honorable Mentions:
+- **Silver Linings Playbook (2012).** EXCELSIOR!
+> Pat Sr.: Let me tell you, I know you don't want to listen to your father, I didn't listen to mine, and I am telling you you gotta pay attention this time. When life reaches out at a moment like this it's a sin if you don't reach back, I'm telling you its a sin if you don't reach back! It'll haunt you the rest of your days like a curse. You're facing a big challenge in your life right now at this very moment, right here. That girl loves you she really really loves you. I don't know if Nicki ever did, but she sure as shit doesn't right now. So don't fuck this up.
+>
+> — <cite>Silver Linings Playbook[^6]</cite>
+
+[^6]: [Silver Linings Playbook (2012)](https://www.imdb.com/title/tt1045658/quotes/) - Quotes - IMDb. (s. f.). IMDb.
+
+- **The White Tiger (2019).**
+> Balram: Rich men are born with opportunities they can waste.
+>
+> — <cite>The White Tiger[^7]</cite>
+
+[^7]: [The White Tiger (2019)](https://www.imdb.com/title/tt6571548/quotes/) - Quotes - IMDb. (s. f.). IMDb.
+
+- **Babylon (2012)**
+- **Aftersun (2012)**
+
+---
+
 ## Favorite Action Film
 
 ### Main Pick: "Top Gun: Maverick (2022)"
@@ -153,12 +179,29 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 > 
 > John Wick: To remember Helen. To remember us.
 >
-> — <cite>John Wick: Parabellum[^6]</cite>
+> — <cite>John Wick: Parabellum[^8]</cite>
 
-[^6]: [John Wick: Chapter 3 - Parabellum (2019)](https://www.imdb.com/title/tt6146586/quotes/) - Quotes - IMDb. (s. f.). IMDb.
+[^8]: [John Wick: Chapter 3 - Parabellum (2019)](https://www.imdb.com/title/tt6146586/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
 - **Léon: The Professional (1994)**
 - **Civil War (2024)**
+
+---
+
+## Favorite Anime
+
+### Main Pick: Spy x Family (2022)
+
+![Spy x Family poster](img/spy-x-family.jpg "[Spy x Family (2022). IMDb](https://www.imdb.com/title/tt13706018/)")
+
+### Honorable Mentions:
+- **Cyberpunk: Edgerunners (2022).** 🌕 I'm gonna take you there myself, fly you to the moon. That's a promise!
+- **Jujutsu Kaisen (2020).**
+> An endless cycle of exorcism and consumption. Exorcise. Consume. It’s a taste that nobody knows. The taste of a curse. Like ingesting a rag used to wipe up vomit. Exorcise. Consume. For whom? Ever since that day… …it’s been running through my head. What I saw was nothing out of the ordinary. A hideous evil, known to everyone. Knowing that full well… …I chose to protect them as a jujutsu sorcerer. Don’t lose your way. Follow through with your duty as a jujutsu sorcerer.”
+>
+> — Suguru Geto
+
+- **One Punch Man (2015).**
 
 ---
 
@@ -190,9 +233,9 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 > 
 > Oogway: Ah, yes. But no matter what you do, that seed will grow to be a peach tree. You may wish for an apple or an orange, but you will get a peach.
 > 
-> — <cite>Kung Fu Panda (2008)[^7]</cite>
+> — <cite>Kung Fu Panda (2008)[^9]</cite>
 
-[^7]: [Kung Fu Panda (2008)](https://www.imdb.com/title/tt0441773/quotes/) - Quotes - IMDb. (s. f.). IMDb.
+[^9]: [Kung Fu Panda (2008)](https://www.imdb.com/title/tt0441773/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
 - **Up (2009).** 🏠🎈 *Will we ever have our little house in the air?*
 - **Meet the Robinsons (2007)**
@@ -201,17 +244,17 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 > 
 > Bowler Hat Guy: Hmm, let's see... take responsiblity for my own life or blame you? Dingdingdingdingding! Blame you wins hands down!
 >
-> — <cite>Meet the Robinsons (2007)[^8]</cite>
+> — <cite>Meet the Robinsons (2007)[^10]</cite>
 
-[^8]: [Meet the Robinsons (2007)](https://www.imdb.com/title/tt0396555/quotes/) - Quotes - IMDb. (s. f.). IMDb.
+[^10]: [Meet the Robinsons (2007)](https://www.imdb.com/title/tt0396555/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
 - **Treasure Planet (2002).**
 
 > John Silver: Now you listen to me, James Hawkins. You got the makings of greatness in you, but you got to take the helm and chart your own course. Stick to it, no matter the squalls! And when the time comes you get the chance to really test the cut of your sails, and show what you're made of... well, I hope I'm there, catching some of the light coming off you that day.
 >
-> — <cite>Treasure Planet (2002)[^9]</cite>
+> — <cite>Treasure Planet (2002)[^11]</cite>
 
-[^9]: [Treasure Planet (2002)](https://www.imdb.com/title/tt0133240/quotes/) - Quotes - IMDb. (s. f.). IMDb.
+[^11]: [Treasure Planet (2002)](https://www.imdb.com/title/tt0133240/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
 ---
 
@@ -226,10 +269,34 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 > Buster Moon: When you've reached rock bottom, there's only one way to go, and that's up!
 >
-> — <cite>Sing (2016)[^10]</cite>
+> — <cite>Sing (2016)[^12]</cite>
 
-[^10]: [Sing (2016)](https://www.imdb.com/title/tt3470600/quotes/) - Quotes - IMDb. (s. f.). IMDb.
+[^12]: [Sing (2016)](https://www.imdb.com/title/tt3470600/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
+---
+
+## Favorite Serie
+
+### Main Pick: Baby Reindeer (2024)
+
+![Baby Reindeer poster](img/baby-reindeer.jpg "[Baby Reindeer (2024). IMDb](https://www.imdb.com/title/tt13649112/)")
+
+{{< alert "link" >}}
+The monologue in chapter six is too honest: [Donny Dunn Breaks Down On Stage](https://www.youtube.com/watch?v=khstPnH89ZM)
+{{< /alert >}}
+
+### Honorable Mentions:
+- **The Last of Us (2023).** Episode 3: Wow! My favorite game is the second one, so I’m really looking forward to the second season.
+- **Love, Death & Robots (2019).** My Favorite Episodes:
+    - S1.E7 ∙ Beyond the Aquila Rift
+    - S1.E14 ∙ Zima Blue **(best)**
+    - S1.E18 ∙ The Secret War
+    - S2.E3 ∙ Pop Squad
+    - S2.E4 ∙ Snow in the Desert
+    - S3.E2 ∙ Bad Travelling **(second favorite after Zima Blue)**
+- **True Detective (2014).** First season.
+- **Arcane (2021)**
+- **The Mandalorian (2019).** This is the way!
 ---
 
 {{< lead >}}
