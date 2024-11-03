@@ -3,7 +3,7 @@ title: "Cinema Space"
 description: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 summary: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 date: 2024-10-21
-lastmod: 2024-11-02
+lastmod: 2024-11-03
 featureAlt: "Manny from Babylon"
 coverAlt: "Manny from Babylon"
 coverCaption: "Manny from Babylon"
@@ -156,6 +156,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 [^6]: [Silver Linings Playbook (2012)](https://www.imdb.com/title/tt1045658/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
+- **Seven Pounds (2008)**
 - **The White Tiger (2019).**
 > Balram: Rich men are born with opportunities they can waste.
 >
@@ -165,6 +166,8 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 - **We Bought a Zoo (2011).** 20 seconds of insane courage!
 - **Babylon (2012)**
+- **Collateral Beauty (2016)**
+- **The Iron Claw (2023)**
 - **Aftersun (2012)**
 - **Palmer (2021)**
 
@@ -303,6 +306,18 @@ The monologue in chapter six is too honest: [Donny Dunn Breaks Down On Stage](ht
 - **True Detective (2014).** First season.
 - **Arcane (2021)**
 - **The Mandalorian (2019).** This is the way!
+---
+
+## Favorite Workplace Drama Film
+
+### Main Pick: The Founder (2016)
+
+![The Founder poster](img/the-founder.jpg "[The Founder (2016). IMDb](https://www.imdb.com/title/tt4276820/)")
+
+### Honorable Mentions:
+- **Up in the Air (2009)**
+- **The Pursuit of Happyness (2006)**
+
 ---
 
 {{< lead >}}
