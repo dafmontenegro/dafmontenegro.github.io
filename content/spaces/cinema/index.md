@@ -166,6 +166,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 - **We Bought a Zoo (2011).** 20 seconds of insane courage!
 - **Babylon (2012)**
 - **Aftersun (2012)**
+- **Palmer (2021)**
 
 ---
 
