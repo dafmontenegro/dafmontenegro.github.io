@@ -41,6 +41,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 ### Honorable Mentions:
 - **Puss in Boots: The Last Wish (2022).** This movie touched my heart in an indescribable way, it made me love and fight even more for my only life.
+- **Planet of the Apes (2011 - 2017): Rise, Dawn, and War**
 - **The Last Duel (2021):**  I am fascinated by the way the three stories are told and how they intertwine in the end.
 - **Joker (2019):** only the first one, Folie à Deux **is trashy**.
 
