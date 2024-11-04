@@ -25,17 +25,20 @@ When was the last time you **laughed out loud**?
 
 ## South Park
 
-![Butters Stotch](img/butters.png "Butters Stotch")
+![South Park](img/south-park.jpg)
 
 South Park is undoubtedly my favorite comedy show, far above others like **Rick and Morty** or even The **Simpsons**. What I value most about South Park is its **sharp satire** and **social critique**. In a single episode, the series has the ability to offer multiple perspectives while being **brutally incisive** about the contradictions that permeate our society. It does not merely question the behaviors or customs of individuals, groups, or institutions; rather, **it exposes the flaws and absurdities that we often overlook.**
 
 Many episodes of South Park are **simply entertainin**g, but others invite reflection on one or several topics, thus generating change or, at the very least, raising **necessary awareness**.
 
 {{< lead >}}
-My collection is in Spanish because I love the Latin dubbed version.
+My collection is in **Spanish** because I love the **Latin dubbed version**.
 {{< /lead >}}
 
 ### Top Episodes: Butters
+
+![My favorite character Butters Stotch](img/butters.png "**My favorite character Butters Stotch**")
+
 - **La perra mayor de Butters** | [Temporada 13 Ep 9](https://www.southpark.lat/episodios/mphf21/south-park-la-perra-mayor-de-butters-temporada-13-ep-9)
 - **Marjorine** | [Temporada 9 Ep 9](https://www.southpark.lat/episodios/jy6p4p/south-park-marjorine-temporada-9-ep-9) 
 - **City Sushi** | [Temporada 15 Ep 6](https://www.southpark.lat/episodios/dhi2tb/south-park-city-sushi-temporada-15-ep-6)
@@ -44,8 +47,12 @@ My collection is in Spanish because I love the Latin dubbed version.
 - **La palabra con M** | [Temporada 13 Ep 12](https://www.southpark.lat/episodios/wpmnpk/south-park-la-palabra-con-m-temporada-13-ep-12)
 - **Pasitas** | [Temporada 7 Ep 14](https://www.southpark.lat/episodios/tr6pou/south-park-pasitas-temporada-7-ep-14)
 - **Fundamentada en Vindaloop** | [Temporada 18 Ep 7](https://www.southpark.lat/episodios/y3uvvc/south-park-fundamentada-en-vindaloop-temporada-18-ep-7)
+- **Crea tus vídeos como Tonta, P-ta, Malcriada** | [Temporada 8 Ep 12](https://www.southpark.lat/episodios/uixekv/south-park-crea-tus-videos-como-tonta-p-ta-malcriada-temporada-8-ep-12?isRandom=true)
 
 ### Top Episodes: Cartman
+
+![Cartman](img/cartman.png "Cartman")
+
 - **El Increíble Don De Cartman** | [Temporada 8 Ep 13](https://www.southpark.lat/episodios/038jht/south-park-el-increible-don-de-cartman-temporada-8-ep-13)
 - **Nenes colorados** | [Temporada 9 Ep 11](https://www.southpark.lat/episodios/uvp08l/south-park-nenes-colorados-temporada-9-ep-11)
 - **Inseguridad** | [Temporada 16 Ep 10](https://www.southpark.lat/episodios/tyqohz/south-park-inseguridad-temporada-16-ep-10)
@@ -60,6 +67,9 @@ My collection is in Spanish because I love the Latin dubbed version.
 - **Muere Hippie, Muere** | [Temporada 9 Ep 2](https://www.southpark.lat/episodios/xahxl6/south-park-muere-hippie-muere-temporada-9-ep-2)
 
 ### Top Episodes: Randy
+
+![Randy Marsh](img/randy.jpg "Randy Marsh")
+
 - **Tweek x Craig** | [Temporada 19 Ep 6](https://www.southpark.lat/episodios/x4lqr3/south-park-tweek-x-craig-temporada-19-ep-6)
 - **Especial de feriado** | [Temporada 21 Ep 3](https://www.southpark.lat/episodios/hswgo6/south-park-especial-de-feriado-temporada-21-ep-3)
 - **La Polla Magica** | [Temporada 18 Ep 8](https://www.southpark.lat/episodios/p9i8uw/south-park-la-polla-magica-temporada-18-ep-8)
@@ -70,6 +80,9 @@ My collection is in Spanish because I love the Latin dubbed version.
 - **Carrera de autos de madera** | [Temporada 13 Ep 6](https://www.southpark.lat/episodios/oki0th/south-park-carrera-de-autos-de-madera-temporada-13-ep-6)
 
 ### Top Episodes: Stan
+
+![Stan](img/stan.png "Stan")
+
 - **Freemium no es gratis** | [Temporada 18 Ep 6](https://www.southpark.lat/episodios/jy5lbq/south-park-freemium-no-es-gratis-temporada-18-ep-6)
 - **El misterio del mojón en el urinal** | [Temporada 10 Ep 9](https://www.southpark.lat/episodios/bvihkk/south-park-el-misterio-del-mojon-en-el-urinal-temporada-10-ep-9)
 - **Mi futuro y yo** | [Temporada 6 Ep 16](https://www.southpark.lat/episodios/xfaqzg/south-park-mi-futuro-y-yo-temporada-6-ep-16)
