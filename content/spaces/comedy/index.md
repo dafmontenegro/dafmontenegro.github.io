@@ -88,6 +88,7 @@ My collection is in **Spanish** because I love the **Latin dubbed version**.
 - **El misterio del mojón en el urinal** | [Temporada 10 Ep 9](https://www.southpark.lat/episodios/bvihkk/south-park-el-misterio-del-mojon-en-el-urinal-temporada-10-ep-9)
 - **Mi futuro y yo** | [Temporada 6 Ep 16](https://www.southpark.lat/episodios/xfaqzg/south-park-mi-futuro-y-yo-temporada-6-ep-16)
 - **Compramos oro** | [Temporada 16 Ep 2](https://www.southpark.lat/episodios/by1nbe/south-park-compramos-oro-temporada-16-ep-2)
+- **El Hobbit** | [Temporada 17 Ep 10](https://www.southpark.lat/episodios/pp7udu/south-park-el-hobbit-temporada-17-ep-10)
 - **Tienes cero amigos** | [Temporada 14 Ep 4](https://www.southpark.lat/episodios/1hc2pe/south-park-tienes-cero-amigos-temporada-14-ep-4)
 - **Todo sobre los mormones** | [Temporada 7 Ep 12](https://www.southpark.lat/episodios/rl7pjr/south-park-todo-sobre-los-mormones-temporada-7-ep-12)
 - **Preso en el placard** | [Temporada 9 Ep 12](https://www.southpark.lat/episodios/a3esfi/south-park-preso-en-el-placard-temporada-9-ep-12)
