@@ -5,7 +5,7 @@ enableRobotsTXT = true
 summaryLength = 0
 paginate = 10
 
-timeout = "60s"
+timeout = "90s"
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
