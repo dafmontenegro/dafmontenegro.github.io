@@ -31,7 +31,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.135.0  # Updated to match local Hugo version
+      HUGO_VERSION: 0.128.0
     steps:
       - name: Install Hugo CLI
         run: |
@@ -55,8 +55,7 @@ jobs:
         run: |
           hugo \
             --minify \
-            --baseURL "http://montenegrodanielfelipe.com/" \
-            --logLevel info  # Use logLevel instead of verbose
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
