@@ -55,8 +55,8 @@ jobs:
         run: |
           hugo \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/" \
-            --timeout 60000ms \  # Set timeout to 60 seconds
+            --baseURL "http://montenegrodanielfelipe.com/" \
+            --timeout 60000 \
             --verbose  # Enable verbose output for debugging
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
