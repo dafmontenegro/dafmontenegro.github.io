@@ -31,7 +31,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.128.0
+      HUGO_VERSION: 0.135.0  # Updated to match local Hugo version
     steps:
       - name: Install Hugo CLI
         run: |
@@ -55,7 +55,9 @@ jobs:
         run: |
           hugo \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --baseURL "${{ steps.pages.outputs.base_url }}/" \
+            --timeout 60000ms \  # Set timeout to 60 seconds
+            --verbose  # Enable verbose output for debugging
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
