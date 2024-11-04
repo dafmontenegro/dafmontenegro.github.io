@@ -56,7 +56,6 @@ jobs:
           hugo \
             --minify \
             --baseURL "http://montenegrodanielfelipe.com/" \
-            --timeout 60000 \
             --verbose  # Enable verbose output for debugging
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
