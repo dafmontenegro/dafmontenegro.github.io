@@ -25,7 +25,7 @@ When was the last time you **laughed out loud**?
 
 ## South Park
 
-![South Park](img/south-park.jpg)
+![Stan, Kyle, Cartman, and Kenny](img/south-park.jpg "Stan, Kyle, Cartman, and Kenny")
 
 South Park is undoubtedly my favorite comedy show, far above others like **Rick and Morty** or even The **Simpsons**. What I value most about South Park is its **sharp satire** and **social critique**. In a single episode, the series has the ability to offer multiple perspectives while being **brutally incisive** about the contradictions that permeate our society. It does not merely question the behaviors or customs of individuals, groups, or institutions; rather, **it exposes the flaws and absurdities that we often overlook.**
 
@@ -63,6 +63,7 @@ My collection is in **Spanish** because I love the **Latin dubbed version**.
 - **Guerra Mundial Zimmerman** | [Temporada 17 Ep 3](https://www.southpark.lat/episodios/mbk94a/south-park-guerra-mundial-zimmerman-temporada-17-ep-3) 
 - **La mariquita** | [Temporada 18 Ep 3](https://www.southpark.lat/episodios/2opbg6/south-park-la-mariquita-temporada-18-ep-3)
 - **Tsst** | [Temporada 10 Ep 7](https://www.southpark.lat/episodios/h7679l/south-park-tsst-temporada-10-ep-7) 
+- **Contra los esteroides** | [Temporada 8 Ep 2](https://www.southpark.lat/episodios/5nhida/south-park-contra-los-esteroides-temporada-8-ep-2) 
 - **La noche de los vagabundos vivientes** | [Temporada 11 Ep 7](https://www.southpark.lat/episodios/jp51b1/south-park-la-noche-de-los-vagabundos-vivientes-temporada-11-ep-7)
 - **Muere Hippie, Muere** | [Temporada 9 Ep 2](https://www.southpark.lat/episodios/xahxl6/south-park-muere-hippie-muere-temporada-9-ep-2)
 
