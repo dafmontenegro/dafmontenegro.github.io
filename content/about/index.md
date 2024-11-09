@@ -63,6 +63,7 @@ For these reasons, I decided to make Caesar's symbol **my personal symbol** as w
 
 ## To be continued?
 Definitely yes, and to continue, there are plenty of **related sections**:
-- My cinema space in [/spaces/cinema](spaces/cinema).
-- My music space in [/spaces/music](spaces/music).
 - All my thoughts in [/thoughts](/thoughts).
+- My music space in [/spaces/music](spaces/music).
+- My cinema space in [/spaces/cinema](spaces/cinema).
+- My sense of humor in [/spaces/comedy](spaces/cinema).
