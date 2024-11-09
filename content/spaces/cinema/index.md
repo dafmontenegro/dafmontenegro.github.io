@@ -9,7 +9,7 @@ coverAlt: "Manny from Babylon"
 coverCaption: "Manny from Babylon"
 thumbnailAlt: "Manny from Babylon"
 categories: ["cinema"]
-tags: ["babylon", "memories-of-murder", "planet-of-the-apes", "everything-everywhere-all-at-once", "lego-batman", "the-devil-all-the-time", "green-book", "top-gun-maverick", "spy-x-family", "puss-in-boots", "la-la-land", "baby-reindeer"]
+tags: ["babylon", "memories-of-murder", "planet-of-the-apes", "everything-everywhere-all-at-once", "lego-batman", "the-devil-all-the-time", "green-book", "top-gun-maverick", "spy-x-family", "puss-in-boots", "la-la-land", "baby-reindeer", "the-founder"]
 ---
 I want to start with something that ***Jack Conrad says in Babylon*** about what cinema is; something that, for me, **embodies** its *true essence*: something **beautiful** and **magical**... something **full of meaning**.
 
