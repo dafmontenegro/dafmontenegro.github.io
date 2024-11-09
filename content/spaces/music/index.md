@@ -20,7 +20,19 @@ These are the soundtracks of my life, carefully selected for appropriate **chara
 ## Jam of the Moment
 Enjoy the song I can't stop listening to right now! This track is my current obsession.
 
-{{< youtube a4na2opArGY >}}
+{{< youtube 1MOYvngBTY4 >}}
+
+> feliz, tranquilo, común y corriente
+> 
+> entro al restaurante saboreando mi presente,
+> 
+> el mesero dice, “es cortesía de la casa”
+> 
+> la vida me regala cosas ahora que puedo pagarlas.
+>
+> — <cite>AlcolirykoZ - Dicotomía[^1]</cite>
+
+[^1]: [AlcolirykoZ - Dicotomía](https://www.youtube.com/watch?v=1MOYvngBTY4)
 
 ---
 
@@ -45,13 +57,13 @@ In this section, I highlight my favorite artist or band. Discover what makes the
 
 ### AlcolirykoZ
 
-![](img/AlcolirykoZ.jpg "AlcolirykoZ de la A a la Z")
+!["AlcolirykoZ de la A a la Z"](img/AlcolirykoZ.jpg "AlcolirykoZ de la A a la Z")
 
 > En 1999 en el barrio Aranjuez, Medellín, Colombia, inició lo que hoy conocemos como Alcolirykoz, y fue en el 2005 cuando se configuró la alineación que hasta hoy conserva la banda. "Gambeta", "Kaztro" y "Fazeta" lograron hacer todo con nada.
 > 
-> — <cite>AlcolirykoZ[^1]</cite>
+> — <cite>AlcolirykoZ[^2]</cite>
 
-[^1]: [AlcolirykoZ youtube channel](https://www.youtube.com/channel/UCMYPtnaZAFHETOknwvqw2qQ)
+[^2]: [AlcolirykoZ youtube channel](https://www.youtube.com/channel/UCMYPtnaZAFHETOknwvqw2qQ)
 
 ---
 
