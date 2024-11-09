@@ -3,7 +3,6 @@ title: "Thoughts"
 description: "All my thoughts, everywhere, at the same time..."
 summary: "All my thoughts, everywhere, at the same time..."
 date: 2024-10-12
-lastmod: 2024-10-31
 featureAlt: ""
 coverAlt: ""
 coverCaption: ""
@@ -13,9 +12,20 @@ showDateUpdated: false
 showPagination: false
 showDate: false
 ---
+
 {{< lead >}}
 All my thoughts, everywhere, at the same time...
 {{< /lead >}}
+
+**Note:** *This website serves as an open diary where I constantly interact. If there are no updates on the site for more than three weeks, **it might mean that something has happened to me...** or that I've decided to live on a mountain, far away from civilization.*
+
+---
+
+- **2024-11-07:** "I can't imagine a more beautiful vocation than ***the best profession in the world***."
+
+***The best profession in the world:** being a parent.*
+
+---
 
 - **2024-10-27:** "Lately, I've been thinking about: ***«Confiar y esperar»***."
 
@@ -31,8 +41,6 @@ This meaning seems like almost religious wisdom, and I like the Spanish translat
 
 [^1]: [Le Comte de Monte-Cristo/Chapitre 117](https://fr.wikisource.org/wiki/Le_Comte_de_Monte-Cristo/Chapitre_117) - Wikisource. (1889).
 
-- **2024-10-12:** "I watched 🤖[**The Wild Robot**](https://www.imdb.com/title/tt29623480/)🦆 and **I loved it**!"
-
 ---
 
-**Note:** *This website serves as an open diary where I constantly interact. If there are no updates on the site for more than three weeks, **it might mean that something has happened to me...** or that I've decided to live on a mountain, far away from civilization.*
+- **2024-10-12:** "I watched 🤖[**The Wild Robot**](https://www.imdb.com/title/tt29623480/)🦆 and **I loved it**!"
