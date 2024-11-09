@@ -3,7 +3,7 @@ title: "Who am I?"
 description: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
 summary: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
 Date: 2024-10-12
-lastmod: 2024-11-03
+lastmod: 2024-11-09
 tags: ["spider-man", "puss-in-boots"]
 showBreadcrumbs: false
 showReadingTime: false
@@ -61,9 +61,21 @@ For these reasons, I decided to make Caesar's symbol **my personal symbol** as w
 
 ![Apes Together Strong: Apes making Caesar's symbol with their arms](img/apes-together-strong.jpg "Apes Together Strong: Apes making Caesar's symbol with their arms")
 
+## My greatest ambition
+*The best profession in the world.* <cite>[^3]</cite>
+
+[^3]: [Daniel Felipe Montenegro's thoughts](/thoughts)
+
+## Contact Me
+If you want to contact me, the easiest way to do it is through **Telegram**. You can also alternatively use my social links, which can be found on the [home page](/).
+
+{{< button href="https://t.me/dafmontenegro" target="_blank" >}}
+Send a Message
+{{< /button >}}
+
 ## To be continued?
 Definitely yes, and to continue, there are plenty of **related sections**:
 - All my thoughts in [/thoughts](/thoughts).
 - My music space in [/spaces/music](spaces/music).
 - My cinema space in [/spaces/cinema](spaces/cinema).
-- My sense of humor in [/spaces/comedy](spaces/cinema).
+- My sense of humor in [/spaces/comedy](spaces/comedy).

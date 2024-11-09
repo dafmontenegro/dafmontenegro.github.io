@@ -5,7 +5,7 @@ featureAlt: "Caesar's Window"
 ---
 
 {{< alert "lightbulb" >}}
-Lately, I've been thinking about: ***«Confiar y esperar»***.
+I can't imagine a more beautiful vocation than ***the best profession in the world***.
 {{< /alert >}}
 
 All my thoughts in [/thoughts](/thoughts).
