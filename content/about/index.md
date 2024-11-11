@@ -66,9 +66,9 @@ For these reasons, I decided to make Caesar's symbol **my personal symbol** as w
 
 [^3]: [Daniel Felipe Montenegro's thoughts](/thoughts)
 
-### Where can we be friends?
+## Where can we be friends?
 
-#### Duolingo
+### Duolingo
 ![Duolingo QR @dafmontenegro](img/duolingo-qr.jpg)
 
 ## Contact Me
