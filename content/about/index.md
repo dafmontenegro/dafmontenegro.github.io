@@ -66,8 +66,13 @@ For these reasons, I decided to make Caesar's symbol **my personal symbol** as w
 
 [^3]: [Daniel Felipe Montenegro's thoughts](/thoughts)
 
+### Where can we be friends?
+
+#### Duolingo
+![Duolingo QR @dafmontenegro](img/duolingo-qr.jpg)
+
 ## Contact Me
-If you want to contact me, the easiest way to do it is through **Telegram**. You can also alternatively use my social links, which can be found on the [home page](/).
+If you want to contact me, the easiest way is through **Telegram**. Alternatively, you can use my social links on the [home page](/).
 
 {{< button href="https://t.me/dafmontenegro" target="_blank" >}}
 Send a Message
