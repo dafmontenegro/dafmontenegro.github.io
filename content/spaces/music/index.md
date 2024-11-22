@@ -3,7 +3,7 @@ title: "Music Space"
 description: "These are the soundtracks of my life, carefully selected for appropriate character development and growth in each arc."
 summary: "These are the soundtracks of my life, carefully selected for appropriate character development and growth in each arc."
 date: 2024-10-12
-lastmod: 2024-11-09
+lastmod: 2024-11-21
 featureAlt: "La La Land"
 coverAlt: "La La Land"
 coverCaption: "La La Land"
@@ -20,19 +20,28 @@ These are the soundtracks of my life, carefully selected for appropriate **chara
 ## Jam of the Moment
 Enjoy the song I can't stop listening to right now! This track is my current obsession.
 
-{{< youtube 1MOYvngBTY4 >}}
+{{< youtube k1Jb6LuQZPA >}}
 
-> feliz, tranquilo, común y corriente
+> ... ¿Qué sabrán del mal y el bien?
+> Yo no soy lo que ven
+> Todo un mundo durmiendo y yo sigo soñando porque
+> Sus palabras susurran mentiras que nunca creeré
 > 
-> entro al restaurante saboreando mi presente,
+> Y yo solo quiero ser real
+> Y sentir el mundo igual que los otros
+> Por ellos, por mí
 > 
-> el mesero dice, “es cortesía de la casa”
+> ¿Por qué yo tendría que cambiar?
+> Nadie más lo va a intentar, estoy solo
+> Y sigo aquí
 > 
-> la vida me regala cosas ahora que puedo pagarlas.
+> Solo yo, estoy aquí
+>
+> ...
 >
 > — <cite>AlcolirykoZ - Dicotomía[^1]</cite>
 
-[^1]: [AlcolirykoZ - Dicotomía](https://www.youtube.com/watch?v=1MOYvngBTY4)
+[^1]: [Adrián Barba - Sigo Aquí (El Planeta del Tesoro)](https://www.youtube.com/watch?v=k1Jb6LuQZPA)
 
 ---
 
