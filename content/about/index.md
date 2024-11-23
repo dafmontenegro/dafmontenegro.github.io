@@ -61,6 +61,20 @@ For these reasons, I decided to make Caesar's symbol **my personal symbol** as w
 
 ![Apes Together Strong: Apes making Caesar's symbol with their arms](img/apes-together-strong.jpg "Apes Together Strong: Apes making Caesar's symbol with their arms")
 
+## Mi Amigo Melquiades 
+My YouTube channel is called ***Mi Amigo Melquiades***. Want to know more? Visit [miamigomelquiades.com](https://miamigomelquiades.com/).
+
+{{< alert "youtube" >}}
+Don't forget to [follow me](https://www.youtube.com/@MiAmigoMelquiades) on YouTube.
+{{< /alert >}}
+
+
+There is a **special phrase** for me that represents **the essence** of the channel:
+
+> Las cosas, tienen vida propia... todo es cuestión de despertarles el ánima.
+> 
+> — <cite>Cien años de soledad</cite>
+
 ## My greatest ambition
 *The best profession in the world.* <cite>[^3]</cite>
 
