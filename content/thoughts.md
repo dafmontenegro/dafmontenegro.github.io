@@ -21,6 +21,10 @@ All my thoughts, everywhere, at the same time...
 
 ---
 
+- **2024-11-21:** *I think I can put **anything here**, and no one will notice.*
+
+---
+
 - **2024-11-07:** "I can't imagine a more beautiful vocation than ***the best profession in the world***."
 
 ***The best profession in the world:** being a parent.*
