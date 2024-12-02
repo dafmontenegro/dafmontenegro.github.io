@@ -5,7 +5,7 @@ featureAlt: "Caesar's Window"
 ---
 
 {{< alert "lightbulb" >}}
-I can't imagine a more beautiful vocation than ***the best profession in the world***.
+“My hands are of your colour; but I shame to wear **a heart so white**.”
 {{< /alert >}}
 
 All my thoughts in [/thoughts](/thoughts).

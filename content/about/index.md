@@ -65,7 +65,7 @@ For these reasons, I decided to make Caesar's symbol **my personal symbol** as w
 My YouTube channel is called ***Mi Amigo Melquiades***. Want to know more? Visit [miamigomelquiades.com](https://miamigomelquiades.com/).
 
 {{< alert "youtube" >}}
-Don't forget to [follow me](https://www.youtube.com/@MiAmigoMelquiades) on YouTube.
+Don't forget to [subscribe](https://www.youtube.com/@MiAmigoMelquiades) on YouTube.
 {{< /alert >}}
 
 

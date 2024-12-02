@@ -2,7 +2,7 @@
 title: "Comedy Space"
 description: "Life becomes more beautiful when accompanied by laughter, and comedy reminds us that we all share the same follies and failures. It allows us to de-dramatize and see the extraordinary in the everyday, where even our flaws and downfalls become anecdotes that at the end of the day unite and humanize us."
 summary: "Life becomes more beautiful when accompanied by laughter, and comedy reminds us that we all share the same follies and failures. It allows us to de-dramatize and see the extraordinary in the everyday, where even our flaws and downfalls become anecdotes that at the end of the day unite and humanize us."
-date: 2024-11-03
+date: 2024-10-03
 lastmod: 2024-11-07
 featureAlt: "Dolemite Is My Name (2019)"
 coverAlt: "Dolemite Is My Name (2019)"
