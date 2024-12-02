@@ -2,14 +2,14 @@
 title: "Cinema Space"
 description: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 summary: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
-date: 2024-10-21
+date: 2024-10-12
 lastmod: 2024-11-03
 featureAlt: "Manny from Babylon"
 coverAlt: "Manny from Babylon"
 coverCaption: "Manny from Babylon"
 thumbnailAlt: "Manny from Babylon"
 categories: ["cinema"]
-tags: ["babylon", "memories-of-murder", "planet-of-the-apes", "everything-everywhere-all-at-once", "lego-batman", "the-devil-all-the-time", "green-book", "top-gun-maverick", "spy-x-family", "puss-in-boots", "la-la-land", "baby-reindeer", "the-founder"]
+tags: ["babylon", "memories-of-murder", "planet-of-the-apes", "everything-everywhere-all-at-once", "lego-batman", "the-devil-all-the-time", "green-book", "top-gun-maverick", "spy-x-family", "puss-in-boots", "la-la-land", "arcane", "the-founder"]
 ---
 I want to start with something that ***Jack Conrad says in Babylon*** about what cinema is; something that, for me, **embodies** its *true essence*: something **beautiful** and **magical**... something **full of meaning**.
 
@@ -286,15 +286,12 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 ## Favorite Serie
 
-### Main Pick: Baby Reindeer (2024)
+### Main Pick: Arcane (2021 - 2024)
 
-![Baby Reindeer poster](img/baby-reindeer.jpg "[Baby Reindeer (2024). IMDb](https://www.imdb.com/title/tt13649112/)")
-
-{{< alert "link" >}}
-The monologue in chapter six is too honest: [Donny Dunn Breaks Down On Stage](https://www.youtube.com/watch?v=khstPnH89ZM)
-{{< /alert >}}
+![Arcane poster](img/arcane.png "[Arcane (2021 - 2024). IMDb](https://www.imdb.com/title/tt11126994/)")
 
 ### Honorable Mentions:
+- **Baby Reindeer (2024).** The monologue in chapter six is too honest: [Donny Dunn Breaks Down On Stage](https://www.youtube.com/watch?v=khstPnH89ZM)
 - **The Last of Us (2023).** Episode 3: Wow! My favorite game is the second one, so I’m really looking forward to the second season.
 - **Love, Death & Robots (2019).** My Favorite Episodes:
     - **S1.E7** ∙ Beyond the Aquila Rift
@@ -304,7 +301,6 @@ The monologue in chapter six is too honest: [Donny Dunn Breaks Down On Stage](ht
     - **S2.E4** ∙ Snow in the Desert
     - **S3.E2** ∙ Bad Travelling **(second favorite after Zima Blue)**
 - **True Detective (2014).** First season.
-- **Arcane (2021)**
 - **The Mandalorian (2019).** This is the way!
 
 ---
