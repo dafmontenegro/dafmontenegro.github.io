@@ -25,40 +25,11 @@ All my thoughts, everywhere, at the same time...
 
 ---
 
-- **2024-12-22:** What will be waiting for me at **Milele**? <cite>[^2]</cite>
-
-[^2]: [Mufasa: The Lion King (2024)](https://www.imdb.com/title/tt13186482/) - IMDB. (s. f.). IMDb.
-
----
-
-- **2024-11-26:** "My hands are of your colour; but I shame to wear **a heart so white**." Shakespeare
-
----
-
-- **2024-11-21:** *I think I can put **anything here**, and no one will notice.*
-
----
-
-- **2024-11-07:** "I can't imagine a more beautiful vocation than ***the best profession in the world***."
-
-***The best profession in the world:** being a parent.*
-
----
-
-- **2024-10-27:** "Lately, I've been thinking about: ***«Confiar y esperar»***."
-
-This meaning seems like almost religious wisdom, and I like the Spanish translation: ***«Confiar y esperar»***. The original version is shown below.
-
-> Quant à vous, Morrel, voici tout le secret de ma conduite envers vous : il n’y a ni bonheur ni malheur en ce monde, il y a la comparaison d’un état à un autre, voilà tout. Celui-là seul qui a éprouvé l’extrême infortune est apte à ressentir l’extrême félicité. Il faut avoir voulu mourir, Maximilien, pour savoir combien il est bon de vivre.
-> 
-> Vivez donc et soyez heureux, enfants chéris de mon cœur, et n’oubliez jamais que, jusqu’au jour où Dieu daignera dévoiler l’avenir à l’homme, toute la sagesse humaine sera dans ces deux mots :
-> 
-> Attendre et espérer!
->
-> — <cite>Le Comte de Monte-Cristo[^1]</cite>
-
-[^1]: [Le Comte de Monte-Cristo/Chapitre 117](https://fr.wikisource.org/wiki/Le_Comte_de_Monte-Cristo/Chapitre_117) - Wikisource. (1889).
-
----
-
-- **2024-10-12:** "I watched 🤖[**The Wild Robot**](https://www.imdb.com/title/tt29623480/)🦆 and **I loved it**!"
+| Date       | Thought | Insight |
+| ---------- | ------- | ------- |
+| 2024-12-22 | What will be waiting for me at **Milele**? | [Mufasa: The Lion King (2024)](https://www.imdb.com/title/tt13186482/) |
+| 2024-11-26 | "My hands are of your colour; but I shame to wear **a heart so white**." Shakespeare | **Corazón tan blanco, Javier Marías** |
+| 2024-11-21 | *I think I can put **anything here**, and no one will notice.* |  |
+| 2024-11-07 | I can't imagine a more beautiful vocation than ***the best profession in the world***. | ***The best profession in the world:** being a parent.* |
+| 2024-10-27 | Lately, I've been thinking about: ***«Confiar y esperar»***. | [Le Comte De Monte-Cristo: attendre et esperer](/blog/le-comte-de-monte-cristo-attendre-et-esperer/) |
+| 2024-10-12 | I watched 🤖[**The Wild Robot**](https://www.imdb.com/title/tt29623480/)🦆 and **I loved it**! |  |
