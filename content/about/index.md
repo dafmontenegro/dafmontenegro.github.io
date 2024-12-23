@@ -94,7 +94,10 @@ Send a Message
 
 ## To be continued?
 Definitely yes, and to continue, there are plenty of **related sections**:
+
 - All my thoughts in [/thoughts](/thoughts).
 - My music space in [/spaces/music](spaces/music).
 - My cinema space in [/spaces/cinema](spaces/cinema).
 - My sense of humor in [/spaces/comedy](spaces/comedy).
+
+**Want to see how things evolve?** Keep track of all the changes and updates on the site at [/changelog](/changelog).
