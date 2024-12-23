@@ -19,6 +19,16 @@ All my thoughts, everywhere, at the same time...
 
 **Note:** *This website serves as an open diary where I constantly interact. If there are no updates on the site for more than three weeks, **it might mean that something has happened to me...** or that I've decided to live on a mountain, far away from civilization.*
 
+{{< lead >}}
+**Want to see how things evolve?** Keep track of all the changes and updates on the site at [/changelog](/changelog).
+{{< /lead >}}
+
+---
+
+- **2024-12-22:** What will be waiting for me at **Milele**? <cite>[^2]</cite>
+
+[^2]: [Mufasa: The Lion King (2024)](https://www.imdb.com/title/tt13186482/) - IMDB. (s. f.). IMDb.
+
 ---
 
 - **2024-11-26:** "My hands are of your colour; but I shame to wear **a heart so white**." Shakespeare
