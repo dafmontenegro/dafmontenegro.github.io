@@ -29,7 +29,12 @@
 [[footer]]
   name = "Thoughts"
   pageRef = "thoughts"
-  weight = 99
+  weight = 80
+
+[[footer]]
+  name = "Changelog"
+  pageRef = "Changelog"
+  weight = 90
 
 [[footer]]
   name = "Privacy"
