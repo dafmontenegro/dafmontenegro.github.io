@@ -3,7 +3,7 @@ title: "Music Space"
 description: "These are the soundtracks of my life, carefully selected for appropriate character development and growth in each arc."
 summary: "These are the soundtracks of my life, carefully selected for appropriate character development and growth in each arc."
 date: 2024-10-21
-lastmod: 2024-12-01
+lastmod: 2024-12-22
 featureAlt: "La La Land"
 coverAlt: "La La Land"
 coverCaption: "La La Land"
@@ -20,18 +20,13 @@ These are the soundtracks of my life, carefully selected for appropriate **chara
 ## Jam of the Moment
 Enjoy the song I can't stop listening to right now! This track is my current obsession.
 
-{{< youtube 1F3OGIFnW1k >}}
+### Trueno - REAL GANGSTA LOVE
 
-> t’es la meilleure chose qui m’est arrivée
-> mais aussi la pire chose qui m’est arrivée,
-> ce jour où je t’ai rencontrée, j’aurais peut-être préféré,
-> que ce jour ne soit jamais arrivé,
-> la pire des bénédictions,
-> a plus belle des malédictions,
->
-> — <cite>Stromae, Pomme - Ma Meilleure Ennemie[^1]</cite>
+{{< youtube gaxbVfsoF6Q >}}
 
-[^1]: [Stromae, Pomme - Ma Meilleure Ennemie](https://www.youtube.com/watch?v=1F3OGIFnW1k)
+### Motherflowers, Apache - Quién Lo Diría?
+
+{{< youtube p4rC-LdzXEQ >}}
 
 ---
 
