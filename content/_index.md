@@ -1,11 +1,12 @@
 ---
 title: "My name is Daniel Felipe Montenegro"
-description: "Who am I? Well, let's just say I'm your friendly neighborhood software engineer."
+description: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
+summary: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
 featureAlt: "Caesar's Window"
 ---
 
 {{< alert "lightbulb" >}}
-“My hands are of your colour; but I shame to wear **a heart so white**.”
+What will be waiting for me at **Milele**?
 {{< /alert >}}
 
 All my thoughts in [/thoughts](/thoughts).
