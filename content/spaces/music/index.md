@@ -20,13 +20,9 @@ These are the soundtracks of my life, carefully selected for appropriate **chara
 ## Jam of the Moment
 Enjoy the song I can't stop listening to right now! This track is my current obsession.
 
-### Trueno - REAL GANGSTA LOVE
+### MOTHERFLOWERS - FLOR DE MAYO (FULL SESSION)
 
-{{< youtube gaxbVfsoF6Q >}}
-
-### Motherflowers, Apache - Quién Lo Diría?
-
-{{< youtube p4rC-LdzXEQ >}}
+{{< youtube 1JyVEbNUEa8 >}}
 
 ---
 

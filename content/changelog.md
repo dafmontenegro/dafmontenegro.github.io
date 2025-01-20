@@ -11,6 +11,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                          | Info |
 | ---------- | ----------------------------- | ---- |
+| 2025-01-19 | [Music Space](/spaces/music/) | New Jam of the Moment: "MOTHERFLOWERS - FLOR DE MAYO (FULL SESSION)" |
 | 2024-12-22 | [Music Space](/spaces/music/) | New Jam of the Moment: "REAL GANGSTA LOVE" and "Quién Lo Diría?" |
 | 2024-12-22 | [Blog](/blog)                 | New post: "Le Comte De Monte-Cristo: attendre et esperer" |
 | 2024-12-22 | [Thoughts](/thoughts)         | New organization in Thoughts |
