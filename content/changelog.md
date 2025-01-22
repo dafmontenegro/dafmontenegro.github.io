@@ -11,6 +11,9 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                          | Info |
 | ---------- | ----------------------------- | ---- |
+| 2025-01-21 | [About](/about) | New text in 'Mi Amigo Melquiades' |
+| 2025-01-21 | [About](/about) | New text in 'Where can we be friends?' |
+| 2025-01-21 | [Homepage](/) | The 'Recent' section has been removed from the homepage. |
 | 2025-01-19 | [Music Space](/spaces/music/) | New Jam of the Moment: "MOTHERFLOWERS - FLOR DE MAYO (FULL SESSION)" |
 | 2024-12-22 | [Music Space](/spaces/music/) | New Jam of the Moment: "REAL GANGSTA LOVE" and "Quién Lo Diría?" |
 | 2024-12-22 | [Blog](/blog)                 | New post: "Le Comte De Monte-Cristo: attendre et esperer" |
