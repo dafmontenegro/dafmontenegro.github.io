@@ -3,8 +3,8 @@ title: "Who am I?"
 description: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
 summary: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
 Date: 2024-10-12
-lastmod: 2024-11-21
-tags: ["spider-man", "puss-in-boots"]
+lastmod: 2025-01-21
+tags: []
 showBreadcrumbs: false
 showReadingTime: false
 showPagination: false
@@ -68,8 +68,17 @@ My YouTube channel is called ***Mi Amigo Melquiades***. Want to know more? Visit
 Don't forget to [subscribe](https://www.youtube.com/@MiAmigoMelquiades) on YouTube.
 {{< /alert >}}
 
+If **you're curious** about the origin of my channel's name and what inspired me to start **making videos**, I invite you to read the words I wrote for the description of [my first video](https://www.youtube.com/watch?v=zdzPV_x57_o&t) and what motivated me to **make it happen**.
 
-There is a **special phrase** for me that represents **the essence** of the channel:
+> Mi nombre es Daniel Felipe Montenegro, así me llaman mis amigos y las personas que me conocen. En cambio, aquí soy conocido como  “Mi Amigo Melquiades”, no por la necesidad de ocultar mi nombre, sino por la suma de todas las cosas que me han traído hasta aquí: La elección de este nombre no fue algo trivial... “Mi Amigo” nace de la intención de ser un amigo para alguien más, ese mismo amigo que a una parte de mi le cuesta reconocer que necesito en algún otro momento. “Melquiades" es una referencia a la visión de ese gitano que aparece desde la primera página de Cien Años de Soledad, y quien es capaz de convencer por medio de sus palabras (casi con una fascinación metafísica); que todas las cosas tienen vida propia y que solo es cuestión de despertarles el ánima.
+>
+> Me comprometí a expresar aquí, lo que es para mi “el ánima” de las cosas: mi promesa personal se basa en entregar un significado que le de vida propia a todo lo que he descubierto en esta travesia que llamamos existencia. Aquí se encuentra y se encontrará para siempre la esencia de las personas que amo, que me aman y también mi propia esencia. Tengo la indudable certeza de que sus significados no morirán conmigo (un corazón más que los custodio), y que dulcemente siempre encontrarán vida en cada una de las personas que recibieron un mensaje de mi parte en este lugar. Por ello, pongo en cada palabra amor y dedicación, para asi nunca guardar silencio y que sea posible que exista en este mundo, esa llama de amor que sembraron en mi las personas que me han acompañado.
+>
+> La vida me ha enseñado a valorar tanto la compañía como la soledad, sin preferir una sobre la otra. Ambas, con sus caras a veces hostiles y a veces generosas, me han moldeado para dar como resultado quien soy. Es por eso, que guardo en mi corazón, la fiel promesa de quien sea que encuentre un significado en mis palabras, recuerde también que allá afuera en algún lugar existe alguien como yo, a quien le importa lo que esa alma siente y que al menos por el día hoy; el amigo de esa persona podré ser yo.
+>
+> — <cite>Mi Amigo Melquiades</cite>
+
+And this is a **special phrase** for me that represents **the essence** of the channel, and with which I usually end my videos:
 
 > Las cosas, tienen vida propia... todo es cuestión de despertarles el ánima.
 > 
@@ -81,6 +90,11 @@ There is a **special phrase** for me that represents **the essence** of the chan
 [^3]: [Daniel Felipe Montenegro's thoughts](/thoughts)
 
 ## Where can we be friends?
+Keep in mind that **I don't use social networks, so you won't find me there.** 
+
+Until recently I was using **X** as something similar to an open journal where I collected everything I learned... However, everything that is there **will end up being progressively integrated here (on my website)**; which will result in this being my unique and cozy place.
+
+So, in the meantime, I invite you to be my friend on:
 
 ### Duolingo
 ![Duolingo QR @dafmontenegro](img/duolingo-qr.jpg)
