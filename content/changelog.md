@@ -12,6 +12,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
 | 2025-02-01 | [Blog](/blog)                   | New post: "My Birthday" |
+| 2025-02-01 | [Music Space](/spaces/music/)   | New Jam of the Moment: "lo que un día fue" and "(sola)" |
 | 2025-02-01 | [About](/about)                 | New ‘Tit For Tat’ section |
 | 2025-01-31 | [Gabo RAG](/projects/gabo-rag/) | New model DeepSeek-R1-Distill-Qwen-1.5B compared to Llama 3.2 and Phi-3.5-mini |
 | 2025-01-21 | [About](/about)                 | New text in 'Mi Amigo Melquiades' |

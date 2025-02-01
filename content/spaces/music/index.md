@@ -3,7 +3,7 @@ title: "Music Space"
 description: "These are the soundtracks of my life, carefully selected for appropriate character development and growth in each arc."
 summary: "These are the soundtracks of my life, carefully selected for appropriate character development and growth in each arc."
 date: 2024-10-21
-lastmod: 2024-12-22
+lastmod: 2025-02-01
 featureAlt: "La La Land"
 coverAlt: "La La Land"
 coverCaption: "La La Land"
@@ -20,9 +20,13 @@ These are the soundtracks of my life, carefully selected for appropriate **chara
 ## Jam of the Moment
 Enjoy the song I can't stop listening to right now! This track is my current obsession.
 
-### MOTHERFLOWERS - FLOR DE MAYO (FULL SESSION)
+### Paloma Morphy - lo que un día fue
 
-{{< youtube 1JyVEbNUEa8 >}}
+{{< youtube sHZsFNjNYn4 >}}
+
+### Paloma Morphy - (sola)
+
+{{< youtube JvkIhSLgi6Y >}}
 
 ---
 
