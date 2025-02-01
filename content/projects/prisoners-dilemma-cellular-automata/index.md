@@ -9,7 +9,7 @@ coverAlt: "Prisoner's Dilemma Illustration from Wireless Philosophy"
 coverCaption: "Prisoner's Dilemma Illustration from Wireless Philosophy"
 thumbnailAlt: "Prisoner's Dilemma Illustration from Wireless Philosophy"
 categories: ["software"]
-tags: ["simulation", "cellular-automata", "prisoners-dilemma", "tit-for-tat", "prisoners-dilemma-simulation"]
+tags: ["simulation", "cellular-automata", "prisoners-dilemma", "tit-for-tat", "prisoners-dilemma-simulation", "game-theory"]
 ---
 A Python project that explores the dynamics of cooperation and competition through the lens of game theory. By transforming **cellular automata into strategies** and employing classic tactics like **Tit For Tat,** the project investigates the performance of various strategies in the context of the **Prisoner's Dilemma.**
 
