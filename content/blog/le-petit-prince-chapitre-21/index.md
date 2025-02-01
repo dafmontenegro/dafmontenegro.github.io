@@ -3,7 +3,7 @@ title: "Chapitre XXI - Le Petit Prince"
 description: "This chapter is my favorite chapter of The Little Prince and its numbering coincides with my favorite number. It is a beautiful text that explains what is friendship and love, the rites and the deep meaning of taming."
 summary: "This chapter is my favorite chapter of The Little Prince and its numbering coincides with my favorite number. It is a beautiful text that explains what is friendship and love, the rites and the deep meaning of taming."
 date: 2015-12-16
-lastmod: 2015-12-22
+lastmod: 2017-01-23
 featureAlt: "The Little Prince with the Fox"
 coverAlt: "The Little Prince with the Fox"
 thumbnailAlt: "The Little Prince with the Fox"
