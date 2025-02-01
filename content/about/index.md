@@ -3,7 +3,7 @@ title: "Who am I?"
 description: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
 summary: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
 Date: 2024-10-12
-lastmod: 2025-01-21
+lastmod: 2025-02-01
 tags: []
 showBreadcrumbs: false
 showReadingTime: false
@@ -61,12 +61,29 @@ For these reasons, I decided to make Caesar's symbol **my personal symbol** as w
 
 ![Apes Together Strong: Apes making Caesar's symbol with their arms](img/apes-together-strong.jpg "Apes Together Strong: Apes making Caesar's symbol with their arms")
 
+## Tit For Tat 
+Among the many ideas that have shaped my way of thinking, few have **fascinated me** as much as the **Tit For Tat strategy**. Originally introduced by **Anatol Rapoport** in the competition organized **by Robert Axelrod in 1980**, it stands as the winning and emblematic strategy of the [Prisoner’s Dilemma](/tags/prisoners-dilemma), one of my favorite problems in **game theory**.
+
+{{< alert "circle-info" >}}
+If you’re interested in learning more, I recommend watching the video titled [“What Game Theory Reveals About Life, The Universe, and Everything”](https://youtu.be/mScpHTIi-kM?si=4yu0qFeFhT4j2h1S) by Veritasium, which also has a [Spanish version](https://www.youtube.com/watch?v=vBgrvVY1jGo).
+{{< /alert >}}
+
+Tit For Tat relies on **two very simple rules** as its principle.
+1. **Start by cooperating** as a gesture of goodwill toward the other.
+2. **Mirror the opponent's last move,** regardless of whether they cooperated or not.
+
+> Robert Axelrod identified **four success qualities** that contributed to the effectiveness of strategies:
+> 1. **Nice:** Have good will and do not take advantage of your opponent.
+> 2. **Forgiving:** Cooperate when necessary, even if you've been let down before.
+> 3. **Retaliatory:** If your opponent defects, strike back immediately. Don't be a pushover
+> 4. **Clear:** Be consistent with your strategy and actions.
+
+Beyond its *theoretical elegance*, **Tit For Tat** is for me a life philosophy that invites me to apply these four success qualities *day by day*, **because real life is not a zero-sum game**, where in order to win, the other must necessarily lose (*as in chess*). Instead, **I hold on to the hope that where we all win, we also win ourselves**, so thank you for reading this; and don’t hesitate that in the future **we will be able to cooperate together not only to achieve a common good, but to achieve a general good**.
+
 ## Mi Amigo Melquiades 
 My YouTube channel is called ***Mi Amigo Melquiades***. Want to know more? Visit [miamigomelquiades.com](https://miamigomelquiades.com/).
 
-{{< alert "youtube" >}}
-Don't forget to [subscribe](https://www.youtube.com/@MiAmigoMelquiades) on YouTube.
-{{< /alert >}}
+{{< youtube zdzPV_x57_o >}}
 
 If **you're curious** about the origin of my channel's name and what inspired me to start **making videos**, I invite you to read the words I wrote for the description of [my first video](https://www.youtube.com/watch?v=zdzPV_x57_o&t) and what motivated me to **make it happen**.
 
@@ -77,6 +94,10 @@ If **you're curious** about the origin of my channel's name and what inspired me
 > La vida me ha enseñado a valorar tanto la compañía como la soledad, sin preferir una sobre la otra. Ambas, con sus caras a veces hostiles y a veces generosas, me han moldeado para dar como resultado quien soy. Es por eso, que guardo en mi corazón, la fiel promesa de quien sea que encuentre un significado en mis palabras, recuerde también que allá afuera en algún lugar existe alguien como yo, a quien le importa lo que esa alma siente y que al menos por el día hoy; el amigo de esa persona podré ser yo.
 >
 > — <cite>Mi Amigo Melquiades</cite>
+
+{{< alert "youtube" >}}
+Don't forget to [subscribe](https://www.youtube.com/@MiAmigoMelquiades) on YouTube.
+{{< /alert >}}
 
 And this is a **special phrase** for me that represents **the essence** of the channel, and with which I usually end my videos:
 
