@@ -23,19 +23,19 @@ This is a practical introductory course created for the **Digital Technology** c
 ## Location
 - Building 411-103, **Microprocessors Laboratory**
 
-## Step-by-Step Learning Plan (4 hours)
+## Step-by-Step Learning Plan
 
-### Part 1: Foundations and Core Concepts (2 hours)
+### Part 1: Foundations and Core Concepts
 
-1. Introduction and Theoretical Concepts **(1 hour)**
+1. Introduction and Theoretical Concepts
    - The Origins of [Raspberry Pi](https://www.raspberrypi.com/news/bringing-computing-to-rural-cameroon/)
    - [Model Comparison](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html)
    - Technical Specifications ([Hardware](https://www.raspberrypi.com/documentation/computers/processors.html#bcm2711) & [Software](https://www.raspberrypi.com/software/))
    - [Real-World Applications](https://www.cyberark.com/resources/threat-research-blog/cracking-wifi-at-scale-with-one-simple-trick) and [Interesting Projects](https://montenegrodanielfelipe.com/projects/pi-tensorflow-lite-object-detection/)
-2. Remote Access and File Management **(30 minutes)**
+2. Remote Access and File Management
    - Headless **SSH Connection**
    - **Transferring Files** and **Syncing Directories**
-3. GPIO Basics and Digital I/O **(30 minutes)**
+3. GPIO Basics and Digital I/O
    - **BCM vs BOARD:** Pin Numbering in Raspberry Pi
    - Setting Up **GPIO for Output**
    - Setting Up **GPIO for Input**
@@ -235,3 +235,6 @@ Develop a script that simulates the **Prisoner’s Dilemma** using **two RGB LED
 The number of rounds is left to **your discretion**. However, a fixed number of rounds allows for **potential exploits**, which should be avoided. The system must support **multiple rounds**, but its duration should remain practical, as it will be reviewed in class. Excessively long runs **would be impractical**, so all design choices should prioritize **efficiency and feasibility**.
 
 **Note:** *There is complete freedom in software design and pin selection. **The goal is to design and experiment to create the best possible Prisoner’s Dilemma simulation** using only two RGB LEDs and two push buttons.*
+
+### Assignment #2: Raspberry Pi Prisoner's Dilemma Tournament
+Clone the [raspberrypi-prisoners-dilemma repository](https://github.com/dafmontenegro/raspberrypi-prisoners-dilemma), review `client.py`, and modify the `decide_move()` function to develop your own game strategy. Then, participate in the tournament to determine the winning team in the course.
