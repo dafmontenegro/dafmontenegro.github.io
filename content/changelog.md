@@ -11,6 +11,8 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2025-02-15 | [Projects](/projects)           | New project: "Raspberry Pi 101 UNAL" |
+| 2025-02-15 | [Blog](/blog)                   | New post: "Implementation of a Digital Keyboard Based on Sinusoidal Signals" |
 | 2025-02-01 | [Blog](/blog)                   | New post: "My Birthday" |
 | 2025-02-01 | [Music Space](/spaces/music/)   | New Jam of the Moment: "lo que un día fue" and "(sola)" |
 | 2025-02-01 | [About](/about)                 | New ‘Tit For Tat’ section |
