@@ -156,6 +156,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 [^6]: [Silver Linings Playbook (2012)](https://www.imdb.com/title/tt1045658/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
+- **The Glass Castle (2017)**
 - **Seven Pounds (2008)**
 - **The White Tiger (2019).**
 > Balram: Rich men are born with opportunities they can waste.
