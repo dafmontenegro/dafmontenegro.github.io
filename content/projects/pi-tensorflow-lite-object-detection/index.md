@@ -7,6 +7,8 @@ lastmod: 2024-06-05
 featureAlt: "Flint Lockwood Spray-On Shoes"
 coverAlt: "Flint Lockwood Spray-On Shoes"
 thumbnailAlt: "Flint Lockwood Spray-On Shoes"
+showDate: false
+showDateUpdated: false
 categories: ["software", "hardware"]
 tags: ["raspberry-pi", "opencv", "flask", "gpio", "parallel-computing", "real-time-object-detection", "tensorflow-lite", "store-management", "debian-bullseye", "efficientdet-lite"]
 ---
