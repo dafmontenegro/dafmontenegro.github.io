@@ -8,8 +8,8 @@ featureAlt: "Markdown logo"
 coverAlt: "Markdown logo"
 coverCaption: "Markdown logo"
 thumbnailAlt: "Markdown logo"
-categories: ["Markdown", "Guides", "Writing"]
-tags: ["markdown", "syntax", "beginner", "tutorial", "examples"]
+categories: ["software"]
+tags: ["markdown", "syntax", "tutorial"]
 ---
 
 ## Introduction
