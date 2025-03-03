@@ -8,7 +8,7 @@ featureAlt: "colab and ollama"
 coverAlt: "colab and ollama"
 thumbnailAlt: "colab and ollama"
 categories: ["software"]
-tags: ["google-colab", "ollama"]
+tags: ["google-colab", "ollama", "tutorial"]
 ---
 **Ollama** is a great tool for testing **LLMs** and **Embedding** models locally. It's possible to use this tool in **Google Colab**, but when you run `ollama serve`, **your script will get stuck** in that cell, and you won’t be able to run the following cells. Luckily, the solution is simple and can be done **with code**.
 

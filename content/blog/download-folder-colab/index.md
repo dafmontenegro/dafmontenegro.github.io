@@ -8,7 +8,7 @@ featureAlt: "colab"
 coverAlt: "colab"
 thumbnailAlt: "colab"
 categories: ["software"]
-tags: ["google-colab"]
+tags: ["google-colab", "tutorial"]
 ---
 **Google Colab's UI** from its file browser allows you to download **files individually**, but does not have an option to download **entire directories**; the solution is simple and can be done **with code**.
 
