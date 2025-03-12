@@ -1,7 +1,7 @@
 ---
 title: "Se7en: The Death of Mills?"
-description: "When *Se7en* ended, one question refused to leave my mind. It wasn’t about John Doe’s plan or his gruesome crimes, but something deeper—something that completely changed the way I perceived the film. And the more I thought about it, the more unsettling it became..."
-summary: "When *Se7en* ended, one question refused to leave my mind. It wasn’t about John Doe’s plan or his gruesome crimes, but something deeper—something that completely changed the way I perceived the film. And the more I thought about it, the more unsettling it became..."
+description: "When Se7en ended, one question refused to leave my mind. It wasn’t about John Doe’s plan or his gruesome crimes, but something deeper—something that completely changed the way I perceived the film. And the more I thought about it, the more unsettling it became..."
+summary: "When Se7en ended, one question refused to leave my mind. It wasn’t about John Doe’s plan or his gruesome crimes, but something deeper—something that completely changed the way I perceived the film. And the more I thought about it, the more unsettling it became..."
 date: 2025-03-12
 lastmod: 2025-03-12
 featureAlt: "Detective David Mills"
