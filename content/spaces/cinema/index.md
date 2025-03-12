@@ -3,7 +3,7 @@ title: "Cinema Space"
 description: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 summary: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 date: 2024-10-12
-lastmod: 2024-11-03
+lastmod: 2025-03-12
 featureAlt: "Manny from Babylon"
 coverAlt: "Manny from Babylon"
 coverCaption: "Manny from Babylon"
@@ -265,6 +265,8 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 > — <cite>Treasure Planet (2002)[^12]</cite>
 
 [^12]: [Treasure Planet (2002)](https://www.imdb.com/title/tt0133240/quotes/) - Quotes - IMDb. (s. f.). IMDb.
+
+- **The Boy, the Mole, the Fox and the Horse (2022).**
 
 ---
 
