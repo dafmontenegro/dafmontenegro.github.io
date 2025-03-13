@@ -40,7 +40,7 @@ The verses you will find here are in **Spanish** because it is my **native langu
 
 - **Job 4:8 NTV** **[8]** La experiencia me dice que los que siembran problemas y cultivan el mal, eso cosecharán.  
 
-- **Job 4:20-21 TLAI** **[20]** ”En esta vida estamos de paso; un día nacemos y otro día morimos. ¡Desaparecemos para siempre, sin que a nadie le importe! ¡Morimos sin llegar a ser sabios!” **[21]**  
+- **Job 4:20-21 TLAI** **[20-21]** ”En esta vida estamos de paso; un día nacemos y otro día morimos. ¡Desaparecemos para siempre, sin que a nadie le importe! ¡Morimos sin llegar a ser sabios!”
 
 - **Job 5:1-2 NTV** **[1]** Por más que grites por ayuda, ¿quién te responderá? ¿Cuál de los ángeles te ayudará? **[2]** Te aseguro que el resentimiento destruye al necio, y los celos matan al ingenuo.  
 
@@ -48,7 +48,7 @@ The verses you will find here are in **Spanish** because it is my **native langu
 
 - **Job 5:6-7 DHHDK** **[6]** La maldad no brota del suelo; la desdicha no nace de la tierra: **[7]** es el hombre el que causa la desdicha, así como del fuego salen volando las chispas.  
 
-- **Job 5:12-14 TLAI** **[12]** Dios hace que los astutos caigan en sus propias trampas; les desbarata sus planes malvados y les arruina sus malas acciones. **[13]** **[14]** Dios hace que se tropiecen de día como si anduvieran de noche.  
+- **Job 5:12-14 TLAI** **[12-13]** Dios hace que los astutos caigan en sus propias trampas; les desbarata sus planes malvados y les arruina sus malas acciones. **[14]** Dios hace que se tropiecen de día como si anduvieran de noche.  
 
 - **Job 5:18 NTV** **[18]** Pues aunque él hiere, también venda las heridas; él golpea, pero sus manos también sanan.  
 
