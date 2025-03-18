@@ -11,6 +11,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2025-03-18 | [Music Space](/spaces/music/)   | New Jam of the Moment: "El Kalvo - Protagonista Estelar" |
 | 2025-03-12 | [Bible](/spaces/bible/)         | New space: Bible |
 | 2025-03-12 | [Blog](/blog)                   | New post: "Se7en: The Death of Mills?" |
 | 2025-03-03 | [Blog](/blog)                   | New post: "A Beginner’s Guide to Markdown: Syntax and Examples" |

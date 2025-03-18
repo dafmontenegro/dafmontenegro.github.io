@@ -20,13 +20,9 @@ These are the soundtracks of my life, carefully selected for appropriate **chara
 ## Jam of the Moment
 Enjoy the song I can't stop listening to right now! This track is my current obsession.
 
-### Paloma Morphy - lo que un día fue
+### El Kalvo - Protagonista Estelar
 
-{{< youtube sHZsFNjNYn4 >}}
-
-### Paloma Morphy - (sola)
-
-{{< youtube JvkIhSLgi6Y >}}
+{{< youtube 5U1vKxAUT54 >}}
 
 ---
 
