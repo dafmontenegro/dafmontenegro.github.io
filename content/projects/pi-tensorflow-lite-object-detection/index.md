@@ -30,6 +30,10 @@ An alternative name of this project is [FLDSMDFR](https://github.com/dafmonteneg
 - **F**: Fast
 - **R**: Recognition
 
+## Repository
+
+- [GitHub](https://github.com/dafmontenegro/pi-tensorflow-lite-object-detection)
+
 ## 1. General Specifications
 This repository presents a demonstration of real-time object detection on a **Raspberry Pi** using **TensorFlow Lite**. Inspired by the official **TensorFlow examples library** [1] and the video tutorials by **Paul McWhorter** [2], this project provides a hands-on exploration of object detection capabilities on resource-constrained devices like the **Raspberry Pi platform**.
 
