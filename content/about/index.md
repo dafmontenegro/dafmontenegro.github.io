@@ -81,7 +81,7 @@ Tit For Tat relies on **two very simple rules** as its principle.
 Beyond its *theoretical elegance*, **Tit For Tat** is for me a life philosophy that invites me to apply these four success qualities *day by day*, **because real life is not a zero-sum game**, where in order to win, the other must necessarily lose (*as in chess*). Instead, **I hold on to the hope that where we all win, we also win ourselves**, so thank you for reading this; and don’t hesitate that in the future **we will be able to cooperate together not only to achieve a common good, but to achieve a general good**.
 
 ## Mi Amigo Melquiades 
-My YouTube channel is called ***Mi Amigo Melquiades***. Want to know more? Visit [miamigomelquiades.com](https://miamigomelquiades.com/).
+My YouTube channel is called ***Mi Amigo Melquiades***. Want to know more? Visit [/mi-amigo-melquiades](https://www.youtube.com/@MiAmigoMelquiades/featured).
 
 {{< youtube zdzPV_x57_o >}}
 
