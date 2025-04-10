@@ -3,7 +3,7 @@ title: "Le Comte De Monte-Cristo: attendre et esperer"
 description: "So live and be happy, beloved children of my heart, and never forget that, until the day when God deigns to reveal the future to man, all human wisdom will be contained in these two words: Wait and hope!"
 summary: "So live and be happy, beloved children of my heart, and never forget that, until the day when God deigns to reveal the future to man, all human wisdom will be contained in these two words: Wait and hope!"
 date: 2024-12-22
-lastmod: 2024-12-22
+lastmod: 2024-04-09
 featureAlt: "The Count of Monte Cristo"
 coverAlt: "The Count of Monte Cristo"
 coverCaption: "The Count of Monte Cristo"
@@ -26,6 +26,8 @@ This meaning seems like almost religious wisdom, and I like the Spanish translat
 > — <cite>Le Comte de Monte-Cristo[^1]</cite>
 
 [^1]: [Le Comte de Monte-Cristo/Chapitre 117](https://fr.wikisource.org/wiki/Le_Comte_de_Monte-Cristo/Chapitre_117) - Wikisource. (1889).
+
+{{< youtube DChmpvR7Oic >}}
 
 ## English Translation
 
