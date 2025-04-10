@@ -3,7 +3,7 @@ title: "Cinema Space"
 description: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 summary: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 date: 2024-10-12
-lastmod: 2025-03-12
+lastmod: 2025-04-09
 featureAlt: "Manny from Babylon"
 coverAlt: "Manny from Babylon"
 coverCaption: "Manny from Babylon"
@@ -137,6 +137,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 - **Parasite (2019)**
 - **The Prestige (2006)**
+- **Nightmare Alley (2021)**
 - **Shutter Island (2010)**
 - **Eternal Sunshine of the Spotless Mind (2004)**
 
