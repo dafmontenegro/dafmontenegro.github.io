@@ -1,11 +1,14 @@
 baseURL = "https://montenegrodanielfelipe.com/"
 defaultContentLanguage = "en"
 
+ignoreLogs = ['warning-goldmark-raw-html']
 enableRobotsTXT = true
 summaryLength = 0
-paginate = 5
 
 timeout = "90s"
+
+[pagination]
+  pagerSize = 5
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
