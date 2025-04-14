@@ -115,6 +115,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 - **Spider-Man (2018 - 2023): Into the Spider-Verse, and Across the Spider-Verse.** Spider-Man 2099, Peter B. Parker, and Spider-Punk, great characters!
 - **Batman Nolan's Trilogy (2005 - 2012): Begings, The Dark Knight, and The Dark Knight Rises (best)**
+- **Batman: The Killing Joke (2016)**
 - **Deadpool & Wolverine (2024)**
 
 ---
