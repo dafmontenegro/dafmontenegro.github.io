@@ -83,8 +83,6 @@ Beyond its *theoretical elegance*, **Tit For Tat** is for me a life philosophy t
 ## Mi Amigo Melquiades 
 My YouTube channel is called ***Mi Amigo Melquiades***. Want to know more? Visit [/mi-amigo-melquiades](https://www.youtube.com/@MiAmigoMelquiades/featured).
 
-{{< youtube zdzPV_x57_o >}}
-
 If **you're curious** about the origin of my channel's name and what inspired me to start **making videos**, I invite you to read the words I wrote for the description of [my first video](https://www.youtube.com/watch?v=zdzPV_x57_o&t) and what motivated me to **make it happen**.
 
 > Mi nombre es Daniel Felipe Montenegro, así me llaman mis amigos y las personas que me conocen. En cambio, aquí soy conocido como  “Mi Amigo Melquiades”, no por la necesidad de ocultar mi nombre, sino por la suma de todas las cosas que me han traído hasta aquí: La elección de este nombre no fue algo trivial... “Mi Amigo” nace de la intención de ser un amigo para alguien más, ese mismo amigo que a una parte de mi le cuesta reconocer que necesito en algún otro momento. “Melquiades" es una referencia a la visión de ese gitano que aparece desde la primera página de Cien Años de Soledad, y quien es capaz de convencer por medio de sus palabras (casi con una fascinación metafísica); que todas las cosas tienen vida propia y que solo es cuestión de despertarles el ánima.
