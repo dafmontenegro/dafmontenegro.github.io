@@ -1,17 +1,18 @@
 ---
-title: "Análisis del Dilema del Prisionero en Redes Dinámicas"
-description: "Herramienta computacional para el estudio de cooperación y aislamiento de agentes en topologías de redes dinámicas"
-summary: "Simulación del Dilema del Prisionero en redes dinámicas que permite estudiar cómo evoluciona la cooperación cuando las personas aprenden imitando a vecinos exitosos y las redes sociales se adaptan."
-date: 2025-11-11T00:13:27-05:00
-lastmod: 2025-11-11T00:13:27-05:00
+title: "Prisoner's Dilemma in Dynamic Network Topologies: Agent-Based Simulation Framework"
+description: "Computational tool for studying cooperation and isolation dynamics in adaptive social networks through game theory. Integrates cultural evolution via Fermi Rule imitation, dynamic network rewiring, wealth inequality modeling, and agent survival mechanisms to explore how cooperation emerges in complex systems."
+summary: "An agent-based simulation framework that explores the Prisoner's Dilemma on dynamic networks. Agents learn by imitating successful neighbors (Fermi Rule), adapt network connections, and face survival challenges based on economic success. Integrates memory-one strategies, wealth distribution, and network topology evolution to study cooperation emergence."
+date: 2024-05-21
+lastmod: 2025-11-11
 showDate: false
+showDateUpdated: false
 showReadingTime: false
-featureAlt: "Prisoner's Dilemma Network Simulation"
-coverAlt: ""
-coverCaption: ""
-thumbnailAlt: ""
-categories: ["Projects", "Research"]
-tags: ["Game Theory", "Network Science", "Cooperation", "Agent-Based Modeling", "Python"]
+featureAlt: "Network topology illustration for Prisoner's Dilemma simulation"
+coverAlt: "Network topology illustration for Prisoner's Dilemma simulation"
+coverCaption: "Basic network topology visualization illustrating agent connections"
+thumbnailAlt: "Network topology illustration"
+categories: ["research", "software"]
+tags: ["prisoners-dilemma", "game-theory", "agent-based-modeling", "network-dynamics", "cooperation", "cultural-evolution", "fermi-rule", "complex-systems", "simulation", "undergraduate-thesis"]
 ---
 
 # Análisis del Dilema del Prisionero en Topologías de Redes Dinámicas: Desarrollo de Herramienta Computacional para el Estudio de Cooperación y Aislamiento de Agentes
