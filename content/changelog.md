@@ -11,6 +11,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2025-12-12 | [Bible](/spaces/bible/)         | Added 7 new verses |
 | 2025-03-18 | [Kiki](/kiki)                   | New web page: "Kiki Softpaws" |
 | 2025-03-18 | [Blog](/blog)                   | New post: "Zima Blue: The Search for the Self" |
 | 2025-03-18 | [Music Space](/spaces/music/)   | New Jam of the Moment: "El Kalvo - Protagonista Estelar" |
