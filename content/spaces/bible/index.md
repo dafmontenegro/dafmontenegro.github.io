@@ -118,6 +118,12 @@ The verses you will find here are in **Spanish** because it is my **native langu
 
 ---
 
+## Romanos
+
+- **Romanos 12:2 DHHDK** **[2]** No vivan ya según los criterios del tiempo presente; al contrario, cambien su manera de pensar para que así cambie su manera de vivir y lleguen a conocer la voluntad de Dios, es decir, lo que es bueno, lo que le es grato, lo que es perfecto.
+
+---
+
 ## 1 Corintios
 
 - **1 Corintios 13:7 DHHDK** **[7]** Tener amor es sufrirlo todo, creerlo todo, esperarlo todo, soportarlo todo.
