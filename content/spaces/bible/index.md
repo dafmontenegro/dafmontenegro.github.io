@@ -3,7 +3,7 @@ title: "Bible"
 description: "I enjoy reading the Bible and exploring different translations to deepen my understanding of each verse. In this space, I want to keep those that for one reason or another, have left a mark on me and that I recognize as valuable lessons for life."
 summary: "I enjoy reading the Bible and exploring different translations to deepen my understanding of each verse. In this space, I want to keep those that for one reason or another, have left a mark on me and that I recognize as valuable lessons for life."
 date: 2025-03-12
-lastmod: 2025-03-12
+lastmod: 2025-12-12
 featureAlt: "Saint Benedict Medal"
 coverAlt: "Saint Benedict Medal"
 coverCaption: "Saint Benedict Medal"
@@ -70,53 +70,77 @@ The verses you will find here are in **Spanish** because it is my **native langu
 
 - **Job 29:19 DHHDK** **[19]** Soy como un árbol plantado junto al agua, cuyas ramas baña el rocío de la noche.  
 
-- **Job 32:16-18 NTV** **[16]** ¿Seguiré esperando ahora que se han quedado callados? ¿Permaneceré en silencio yo también? **[17]** No, sino que daré mi opinión y expresaré lo que pienso. **[18]** Pues estoy lleno de palabras contenidas y el espíritu que hay en mí me obliga a hablar.  
+- **Job 32:16-18 NTV** **[16]** ¿Seguiré esperando ahora que se han quedado callados? ¿Permaneceré en silencio yo también? **[17]** No, sino que daré mi opinión y expresaré lo que pienso. **[18]** Pues estoy lleno de palabras contenidas y el espíritu que hay en mí me obliga a hablar.
 
-- **Job 36:33 NTV** **[33]** El trueno declara su presencia; la tormenta anuncia su enojo indignado.  
+- **Job 34:32 DHHDK** **[32]** Muéstrame las faltas que yo no veo. Si he actuado mal, no lo volveré a hacer»?
 
----
-
-## Salmos  
-
-- **Salmos 56:3 RVR1960** **[3]** En el día que temo, Yo en ti confío.  
-
-- **Salmos 119:105 NTV** **[105]** Tu palabra es una lámpara que guía mis pies y una luz para mi camino.  
-
-- **Salmos 139:11-12 DHHDK** **[11]** Si pensara esconderme en la oscuridad, o que se convirtiera en noche la luz que me rodea, **[12]** la oscuridad no me ocultaría de ti, y la noche sería tan brillante como el día. ¡La oscuridad y la luz son lo mismo para ti!  
-
-- **Salmos 143:8 DHHDK** **[8]** Por la mañana hazme saber de tu amor, porque en ti he puesto mi confianza. Hazme saber cuál debe ser mi conducta, porque a ti dirijo mis anhelos.  
+- **Job 36:33 NTV** **[33]** El trueno declara su presencia; la tormenta anuncia su enojo indignado.
 
 ---
 
-## Proverbios  
+## Salmos
 
-- **Proverbios 4:23 NTV** **[23]** Sobre todas las cosas cuida tu corazón, porque este determina el rumbo de tu vida.  
+- **Salmos 56:3 RVR1960** **[3]** En el día que temo, Yo en ti confío.
 
----
+- **Salmos 59:16 NTV** **[16]** En cuanto a mí, yo cantaré de tu poder; cada mañana cantaré con alegría acerca de tu amor inagotable. Pues tú has sido mi refugio, un lugar seguro cuando estoy angustiado.
 
-## Eclesiastés  
+- **Salmos 119:105 NTV** **[105]** Tu palabra es una lámpara que guía mis pies y una luz para mi camino.
 
-- **Eclesiastés 11:10 DHHDK** **[10]** Aleja de tu mente las preocupaciones y echa fuera de ti el sufrimiento, porque aun los mejores días de la juventud son vana ilusión.  
+- **Salmos 139:11-12 DHHDK** **[11]** Si pensara esconderme en la oscuridad, o que se convirtiera en noche la luz que me rodea, **[12]** la oscuridad no me ocultaría de ti, y la noche sería tan brillante como el día. ¡La oscuridad y la luz son lo mismo para ti!
 
----
-
-## Juan  
-
-- **Juan 14:1 NTV** **[1]** »No dejen que el corazón se les llene de angustia; confíen en Dios y confíen también en mí.  
+- **Salmos 143:8 DHHDK** **[8]** Por la mañana hazme saber de tu amor, porque en ti he puesto mi confianza. Hazme saber cuál debe ser mi conducta, porque a ti dirijo mis anhelos.
 
 ---
 
-## 1 Corintios  
+## Proverbios
 
-- **1 Corintios 13:7 DHHDK** **[7]** Tener amor es sufrirlo todo, creerlo todo, esperarlo todo, soportarlo todo.  
+- **Proverbios 4:23 NTV** **[23]** Sobre todas las cosas cuida tu corazón, porque este determina el rumbo de tu vida.
 
-- **1 Corintios 13:13 NTV** **[13]** Tres cosas durarán para siempre: la fe, la esperanza y el amor; y la mayor de las tres es el amor.  
+- **Proverbios 28:1 DHHDK** **[1]** El malvado huye aunque nadie lo persiga, pero los justos viven confiados como el león.
 
 ---
 
-## 2 Timoteo  
+## Eclesiastés
 
-- **2 Timoteo 4:7 DHHDK** **[7]** He peleado la buena batalla, he llegado al término de la carrera, me he mantenido fiel.  
+- **Eclesiastés 11:10 DHHDK** **[10]** Aleja de tu mente las preocupaciones y echa fuera de ti el sufrimiento, porque aun los mejores días de la juventud son vana ilusión.
+
+---
+
+## Mateo
+
+- **Mateo 6:33 NTV** **[33]** Busquen el reino de Dios por encima de todo lo demás y lleven una vida justa, y él les dará todo lo que necesiten.
+
+---
+
+## Juan
+
+- **Juan 14:1 NTV** **[1]** »No dejen que el corazón se les llene de angustia; confíen en Dios y confíen también en mí.
+
+---
+
+## 1 Corintios
+
+- **1 Corintios 13:7 DHHDK** **[7]** Tener amor es sufrirlo todo, creerlo todo, esperarlo todo, soportarlo todo.
+
+- **1 Corintios 13:13 NTV** **[13]** Tres cosas durarán para siempre: la fe, la esperanza y el amor; y la mayor de las tres es el amor.
+
+---
+
+## Santiago
+
+- **Santiago 4:17 DHHDK** **[17]** El que sabe hacer el bien y no lo hace, comete pecado.
+
+---
+
+## 2 Timoteo
+
+- **2 Timoteo 4:7 DHHDK** **[7]** He peleado la buena batalla, he llegado al término de la carrera, me he mantenido fiel.
+
+---
+
+## 1 Juan
+
+- **1 Juan 4:1 NTV** **[1]** Queridos amigos, no les crean a todos los que afirman hablar de parte del Espíritu. Pónganlos a prueba para averiguar si el espíritu que tienen realmente proviene de Dios, porque hay muchos falsos profetas en el mundo.
 
 ---
 
