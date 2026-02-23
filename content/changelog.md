@@ -11,6 +11,8 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-02-23 | [Projects](/projects)           | New project: "E-Commerce Conversational Agent with Ollama and LangChain" |
+| 2026-02-23 | [Projects](/projects)           | New project: "Prisoner's Dilemma: Dynamic Network Topologies" |
 | 2025-12-12 | [Bible](/spaces/bible/)         | Added 7 new verses |
 | 2025-03-18 | [Kiki](/kiki)                   | New web page: "Kiki Softpaws" |
 | 2025-03-18 | [Blog](/blog)                   | New post: "Zima Blue: The Search for the Self" |
