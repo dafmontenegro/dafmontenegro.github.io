@@ -1,7 +1,7 @@
 ---
 title: "Prisoner's Dilemma in Dynamic Network Topologies: Agent-Based Simulation Framework"
-description: "An agent-based simulation framework for studying cooperation and isolation dynamics in adaptive social networks. Agents play the iterated Prisoner's Dilemma using memory-one strategies, learn by imitating successful neighbors via the Fermi Rule, adapt their connections through dynamic network rewiring, and face survival challenges under Pareto-distributed wealth. Compares Erdős-Rényi and Barabási-Albert topologies to explore how network structure shapes the emergence of cooperation."
-summary: "An agent-based simulation framework for studying cooperation and isolation dynamics in adaptive social networks. Agents play the iterated Prisoner's Dilemma using memory-one strategies, learn by imitating successful neighbors via the Fermi Rule, adapt their connections through dynamic network rewiring, and face survival challenges under Pareto-distributed wealth. Compares Erdős-Rényi and Barabási-Albert topologies to explore how network structure shapes the emergence of cooperation."
+description: "Agent-based simulation of the iterated Prisoner's Dilemma on adaptive networks. Explores how cooperation emerges through imitation (Fermi Rule), dynamic rewiring, and Pareto wealth across Erdős-Rényi and Barabási-Albert topologies."
+summary: "Agent-based simulation of the iterated Prisoner's Dilemma on adaptive networks. Explores how cooperation emerges through imitation (Fermi Rule), dynamic rewiring, and Pareto wealth across Erdős-Rényi and Barabási-Albert topologies."
 date: 2025-12-21
 lastmod: 2026-02-23
 featureAlt: "Illustration of the Prisoner's Dilemma on a network with a cooperative green agent and a defecting red agent"
@@ -12,15 +12,10 @@ categories: ["research", "software"]
 tags: ["prisoners-dilemma", "game-theory", "evolutionary-game-theory", "agent-based-modeling", "network-dynamics", "network-science", "complex-networks", "cooperation", "cooperation-emergence", "cultural-evolution", "fermi-rule", "complex-systems", "simulation", "memory-one", "tit-for-tat", "trembling-hand", "barabasi-albert", "erdos-renyi", "scale-free-networks", "wealth-inequality", "pareto-distribution", "python", "networkx", "numpy", "matplotlib", "undergraduate-thesis", "unal"]
 ---
 
-# Analysis of the Prisoner's Dilemma in Dynamic Network Topologies: Development of a Computational Tool for Studying Agent Cooperation and Isolation
+# Prisoner's Dilemma in Dynamic Network Topologies: Agent-Based Simulation Framework
 
-**Author:** Daniel Felipe Montenegro Herrera
-
-**Director:** Juan David García Arteaga
-
-**Universidad Nacional de Colombia**
-
-**Systems and Computer Engineering**
+**Daniel Felipe Montenegro Herrera** · advised by **Juan David García Arteaga**
+Universidad Nacional de Colombia — Systems and Computer Engineering
 
 ---
 
