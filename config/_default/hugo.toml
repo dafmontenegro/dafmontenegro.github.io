@@ -5,7 +5,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
 enableRobotsTXT = true
 summaryLength = 0
 
-timeout = "90s"
+timeout = "210s"
 
 [pagination]
   pagerSize = 5
