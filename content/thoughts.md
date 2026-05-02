@@ -27,6 +27,7 @@ All my thoughts, everywhere, at the same time...
 
 | Date       | Thought | Insight |
 | ---------- | ------- | ------- |
+| 2026-04-21 | The days are long, but the years are short. | |
 | 2024-12-22 | Maybe the reason I do all this is because I want to be seen: ***"I see you."*** | [Di Que Eres Tú - Mufasa](https://open.spotify.com/intl-es/track/3LWUL84aeqzvD3eBxVSKAa?si=53dfa0a98bbf4a0c) |
 | 2024-12-22 | What will be waiting for me at **Milele**? | [Mufasa: The Lion King (2024)](https://www.imdb.com/title/tt13186482/) |
 | 2024-12-03 | t’es la meilleure chose qui m’est arrivée, mais aussi la pire chose qui m’est arrivée, ce jour où je t’ai rencontrée, j’aurais peut-être préféré, que ce jour ne soit jamais arrivé, la pire des bénédictions, a plus belle des malédictions. | [Stromae, Pomme - Ma Meilleure Ennemie](https://www.youtube.com/watch?v=1F3OGIFnW1k) |

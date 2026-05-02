@@ -13,13 +13,13 @@ copyright = "© 2026 🍀 Daniel Felipe Montenegro"
 
 [params.author]
   name = "Daniel Felipe Montenegro"
-  image = "svg/white-caesars-window.svg"
-  imageDark = "svg/black-caesars-window.svg"
+  image = "img/daniel-felipe-montenegro.png"
   headline = "Your friendly neighborhood software engineer."
   bio = "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
   links = [
     { telegram = "https://t.me/dafmontenegro" },
     { github = "https://github.com/dafmontenegro" },
+    { linkedin = "www.linkedin.com/in/dafmontenegro"},
     { x-twitter = "https://x.com/dafmontenegro" },
     { youtube = "https://youtube.com/@MiAmigoMelquiades" },
   ]

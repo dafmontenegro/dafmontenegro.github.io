@@ -3,16 +3,16 @@
     --color-neutral: 255, 255, 255;
 
     /* Neutral */
-    --color-neutral-50: 250, 250, 250;
-    --color-neutral-100: 245, 245, 245;
-    --color-neutral-200: 229, 229, 229;
-    --color-neutral-300: 212, 212, 212;
-    --color-neutral-400: 163, 163, 163;
-    --color-neutral-500: 115, 115, 115;
-    --color-neutral-600: 82, 82, 82;
-    --color-neutral-700: 64, 64, 64;
-    --color-neutral-800: 38, 38, 38;
-    --color-neutral-900: 23, 23, 23;
+    --color-neutral-50: 248, 250, 252;
+    --color-neutral-100: 241, 245, 249;
+    --color-neutral-200: 226, 232, 240;
+    --color-neutral-300: 203, 213, 225;
+    --color-neutral-400: 148, 163, 184;
+    --color-neutral-500: 100, 116, 139;
+    --color-neutral-600: 71, 85, 105;
+    --color-neutral-700: 51, 65, 85;
+    --color-neutral-800: 30, 41, 59;
+    --color-neutral-900: 15, 23, 42;
     --color-neutral-950: 10, 10, 10;
 
     /* Primary (Red) */

@@ -6,7 +6,7 @@ featureAlt: "Caesar's Window"
 ---
 
 {{< alert "lightbulb" >}}
-What will be waiting for me at **Milele**?
+The days are long, but the years are short.
 {{< /alert >}}
 
-All my thoughts in [/thoughts](/thoughts).
+Let's make something happen — [say hello](https://t.me/dafmontenegro)
