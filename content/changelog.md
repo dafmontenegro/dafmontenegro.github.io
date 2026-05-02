@@ -11,6 +11,13 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-05-02 | [Homepage](/) | Updated homepage thought: "The days are long, but the years are short." |
+| 2026-05-02 | [Homepage](/) | Replaced contact line with Telegram call-to-action: "Let's make something happen — say hello" |
+| 2026-05-02 | [Homepage](/) | Replaced Caesar's Window avatar with personal photo |
+| 2026-05-02 | [Homepage](/) | Added LinkedIn to social links |
+| 2026-05-02 | [Thoughts](/thoughts/) | New thought: "The days are long, but the years are short." |
+| 2026-05-02 | [Homepage](/) | Updated favicon across all sizes and platforms |
+| 2026-05-02 | [Homepage](/) | Migrated neutral color palette from gray to slate-blue tones |
 | 2026-02-23 | [Projects](/projects)           | New project: "E-Commerce Conversational Agent with Ollama and LangChain" |
 | 2026-02-23 | [Projects](/projects)           | New project: "Prisoner's Dilemma: Dynamic Network Topologies" |
 | 2025-12-12 | [Bible](/spaces/bible/)         | Added 7 new verses |
