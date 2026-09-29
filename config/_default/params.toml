@@ -4,6 +4,9 @@ autoSwitchAppearance = true
 
 defaultThemeColor = "#000000"
 
+# Fallback social preview image for pages without their own feature image
+images = ["feature.png"]
+
 enableSearch = true
 enableCodeCopy = true
 enableImageLazyLoading = true
@@ -58,3 +61,6 @@ fingerprintAlgorithm = "sha256"
 
 [taxonomy]
   showTermCount = true
+
+[social]
+  twitter = "dafmontenegro"

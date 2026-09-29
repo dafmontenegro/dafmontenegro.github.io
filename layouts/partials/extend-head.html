@@ -1,0 +1,29 @@
+{{/* Congo loads this partial at the end of <head>. On the homepage and the About page it adds a
+     schema.org Person, so search engines can connect the site with its author and social profiles. */}}
+{{ if or .IsHome (eq .RelPermalink "/about/") }}
+  {{- $author := site.Language.Params.Author -}}
+  {{- $sameAs := slice -}}
+  {{- range $author.links }}
+    {{- range $name, $url := . }}
+      {{- $sameAs = $sameAs | append $url -}}
+    {{- end }}
+  {{- end }}
+  {{- $person := dict
+    "@context" "https://schema.org"
+    "@type" "Person"
+    "name" $author.name
+    "url" site.Home.Permalink
+    "jobTitle" "AI Software Developer"
+    "description" site.Params.description
+    "knowsAbout" (slice "Artificial Intelligence" "AI Platform Engineering" "Model Context Protocol" "Retrieval-Augmented Generation" "Software Engineering" "Data Engineering")
+    "sameAs" $sameAs
+  -}}
+  {{- with $author.image }}
+    {{- with resources.Get . }}
+      {{- $person = merge $person (dict "image" .Permalink) -}}
+    {{- end }}
+  {{- end }}
+  <script type="application/ld+json">
+    {{ $person | jsonify | safeJS }}
+  </script>
+{{ end }}
