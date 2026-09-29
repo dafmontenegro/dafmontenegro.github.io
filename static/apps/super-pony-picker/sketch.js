@@ -134,8 +134,10 @@ const I18N = {
     // settings screen
     uiTitle: 'SUPER PONY PICKER', uiSub: 'Random name picker horse race',
     uiPonies: 'PONIES', uiPaste: 'PASTE A LIST', uiPasteHint: 'One name per line (or separated by commas). Up to 20.',
-    uiApply: 'USE LIST', uiCancel: 'CANCEL', uiPick: 'PICK', uiPickFirst: 'WINNER', uiPickLast: 'LAST PLACE',
-    uiHowMany: 'HOW MANY', uiClose: 'CLOSE RACE (DRAFTING)', uiYes: 'YES', uiNo: 'NO',
+    uiApply: 'USE LIST', uiCancel: 'CANCEL', uiPick: 'WHO GETS PICKED?', uiPickFirst: 'THE WINNER', uiPickLast: 'THE LAST ONE',
+    uiHowMany: 'HOW MANY PEOPLE?',
+    uiPickHint: 'The race decides: the first to cross the finish line are picked (or the last ones, if you choose that).',
+    uiClose: 'CLOSE RACE (DRAFTING)', uiYes: 'YES', uiNo: 'NO',
     uiHelp: '? HOW IT WORKS', uiFull: 'FULLSCREEN', uiRandom: 'RANDOM NAMES', uiStart: 'START',
     uiPlaceholder: 'RANDOM', uiPhoto: 'Click to add a photo (it never leaves your device)',
     uiHint: 'Empty lane = random biblical name · Click a pony to add a photo<br>SPACE: speed x3 · M: sound · F: fullscreen',
@@ -168,8 +170,10 @@ const I18N = {
     copyHeader: 'Resultados de Super Pony Picker', copyPicked: 'Elegido', copyTry: 'Pruébalo',
     uiTitle: 'SUPER PONY PICKER', uiSub: 'Selector aleatorio de nombres con carrera de ponis',
     uiPonies: 'PONIS', uiPaste: 'PEGAR LISTA', uiPasteHint: 'Un nombre por línea (o separados por comas). Hasta 20.',
-    uiApply: 'USAR LISTA', uiCancel: 'CANCELAR', uiPick: 'ELEGIR', uiPickFirst: 'GANADOR', uiPickLast: 'ÚLTIMO LUGAR',
-    uiHowMany: 'CUÁNTOS', uiClose: 'CARRERA REÑIDA (REBUFO)', uiYes: 'SÍ', uiNo: 'NO',
+    uiApply: 'USAR LISTA', uiCancel: 'CANCELAR', uiPick: '¿A QUIÉN ELEGIMOS?', uiPickFirst: 'AL GANADOR', uiPickLast: 'AL ÚLTIMO',
+    uiHowMany: '¿CUÁNTAS PERSONAS?',
+    uiPickHint: 'La carrera decide: se eligen los primeros en llegar a la meta (o los últimos, si eliges eso).',
+    uiClose: 'CARRERA REÑIDA (REBUFO)', uiYes: 'SÍ', uiNo: 'NO',
     uiHelp: '? CÓMO FUNCIONA', uiFull: 'PANTALLA COMPLETA', uiRandom: 'NOMBRES AL AZAR', uiStart: 'START',
     uiPlaceholder: 'AL AZAR', uiPhoto: 'Clic para poner una foto (nunca sale de tu dispositivo)',
     uiHint: 'Carril vacío = nombre bíblico al azar · Clic en un poni para ponerle foto<br>ESPACIO: velocidad x3 · M: sonido · F: pantalla completa',
@@ -1690,23 +1694,23 @@ function injectGameCSS() {
   const style = document.createElement('style');
   style.id = 'spp-css';
   style.textContent = `
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
 #spp-game { position: relative; width: 100%; height: 100vh; height: 100svh; background: #000; overflow: hidden; }
 #spp-game:fullscreen { height: 100vh; }
 .spp-ov { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
   background: rgba(0,0,0,.6); padding: 12px; box-sizing: border-box; z-index: 10;
-  font-family: "Pixelify Sans", ui-monospace, monospace; color: #fcfcfc; }
+  font-family: "Silkscreen", ui-monospace, monospace; color: #fcfcfc; }
 .spp-ov.hidden { display: none; }
 .spp-ov * { box-sizing: border-box; }
 .spp-ov .box { background: #000; border: 4px solid #fcfcfc; box-shadow: 0 0 0 4px #000, 0 0 0 8px #0058f8;
   padding: 18px; width: 100%; max-width: 720px; max-height: 100%; overflow: auto;
-  font-size: 15px; line-height: 1.5; }
+  font-size: 13px; line-height: 1.5; }
 .spp-ov .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-.spp-ov h2 { font-size: 26px; color: #f8b800; margin: 0; font-weight: 700; line-height: 1.1; letter-spacing: 1px; }
-.spp-ov .sub { color: #9a9a9a; font-size: 13px; margin: 4px 0 0; }
+.spp-ov h2 { font-size: 22px; color: #f8b800; margin: 0; font-weight: 700; line-height: 1.1; letter-spacing: 1px; }
+.spp-ov .sub { color: #9a9a9a; font-size: 11px; margin: 4px 0 0; }
 .spp-ov .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 12px 0; flex-wrap: wrap; }
 .spp-ov .lanes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; margin: 12px 0; }
-@media (max-width: 560px) { .spp-ov .lanes { grid-template-columns: 1fr; } .spp-ov .box { font-size: 14px; } }
+@media (max-width: 560px) { .spp-ov .lanes { grid-template-columns: 1fr; } .spp-ov .box { font-size: 12px; } }
 .spp-ov .lane { display: flex; align-items: center; gap: 8px; }
 .spp-ov .lane img { width: 40px; height: 40px; image-rendering: pixelated; flex: none; cursor: pointer;
   border: 2px dashed #7c7c7c; object-fit: cover; background: #202020; }
@@ -1727,28 +1731,29 @@ function injectGameCSS() {
 .spp-ov button:hover { background: #fcfcfc; color: #000; }
 .spp-ov button.primary { background: #f83800; }
 .spp-ov button.primary:hover { background: #f8b800; color: #000; }
-.spp-ov button.small { padding: 4px 8px; font-size: 13px; }
-.spp-ov .hint { color: #9a9a9a; text-align: center; margin: 12px 0 0; font-size: 12px; }
+.spp-ov button.small { padding: 4px 8px; font-size: 11px; }
+.spp-ov .hint { color: #9a9a9a; text-align: center; margin: 12px 0 0; font-size: 11px; }
+#spp-pickhint { text-align: left; margin: 0 0 8px; }
 .spp-ov .paste { border: 2px dashed #7c7c7c; padding: 10px; margin: 10px 0; }
 /* The main buttons always stay visible, even with 20 lanes */
 #spp-setup .btns { position: sticky; bottom: -18px; background: #000; padding: 10px 0 12px; margin: 10px 0 0; z-index: 2; }
 /* Compact mode for short screens (for example, embedded in a page or a phone in landscape) */
 @media (max-height: 560px) {
   .spp-ov { padding: 6px; }
-  .spp-ov .box { padding: 10px 12px; font-size: 13px; line-height: 1.3; box-shadow: 0 0 0 3px #000, 0 0 0 5px #0058f8; border-width: 3px; }
-  .spp-ov h2 { font-size: 20px; }
-  .spp-ov .sub, #spp-setup .hint { display: none; }
+  .spp-ov .box { padding: 10px 12px; font-size: 11px; line-height: 1.3; box-shadow: 0 0 0 3px #000, 0 0 0 5px #0058f8; border-width: 3px; }
+  .spp-ov h2 { font-size: 17px; }
+  .spp-ov .sub, #spp-setup .hint:not(#spp-pickhint) { display: none; }
   .spp-ov .row { margin: 6px 0; }
   .spp-ov .lanes { gap: 5px 12px; margin: 6px 0; }
   .spp-ov .lane img { width: 26px; height: 26px; }
   .spp-ov input[type=text], .spp-ov select { padding: 3px 6px; }
   .spp-ov button { padding: 6px 8px; }
   #spp-setup .btns { bottom: -10px; padding: 6px 0 8px; margin-top: 6px; gap: 6px; }
-  #spp-help .box { font-size: 13px; }
+  #spp-help .box { font-size: 11px; }
 }
-.spp-ov .paste p { margin: 0 0 8px; color: #9a9a9a; font-size: 13px; }
-#spp-help .box { box-shadow: 0 0 0 4px #000, 0 0 0 8px #f8b800; font-size: 15px; line-height: 1.55; }
-#spp-help h3 { font-size: 17px; color: #3cbcfc; margin: 18px 0 6px; font-weight: 600; }
+.spp-ov .paste p { margin: 0 0 8px; color: #9a9a9a; font-size: 11px; }
+#spp-help .box { box-shadow: 0 0 0 4px #000, 0 0 0 8px #f8b800; font-size: 13px; line-height: 1.55; }
+#spp-help h3 { font-size: 14px; color: #3cbcfc; margin: 18px 0 6px; font-weight: 600; }
 #spp-help p { margin: 6px 0; }
 #spp-help .y { color: #f8b800; } #spp-help .r { color: #f83800; }
 #spp-help .boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; margin: 8px 0; }
@@ -1756,7 +1761,7 @@ function injectGameCSS() {
 #spp-help .bx { display: flex; gap: 10px; align-items: center; border: 2px solid #303030; padding: 8px; }
 #spp-help .bx img { width: 45px; height: 40px; image-rendering: pixelated; flex: none; }
 #spp-help .bx b { display: block; font-weight: normal; margin-bottom: 4px; }
-#spp-help .tag { font-size: 11px; padding: 1px 5px; margin-left: 6px; }
+#spp-help .tag { font-size: 9px; padding: 1px 5px; margin-left: 6px; }
 #spp-help .good { background: #00a800; } #spp-help .bad { background: #f83800; } #spp-help .luck { background: #6844fc; }
 #spp-help ul { margin: 4px 0; padding-left: 18px; } #spp-help li { margin: 4px 0; }
 `;
@@ -1803,6 +1808,7 @@ function buildSetupUI() {
           <label class="radio"><input type="radio" name="spp-many" value="3"> 3</label>
         </span>
       </div>
+      <p class="hint" id="spp-pickhint"></p>
       <div class="row">
         <span id="spp-l-close"></span>
         <span>
@@ -1932,6 +1938,7 @@ function renderSetupTexts() {
   setTxt('spp-l-first', T('uiPickFirst'));
   setTxt('spp-l-last', T('uiPickLast'));
   setTxt('spp-l-many', T('uiHowMany'));
+  setTxt('spp-pickhint', T('uiPickHint'));
   setTxt('spp-l-close', T('uiClose'));
   setTxt('spp-l-yes', T('uiYes'));
   setTxt('spp-l-no', T('uiNo'));

@@ -21,7 +21,7 @@ tags: ["random-name-picker", "name-picker", "random-picker", "raffle", "giveaway
 
 1. Choose how many ponies will run (**2 to 20**). The track, the camera and every screen adjust automatically.
 2. Write the names, or use **Paste a list** to add everyone at once. Empty lanes get a **random biblical name**, so you can also race just for fun.
-3. Decide what you are picking: the **winner** or the **last place**, and **how many** people (1, 2 or 3).
+3. Choose **Who gets picked?**: the winner or the last one, and **how many people**: 1, 2 or 3.
 4. Press **Start**, check each pony's birth stats and press **Space**, **Enter** or click to start the race.
 5. When the race ends you get the podium, the last places and the picked names. Use **Copy** to share the result.
 
@@ -98,4 +98,4 @@ Yes. The game starts in **English** and you can switch to **Spanish** with the *
 
 ## 7. En español
 
-**Super Pony Picker** es un **selector aleatorio de nombres gratis y online** con forma de carrera de caballos 8-bit. Escribe o pega hasta 20 nombres, elige si quieres sacar al **ganador** o al **último lugar** (1, 2 o 3 personas) y deja que los ponis decidan. Es **justo**: usa el generador aleatorio criptográfico del navegador y ningún carril tiene ventaja, así que todos los nombres tienen la misma probabilidad. El juego está en inglés y en español, y se usa directamente arriba o en [**pantalla completa**](/apps/super-pony-picker/?lang=es).
+**Super Pony Picker** es un **selector aleatorio de nombres gratis y online** con forma de carrera de caballos 8-bit. Escribe o pega hasta 20 nombres, responde **¿a quién elegimos?** (al ganador o al último) y **¿cuántas personas?** (1, 2 o 3), y deja que los ponis decidan. Es **justo**: usa el generador aleatorio criptográfico del navegador y ningún carril tiene ventaja, así que todos los nombres tienen la misma probabilidad. El juego está en inglés y en español, y se usa directamente arriba o en [**pantalla completa**](/apps/super-pony-picker/?lang=es).
