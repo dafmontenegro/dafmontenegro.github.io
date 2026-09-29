@@ -1,13 +1,13 @@
 ---
 title: "Super Pony Picker: Random Name Picker"
 description: "Free online random name picker: enter up to 20 names and watch an 8-bit pony race pick a winner. Fair, fun and instant, perfect for classrooms, teams, raffles and giveaways."
-summary: "A free and fair random name picker disguised as an 8-bit horse race. Enter up to 20 names, press start and let the ponies decide who wins or who ends up in last place."
+summary: "A free and fair random name picker disguised as an 8-bit horse race. Enter up to 20 names, choose whether to pick the winner or the last one (1, 2 or 3 people) and watch the ponies race through turbos, stars, mud and dice rolls to the podium. Built with p5.js, the Web Crypto API and live chiptune sound, it runs entirely in your browser."
 date: 2026-09-28
 lastmod: 2026-09-28
-featureAlt: "8-bit ponies racing on a dirt track in Super Pony Picker"
-coverAlt: "8-bit ponies racing on a dirt track in Super Pony Picker"
+featureAlt: "Seven 8-bit ponies racing mid-race past a cheering crowd in Super Pony Picker"
+coverAlt: "Seven 8-bit ponies racing mid-race past a cheering crowd in Super Pony Picker"
 coverCaption: "Super Pony Picker"
-thumbnailAlt: "8-bit ponies racing on a dirt track in Super Pony Picker"
+thumbnailAlt: "Seven 8-bit ponies racing mid-race past a cheering crowd in Super Pony Picker"
 categories: ["software", "games"]
 tags: ["random-name-picker", "name-picker", "random-picker", "raffle", "giveaway", "horse-race", "game", "8-bit", "pixel-art", "retro", "p5js", "javascript", "web-audio", "chiptune", "randomness"]
 ---
