@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Super Pony Picker — Random Name Picker Horse Race</title>
+  <meta name="description" content="Play Super Pony Picker: enter up to 20 names and let an 8-bit pony race pick a winner. Free, fair and fun random name picker.">
+  <!-- The project page (with the full explanation) is the main page for search engines -->
+  <link rel="canonical" href="https://montenegrodanielfelipe.com/projects/super-pony-picker/">
+  <meta name="author" content="Daniel Felipe Montenegro">
+  <meta name="theme-color" content="#000000">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Daniel Felipe Montenegro">
+  <meta property="og:title" content="Super Pony Picker — Random Name Picker Horse Race">
+  <meta property="og:description" content="Enter names, press start and let the ponies decide. A fair, free and fun 8-bit random name picker.">
+  <meta property="og:url" content="https://montenegrodanielfelipe.com/projects/super-pony-picker/">
+  <meta property="og:image" content="https://montenegrodanielfelipe.com/apps/super-pony-picker/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@dafmontenegro">
+  <meta name="twitter:image" content="https://montenegrodanielfelipe.com/apps/super-pony-picker/og-image.png">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    html, body { margin: 0; background: #000; color: #fcfcfc; height: 100%; overflow: hidden; }
+    .bar { height: 34px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 0 10px; border-bottom: 2px solid #262626; font-family: "Pixelify Sans", ui-monospace, monospace; font-size: 13px; }
+    .bar a { color: #fcfcfc; text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .bar a:hover, .bar a:focus-visible { color: #f8b800; }
+    .bar .lang { display: flex; gap: 6px; flex: none; }
+    .bar button { font: inherit; color: #fcfcfc; background: #000; border: 2px solid #fcfcfc; padding: 2px 6px; cursor: pointer; }
+    .bar button[aria-pressed="true"] { background: #f8b800; color: #000; border-color: #f8b800; }
+    #spp-game { height: calc(100vh - 36px); height: calc(100svh - 36px); }
+    /* Inside the project page (iframe) the bar is not needed */
+    html.embedded .bar { display: none; }
+    html.embedded #spp-game { height: 100vh; height: 100svh; }
+    #spp-game:fullscreen { height: 100vh; }
+  </style>
+  <script>
+    if (window.self !== window.top) { document.documentElement.classList.add('embedded'); }
+  </script>
+  <script src="lib/p5.min.js" defer></script>
+  <script src="sketch.js" defer></script>
+</head>
+<body>
+  <div class="bar">
+    <a href="/projects/super-pony-picker/">&larr; Super Pony Picker · Daniel Felipe Montenegro</a>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+  <main id="spp-game" aria-label="Super Pony Picker">
+    <noscript><p style="font-family:monospace;padding:24px;text-align:center">Super Pony Picker needs JavaScript. / Super Pony Picker necesita JavaScript.</p></noscript>
+  </main>
+  <script>
+    document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (window.setLang) { window.setLang(b.getAttribute('data-set-lang')); }
+      });
+    });
+  </script>
+</body>
+</html>
