@@ -1,6 +1,6 @@
 ---
 title: "How to Run Ollama on Google Colab"
-description: "Ollama is a great tool for testing LLMs and Embedding models locally. It's possible to use this tool in Google Colab, but when you run ollama serve, your script will get stuck in that cell, and you won’t be able to run the following cells. Luckily, the solution is simple and can be done with code."
+description: "Ollama is great for testing LLMs and embedding models, but ollama serve blocks your notebook. Here is a simple code solution to run it on Google Colab."
 summary: "Ollama is a great tool for testing LLMs and Embedding models locally. It's possible to use this tool in Google Colab, but when you run ollama serve, your script will get stuck in that cell, and you won’t be able to run the following cells. Luckily, the solution is simple and can be done with code."
 date: 2024-09-18
 lastmod: 2024-10-16

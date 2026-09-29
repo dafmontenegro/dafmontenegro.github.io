@@ -1,6 +1,6 @@
 ---
 title: "Memories Of Murder"
-description: "Memories of Murder is not just a thriller or merely a police drama; it is a reflection on human nature, on injustice, and on the desperate search for answers in an indifferent world. It does not seek to offer comfort or easy answers, and it is precisely this uncertainty that makes it an unforgettable experience."
+description: "Memories of Murder is more than a thriller: a reflection on human nature, injustice and the desperate search for answers in an indifferent world."
 summary: "Memories of Murder is not just a thriller or merely a police drama; it is a reflection on human nature, on injustice, and on the desperate search for answers in an indifferent world. It does not seek to offer comfort or easy answers, and it is precisely this uncertainty that makes it an unforgettable experience."
 date: 2024-10-22
 lastmod: 2024-11-21

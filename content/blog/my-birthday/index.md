@@ -1,6 +1,6 @@
 ---
 title: "My Birthday"
-description: "So on a day like this, I not only allow myself to close my eyes and let the memories flood me, beautiful memories that feel as vivid as when I experience them in those dreams that I have had being both awake and asleep."
+description: "On a day like this, I let myself close my eyes and let the memories flood me, as vivid as the dreams I have had both awake and asleep."
 summary: "So on a day like this, I not only allow myself to close my eyes and let the memories flood me, beautiful memories that feel as vivid as when I experience them in those dreams that I have had being both awake and asleep."
 date: 2025-02-01
 lastmod: 2025-02-01

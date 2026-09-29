@@ -1,6 +1,6 @@
 ---
 title: "Bible"
-description: "I enjoy reading the Bible and exploring different translations to deepen my understanding of each verse. In this space, I want to keep those that for one reason or another, have left a mark on me and that I recognize as valuable lessons for life."
+description: "Bible verses that have left a mark on me, read across different translations to deepen my understanding, and kept as valuable lessons for life."
 summary: "I enjoy reading the Bible and exploring different translations to deepen my understanding of each verse. In this space, I want to keep those that for one reason or another, have left a mark on me and that I recognize as valuable lessons for life."
 date: 2025-03-12
 lastmod: 2025-12-12

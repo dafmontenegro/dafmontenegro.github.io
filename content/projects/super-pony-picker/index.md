@@ -1,6 +1,6 @@
 ---
 title: "Super Pony Picker: Random Name Picker"
-description: "Free online random name picker: enter up to 20 names and watch an 8-bit pony race pick a winner. Fair, fun and instant, perfect for classrooms, teams, raffles and giveaways."
+description: "Free online random name picker: enter up to 20 names and watch an 8-bit pony race pick a winner. Fair and fun for classrooms, teams and giveaways."
 summary: "A free and fair random name picker disguised as an 8-bit horse race. Enter up to 20 names, choose whether to pick the winner or the last one (1, 2 or 3 people) and watch the ponies race through turbos, stars, mud and dice rolls to the podium. Built with p5.js, the Web Crypto API and live chiptune sound, it runs entirely in your browser."
 date: 2026-09-28
 lastmod: 2026-09-28

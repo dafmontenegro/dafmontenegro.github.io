@@ -32,7 +32,7 @@ To do the character justice (**and for having borrowed his catchphrase**), I'm g
 
 [^1]: [Spider-Man: Into the Spider-Verse (2018)](https://www.imdb.com/title/tt4633694/) | Animation, Action, Adventure. (2018, 14 diciembre). IMDb.
 
-![Peter B. Parker crying](img/spider-man-crying.gif)
+{{< gifv src="img/spider-man-crying.webm" alt="Peter B. Parker crying" width="640" height="266" >}}
 
 ## About Me
 My name is **Daniel Felipe Montenegro.**
@@ -49,13 +49,13 @@ By day, I'm a passionate **software developer** who loves to dive into code with
 
 [^2]: [Puss in Boots: The Last Wish (2022)](https://www.imdb.com/title/tt3915174/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
-![Puss in Boots: The Last Wish](img/puss-in-boots-vs-wolf.gif)
+{{< gifv src="img/puss-in-boots-vs-wolf.webm" alt="Puss in Boots: The Last Wish" width="960" height="402" >}}
 
 This site is a bit more than just a **personal diary** open to the world; it’s really a way to connect with you. Here, I share my **professional work, ideas, and thoughts.** Every now and then, a feeling slips out, but that’s part of the **creative process**... I’m always open to collaborating on initiatives that generate **positive change** for everyone, so stick around; there's always **something exciting happening.**
 
 If you want to know something more about me, you should know that the **most important** thing for me in life **is my family** and never give up **being yourself**; always be honest to your core. I faithfully believe that **I must have the courage and strength** to fight for a safe world for the people I love, and for no one else to feel the pain that I once felt or was felt by the **people who came before me.**
 
-![Spirit: Stallion of the Cimarron](img/spirit.gif "Spirit: Stallion of the Cimarron")
+{{< gifv src="img/spirit.webm" alt="Spirit: Stallion of the Cimarron" width="500" height="212" caption="Spirit: Stallion of the Cimarron" >}}
 
 Everything is an **ephemeral moment**, but that is what makes it beautiful and worthy of ***being appreciated***. Nothing is as **trivial** as it seems and when **we realize** all the things that had to **fall into place** to make this instant **possible**; we can live with **fascination** this beautiful experience ***that is life.***
 

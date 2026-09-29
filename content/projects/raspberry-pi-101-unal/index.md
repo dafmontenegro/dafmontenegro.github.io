@@ -1,6 +1,6 @@
 ---
 title: "Raspberry Pi 101 UNAL"
-description: "This is a practical introductory course created for the Digital Technology course at the Universidad Nacional de Colombia, highlighting the potential of Single Board Computers (SBC) such as the Raspberry Pi, where the true power of these devices is achieved through the coding process, which unlocks their full capabilities."
+description: "A hands-on introductory course on the Raspberry Pi and single board computers, created for a Digital Technology course at Universidad Nacional de Colombia."
 summary: "This is a practical introductory course created for the Digital Technology course at the Universidad Nacional de Colombia, highlighting the potential of Single Board Computers (SBC) such as the Raspberry Pi, where the true power of these devices is achieved through the coding process, which unlocks their full capabilities."
 date: 2025-02-16
 lastmod: 2025-02-16

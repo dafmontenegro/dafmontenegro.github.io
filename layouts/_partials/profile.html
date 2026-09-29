@@ -1,5 +1,7 @@
-{{/* Copy of Congo 2.11's partials/profile.html. The only change: the author photo is the first thing
-     visitors see on the homepage, so it loads eagerly instead of lazily (faster Largest Contentful Paint). */}}
+{{/* Copy of Congo 2.14's _partials/profile.html. Changes: the author photo is the first thing visitors
+     see on the homepage, so it loads eagerly instead of lazily (faster Largest Contentful Paint), and
+     the WebP setting is read from site.Params because home/profile.html calls this partial without
+     a context. */}}
 {{ $align := .align | default "center" }}
 <section
   class="not-prose {{ if eq $align "start" }}
@@ -16,7 +18,8 @@
     {{ $authorImage := resources.Get . }}
     {{ if $authorImage }}
       {{ $imgClass := "mb-2 h-auto w-36 rounded-full" }}
-      {{ partial "picture.html" (dict "img" $authorImage "alt" $altText "class" $imgClass "lazy" $lazy) }}
+      {{ $webp := site.Params.enableImageWebp | default true }}
+      {{ partial "picture.html" (dict "img" $authorImage "alt" $altText "class" $imgClass "lazy" $lazy "webp" $webp) }}
     {{ end }}
   {{ end }}
   <h1 class="text-4xl font-extrabold">

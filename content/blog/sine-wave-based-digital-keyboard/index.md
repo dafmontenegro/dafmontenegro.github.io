@@ -1,6 +1,6 @@
 ---
-title: "Implementation of a Digital Keyboard Based on Sinusoidal Signals"
-description: "Sinusoidal signals of the form x(t) = A * sin(wt) are used to generate sounds at a specific frequency, where w = 2 * pi * f. Based on this concept, this project involves the design and implementation of a digital piano capable of generating musical notes."
+title: "Digital Keyboard Based on Sine Waves"
+description: "Design and implementation of a digital piano in Python that generates musical notes from sinusoidal signals of the form x(t) = A·sin(2πft)."
 summary: "Sinusoidal signals of the form x(t) = A * sin(wt) are used to generate sounds at a specific frequency, where w = 2 * pi * f. Based on this concept, this project involves the design and implementation of a digital piano capable of generating musical notes."
 date: 2025-02-16
 lastmod: 2025-02-16
@@ -13,9 +13,9 @@ tags: ["numpy", "matplotlib", "audio-synthesis", "ipywidgets", "signal-theory", 
 ---
 {{< katex >}}
 
-# Implementation of a Digital Keyboard Based on Sinusoidal Signals
+**Implementation of a Digital Keyboard Based on Sinusoidal Signals**
 
-[**Python Notebook**](https://github.com/dafmontenegro/sine-wave-based-digital-keyboard/blob/master/sine-wave-based-digital-keyboard.ipynb) | [**Webpage**](https://montenegrodanielfelipe.com/blog/sine-wave-based-digital-keyboard) | [**Repository**](https://github.com/dafmontenegro/sine-wave-based-digital-keyboard)
+[**Python Notebook**](https://github.com/dafmontenegro/sine-wave-based-digital-keyboard/blob/master/sine-wave-based-digital-keyboard.ipynb) | [**Webpage**](https://montenegrodanielfelipe.com/blog/sine-wave-based-digital-keyboard/) | [**Repository**](https://github.com/dafmontenegro/sine-wave-based-digital-keyboard)
 
 ## Introduction
 

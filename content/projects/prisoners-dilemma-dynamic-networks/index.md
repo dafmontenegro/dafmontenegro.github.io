@@ -1,6 +1,6 @@
 ---
-title: "Prisoner's Dilemma in Dynamic Network Topologies: Agent-Based Simulation Framework"
-description: "Agent-based simulation of the iterated Prisoner's Dilemma on adaptive networks. Explores how cooperation emerges through imitation (Fermi Rule), dynamic rewiring, and Pareto wealth across Erdős-Rényi and Barabási-Albert topologies."
+title: "Prisoner’s Dilemma in Dynamic Networks"
+description: "Agent-based simulation of the iterated Prisoner’s Dilemma on adaptive networks: cooperation through imitation, dynamic rewiring and Pareto wealth."
 summary: "Agent-based simulation of the iterated Prisoner's Dilemma on adaptive networks. Explores how cooperation emerges through imitation (Fermi Rule), dynamic rewiring, and Pareto wealth across Erdős-Rényi and Barabási-Albert topologies."
 date: 2025-12-21
 lastmod: 2026-02-23
@@ -12,7 +12,7 @@ categories: ["research", "software"]
 tags: ["prisoners-dilemma", "game-theory", "evolutionary-game-theory", "agent-based-modeling", "network-dynamics", "network-science", "complex-networks", "cooperation", "cooperation-emergence", "cultural-evolution", "fermi-rule", "complex-systems", "simulation", "memory-one", "tit-for-tat", "trembling-hand", "barabasi-albert", "erdos-renyi", "scale-free-networks", "wealth-inequality", "pareto-distribution", "python", "networkx", "numpy", "matplotlib", "undergraduate-thesis", "unal"]
 ---
 
-# Prisoner's Dilemma in Dynamic Network Topologies: Agent-Based Simulation Framework
+**Prisoner's Dilemma in Dynamic Network Topologies: Agent-Based Simulation Framework**
 
 **Daniel Felipe Montenegro Herrera** · advised by **Juan David García Arteaga**
 Universidad Nacional de Colombia — Systems and Computer Engineering
