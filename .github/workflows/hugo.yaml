@@ -53,6 +53,18 @@ jobs:
         uses: actions/configure-pages@v6
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      # Reuse processed images and downloaded modules between runs, so each deploy
+      # only processes new or changed images instead of all of them.
+      - name: Cache Hugo resources
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ runner.temp }}/hugo_cache
+            resources
+          key: hugo-${{ env.HUGO_VERSION }}-${{ github.run_id }}
+          restore-keys: hugo-${{ env.HUGO_VERSION }}-
+      # baseURL comes from config/_default/hugo.toml (https). The Pages base_url
+      # output is http:// for this domain, which leaked into sitemap, og:url and feeds.
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
@@ -61,8 +73,7 @@ jobs:
         run: |
           hugo \
             --gc \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"          
+            --minify
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:

@@ -192,7 +192,7 @@ Always satisfying: **A>B>C>D**. For this project, the equivalences used were as 
 ### "What Game Theory Reveals About Life, The Universe, and Everything" by Veritasium
 If you're interested in learning more, I recommend watching the video titled ["What Game Theory Reveals About Life, The Universe, and Everything" by Veritasium](https://youtu.be/mScpHTIi-kM?si=4yu0qFeFhT4j2h1S), as well as the educational game created by [Nicky Case, "The Evolution of Trust"](https://ncase.me/trust/).
 
-{{< youtube mScpHTIi-kM >}}
+{{< youtube id="mScpHTIi-kM" loading="lazy" >}}
 
 {{< alert "circle-info" >}}
 This video also has a [Spanish version](https://www.youtube.com/watch?v=vBgrvVY1jGo) available.

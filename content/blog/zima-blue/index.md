@@ -18,7 +18,7 @@ After his journey through the cosmos, **Zima** returns to the place where it all
 
 It is quite paradoxical to ask that, because *everything Zima did along his journey brought him closer and closer to that very end; which was, in essence, the same as his beginning.* That is why this *search for the self* can be understood as something *cyclical*, or at the very least, **a return to the essential**.  
 
-{{< youtube TK3PwFks8tA >}}
+{{< youtube id="TK3PwFks8tA" loading="lazy" >}}
 
 We are beings *always lacking something, intrinsically incomplete*; one of our greatest needs is **time**. Every step we take is actually *one less*. However, what makes existence magnificent is that, even knowing it is destined to end, **it still chooses to happen**, and it happens with such force that *it gives meaning to all its purposes*.  
 

@@ -27,7 +27,7 @@ This meaning seems like almost religious wisdom, and I like the Spanish translat
 
 [^1]: [Le Comte de Monte-Cristo/Chapitre 117](https://fr.wikisource.org/wiki/Le_Comte_de_Monte-Cristo/Chapitre_117) - Wikisource. (1889).
 
-{{< youtube DChmpvR7Oic >}}
+{{< youtube id="DChmpvR7Oic" loading="lazy" >}}
 
 ## English Translation
 
