@@ -1,5 +1,5 @@
 ---
-title: "Super Pony Picker: Random Name Picker Horse Race"
+title: "Super Pony Picker: Random Name Picker"
 description: "Free online random name picker: enter up to 20 names and watch an 8-bit pony race pick a winner. Fair, fun and instant, perfect for classrooms, teams, raffles and giveaways."
 summary: "A free and fair random name picker disguised as an 8-bit horse race. Enter up to 20 names, press start and let the ponies decide who wins or who ends up in last place."
 date: 2026-09-28
@@ -11,15 +11,11 @@ thumbnailAlt: "8-bit ponies racing on a dirt track in Super Pony Picker"
 categories: ["software", "games"]
 tags: ["random-name-picker", "name-picker", "random-picker", "raffle", "giveaway", "horse-race", "game", "8-bit", "pixel-art", "retro", "p5js", "javascript", "web-audio", "chiptune", "randomness"]
 ---
-{{< lead >}}
-Type or paste up to **20 names**, press start and let the ponies decide.
-{{< /lead >}}
-
-**Super Pony Picker** is a **free online random name picker** that turns every draw into a retro horse race full of mystery boxes, photo finishes and a podium at the end. It's fair, it's instant and nobody can say the draw was rigged: everyone watched the race.
-
-{{< super-pony-picker >}}
+**Super Pony Picker** is a **free online random name picker** that turns every draw into a retro horse race full of mystery boxes, photo finishes and a podium at the end. Type or paste up to **20 names**, press start and let the ponies decide. It's fair, it's instant and nobody can say the draw was rigged: everyone watched the race.
 
 [**Play fullscreen**](/apps/super-pony-picker/) | [**How it works**](#3-how-the-race-works) | [**Is it fair?**](#2-is-it-fair)
+
+{{< super-pony-picker >}}
 
 ## 1. How to Use It
 
