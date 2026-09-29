@@ -10,6 +10,16 @@ showBreadcrumbs: false
 showReadingTime: false
 showPagination: false
 ---
+![Daniel Felipe Montenegro smiling in a navy suit, holding a diploma folder on graduation day](img/daniel-felipe-montenegro-graduation.jpg?2x=true "Graduation day, the day I became a Systems and Computer Engineer.")
+
+## My Professional Journey
+I'm a **Systems and Computer Engineer**, a licensed professional engineer and an **AI software developer**. My work lives where **artificial intelligence meets real-world systems**: designing the platforms that let AI assistants work **safely and reliably** with the tools and data people depend on every day.
+
+Most recently, I designed and built from the ground up an **AI platform based on the Model Context Protocol (MCP)**, and today I lead the team that carries it forward. It is a single core that takes care of what every integration needs (**identity, permissions, credentials and observability**), so new integrations can be switched on or off through configuration, with no redeployments. Every change that touches real data is **previewed and confirmed by a person** before it runs, and every action leaves a trace. I also build **AI-driven QA** that tries to break the system before anyone else does.
+
+Before that, I built **data pipelines and BI dashboards** that turned hours of manual analysis into minutes, developed **RAG systems, computer vision and backend APIs** as a freelancer, taught **workshops and tutoring** in Python, IoT and machine learning, and started my career in **customer experience**, where I learned that technology only matters when it solves a real problem for someone.
+
+## Your Friendly Neighborhood Software Engineer
 Well, let's just say I'm your friendly neighborhood **software engineer.**
 
 I'm not exactly a Spider-Man fan; however, **I love his catchphrase** and I have a special affection for **the Spider-Verse movies**.
@@ -28,15 +38,6 @@ To do the character justice (**and for having borrowed his catchphrase**), I'm g
 My name is **Daniel Felipe Montenegro.**
 
 By day, I'm a passionate **software developer** who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I’m exploring **cinema**, **music**, **literature** and a little bit of **poetry**; sometimes all at once, because all those things remind me that **I’m alive.**
-
-![Daniel Felipe Montenegro smiling in a navy suit, holding a diploma folder on graduation day](img/daniel-felipe-montenegro-graduation.jpg?2x=true "Graduation day, the day I became a Systems and Computer Engineer.")
-
-### My Professional Journey
-I'm a **Systems and Computer Engineer**, a licensed professional engineer and an **AI software developer**. My work lives where **artificial intelligence meets real-world systems**: designing the platforms that let AI assistants work **safely and reliably** with the tools and data people depend on every day.
-
-Most recently, I designed and built from the ground up an **AI platform based on the Model Context Protocol (MCP)**, and today I lead the team that carries it forward. It is a single core that takes care of what every integration needs (**identity, permissions, credentials and observability**), so new integrations can be switched on or off through configuration, with no redeployments. Every change that touches real data is **previewed and confirmed by a person** before it runs, and every action leaves a trace. I also build **AI-driven QA** that tries to break the system before anyone else does.
-
-Before that, I built **data pipelines and BI dashboards** that turned hours of manual analysis into minutes, developed **RAG systems, computer vision and backend APIs** as a freelancer, taught **workshops and tutoring** in Python, IoT and machine learning, and started my career in **customer experience**, where I learned that technology only matters when it solves a real problem for someone.
 
 > [Puss remembers his time with Kitty and Perrito]
 > 

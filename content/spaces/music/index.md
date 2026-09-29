@@ -22,7 +22,7 @@ Enjoy the song I can't stop listening to right now! This track is my current obs
 
 ### El Kalvo - Protagonista Estelar
 
-{{< youtube 5U1vKxAUT54 >}}
+{{< youtube id="5U1vKxAUT54" loading="lazy" >}}
 
 ---
 

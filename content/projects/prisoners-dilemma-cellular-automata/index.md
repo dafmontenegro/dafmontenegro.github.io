@@ -34,7 +34,7 @@ Always satisfying: **A>B>C>D**. For this project, the equivalences used were as 
 
 If you're interested in learning more, I recommend watching the video titled ["What Game Theory Reveals About Life, The Universe, and Everything" by Veritasium,](https://youtu.be/mScpHTIi-kM?si=4yu0qFeFhT4j2h1S) which inspired this project, as well as the educational game created by [Nicky Case, "The Evolution of Trust",](https://ncase.me/trust/) which was a huge inspiration for the aforementioned video.
 
-{{< youtube mScpHTIi-kM >}}
+{{< youtube id="mScpHTIi-kM" loading="lazy" >}}
 
 ### 1.2 Tit For Tat Strategy
 This was the strategy submitted by **Anatol Rapoport** to participate in the competition held by **Robert Axelrod** in **1980** [3]. Tit For Tat not only won the competition but also demonstrated ***the importance of cooperation,*** as any rational first glance at the prisoner's dilemma will always suggest that the best strategy is not to cooperate.<br>

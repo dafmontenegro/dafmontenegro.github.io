@@ -18,7 +18,7 @@ Irnos a vivir allí era nuestra protesta contra el mundo, pero no se trataba de 
 
 *Fuiste mi familia y mi amor, **aun vivo en esa caso aunque ya no la habites tu**.*
 
-{{< youtube jUHYYKBoshI >}}
+{{< youtube id="jUHYYKBoshI" loading="lazy" >}}
 
 {{< alert "circle-info" >}}
 This prose poem was originally written in **Spanish** and recited **by me** in a video about **Shutter Island**. You can watch it on my [YouTube channel](https://www.youtube.com/@MiAmigoMelquiades).

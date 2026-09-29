@@ -16,3 +16,8 @@ timeout = "210s"
 [services]
   [services.googleAnalytics]
     ID = "G-QMJW2TPVMJ"
+
+# YouTube embeds use youtube-nocookie.com: no tracking cookies until the visitor plays the video
+[privacy]
+  [privacy.youtube]
+    privacyEnhanced = true

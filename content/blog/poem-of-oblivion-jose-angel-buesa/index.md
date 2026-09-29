@@ -30,7 +30,7 @@ Y miraré las nubes sin pensar que te quiero,
 con el hábito sordo de un viejo marinero
 que aún siente, en tierra firme, la ondulación del mar.
 
-{{< youtube _OLNIdqgONA >}}
+{{< youtube id="_OLNIdqgONA" loading="lazy" >}}
 
 {{< alert "circle-info" >}}
 This poem is one of my favorites, so it was **declaimed by me** on my [YouTube channel](https://www.youtube.com/@MiAmigoMelquiades).
