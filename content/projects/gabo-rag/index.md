@@ -1,6 +1,6 @@
 ---
 title: "Gabo RAG"
-description: "'Gabo' is a RAG (Retrieval-Augmented Generation) system designed to enhance the capabilities of LLMs (Large Language Models) such as 'DeepSeek-R1', 'Llama 3.2', and 'Phi 3.5'. This project honors Colombian author Gabriel García Márquez by marking the tenth anniversary of his death."
+description: "Gabo is a RAG system that answers questions about Gabriel García Márquez’s work with LLMs like DeepSeek-R1, Llama 3.2 and Phi 3.5, built with LangChain."
 summary: "'Gabo' is a RAG (Retrieval-Augmented Generation) system designed to enhance the capabilities of LLMs (Large Language Models) such as 'DeepSeek-R1', 'Llama 3.2', and 'Phi 3.5'. This project honors Colombian author Gabriel García Márquez by marking the tenth anniversary of his death."
 date: 2024-09-21
 lastmod: 2025-01-31
@@ -474,7 +474,7 @@ On the other hand, **Llama’s performance remains solid and consistent**, which
 
 ## 9. References
 
-[1] [Using LangChain with Ollama in Python](https://github.com/ollama/ollama/blob/main/docs/tutorials/langchainpy.md)
+[1] [Using LangChain with Ollama in Python](https://github.com/ollama/ollama/blob/v0.3.0/docs/tutorials/langchainpy.md)
 
 [2] [5 Levels Of Text Splitting](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb)
 

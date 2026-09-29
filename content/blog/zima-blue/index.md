@@ -1,6 +1,6 @@
 ---
 title: "Zima Blue: The Search for the Self"
-description: "It is quite paradoxical to ask that, because everything Zima did along his journey brought him closer and closer to that very end; which was, in essence, the same as his beginning. That is why this search for the self can be understood as something cyclical, or at the very least, a return to the essential."
+description: "Everything Zima did brought him closer to his end, which was also his beginning. A reflection on Zima Blue and the cyclical search for the self."
 summary: "It is quite paradoxical to ask that, because everything Zima did along his journey brought him closer and closer to that very end; which was, in essence, the same as his beginning. That is why this search for the self can be understood as something cyclical, or at the very least, a return to the essential."
 date: 2025-03-18
 lastmod: 2025-03-18

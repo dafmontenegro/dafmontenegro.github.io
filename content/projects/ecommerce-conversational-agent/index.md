@@ -1,6 +1,6 @@
 ---
-title: "E-Commerce Conversational Agent with Ollama and LangChain"
-description: "A conversational agent for e-commerce built with Ollama, LangChain, and ChromaDB, comparing three open-source LLMs — Qwen3 4B, Llama 3.2 3B, and Phi-4-mini — for product search, order tracking, recommendations, and RAG-powered FAQ. Benchmarks tool-calling accuracy, multi-intent handling, and response time across all three models."
+title: "E-Commerce Agent with Ollama & LangChain"
+description: "An e-commerce conversational agent with Ollama, LangChain and ChromaDB, benchmarking Qwen3 4B, Llama 3.2 3B and Phi-4-mini on tool calling and RAG."
 summary: "A conversational agent for e-commerce built with Ollama, LangChain, and ChromaDB, comparing three open-source LLMs — Qwen3 4B, Llama 3.2 3B, and Phi-4-mini — for product search, order tracking, recommendations, and RAG-powered FAQ. Benchmarks tool-calling accuracy, multi-intent handling, and response time across all three models."
 date: 2026-01-21
 lastmod: 2026-01-21
@@ -13,7 +13,7 @@ tags: ["ollama", "langchain", "chromadb", "rag", "llm", "agent", "tool-calling",
 ---
 
 
-# E-Commerce Conversational Agent with Ollama and LangChain
+**E-Commerce Conversational Agent with Ollama and LangChain**
 
 An **intelligent conversational agent** for an e-commerce platform, capable of handling product searches, personalized recommendations, order tracking, technical support, product comparisons, and policy inquiries.
 

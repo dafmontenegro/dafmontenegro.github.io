@@ -1,6 +1,6 @@
 ---
 title: "Pi-Tensorflow-Lite-Object-Detection"
-description: "This project builds a real-time object detection system using a Raspberry Pi and a camera. It captures live video, processes it with a TensorFlow Lite model to detect specific objects, and saves important events as video files."
+description: "A real-time object detection system with a Raspberry Pi, a camera and TensorFlow Lite that detects specific objects and saves key events as video."
 summary: "This project builds a real-time object detection system using a Raspberry Pi and a camera. It captures live video, processes it with a TensorFlow Lite model to detect specific objects, and saves important events as video files."
 date: 2024-02-21
 lastmod: 2024-06-05

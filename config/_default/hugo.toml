@@ -1,5 +1,6 @@
 baseURL = "https://montenegrodanielfelipe.com/"
 defaultContentLanguage = "en"
+timeZone = "America/Bogota"
 
 ignoreLogs = ['warning-goldmark-raw-html']
 enableRobotsTXT = true
@@ -17,7 +18,10 @@ timeout = "210s"
   [services.googleAnalytics]
     ID = "G-QMJW2TPVMJ"
 
-# YouTube embeds use youtube-nocookie.com: no tracking cookies until the visitor plays the video
 [privacy]
+  # Google Analytics does not record visits from browsers that send Do Not Track
+  [privacy.googleAnalytics]
+    respectDoNotTrack = true
+  # YouTube embeds use youtube-nocookie.com: no tracking cookies until the visitor plays the video
   [privacy.youtube]
     privacyEnhanced = true

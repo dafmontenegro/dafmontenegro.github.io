@@ -1,0 +1,31 @@
+<!--
+    GIF-like video: plays muted, on a loop and inline, like an animated GIF, at a fraction of the size.
+    Parameters:
+        src     - (Required) video page resource, e.g. "img/clip.webm"
+        alt     - (Required) description of the clip, for screen readers
+        width   - (Required) intrinsic width in pixels, to reserve space and avoid layout shift
+        height  - (Required) intrinsic height in pixels
+        caption - (Optional) caption shown under the clip
+-->
+{{ $src := .Get "src" }}
+{{ with .Page.Resources.Get $src }}
+  <figure>
+    <video
+      class="mx-auto my-0 rounded-md"
+      style="max-width: 100%; height: auto;"
+      width="{{ $.Get "width" }}"
+      height="{{ $.Get "height" }}"
+      autoplay
+      loop
+      muted
+      playsinline
+      disablepictureinpicture
+      aria-label="{{ $.Get "alt" }}"
+    >
+      <source src="{{ .RelPermalink }}" type="{{ .MediaType.Type }}" />
+    </video>
+    {{ with $.Get "caption" }}<figcaption class="text-center">{{ . | markdownify }}</figcaption>{{ end }}
+  </figure>
+{{ else }}
+  {{ errorf "gifv: resource %q not found in %s" $src .Page.File.Path }}
+{{ end }}

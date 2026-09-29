@@ -1,6 +1,6 @@
 ---
 title: "Cinema Space"
-description: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
+description: "“What happens up on that screen means something.” Jack Conrad, Babylon. The films and series that have moved me, and why they matter to me."
 summary: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 date: 2024-10-12
 lastmod: 2025-04-09
@@ -293,7 +293,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 ### Main Pick: Arcane (2021 - 2024)
 
-![Arcane poster](img/arcane.png "[Arcane (2021 - 2024). IMDb](https://www.imdb.com/title/tt11126994/)")
+![Arcane poster](img/arcane.jpg "[Arcane (2021 - 2024). IMDb](https://www.imdb.com/title/tt11126994/)")
 
 ### Honorable Mentions:
 - **Baby Reindeer (2024).** The monologue in chapter six is too honest: [Donny Dunn Breaks Down On Stage](https://www.youtube.com/watch?v=khstPnH89ZM)

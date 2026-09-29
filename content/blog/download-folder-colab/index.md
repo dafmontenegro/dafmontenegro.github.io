@@ -1,6 +1,6 @@
 ---
 title: "How to download a folder from Google Colab"
-description: "Google Colab's UI from its file browser allows you to download files individually, but does not have an option to download entire directories; the solution is simple and can be done with code."
+description: "Google Colab’s file browser only lets you download files one by one. Here is a simple code solution to download an entire folder from Colab."
 summary: "Google Colab's UI from its file browser allows you to download files individually, but does not have an option to download entire directories; the solution is simple and can be done with code."
 date: 2024-09-17
 lastmod: 2024-10-14

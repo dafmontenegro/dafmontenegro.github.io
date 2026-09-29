@@ -1,6 +1,6 @@
 ---
 title: "Chapitre XXI - Le Petit Prince"
-description: "This chapter is my favorite chapter of The Little Prince and its numbering coincides with my favorite number. It is a beautiful text that explains what is friendship and love, the rites and the deep meaning of taming."
+description: "My favorite chapter of The Little Prince, numbered like my favorite number: a beautiful text about friendship, love, rites and the meaning of taming."
 summary: "This chapter is my favorite chapter of The Little Prince and its numbering coincides with my favorite number. It is a beautiful text that explains what is friendship and love, the rites and the deep meaning of taming."
 date: 2015-12-16
 lastmod: 2017-01-23

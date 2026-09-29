@@ -1,6 +1,6 @@
 ---
-title: "A Beginner’s Guide to Markdown: Syntax and Examples"
-description: "A complete beginner’s guide to Markdown syntax with practical examples, including syntax explanations and code examples. Perfect for writers, developers, and anyone looking to format text efficiently."
+title: "A Beginner’s Guide to Markdown"
+description: "A beginner’s guide to Markdown syntax with practical examples: headings, lists, links, images, code and more. Perfect for writers and developers."
 summary: "A complete beginner’s guide to Markdown syntax with practical examples, including syntax explanations and code examples. Perfect for writers, developers, and anyone looking to format text efficiently."
 date: 2025-03-03
 lastmod: 2025-03-03

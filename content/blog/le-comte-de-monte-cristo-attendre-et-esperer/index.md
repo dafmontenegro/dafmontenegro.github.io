@@ -1,6 +1,6 @@
 ---
 title: "Le Comte De Monte-Cristo: attendre et esperer"
-description: "So live and be happy, beloved children of my heart, and never forget that, until the day when God deigns to reveal the future to man, all human wisdom will be contained in these two words: Wait and hope!"
+description: "“Until the day when God deigns to reveal the future to man, all human wisdom will be contained in these two words: Wait and hope!”"
 summary: "So live and be happy, beloved children of my heart, and never forget that, until the day when God deigns to reveal the future to man, all human wisdom will be contained in these two words: Wait and hope!"
 date: 2024-12-22
 lastmod: 2024-04-09
