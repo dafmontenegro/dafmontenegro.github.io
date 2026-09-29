@@ -11,6 +11,10 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-09-29 | [About](/about)                 | New 'My Professional Journey' section with a graduation photo |
+| 2026-09-29 | [Homepage](/)                   | Faster homepage: lighter profile photo that loads right away |
+| 2026-09-29 | [Homepage](/)                   | SEO: shorter descriptions, social preview images and author structured data |
+| 2026-09-28 | [Projects](/projects)           | New project: "Super Pony Picker: Random Name Picker" |
 | 2026-05-02 | [Homepage](/) | Updated homepage thought: "The days are long, but the years are short." |
 | 2026-05-02 | [Homepage](/) | Replaced contact line with Telegram call-to-action: "Let's make something happen — say hello" |
 | 2026-05-02 | [Homepage](/) | Replaced Caesar's Window avatar with personal photo |
