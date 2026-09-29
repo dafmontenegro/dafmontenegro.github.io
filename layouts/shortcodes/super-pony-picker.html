@@ -1,0 +1,57 @@
+<!--
+    Super Pony Picker embed.
+    Parameters:
+        src    - (Optional) path of the game. Default: /apps/super-pony-picker/
+        height - (Optional) CSS height of the frame. Default: 16:10 aspect ratio, between 420px and 85vh
+-->
+{{ $src := .Get "src" | default "/apps/super-pony-picker/" }}
+{{ $size := "aspect-ratio: 16 / 10; min-height: 420px; max-height: 85vh;" }}
+{{ with .Get "height" }}{{ $size = printf "height: %s;" . }}{{ end }}
+
+<div style="position: relative; width: 100%; {{ $size | safeCSS }} margin: 1.5rem 0 0.75rem; background: #000;
+            border: 3px solid #fcfcfc; box-shadow: 0 0 0 3px #000, 0 0 0 6px #dc2626; border-radius: 2px; overflow: hidden;">
+    <iframe
+        src="{{ $src }}"
+        title="Super Pony Picker — random name picker horse race"
+        style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"
+        allow="fullscreen; clipboard-write; autoplay"
+        allowfullscreen
+        loading="eager">
+    </iframe>
+</div>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebApplication",
+            "name": "Super Pony Picker",
+            "alternateName": "Random Name Picker Horse Race",
+            "url": "https://montenegrodanielfelipe.com/projects/super-pony-picker/",
+            "description": "Free online random name picker that runs an 8-bit pony race to pick one or more winners or last places.",
+            "applicationCategory": "GameApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript and a modern browser",
+            "inLanguage": ["en", "es"],
+            "isAccessibleForFree": true,
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+            "image": "https://montenegrodanielfelipe.com/apps/super-pony-picker/og-image.png",
+            "author": { "@type": "Person", "name": "Daniel Felipe Montenegro", "url": "https://montenegrodanielfelipe.com/" }
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                { "@type": "Question", "name": "Is Super Pony Picker really random and fair?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every random number comes from the browser's cryptographic random generator (crypto.getRandomValues), every pony's stats and mystery boxes are drawn again for each race, and no lane has any advantage, so every name has exactly the same chance of being picked." } },
+                { "@type": "Question", "name": "How many names can I enter?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "From 2 to 20 names per race. Empty lanes get a random biblical name." } },
+                { "@type": "Question", "name": "Can I pick more than one person?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can pick 1, 2 or 3 people, either the winners or the last places of the race." } },
+                { "@type": "Question", "name": "Are my names or photos uploaded anywhere?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "No. Everything runs in your browser. Names are only remembered in your own browser, and photos never leave your device." } }
+            ]
+        }
+    ]
+}
+</script>
