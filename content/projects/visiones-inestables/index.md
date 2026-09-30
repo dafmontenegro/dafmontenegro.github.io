@@ -1,17 +1,17 @@
 ---
 title: "Visiones inestables, by Mónica Páez"
 description: "Visiones inestables, an artwork by Mónica Páez on how language models reimagine the museum, made in collaboration with Juan David García Arteaga and me."
-summary: "Visiones inestables (Unstable Visions) is an artwork by Mónica Páez that uses AI to imagine unstable futures of the Art Museum of the Universidad Nacional de Colombia, from photographs of the museum and texts about the institution. I had the privilege of collaborating on it with Juan David García Arteaga."
-date: 2026-07-03
-lastmod: 2026-07-03
+summary: "Visiones inestables (Unstable Visions) is an artwork by Mónica Páez that uses AI to imagine unstable futures of the Art Museum of the Universidad Nacional de Colombia, from photographs of the museum and texts about the institution. Exhibited at the museum itself in June 2026. I had the privilege of collaborating on it with Juan David García Arteaga."
+date: 2026-06-17
+lastmod: 2026-06-17
 featureAlt: "Exhibition view of Visiones inestables: a projected AI-generated image of the museum, a projected quote and a lit photograph in a dark gallery"
 coverAlt: "Exhibition view of Visiones inestables: a projected AI-generated image of the museum, a projected quote and a lit photograph in a dark gallery"
-coverCaption: "Exhibition view of *Visiones inestables*. Courtesy of Mónica Páez."
+coverCaption: "Exhibition view of *Visiones inestables* at the Art Museum of the Universidad Nacional de Colombia. Courtesy of Mónica Páez."
 thumbnailAlt: "Exhibition view of Visiones inestables"
 categories: ["art", "software"]
 tags: ["monica-paez", "contemporary-art", "artificial-intelligence", "generative-ai", "llm", "gemini", "python", "museum", "unal"]
 ---
-**Visiones inestables** (*Unstable Visions*) is an artwork by the Colombian artist **[Mónica Páez](https://monicapaez.com/)**, made in collaboration with **Juan David García Arteaga** and **Daniel Felipe Montenegro**, and exhibited in 2026 at the **Universidad Nacional de Colombia**. It explores our interaction with **large language models** as a synthesized, amplified and distorted reflection of each person's digital footprint.
+**Visiones inestables** (*Unstable Visions*) is an artwork by the Colombian artist **[Mónica Páez](https://monicapaez.com/)**, made in collaboration with **Juan David García Arteaga** and **Daniel Felipe Montenegro**, and exhibited on **June 17, 2026** at the **Art Museum of the Universidad Nacional de Colombia** (Museo de Arte de la Universidad Nacional de Colombia). It explores our interaction with **large language models** as a synthesized, amplified and distorted reflection of each person's digital footprint.
 
 [**Artwork page**](https://monicapaez.com/portfolio/visiones-intestables/) | [**Video**](https://vimeo.com/1206859326) | [**Mónica Páez**](https://monicapaez.com/)
 

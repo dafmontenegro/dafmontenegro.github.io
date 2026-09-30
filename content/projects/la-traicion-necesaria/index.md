@@ -1,17 +1,17 @@
 ---
 title: "La traición necesaria, by Mónica Páez"
 description: "La traición necesaria, an artwork by Mónica Páez where AI describes a gallery and recreates it from its own words, made with Juan David García Arteaga and me."
-summary: "La traición necesaria (The Necessary Betrayal) is an artwork by Mónica Páez inspired by the adage traduttore, traditore: an AI describes the exhibition space and creates a new image from that description, again and again. I had the privilege of collaborating on it with Juan David García Arteaga."
-date: 2026-07-03
-lastmod: 2026-07-03
+summary: "La traición necesaria (The Necessary Betrayal) is an artwork by Mónica Páez inspired by the adage traduttore, traditore: an AI describes the exhibition space and creates a new image from that description, again and again. Exhibited in March 2026 in an exhibition hall at the Universidad de los Andes. I had the privilege of collaborating on it with Juan David García Arteaga."
+date: 2026-03-11
+lastmod: 2026-03-11
 featureAlt: "The empty exhibition space, with white walls, large windows and a ceiling projector, that La traición necesaria describes and recreates"
 coverAlt: "The empty exhibition space, with white walls, large windows and a ceiling projector, that La traición necesaria describes and recreates"
-coverCaption: "The exhibition space that the artwork describes and recreates. Courtesy of Mónica Páez."
+coverCaption: "The exhibition hall at the Universidad de los Andes that the artwork describes and recreates. Courtesy of Mónica Páez."
 thumbnailAlt: "The exhibition space of La traición necesaria"
 categories: ["art", "software"]
 tags: ["monica-paez", "contemporary-art", "artificial-intelligence", "generative-ai", "llm", "translation", "uniandes"]
 ---
-**La traición necesaria** (*The Necessary Betrayal*) is an artwork by the Colombian artist **[Mónica Páez](https://monicapaez.com/)**, made in collaboration with **Juan David García Arteaga** and **Daniel Felipe Montenegro**, and exhibited in 2026 at the **Universidad de los Andes**. It questions what happens when we hand over to an AI the task of **describing an image**, and then ask it to **create a new one from that same description**.
+**La traición necesaria** (*The Necessary Betrayal*) is an artwork by the Colombian artist **[Mónica Páez](https://monicapaez.com/)**, made in collaboration with **Juan David García Arteaga** and **Daniel Felipe Montenegro**, and exhibited on **March 11, 2026** in an **exhibition hall at the Universidad de los Andes**. It questions what happens when we hand over to an AI the task of **describing an image**, and then ask it to **create a new one from that same description**.
 
 [**Artwork page**](https://monicapaez.com/portfolio/la-traicion-necesaria/) | [**Video**](https://vimeo.com/1206829544) | [**Mónica Páez**](https://monicapaez.com/)
 
