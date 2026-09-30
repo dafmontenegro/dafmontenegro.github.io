@@ -11,6 +11,8 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-09-30 | [Projects](/projects)           | New project: "Visiones inestables", an artwork by Mónica Páez |
+| 2026-09-30 | [Projects](/projects)           | New project: "La traición necesaria", an artwork by Mónica Páez |
 | 2026-09-29 | [Blog](/blog)                   | New post: "Daredevil: Born Again and the Illusion of Control" |
 | 2026-09-29 | [About](/about)                 | Animated clips are now lightweight videos (about 15x smaller) |
 | 2026-09-29 | [Privacy](/privacy)             | Updated Privacy Policy: cookies, hosting, embedded content and Do Not Track |

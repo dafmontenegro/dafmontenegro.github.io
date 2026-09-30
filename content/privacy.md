@@ -30,6 +30,7 @@ The sites are hosted on **GitHub Pages** and delivered through **Cloudflare**. T
 Some pages include content from other websites, which behaves exactly as if you visited those websites:
 
 - **YouTube videos** use YouTube's **privacy-enhanced mode** (youtube-nocookie.com), so YouTube does not store information about you **until you play a video**.
+- **Vimeo videos** are embedded with Vimeo's **Do Not Track** option, so the player does not track your session.
 - **Spotify playlists** in the [Music Space](/spaces/music/) are loaded from Spotify, which may use cookies according to its [**privacy policy**](https://www.spotify.com/legal/privacy-policy/).
 - **Super Pony Picker** loads its font from **Google Fonts**. The names, settings and photos you use in the game **never leave your device**: names and settings are remembered only in your own browser (local storage), and you can clear them at any time.
 
