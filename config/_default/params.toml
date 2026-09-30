@@ -16,8 +16,9 @@ fingerprintAlgorithm = "sha256"
 
 [header]
   layout = "hybrid"
-  logo = "img/white-caesars-window100.png"
-  logoDark = "img/black-caesars-window100.png"
+  # logo is shown on the light theme, logoDark on the dark theme
+  logo = "img/black-caesars-window100.png"
+  logoDark = "img/white-caesars-window100.png"
   showTitle = false
 
 [footer]
