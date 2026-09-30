@@ -25,3 +25,6 @@ timeout = "210s"
   # YouTube embeds use youtube-nocookie.com: no tracking cookies until the visitor plays the video
   [privacy.youtube]
     privacyEnhanced = true
+  # Vimeo embeds are loaded with dnt=1: the player does not track the visitor
+  [privacy.vimeo]
+    enableDNT = true
