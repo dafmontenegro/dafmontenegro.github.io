@@ -5,7 +5,7 @@ autoSwitchAppearance = true
 defaultThemeColor = "#000000"
 
 # Fallback social preview image for pages without their own feature image
-images = ["feature.png"]
+images = ["og/default.jpg"]
 
 enableSearch = true
 enableCodeCopy = true
@@ -17,8 +17,8 @@ fingerprintAlgorithm = "sha256"
 [header]
   layout = "hybrid"
   # logo is shown on the light theme, logoDark on the dark theme
-  logo = "img/black-caesars-window100.png"
-  logoDark = "img/white-caesars-window100.png"
+  logo = "img/black-caesars-window128.png"
+  logoDark = "img/white-caesars-window128.png"
   showTitle = false
 
 [footer]

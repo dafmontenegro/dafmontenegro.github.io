@@ -1,6 +1,7 @@
 ---
 title: "Thoughts"
 description: "All my thoughts, everywhere, at the same time..."
+images: ["/og/thoughts.jpg"]
 summary: "All my thoughts, everywhere, at the same time..."
 date: 2024-10-12
 featureAlt: ""

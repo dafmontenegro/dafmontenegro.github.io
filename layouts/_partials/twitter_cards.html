@@ -1,0 +1,35 @@
+{{- /* Copy of Hugo 0.167's embedded _partials/twitter_cards.html. The only change: outside the homepage the
+     title is "Page title · Site title", matching the <title> tag, so shared links never show a
+     bare "Projects" or "Blog". */}}
+{{- $images := partial "_funcs/get-page-images" . }}
+{{- with index $images 0 }}
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="{{ .Permalink }}">
+{{- else }}
+	<meta name="twitter:card" content="summary">
+{{- end }}
+
+{{- $title := or .Title site.Title site.Params.title | plainify }}
+{{- if and (not .IsHome) (ne $title (site.Title | plainify)) }}
+	{{- $title = printf "%s · %s" $title (site.Title | plainify) }}
+{{- end }}
+{{- with $title }}
+	<meta name="twitter:title" content="{{ . }}">
+{{- end }}
+
+{{- with or .Description .Summary site.Params.description | plainify | htmlUnescape }}
+	<meta name="twitter:description" content="{{ trim . "\n\r\t " }}">
+{{- end }}
+
+{{- $twitterSite := "" }}
+{{- with site.Params.social }}
+	{{- if reflect.IsMap . }}
+		{{- with .twitter }}
+			{{- $content := . }}
+			{{- if not (strings.HasPrefix . "@") }}
+				{{- $content = printf "@%v" . }}
+			{{- end }}
+			<meta name="twitter:site" content="{{ $content }}">
+		{{- end }}
+	{{- end }}
+{{- end }}
