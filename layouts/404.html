@@ -1,0 +1,23 @@
+{{/* Custom 404 page with Caesar's Window (styles in assets/css/custom.css). */}}
+{{ define "main" }}
+  <div class="cw-404">
+    <div class="cw-404-window" aria-hidden="true">
+      {{ with resources.Get "svg/black-caesars-window.svg" }}
+        <img class="cw-light" src="{{ .RelPermalink }}" alt="" width="160" height="160" />
+      {{ end }}
+      {{ with resources.Get "svg/white-caesars-window.svg" }}
+        <img class="cw-dark" src="{{ .RelPermalink }}" alt="" width="160" height="160" />
+      {{ end }}
+    </div>
+    <h1 class="text-4xl font-extrabold">404</h1>
+    <p class="mb-8 mt-8 text-xl text-neutral-500">
+      This page doesn't exist, but Caesar's window is always here.
+    </p>
+    <a
+      class="inline-block !rounded-md bg-primary-600 px-4 py-1 !text-neutral !no-underline hover:!bg-primary-500 dark:bg-primary-800 dark:hover:!bg-primary-700"
+      href="{{ "" | relLangURL }}"
+      role="button"
+      >Take me home</a
+    >
+  </div>
+{{ end }}

@@ -1,0 +1,56 @@
+/* Caesar's Window: shared brand styles. Congo bundles this file after its own CSS.
+   Congo toggles the dark theme with the "dark" class on <html>. */
+
+/* Show the black window on the light theme and the white one on the dark theme */
+.cw-dark,
+.dark .cw-light {
+  display: none;
+}
+.dark .cw-dark {
+  display: block;
+}
+
+/* Homepage: author photo with a Caesar's Window badge */
+.cw-avatar {
+  position: relative;
+  width: 9rem;
+  margin-bottom: 0.5rem;
+}
+.cw-badge {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  display: flex;
+  width: 54px;
+  height: 54px;
+  padding: 7px;
+  border-radius: 9999px;
+  background: rgb(var(--color-neutral));
+  box-shadow: 0 0 0 3px rgb(var(--color-primary-600));
+}
+.dark .cw-badge {
+  background: rgb(var(--color-neutral-800));
+}
+.cw-badge img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+/* 404 page */
+.cw-404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 0;
+}
+.cw-404 .cw-404-window {
+  width: 10rem;
+  height: 10rem;
+  margin-bottom: 2rem;
+}
+.cw-404 .cw-404-window img {
+  width: 100%;
+  height: 100%;
+}

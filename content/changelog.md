@@ -1,6 +1,7 @@
 ---
 title: "Changelog"
 description: "A timeline of updates outlining new features, content, and enhancements made to the site."
+images: ["/og/changelog.jpg"]
 date: 2024-12-22
 showReadingTime: false
 showPagination: false
@@ -11,6 +12,9 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-09-30 | [Homepage](/)                   | Caesar's Window returns to the homepage as a badge on the profile photo |
+| 2026-09-30 | [Homepage](/)                   | New share previews with Caesar's Window for the homepage and every section |
+| 2026-09-30 | [Homepage](/)                   | Larger, sharper Caesar's Window logo in the header and a new 404 page |
 | 2026-09-30 | [Projects](/projects)           | New project: "Visiones inestables", an artwork by Mónica Páez |
 | 2026-09-30 | [Projects](/projects)           | New project: "La traición necesaria", an artwork by Mónica Páez |
 | 2026-09-29 | [Blog](/blog)                   | New post: "Daredevil: Born Again and the Illusion of Control" |

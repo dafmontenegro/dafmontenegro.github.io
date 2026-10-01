@@ -1,6 +1,7 @@
 ---
 title: "Projects"
 description: "These are some of the projects I've truly enjoyed working on!"
+images: ["/og/projects.jpg"]
 summary: "These are some of the projects I've truly enjoyed working on!"
 date: 2024-10-19
 lastmod: 2024-10-19

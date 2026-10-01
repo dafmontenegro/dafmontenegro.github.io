@@ -1,6 +1,7 @@
 ---
 title: "Privacy Policy"
 description: "How montenegrodanielfelipe.com and dafmontenegro.com handle your data: anonymous analytics, cookies, embedded content and the services that host the sites."
+images: ["/og/privacy.jpg"]
 date: 2024-10-12
 lastmod: 2026-09-29
 showReadingTime: false
