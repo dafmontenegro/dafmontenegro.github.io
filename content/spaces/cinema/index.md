@@ -3,13 +3,13 @@ title: "Cinema Space"
 description: "“What happens up on that screen means something.” Jack Conrad, Babylon. The films and series that have moved me, and why they matter to me."
 summary: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 date: 2024-10-12
-lastmod: 2025-04-09
+lastmod: 2026-10-01
 featureAlt: "Manny from Babylon"
 coverAlt: "Manny from Babylon"
 coverCaption: "Manny from Babylon"
 thumbnailAlt: "Manny from Babylon"
 categories: ["cinema"]
-tags: ["babylon", "memories-of-murder", "planet-of-the-apes", "everything-everywhere-all-at-once", "lego-batman", "the-devil-all-the-time", "green-book", "top-gun-maverick", "spy-x-family", "puss-in-boots", "la-la-land", "arcane", "the-founder"]
+tags: ["babylon", "chainsaw-man", "memories-of-murder", "planet-of-the-apes", "everything-everywhere-all-at-once", "lego-batman", "the-devil-all-the-time", "green-book", "top-gun-maverick", "spy-x-family", "puss-in-boots", "la-la-land", "arcane", "the-founder"]
 ---
 I want to start with something that ***Jack Conrad says in Babylon*** about what cinema is; something that, for me, **embodies** its *true essence*: something **beautiful** and **magical**... something **full of meaning**.
 
@@ -199,9 +199,9 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 ## Favorite Anime
 
-### Main Pick: Spy x Family (2022)
+### Main Pick: "Chainsaw Man – The Movie: Reze Arc (2025)"
 
-![Spy x Family poster](img/spy-x-family.jpg "[Spy x Family (2022). IMDb](https://www.imdb.com/title/tt13706018/)")
+![Chainsaw Man – The Movie: Reze Arc poster](img/chainsaw-man-reze-arc.jpg "[Chainsaw Man – The Movie: Reze Arc (2025). IMDb](https://www.imdb.com/title/tt30472557/)")
 
 ### Honorable Mentions:
 - **Cyberpunk: Edgerunners (2022).** 🌕 I'm gonna take you there myself, fly you to the moon. That's a promise!
@@ -211,6 +211,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 > — Suguru Geto
 
 - **One Punch Man (2015).**
+- **Spy x Family (2022).**
 
 ---
 
