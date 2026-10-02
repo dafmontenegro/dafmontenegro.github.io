@@ -3,7 +3,7 @@ title: "Bible"
 description: "Bible verses that have left a mark on me, read across different translations to deepen my understanding, and kept as valuable lessons for life."
 summary: "I enjoy reading the Bible and exploring different translations to deepen my understanding of each verse. In this space, I want to keep those that for one reason or another, have left a mark on me and that I recognize as valuable lessons for life."
 date: 2025-03-12
-lastmod: 2025-12-12
+lastmod: 2026-10-02
 featureAlt: "Saint Benedict Medal"
 coverAlt: "Saint Benedict Medal"
 coverCaption: "Saint Benedict Medal"
@@ -80,6 +80,8 @@ The verses you will find here are in **Spanish** because it is my **native langu
 
 ## Salmos
 
+- **Salmos 23:1-6 DHHDK** **[1]** El Señor es mi pastor; nada me falta. **[2]** En verdes praderas me hace descansar, a las aguas tranquilas me conduce **[3]** me da nuevas fuerzas y me lleva por caminos rectos, haciendo honor a su nombre. **[4]** Aunque pase por el más oscuro de los valles, no temeré peligro alguno, porque tú, Señor, estás conmigo; tu vara y tu bastón me inspiran confianza. **[5]** Me has preparado un banquete ante los ojos de mis enemigos; has vertido perfume en mi cabeza, y has llenado mi copa a rebosar. **[6]** Tu bondad y tu amor me acompañan a lo largo de mis días, y en tu casa, oh Señor, por siempre viviré.
+
 - **Salmos 56:3 RVR1960** **[3]** En el día que temo, Yo en ti confío.
 
 - **Salmos 59:16 NTV** **[16]** En cuanto a mí, yo cantaré de tu poder; cada mañana cantaré con alegría acerca de tu amor inagotable. Pues tú has sido mi refugio, un lugar seguro cuando estoy angustiado.
@@ -96,6 +98,10 @@ The verses you will find here are in **Spanish** because it is my **native langu
 
 - **Proverbios 4:23 NTV** **[23]** Sobre todas las cosas cuida tu corazón, porque este determina el rumbo de tu vida.
 
+- **Proverbios 16:32 TLAI** **[32]** Vale más ser paciente que valiente; vale más dominarse uno mismo que dominar a los demás.
+
+- **Proverbios 24:16 NTV** **[16]** Los justos podrán tropezar siete veces, pero volverán a levantarse. En cambio, basta una sola calamidad para derribar al perverso.
+
 - **Proverbios 28:1 DHHDK** **[1]** El malvado huye aunque nadie lo persiga, pero los justos viven confiados como el león.
 
 ---
@@ -106,15 +112,31 @@ The verses you will find here are in **Spanish** because it is my **native langu
 
 ---
 
+## Ezequiel
+
+- **Ezequiel 36:26 NTV** **[26]** Les daré un corazón nuevo y pondré un espíritu nuevo dentro de ustedes. Les quitaré ese terco corazón de piedra y les daré un corazón tierno y receptivo.
+
+---
+
 ## Mateo
 
 - **Mateo 6:33 NTV** **[33]** Busquen el reino de Dios por encima de todo lo demás y lleven una vida justa, y él les dará todo lo que necesiten.
 
 ---
 
+## Lucas
+
+- **Lucas 15:7 RVR1960** **[7]** Os digo que así habrá más gozo en el cielo por un pecador que se arrepiente, que por noventa y nueve justos que no necesitan de arrepentimiento.
+
+- **Lucas 17:3-4 DHHDK** **[3]** ¡Tengan cuidado! »Si tu hermano peca, repréndelo; pero si cambia de actitud, perdónalo. **[4]** Aunque peque contra ti siete veces en un día, si siete veces viene a decirte: “No lo volveré a hacer”, debes perdonarlo.»
+
+---
+
 ## Juan
 
 - **Juan 14:1 NTV** **[1]** »No dejen que el corazón se les llene de angustia; confíen en Dios y confíen también en mí.
+
+- **Juan 14:27 RVR1960** **[27]** La paz os dejo, mi paz os doy; yo no os la doy como el mundo la da. No se turbe vuestro corazón, ni tenga miedo.
 
 ---
 
