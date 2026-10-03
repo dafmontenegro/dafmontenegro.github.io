@@ -1,0 +1,18 @@
+{{- /* The "compare two specific hands" tool.
+
+       Pair it with `preflop: true` in the page's front matter, which is what
+       makes layouts/_partials/extend-head.html load the stylesheet, the script
+       and the data. Without that flag this renders as the fallback text below
+       and nothing else happens.
+
+       The element carries no data: the script finds it by its data-preflop
+       value and takes the figures from the files the partial names in the
+       head. No number is written into the markup, so there is no second copy
+       of a figure to drift out of date. */ -}}
+
+<div class="preflop" data-preflop="headsup">
+  <p class="preflop-status">
+    Loading: One hand against another. Every figure behind it is also
+    published as plain data, linked at the end of this page.
+  </p>
+</div>
