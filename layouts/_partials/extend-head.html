@@ -27,3 +27,12 @@
     {{ $person | jsonify | safeJS }}
   </script>
 {{ end }}
+
+{{/* Pages that set `bookChapter` carry a typographic setting of their own. The
+     stylesheet is small and used by a handful of pages, so it loads here instead
+     of riding along in the site-wide bundle. */}}
+{{ if .Params.bookChapter }}
+  {{ with resources.Get "css/book-chapter.css" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" />
+  {{ end }}
+{{ end }}
