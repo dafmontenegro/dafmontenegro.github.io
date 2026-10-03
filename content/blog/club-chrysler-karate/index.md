@@ -1,7 +1,7 @@
 ---
-title: "Club Chrysler: My Karate Family"
-description: "My teammates from Club Chrysler of the Liga de Karate de Bogotá: a significant time in my life that I remember with great affection."
-summary: "This is us: Club Chrysler of the Liga de Karate de Bogotá. Before the pandemic, I spent a significant part of my life training with this club, learning discipline, respect and perseverance on the same mat as people of every age. I remember them with great affection."
+title: "Liga de Karate de Bogotá: My Karate Years"
+description: "My years training karate in the Liga de Karate de Bogotá, and Club Chrysler, the club and teammates I trained closest with."
+summary: "Before the pandemic, I spent a significant part of my life training karate in the Liga de Karate de Bogotá, learning discipline, respect and perseverance. This is us: Club Chrysler, the club I trained with and the people I was closest to."
 date: 2019-12-03
 lastmod: 2019-12-03
 featureAlt: "Club Chrysler karatekas of all ages in white gis, posing on the tatami with the Dojo Kun banners behind them"
@@ -12,10 +12,10 @@ categories: ["writings"]
 tags: ["karate"]
 ---
 {{< lead >}}
-This is us: **Club Chrysler** of the **Liga de Karate de Bogotá**.
+Before the pandemic, I spent a significant part of my life training karate in the **Liga de Karate de Bogotá**. More than a sport, it was a place to learn **discipline**, **respect** and **perseverance**, surrounded by people of every age who shared the same mat and the same spirit.
 {{< /lead >}}
 
-Before the pandemic, I spent a significant part of my life training with this club. More than a sport, karate was a place to learn **discipline**, **respect** and **perseverance**, surrounded by people of every age who shared the same mat and the same spirit.
+This is us: **Club Chrysler**, the club within the league where I trained, and the people I was closest to.
 
 I'm the one smiling at the very back, right below the banner that reads **礼儀を重んずること** (***Respect others***).
 
