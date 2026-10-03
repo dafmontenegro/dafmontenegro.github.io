@@ -1,6 +1,9 @@
-{{/* Copy of Congo 2.14's _partials/article-link.html. The only change: list thumbnails are cropped
-     from the center ("Center") instead of Hugo's content-aware "smart" anchor, which picked
-     off-center regions even for covers that already match the 4:3 thumbnail ratio. */}}
+{{/* Copy of Congo 2.14's _partials/article-link.html, with two changes:
+     - List thumbnails are cropped from the center ("Center") instead of Hugo's content-aware
+       "smart" anchor, which picked off-center regions even for covers that already match the
+       4:3 thumbnail ratio.
+     - The summary carries .cw-summary-clamp (see assets/css/custom.css), which limits it to
+       three lines so rows with summaries of very different lengths keep an even height. */}}
 <article class="mt-6 flex max-w-prose flex-row">
   {{- $images := $.Resources.ByType "image" }}
   {{- $thumbnail := $images.GetMatch (.Params.thumbnail | default "*thumb*") }}
@@ -72,7 +75,7 @@
       {{ partial "article-meta.html" . }}
     </div>
     {{ if .Params.showSummary | default (.Site.Params.list.showSummary | default false) }}
-      <div class="prose py-1 dark:prose-invert">
+      <div class="prose cw-summary-clamp py-1 dark:prose-invert">
         {{ .Summary | emojify }}
       </div>
     {{ end }}
