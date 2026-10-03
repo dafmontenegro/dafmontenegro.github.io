@@ -12,6 +12,9 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-03 | [Projects](/projects/texas-holdem-preflop-trainer/) | New project: "Texas Hold'em Preflop", with the exact odds of all 169 starting hands and five tools to explore them |
+| 2026-10-03 | [About](/about/#my-favorite-book) | New "My favorite book" section, with a button that brings yellow butterflies drifting in across the page — catch one and it shows a line of the novel |
+| 2026-10-03 | [Mi Amigo Melquiades](/spaces/mi-amigo-melquiades/) | The story behind the channel name now lives in its own Space, with a new cover: Melquíades' parchments sealed by an ouroboros |
 | 2026-10-03 | [Blog](/blog/le-petit-prince-chapitre-21/) | "Chapitre XXI" is now set like the printed page, with French typography and the fox illustrations as plates |
 | 2026-10-03 | [Blog](/blog)                   | Summaries across every list are trimmed to three lines, so rows line up |
 | 2026-10-02 | [Bible](/spaces/bible/)         | Added 7 new verses |
