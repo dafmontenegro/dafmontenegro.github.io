@@ -1,0 +1,250 @@
+/* preflop.css — the Texas Hold'em preflop tool.
+ *
+ * Loaded only by pages that set `preflop` in their front matter, from
+ * layouts/_partials/extend-head.html, the same arrangement the book chapters
+ * and the butterflies use.
+ *
+ * THEMING
+ * -------
+ * Congo switches themes with a `dark` class on <html>, not with a media query
+ * and not with a data attribute, so the dark values live under `.dark` and
+ * nothing here reads prefers-color-scheme. Congo's own script sets that class
+ * from the visitor's choice or their system setting, so one scope covers both.
+ *
+ * The dark colours are a separate, validated set rather than an automatic
+ * lightening of the light ones. The colour ramps themselves are not here: they
+ * are an encoding, not a style, so they live in preflop.js where the values
+ * they encode are, and they are re-chosen when the theme changes.
+ */
+
+.preflop {
+  /* Surfaces and ink, taken from Congo's own scheme so the tool sits on the
+     page rather than on top of it. */
+  --pf-surface: rgb(var(--color-neutral));
+  --pf-raised: rgb(var(--color-neutral-100));
+  --pf-line: rgb(var(--color-neutral-200));
+  --pf-ink: rgb(var(--color-neutral-900));
+  --pf-ink-muted: rgb(var(--color-neutral-500));
+  --pf-accent: rgb(var(--color-primary-600));
+
+  /* Ink that sits on top of a coloured cell. Which one is used depends on how
+     far along the ramp the cell is, decided in the script. */
+  --pf-on-pale: #0f172a;
+  --pf-on-deep: #f8fafc;
+
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--pf-ink);
+}
+
+.dark .preflop {
+  --pf-surface: rgb(var(--color-neutral-800));
+  --pf-raised: rgb(var(--color-neutral-700));
+  --pf-line: rgb(var(--color-neutral-600));
+  --pf-ink: rgb(var(--color-neutral-100));
+  --pf-ink-muted: rgb(var(--color-neutral-400));
+  --pf-accent: rgb(var(--color-primary-400));
+}
+
+/* The controls. One row above everything they scope, never inside a card and
+   never one set per view: changing the metric re-renders the grid, the legend,
+   the table and the hand sheet together. */
+.preflop-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+
+.preflop-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.preflop-control > span {
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--pf-ink-muted);
+}
+
+.preflop-control select {
+  padding: 0.35rem 0.5rem;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--pf-ink);
+  background: var(--pf-raised);
+  border: 1px solid var(--pf-line);
+  border-radius: 0.375rem;
+}
+
+/* The grid. Thirteen columns at every width; the cells shrink instead of
+   wrapping, because the shape is the thing being read and a reflowed grid
+   would stop being a grid. At 400px a cell is about 28px, which keeps the
+   touch target usable. */
+.preflop-grid {
+  display: grid;
+  grid-template-columns: repeat(13, minmax(0, 1fr));
+  /* A surface gap between cells, rather than a border around each. */
+  gap: 2px;
+}
+
+.preflop-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  padding: 0;
+  font: inherit;
+  font-size: clamp(0.5rem, 1.7vw, 0.78rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+  /* The label is identity — which hand this is. The value is deliberately not
+     printed in all 169 cells: a number on every mark is unreadable at this
+     density. It is one hover, one tap or one arrow key away, and all 169 are
+     in the table below. */
+}
+
+.preflop-cell:focus-visible {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 1px;
+}
+
+.preflop-cell[aria-pressed="true"] {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 1px;
+}
+
+/* The scale legend. A continuous encoding without one is unreadable. */
+.preflop-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--pf-ink-muted);
+}
+
+.preflop-legend-bar {
+  flex: 1 1 auto;
+  height: 0.5rem;
+  min-width: 4rem;
+  border-radius: 2px;
+}
+
+/* The hand sheet: what the grid cannot show without printing 169 numbers.
+   Updates on hover, on focus and on tap, so a keyboard reader and a phone get
+   exactly what a mouse gets. */
+.preflop-sheet {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  background: var(--pf-raised);
+  border-radius: 0.5rem;
+}
+
+.preflop-sheet-hand {
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.preflop-sheet-note {
+  color: var(--pf-ink-muted);
+  font-size: 0.85rem;
+}
+
+.preflop-figures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 0.75rem 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.preflop-figure > dt {
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--pf-ink-muted);
+}
+
+.preflop-figure > dd {
+  margin: 0.1rem 0 0;
+  /* Proportional figures on a standalone number: tabular digits make a large
+     value look loose. The table below is where digits need to line up. */
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.preflop-figure-note {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--pf-ink-muted);
+}
+
+/* The table view. Not an afterthought and not optional: a continuous colour
+   scale is unreadable to some people and unprintable for everyone, so every
+   value the grid encodes is also here as text. */
+.preflop-table-toggle {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.preflop-table-toggle > summary {
+  cursor: pointer;
+  color: var(--pf-accent);
+}
+
+.preflop-table-wrap {
+  max-height: 24rem;
+  margin-top: 0.75rem;
+  overflow: auto;
+}
+
+.preflop-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.preflop-table th,
+.preflop-table td {
+  padding: 0.3rem 0.5rem;
+  text-align: right;
+  /* A hairline, solid: dashed rules read as a threshold when they are only a
+     grid. */
+  border-bottom: 1px solid var(--pf-line);
+}
+
+.preflop-table th:first-child,
+.preflop-table td:first-child {
+  text-align: left;
+}
+
+.preflop-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--pf-surface);
+  font-weight: 600;
+}
+
+/* Shown until the data arrives, and if it never does. */
+.preflop-status {
+  padding: 1.5rem 0;
+  color: var(--pf-ink-muted);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .preflop-cell {
+    transition: outline-color 120ms ease;
+  }
+}

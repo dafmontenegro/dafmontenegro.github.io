@@ -36,3 +36,66 @@
     <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" />
   {{ end }}
 {{ end }}
+
+{{/* Pages that set `butterflies` carry the swarm released by the butterflies
+     shortcode. The assets load here, not from the shortcode itself: Hugo renders a
+     page's content more than once per build, so a shortcode cannot reliably emit
+     something exactly once, and the stylesheet belongs in the head anyway.
+
+     The quotes travel with them. They are quoted verbatim from "Cien años de
+     soledad": keep them that way, a misquotation here is a misquotation in García
+     Márquez's name. */}}
+{{ if .Params.butterflies }}
+  {{ with resources.Get "css/butterflies.css" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" />
+  {{ end }}
+  {{ with resources.Get "js/butterflies.js" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+    <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+  {{ end }}
+  {{- $quotes := slice
+    (dict
+      "text" "Las cosas tienen vida propia, todo es cuestión de despertarles el ánima."
+      "source" "Melquíades, en Cien años de soledad")
+    (dict
+      "text" "Muchos años después, frente al pelotón de fusilamiento, el coronel Aureliano Buendía había de recordar aquella tarde remota en que su padre lo llevó a conocer el hielo."
+      "source" "Cien años de soledad, primera línea")
+    (dict
+      "text" "El mundo era tan reciente, que muchas cosas carecían de nombre, y para mencionarlas había que señalarlas con el dedo."
+      "source" "Cien años de soledad")
+    (dict
+      "text" "Macondo era entonces una aldea de veinte casas de barro y cañabrava construidas a la orilla de un río de aguas diáfanas que se precipitaban por un lecho de piedras pulidas, blancas y enormes como huevos prehistóricos."
+      "source" "Cien años de soledad")
+  -}}
+  <script type="application/json" class="cw-bf-quotes">{{ $quotes | jsonify | safeJS }}</script>
+{{ end }}
+
+{{/* Pages that set `preflop` carry the Texas Hold'em preflop tool. Same
+     arrangement as the stylesheets above: the assets load here rather than
+     from the shortcode, because Hugo renders a page's content more than once
+     per build and a shortcode cannot reliably emit anything exactly once.
+
+     The data files are fingerprinted like the code, so a change to the numbers
+     busts the cache along with it, and their URLs are handed to the script
+     through a <script type="application/json"> block rather than through a
+     global, so nothing has to be parsed out of the markup.
+
+     hands.json is everything the grid and the hand sheet need and loads with
+     the page. The head-to-head matrix is ten times the size and only the
+     hand-versus-hand calculator wants it, so its URL is passed but the file is
+     fetched on demand. */}}
+{{ if .Params.preflop }}
+  {{ with resources.Get "css/preflop.css" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" />
+  {{ end }}
+  {{- $sources := dict -}}
+  {{- with resources.Get "data/preflop/hands.json" | fingerprint site.Params.fingerprintAlgorithm }}
+    {{- $sources = merge $sources (dict "hands" .RelPermalink) -}}
+  {{- end }}
+  {{- with resources.Get "data/preflop/headsup-matrix.json" | fingerprint site.Params.fingerprintAlgorithm }}
+    {{- $sources = merge $sources (dict "matrix" .RelPermalink) -}}
+  {{- end }}
+  <script type="application/json" id="preflop-sources">{{ $sources | jsonify | safeJS }}</script>
+  {{ with resources.Get "js/preflop.js" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+    <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+  {{ end }}
+{{ end }}
