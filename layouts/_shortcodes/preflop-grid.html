@@ -1,0 +1,23 @@
+{{- /* The 13 x 13 grid of all 169 Texas Hold'em starting hands.
+
+       Pair it with `preflop: true` in the page's front matter, which is what
+       makes layouts/_partials/extend-head.html load assets/css/preflop.css,
+       assets/js/preflop.js and the data files. Without that flag the mount
+       point below renders as the fallback text and nothing else happens.
+
+       The element carries no data of its own: the script finds it by the
+       `data-preflop` attribute and takes the data URLs from the JSON block
+       the partial writes into the head. Markup stays free of numbers, so
+       there is no second copy of a figure to drift out of date.
+
+       The fallback is what a reader sees with JavaScript off, and it is
+       written to be useful rather than apologetic: the grid is a convenience
+       over data that is published separately, and the text says so. */ -}}
+
+<div class="preflop" data-preflop>
+  <p class="preflop-status">
+    Loading the figures for all 169 starting hands. They are also published as
+    plain data files, linked at the end of this page, and nothing in the grid
+    is computed anywhere but in the engine that produced them.
+  </p>
+</div>
