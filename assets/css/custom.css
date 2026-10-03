@@ -54,3 +54,26 @@
   width: 100%;
   height: 100%;
 }
+
+/* Summaries, everywhere they are listed: clamp them to three lines so rows keep
+   an even height. Summaries in this site run from one to five lines, which made
+   every list look ragged next to the fixed 160x120 thumbnails. The overflow ends
+   in an ellipsis and the full text is one click away in the page itself.
+
+   .cw-summary-clamp (see layouts/_partials/article-link.html) covers section
+   lists, taxonomy term pages and the homepage recent articles; #search-results
+   covers the search overlay, whose results Congo renders from JavaScript and so
+   cannot carry the class.
+
+   Both the container and its first child are clamped: a summary set in the front
+   matter reaches the container as bare text, while one Hugo derives from the body
+   arrives wrapped in a <p>. Clamping both keeps either shape at three lines. */
+.cw-summary-clamp,
+.cw-summary-clamp > :first-child,
+#search-results .italic {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
