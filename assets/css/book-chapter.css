@@ -1,0 +1,39 @@
+/* Book chapter: typographic setting for pages with `bookChapter` in their front
+   matter (see layouts/_partials/extend-head.html, which loads this file only on
+   those pages, and layouts/_shortcodes/chapter.html, which wraps the text and tags the lines).
+
+   The aim is to read like the printed page rather than like a blog post. */
+
+/* In a novel, an exchange is a run of consecutive lines, not a stack of separate
+   blocks. Congo's prose spacing pulls them apart, so close the gap between two
+   lines of dialogue while leaving the full break around narrative paragraphs. */
+.cw-chapter .cw-dialogue + .cw-dialogue {
+  margin-top: 0.4em;
+}
+
+/* Hang the tiret cadratin in the margin so the spoken text aligns with the
+   narrative above it, the way dialogue is set in French typography. */
+.cw-chapter .cw-dialogue {
+  padding-inline-start: 1.5em;
+  text-indent: -1.5em;
+}
+
+/* The illustrations are watercolours scanned off white paper. Left bare they
+   glare as white rectangles on the dark theme, so sit each one on a warm paper
+   mat: on the light theme it is almost invisible, on the dark theme it reads as
+   a plate tipped into the page instead of a hole punched through it.
+
+   Congo's render-image hook already wraps markdown images in a bare <figure>,
+   so no hook override is needed. */
+.cw-chapter figure {
+  margin: 2.5rem auto;
+  max-width: 32rem;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  background: #fffdf7;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.25);
+}
+.cw-chapter figure img {
+  margin: 0;
+  border-radius: 0.125rem;
+}

@@ -1,0 +1,17 @@
+{{- /* Wraps a chapter of a book so it can be set like a printed page rather than
+       like a blog post. Pair it with `bookChapter` in the front matter, which makes
+       layouts/_partials/extend-head.html load assets/css/book-chapter.css.
+
+       Hugo has no paragraph render hook, so the lines of dialogue are tagged here:
+       the inner markdown is rendered first (page render hooks and all), then every
+       paragraph opening with a tiret cadratin gets the class the stylesheet hangs
+       in the margin.
+
+       The optional `lang` parameter tags the chapter in the language it is written
+       in, which differs from the site language, so screen readers pronounce it
+       correctly and the browser hyphenates it with the right rules. */ -}}
+{{- $html := .Inner | markdownify -}}
+{{- $html = replaceRE `<p>(\s*\x{2014})` `<p class="cw-dialogue">$1` $html -}}
+<div class="cw-chapter"{{ with .Get "lang" }} lang="{{ . }}"{{ end }}>
+  {{ $html | safeHTML }}
+</div>
