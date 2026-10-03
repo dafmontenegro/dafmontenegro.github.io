@@ -14,7 +14,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 | ---------- | ------------------------------- | ---- |
 | 2026-10-02 | [Bible](/spaces/bible/)         | Added 7 new verses |
 | 2026-10-01 | [Cinema Space](/spaces/cinema/) | New Favorite Anime: "Chainsaw Man – The Movie: Reze Arc" |
-| 2026-10-01 | [Blog](/blog)                   | New post: "Club Chrysler: My Karate Family" |
+| 2026-10-01 | [Blog](/blog)                   | New post: "Liga de Karate de Bogotá: My Karate Years" |
 | 2026-10-01 | [Paw Prints](/spaces/paw-prints/) | New space: "Paw Prints", for Max, Dante, Luna, Cosmo, Kiki and Dogo |
 | 2026-09-30 | [Homepage](/)                   | Caesar's Window returns to the homepage as a badge on the profile photo |
 | 2026-09-30 | [Homepage](/)                   | New share previews with Caesar's Window for the homepage and every section |
