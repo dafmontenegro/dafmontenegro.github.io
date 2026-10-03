@@ -741,7 +741,26 @@ check**. Among those checks:
 - Seven matchups are counted again by an independent evaluator written by
   other people.
 
-The data itself is published with a dictionary that states, for every field,
-what it means and whether it is exact or estimated. If you think a number here
-is wrong, that is the place to start — and if you are right, it is a bug worth
-reporting.
+### The data
+
+Everything this page draws is published, and documented field by field:
+
+- [**hands.json**](https://github.com/dafmontenegro/holdem-preflop-equity/blob/master/web/hands.json)
+  — one record per starting hand: equity against 1 to 8 opponents and against
+  every range, the nine potential categories, the four-way split of what your
+  cards add, and the distribution against all 1,225 opponent hands.
+- [**headsup-matrix.json**](https://github.com/dafmontenegro/holdem-preflop-equity/blob/master/web/headsup-matrix.json)
+  — the exact 169 × 169 matrix, as wins and ties. All 28,561 cells.
+- [**DATA_DICTIONARY.md**](https://github.com/dafmontenegro/holdem-preflop-equity/blob/master/web/DATA_DICTIONARY.md)
+  — what every field means, and for each one whether it is exact or estimated.
+
+Probabilities in those files are integers in ten-thousandths: divide by 10,000.
+The rounding is bounded by half a ten-thousandth, which is finer than anything
+shown here and finer than the simulation's own error.
+
+The fuller tables the engine writes — wide CSVs with the raw integer counts
+rather than rounded probabilities — are not committed, because they are
+generated and large. `make` rebuilds all of them in about twenty minutes.
+
+If you think a number on this page is wrong, those files are where to start,
+and if you are right it is a bug worth reporting.
