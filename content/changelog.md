@@ -12,6 +12,8 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-03 | [Blog](/blog/le-petit-prince-chapitre-21/) | "Chapitre XXI" is now set like the printed page, with French typography and the fox illustrations as plates |
+| 2026-10-03 | [Blog](/blog)                   | Summaries across every list are trimmed to three lines, so rows line up |
 | 2026-10-02 | [Bible](/spaces/bible/)         | Added 7 new verses |
 | 2026-10-01 | [Cinema Space](/spaces/cinema/) | New Favorite Anime: "Chainsaw Man – The Movie: Reze Arc" |
 | 2026-10-01 | [Blog](/blog)                   | New post: "Liga de Karate de Bogotá: My Karate Years" |
