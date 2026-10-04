@@ -3,6 +3,7 @@ title: "Mi Amigo Melquiades"
 description: "Mi Amigo Melquiades, the YouTube channel of Daniel Felipe Montenegro, and where its name comes from."
 summary: "My name is Daniel Felipe Montenegro, that's what my friends and people who know me call me. Instead, here I am known as “Mi Amigo Melquiades”, not because of the need to hide my name, but because of the sum of all the things that have brought me here..."
 date: 2024-10-09
+weight: 60
 lastmod: 2026-10-03
 featureAlt: "Melquíades' parchment: a green ouroboros coiled on a page of unreadable script, yellow butterflies lifting off it, and a hand writing with a quill"
 coverAlt: "Melquíades' parchment: a green ouroboros coiled on a page of unreadable script, yellow butterflies lifting off it, and a hand writing with a quill"

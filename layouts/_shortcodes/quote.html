@@ -1,0 +1,89 @@
+<!--
+    One piece of the open journal: the quote, its attribution, the artwork it travelled with,
+    and a link back to the post it came from.
+    Parameters:
+        date   - (Required) date the line was written down, ISO 8601, e.g. "2023-04-07"
+        url    - (Optional) permalink of the original post, for the ones that came from the
+                 journal kept on X. A line added straight to the page has no post to link
+        cite   - (Optional) attribution exactly as it was published, e.g. "Fausto, J. W. Goethe".
+                 Omitted by the aphorisms, which were published with no attribution at all
+        note   - (Optional) what I went and found out about the line, rendered inside the
+                 figure so it is unmistakably attached to the line above it rather than
+                 floating between two of them. Markdown, and mine: it is not a quotation
+        image  - (Optional) page resource of the artwork, e.g. "img/schiele-1917-the-embrace.jpg"
+        alt    - (Required with image) description of the artwork, for screen readers
+        image2 - (Optional) a second plate, shown beside the first on a wide enough screen
+                 and under it on a narrow one. For the lines that came with a pair rather
+                 than with one painting
+        alt2   - (Required with image2) description of the second plate
+        credit - (Required with image) the artwork's reference, as it was published,
+                 e.g. "Schiele, E. (1917). The Embrace."
+
+    The quote itself is the shortcode's inner text and is emitted verbatim: line breaks are kept,
+    because the poems depend on them, and nothing is parsed as Markdown, so an asterisk or an
+    underscore inside a quote stays an asterisk or an underscore. These are other people's words
+    quoted as I published them; the template must not reshape them.
+-->
+{{- $date := .Get "date" -}}
+{{- $url := .Get "url" -}}
+{{- if not $date -}}
+  {{- errorf "quote: date is required (%s)" .Page.File.Path -}}
+{{- end -}}
+
+{{- $plates := slice -}}
+{{- range $pair := (slice (slice "image" "alt") (slice "image2" "alt2")) -}}
+  {{- with $.Get (index $pair 0) -}}
+    {{- $res := $.Page.Resources.Get . -}}
+    {{- if not $res -}}
+      {{- errorf "quote: image %q not found in %s" . $.Page.File.Path -}}
+    {{- end -}}
+    {{- $alt := $.Get (index $pair 1) -}}
+    {{- if not $alt -}}
+      {{- errorf "quote: image %q has no %s text in %s" . (index $pair 1) $.Page.File.Path -}}
+    {{- end -}}
+    {{- $plates = $plates | append (dict "res" ($res.Resize "640x webp q85") "alt" $alt) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $body := trim .Inner "\n\r \t" -}}
+{{- $dateFormat := site.Params.dateFormat | default "2 January 2006" -}}
+
+<figure data-quote class="my-10">
+  <blockquote>
+    <p>
+      {{- range $i, $line := split $body "\n" -}}
+        {{- if $i }}<br>{{ end -}}
+        {{- trim $line "\r" -}}
+      {{- end -}}
+    </p>
+    {{- with .Get "cite" }}
+    <p>&mdash; <cite>{{ . }}</cite></p>
+    {{- end }}
+  </blockquote>
+  {{- with .Get "note" }}
+  <p class="cw-quote-note">{{ . | markdownify }}</p>
+  {{- end }}
+  {{- with $plates }}
+  <div class="cw-quote-plates{{ if gt (len .) 1 }} cw-quote-plates-pair{{ end }}">
+    {{- range . }}
+    <img
+      src="{{ .res.RelPermalink }}"
+      width="{{ .res.Width }}"
+      height="{{ .res.Height }}"
+      alt="{{ .alt }}"
+      loading="lazy"
+      decoding="async"
+    />
+    {{- end }}
+  </div>
+  {{- end }}
+  <figcaption>
+    {{- with $.Get "credit" }}{{ . }} &middot; {{ end -}}
+    {{- $when := (time $date).Format $dateFormat -}}
+    {{- with $url -}}
+      <a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ $when }}</a>
+    {{- else -}}
+      <time datetime="{{ $date }}">{{ $when }}</time>
+    {{- end -}}
+  </figcaption>
+</figure>

@@ -1,9 +1,10 @@
 ---
-title: "Cinema Space"
+title: "Cinema"
 description: "“What happens up on that screen means something.” Jack Conrad, Babylon. The films and series that have moved me, and why they matter to me."
 summary: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 date: 2024-10-12
-lastmod: 2026-10-01
+weight: 20
+lastmod: 2026-10-04
 featureAlt: "Manny from Babylon"
 coverAlt: "Manny from Babylon"
 coverCaption: "Manny from Babylon"

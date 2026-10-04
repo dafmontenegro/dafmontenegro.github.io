@@ -1,0 +1,20 @@
+{{- /* A button that opens the journal at a random page: it picks one of the quotes on the
+       page, brings it into view and lights it for a moment.
+
+       The page must set `literature: true` in its front matter, which is what loads
+       assets/css/literature.css and assets/js/literature.js through
+       layouts/_partials/extend-head.html. Hugo renders a page's content more than once
+       per build, so the shortcode cannot load them itself without repeating them.
+
+       The button is written by the script, not by this template, so a reader without
+       JavaScript is never offered a control that cannot work. What is left behind here
+       is the mount point.
+
+       Parameters:
+           label - (Optional) text of the button. Default: "Open at random" */ -}}
+
+{{- if not .Page.Params.literature -}}
+  {{- errorf "quote-random: %s uses the shortcode but does not set `literature: true` in its front matter, so nothing would load" .Page.File.Path -}}
+{{- end -}}
+
+<p data-quote-random data-label="{{ .Get "label" | default "Open at random" }}"></p>
