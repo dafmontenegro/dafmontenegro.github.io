@@ -4,10 +4,10 @@ description: "Exact preflop odds for all 169 Texas Hold'em starting hands: equit
 summary: "Every one of the 169 starting hands in Texas Hold'em, worked out from scratch: how often each one wins, what it is worth against one opponent or eight, how it does against a player who only plays strong hands, and when calling an all-in makes money. The figures come from complete enumeration where that is possible and from simulation with measured error where it is not, and the page says which is which, every time."
 date: 2026-10-03
 lastmod: 2026-10-03
-featureAlt: "Two aces, the ace of hearts and the ace of spades, over a faint grid of all 169 starting hands shaded by their equity"
-coverAlt: "Two aces, the ace of hearts and the ace of spades, over a faint grid of all 169 starting hands shaded by their equity"
-coverCaption: "Two aces, over the 169 starting hands shaded by what each is worth against a random hand"
-thumbnailAlt: "Two aces, the ace of hearts and the ace of spades, over a faint grid of all 169 starting hands shaded by their equity"
+featureAlt: "A cartoon card shark in a dealer's vest, pushing a stack of chips across a felt table while holding the ace of hearts and the ace of spades"
+coverAlt: "A cartoon card shark in a dealer's vest, pushing a stack of chips across a felt table while holding the ace of hearts and the ace of spades"
+coverCaption: "The card shark, holding the best starting hand there is"
+thumbnailAlt: "A cartoon card shark in a dealer's vest, pushing a stack of chips across a felt table while holding the ace of hearts and the ace of spades"
 categories: ["software", "mathematics"]
 tags: ["poker", "texas-holdem", "preflop", "probability", "combinatorics", "monte-carlo", "equity", "poker-odds", "enumeration", "c"]
 preflop: true
