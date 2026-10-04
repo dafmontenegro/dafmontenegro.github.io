@@ -520,7 +520,7 @@ Authors I copied out once and never returned to, in the order I found them.
   date="2024-08-31"
   url="https://x.com/dafmontenegro/status/1830018973179478411"
   image="img/daniel-felipe-three-years-old.jpg"
-  alt="A small boy in a lion costume standing on the grass in a garden"
+  alt="Daniel Felipe Montenegro at three years old, dressed as a lion in a maned hood and furry cuffs, standing on the grass in a garden"
   credit="Daniel Felipe, 3 años." >}}
 "La cara es el espejo del alma, y los ojos confiesan en silencio los secretos del corazón."
 {{< /quote >}}
