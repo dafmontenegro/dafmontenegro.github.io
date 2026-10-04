@@ -62,6 +62,12 @@ content/projects/my-project/
 - **Raw HTML is disabled** in Markdown (`markup.goldmark.renderer.unsafe = false`). Use shortcodes for anything embedded.
 - **Section pages** (Projects, Blog, Spaces…) use the share cards in `static/og/` through their `images` front matter. Pages without an image fall back to `static/og/default.jpg`.
 
+### Press Kit
+
+`content/press/` is an **unlisted** page bundle holding the photographs people ask for. Its images are page resources, so Hugo publishes each file untouched at `/press/<file>` — full resolution, original bytes — while the page itself shows previews it resizes. Nothing else in the repository needs to change to add one: drop the file in the bundle and add its row.
+
+It is deliberately hard to arrive at by accident, not hidden: `build.list = never` keeps it out of every list, `sitemap.disable` out of the sitemap, and `robots: "noindex, nofollow"` out of search results. The URL is given out, not found.
+
 ### Shortcodes
 
 On top of Congo's own (`alert`, `button`, `katex`, `lead`…) and Hugo's (`youtube`, `vimeo`…):
