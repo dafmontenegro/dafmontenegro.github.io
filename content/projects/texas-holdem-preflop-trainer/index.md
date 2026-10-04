@@ -4,10 +4,10 @@ description: "Exact preflop odds for all 169 Texas Hold'em starting hands: equit
 summary: "Every one of the 169 starting hands in Texas Hold'em, worked out from scratch: how often each one wins, what it is worth against one opponent or eight, how it does against a player who only plays strong hands, and when calling an all-in makes money. The figures come from complete enumeration where that is possible and from simulation with measured error where it is not, and the page says which is which, every time."
 date: 2026-10-03
 lastmod: 2026-10-03
-featureAlt: "The 13 by 13 grid of all 169 Texas Hold'em starting hands, each shaded by how much of the pot it wins against a random hand"
-coverAlt: "The 13 by 13 grid of all 169 Texas Hold'em starting hands, each shaded by how much of the pot it wins against a random hand"
-coverCaption: "All 169 starting hands, shaded by exact equity against one random hand"
-thumbnailAlt: "The 13 by 13 grid of all 169 Texas Hold'em starting hands, each shaded by how much of the pot it wins against a random hand"
+featureAlt: "Two aces, the ace of hearts and the ace of spades, over a faint grid of all 169 starting hands shaded by their equity"
+coverAlt: "Two aces, the ace of hearts and the ace of spades, over a faint grid of all 169 starting hands shaded by their equity"
+coverCaption: "Two aces, over the 169 starting hands shaded by what each is worth against a random hand"
+thumbnailAlt: "Two aces, the ace of hearts and the ace of spades, over a faint grid of all 169 starting hands shaded by their equity"
 categories: ["software", "mathematics"]
 tags: ["poker", "texas-holdem", "preflop", "probability", "combinatorics", "monte-carlo", "equity", "poker-odds", "enumeration", "c"]
 preflop: true
@@ -24,7 +24,68 @@ every figure says whether it is **exact** or **estimated**, because those are
 different kinds of claim and mixing them is how people end up trusting numbers
 they should not.
 
-## 1. The two kinds of number on this page
+## 1. The tools
+
+Everything below is explained further down, with its method and its
+limitations. Start by playing with it.
+
+### 1.1 All 169 hands at once
+
+The grid every poker player already knows how to read, with real numbers
+behind it. Rows and columns run from the ace down to the two. **Pairs lie on
+the diagonal, same-suit hands above it, different-suit hands below.**
+
+Change what the shading means with the control above it. Hover, tap or arrow
+onto any cell for that hand's figures, and open the table underneath to read
+all 169 as text.
+
+{{< preflop-grid >}}
+
+A note on how that is drawn, since it is a chart and charts can lie. Colour
+carries one continuous quantity, so the scale is a **single hue from light to
+dark** — not a rainbow, which would invent categories the data does not have,
+and not red-to-green, which roughly one man in twelve cannot read. The cells
+carry each hand's **name** and not its value: a number printed in all 169
+cells is unreadable at that size. Every value is one hover away and all of
+them are in the table, because a colour scale on its own is not something
+everybody can read.
+
+### 1.2 Your own two cards
+
+The grid works in hand types. A player holds two specific cards. Pick them
+here and see both at once — and watch what changing a suit does, which is
+nothing at all unless it changes whether the two match.
+
+{{< preflop-picker >}}
+
+### 1.3 One hand against another
+
+Every figure here is exact: all 1,712,304 possible boards for the matchup,
+counted. Wins, ties and losses are separate because they are different
+outcomes — a tie pays half, not nothing.
+
+{{< preflop-headsup >}}
+
+### 1.4 Calling an all-in
+
+Nothing here is looked up. Move the stack and watch the equity you need move
+with it, with the arithmetic printed underneath. The situation is heads-up,
+blind against blind, with equal stacks; [section 14](#14-the-all-in-and-a-rule-that-does-not-survive-it)
+is where it comes from and what it leaves out.
+
+{{< preflop-allin >}}
+
+### 1.5 Practise the decision
+
+A hand is dealt and you decide. Hands come up in proportion to how many of the
+1,326 they stand for, so AKo turns up three times as often as AKs, exactly as
+at a table. The yardstick is whether the hand is worth more than an equal
+share of the pot — a deliberately crude standard, and
+[section 12](#12-is-this-hand-worth-playing) says why.
+
+{{< preflop-trainer >}}
+
+## 2. The two kinds of number on this page
 
 **Exact** means enumeration: every possible case was visited and counted, one
 at a time. There is no error bar, because there is no sampling. When this page
@@ -40,7 +101,7 @@ of those, 95% of the time.
 Where a figure could have been either, it is exact. Simulation appears only
 where exact counting is genuinely out of reach, and the page says so each time.
 
-## 2. The game, in one section
+## 3. The game, in one section
 
 Each player gets **two private cards**. Then five **community cards** are
 turned face up in the middle, in three stages: the **flop** (three cards), the
@@ -75,7 +136,7 @@ as its two ranks plus a letter: **s** for *suited* (both the same suit, like
 all for a pair (AA). The ace is both the highest card and, in the straight
 A-2-3-4-5, the lowest.
 
-## 3. Why 169 hands and not 1,326
+## 4. Why 169 hands and not 1,326
 
 There are 52 cards and you get two of them, so the number of starting hands is
 the number of ways to choose 2 from 52:
@@ -110,27 +171,6 @@ type that stands for 12 of the 1,326 hands should count twelve times as much
 as one that stands for 4. Several of the checks further down depend on exactly
 that, so the published data carries the count in a column rather than leaving
 the reader to look it up.
-
-## 4. All 169 hands at once
-
-Here is the grid every poker player already knows how to read, with real
-numbers behind it. Rows and columns run from the ace down to the two. **Pairs
-lie on the diagonal, same-suit hands above it, different-suit hands below.**
-
-Change what the shading means with the control above it. Hover, tap or arrow
-onto any cell for that hand's figures, and open the table underneath to read
-all 169 as text.
-
-{{< preflop-grid >}}
-
-A note on how that grid is drawn, since it is a chart and charts can lie.
-Colour carries one continuous quantity, so the scale is a **single hue from
-light to dark** — not a rainbow, which would invent categories the data does
-not have, and not red-to-green, which roughly one man in twelve cannot read.
-The cells carry each hand's **name** and not its value: a number printed in
-all 169 cells is unreadable at that size. Every value is one hover away and
-all of them are in the table, because a colour scale on its own is not
-something everybody can read.
 
 ## 5. Counting the boards: 2,118,760
 
@@ -485,14 +525,6 @@ percentage points for AA, 0.034 for 72o, and never more than 0.08 anywhere in
 the table. That is why the gap between 32o and 72o above can be called real
 rather than guessed at — it is fourteen times the uncertainty in it.
 
-### 11.1 Your own two cards
-
-The grid works in hand types. A player holds two specific cards. Pick them
-here and see both at once — and watch what changing a suit does, which is
-nothing at all unless it changes whether the two match.
-
-{{< preflop-picker >}}
-
 ## 12. Is this hand worth playing?
 
 "Worth playing" needs a yardstick, and there is an obvious one. At a table of
@@ -523,10 +555,6 @@ You can shade the grid above by the fair-share index at any table size. It is
 a crude standard — it knows nothing about position, stack depth, or what the
 other players are doing — but it is a standard that can be computed, which is
 more than most advice offers.
-
-### 12.1 Try it
-
-{{< preflop-trainer >}}
 
 ## 13. Playing against somebody who is not random
 
@@ -599,9 +627,10 @@ Folding leaves you S − 1. Calling costs S − 1 more, for a pot of 2S.
 | Equity a call needs | 40.00% | 45.00% | 47.50% | 49.00% | 49.50% |
 
 Never 50%, and the shorter the stacks the further below it, because the blinds
-are a bigger share of a smaller pot.
-
-{{< preflop-allin >}}
+are a bigger share of a smaller pot. The
+[calculator at the top of this page](#14-calling-an-all-in) does that
+arithmetic with whatever hand, range and stack you give it, and shows its
+working.
 
 ### 14.1 The verdict
 
@@ -625,10 +654,6 @@ the stack depth sets the equity you need.** What survives is the rule's shape �
 pairs and ace-broadways really do dominate every calling range here, and
 against a tight shove nothing outside them calls profitably. It is a fair
 summary of which hands matter and a poor one of where the line falls.
-
-### 14.2 One hand against another
-
-{{< preflop-headsup >}}
 
 ## 15. Estimated figures, and how far to trust them
 
