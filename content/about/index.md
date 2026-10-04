@@ -119,6 +119,8 @@ So, I invite you to be my friend on:
 ## Contact Me
 If you want to contact me, the easiest way is through **Telegram**. Alternatively, you can use my social links on the [home page](/).
 
+If what you need is a photo of me, they are all in [/press](/press/): full length, cut out, on white, and cropped for profiles.
+
 {{< button href="https://t.me/dafmontenegro" target="_blank" >}}
 Send a Message
 {{< /button >}}
