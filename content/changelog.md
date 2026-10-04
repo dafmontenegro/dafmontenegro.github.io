@@ -12,6 +12,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-04 | [Press Kit](/press/)            | New page: "Press Kit", with both photographs in six versions each - as shot, cut out, on white, and cropped upright, wide and square - linked from About and the footer |
 | 2026-10-04 | [Literature](/spaces/literature/) | New space: "Literature", the lines that stay with me and the paintings they travelled with, arranged by the voice that wrote each one |
 | 2026-10-04 | [Spaces](/spaces)               | Spaces are now ordered by hand rather than by date, and three of them drop the "Space" from their title |
 | 2026-10-04 | [Music](/spaces/music/#jam-of-the-moment) | New Jam of the Moment: "Gepe & Silvana Estrada - Hablar de Ti" |
