@@ -38,8 +38,10 @@ These are additions, not overrides:
 
 | File | Purpose |
 | --- | --- |
-| `layouts/_partials/extend-head.html` | schema.org `Person` data on the homepage and About page (Congo hook) |
+| `layouts/_partials/extend-head.html` | schema.org `Person` data on the homepage and About page, the book-chapter stylesheet on pages with `bookChapter`, and the butterflies assets on pages with `butterflies` (Congo hook) |
 | `assets/css/custom.css` | Caesar's Window styles for the badge, the 404 page and light/dark variants (bundled by Congo) |
+| `assets/css/butterflies.css` | Styles for the butterflies shortcode: the button, the 3D wings and their beat, and the quote card (loaded only on pages with `butterflies: true`) |
+| `assets/js/butterflies.js` | The flight engine behind the butterflies shortcode: the arrivals, the wandering, the dodging and the catching |
 
 ## Writing Content
 
@@ -66,6 +68,7 @@ On top of Congo's own (`alert`, `button`, `katex`, `lead`…) and Hugo's (`youtu
 | `{{< gifv src="img/clip.webm" alt="..." width="640" height="266" >}}` | A muted, looping, inline video that behaves like a GIF at a fraction of the size |
 | `{{< spotify type="playlist" id="..." height="compact" >}}` | Spotify embed (`album`, `track`, `playlist` or `artist`) |
 | `{{< super-pony-picker >}}` | Embeds the [Super Pony Picker](https://montenegrodanielfelipe.com/projects/super-pony-picker/) game served from `static/apps/` |
+| `{{< butterflies label="..." >}}` | A button that brings yellow butterflies drifting in from the edges of the page. Their wings turn in 3D on a hinge at the body, they dodge the pointer, one that is caught shows a line of *Cien años de soledad*, and they fade out after a few seconds. The page must also set `butterflies: true` in its front matter |
 
 For YouTube embeds, prefer `{{< youtube id="..." loading="lazy" >}}`. Privacy settings for YouTube, Vimeo and Google Analytics live in `config/_default/hugo.toml`.
 

@@ -1,0 +1,26 @@
+{{- /* Golden butterflies: a button that bursts a cloud of them out across the page in
+       every direction. They wander, they steer away from the pointer, one that is
+       caught shows a line of "Cien años de soledad", and they fade out after a while.
+
+       The page must set `butterflies: true` in its front matter, which is what loads
+       assets/css/butterflies.css, assets/js/butterflies.js and the quotes, through
+       layouts/_partials/extend-head.html. Hugo renders a page's content more than
+       once per build, so the shortcode cannot do that itself without repeating it.
+
+       The glyph below is the same butterfly the engine builds (see the SPRITE markup
+       in assets/js/butterflies.js), at rest with both wings open. Keep the two in
+       step if either drawing changes.
+
+       Parameters:
+           label - (Optional) text of the button. Default: "Despiértales el ánima" */ -}}
+
+{{- if not .Page.Params.butterflies -}}
+  {{- errorf "butterflies: %s uses the shortcode but does not set `butterflies: true` in its front matter, so nothing would load" .Page.File.Path -}}
+{{- end -}}
+
+<p>
+  <button type="button" class="cw-anima" data-cw-butterflies>
+    <span class="cw-anima-perch"><svg viewBox="0 0 104 100" aria-hidden="true" focusable="false"><g transform="translate(104 0) scale(-1 1)"><g class="cw-perch-wings"><g transform="translate(62 84) rotate(-22) translate(-62 -84)"><g transform="translate(96 8) rotate(90) scale(0.84)"><path d="M89.0 33.0C85.5 29.8 75.5 18.3 68.0 14.0C60.5 9.7 51.3 9.0 44.0 7.0C36.7 5.0 30.2 3.2 24.0 2.0C17.8 0.8 11.0 -1.0 7.0 0.0C3.0 1.0 -0.7 2.7 0.0 8.0C0.7 13.3 8.3 25.5 11.0 32.0C13.7 38.5 14.3 43.7 16.0 47.0C17.7 50.3 18.8 50.8 21.0 52.0C23.2 53.2 28.5 52.5 29.0 54.0C29.5 55.5 25.2 58.5 24.0 61.0C22.8 63.5 22.2 66.8 22.0 69.0C21.8 71.2 21.3 70.8 23.0 74.0C24.7 77.2 28.7 84.3 32.0 88.0C35.3 91.7 39.3 94.0 43.0 96.0C46.7 98.0 50.3 99.5 54.0 100.0C57.7 100.5 61.0 101.0 65.0 99.0C69.0 97.0 74.0 90.2 78.0 88.0C82.0 85.8 87.2 86.3 89.0 86.0Z" fill="#f7cd33"/><path d="M89.0 34.0C85.8 32.3 76.2 26.0 70.0 24.0C63.8 22.0 57.0 21.0 52.0 22.0C47.0 23.0 42.3 26.0 40.0 30.0C37.7 34.0 37.3 40.7 38.0 46.0C38.7 51.3 42.7 56.7 44.0 62.0C45.3 67.3 43.7 73.3 46.0 78.0C48.3 82.7 53.7 87.7 58.0 90.0C62.3 92.3 66.8 92.8 72.0 92.0C77.2 91.2 86.2 86.2 89.0 85.0Z" fill="#f3a65c" opacity="0.4"/><path d="M85 30C64 24 38 16 12 7M85 37C62 33 36 27 13 23M85 43C62 42 38 40 17 41M85 49C64 50 44 52 24 55M85 58C64 61 44 67 29 76M85 66C66 72 50 80 38 90M85 74C70 81 60 89 52 96" fill="none" stroke="#8a6414" stroke-width="1.8" opacity="0.28" stroke-linecap="round"/></g></g></g><path d="M30 88c12-3 26-4 36-3" fill="none" stroke="#6f5824" stroke-width="5" stroke-linecap="round"/><circle cx="69" cy="84" r="3.9" fill="#6f5824"/><path d="M72 81c7-6 14-11 22-14M71 79c5-8 10-15 16-21" fill="none" stroke="#56441d" stroke-width="2" stroke-linecap="round"/><circle cx="95" cy="66" r="2.2" fill="#56441d"/><circle cx="88" cy="57" r="2.2" fill="#56441d"/><path d="M45 90c-1 4-3 7-6 9M56 90c0 4-1 7-3 10" fill="none" stroke="#56441d" stroke-width="1.6" stroke-linecap="round"/></g></svg></span>
+    {{ .Get "label" | default "Despiértales el ánima" }}
+  </button>
+</p>

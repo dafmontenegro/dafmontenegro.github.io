@@ -3,12 +3,13 @@ title: "Who am I?"
 description: "Who is Daniel Felipe Montenegro? A Systems and Computer Engineer and AI software developer who builds AI platforms and loves cinema, music and literature."
 summary: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
 Date: 2024-10-12
-lastmod: 2026-09-29
+lastmod: 2026-10-03
 images: ["img/og-about.jpg"]
 tags: []
 showBreadcrumbs: false
 showReadingTime: false
 showPagination: false
+butterflies: true
 ---
 ![Daniel Felipe Montenegro smiling in a navy suit, holding a diploma folder on graduation day](img/daniel-felipe-montenegro-graduation.jpg?2x=true "Graduation day, the day I became a Systems and Computer Engineer.")
 
@@ -96,28 +97,14 @@ Beyond its *theoretical elegance*, **Tit For Tat** is for me a life philosophy t
 
 [^3]: [Daniel Felipe Montenegro's thoughts](/thoughts)
 
-## Mi Amigo Melquiades 
-My YouTube channel is called ***Mi Amigo Melquiades***. Want to know more? Visit [/mi-amigo-melquiades](https://www.youtube.com/@MiAmigoMelquiades/featured).
+## My favorite book
+***Cien años de soledad***, by **Gabriel García Márquez**.
 
-{{< alert "youtube" >}}
-Don't forget to [subscribe](https://www.youtube.com/@MiAmigoMelquiades) on YouTube.
-{{< /alert >}}
+In the novel the **yellow butterflies** arrive before anyone can explain them. Nobody ever does.
 
-If **you're curious** about the origin of my channel's name and what inspired me to start **making videos**, I invite you to read the words I wrote for the description of [my first video](https://www.youtube.com/watch?v=zdzPV_x57_o&t) and what motivated me to **make it happen**.
+{{< butterflies label="Let them loose" >}}
 
-> Mi nombre es Daniel Felipe Montenegro, así me llaman mis amigos y las personas que me conocen. En cambio, aquí soy conocido como  “Mi Amigo Melquiades”, no por la necesidad de ocultar mi nombre, sino por la suma de todas las cosas que me han traído hasta aquí: La elección de este nombre no fue algo trivial... “Mi Amigo” nace de la intención de ser un amigo para alguien más, ese mismo amigo que a una parte de mi le cuesta reconocer que necesito en algún otro momento. “Melquiades" es una referencia a la visión de ese gitano que aparece desde la primera página de Cien Años de Soledad, y quien es capaz de convencer por medio de sus palabras (casi con una fascinación metafísica); que todas las cosas tienen vida propia y que solo es cuestión de despertarles el ánima.
->
-> Me comprometí a expresar aquí, lo que es para mi “el ánima” de las cosas: mi promesa personal se basa en entregar un significado que le de vida propia a todo lo que he descubierto en esta travesia que llamamos existencia. Aquí se encuentra y se encontrará para siempre la esencia de las personas que amo, que me aman y también mi propia esencia. Tengo la indudable certeza de que sus significados no morirán conmigo (un corazón más que los custodio), y que dulcemente siempre encontrarán vida en cada una de las personas que recibieron un mensaje de mi parte en este lugar. Por ello, pongo en cada palabra amor y dedicación, para asi nunca guardar silencio y que sea posible que exista en este mundo, esa llama de amor que sembraron en mi las personas que me han acompañado.
->
-> La vida me ha enseñado a valorar tanto la compañía como la soledad, sin preferir una sobre la otra. Ambas, con sus caras a veces hostiles y a veces generosas, me han moldeado para dar como resultado quien soy. Es por eso, que guardo en mi corazón, la fiel promesa de quien sea que encuentre un significado en mis palabras, recuerde también que allá afuera en algún lugar existe alguien como yo, a quien le importa lo que esa alma siente y que al menos por el día hoy; el amigo de esa persona podré ser yo.
->
-> — <cite>Mi Amigo Melquiades</cite>
-
-And this is a **special phrase** for me that represents **the essence** of the channel, and with which I usually end my videos:
-
-> Las cosas, tienen vida propia... todo es cuestión de despertarles el ánima.
-> 
-> — <cite>Cien años de soledad</cite>
+They don't last. Reach one. Nothing holds them for long. Try anyway.
 
 ## Where can we be friends?
 Keep in mind that **I don't use social networks, so you won't find me there.** 
@@ -143,5 +130,6 @@ Definitely yes, and to continue, there are plenty of **related sections**:
 - My music space in [/spaces/music](/spaces/music).
 - My cinema space in [/spaces/cinema](/spaces/cinema).
 - My sense of humor in [/spaces/comedy](/spaces/comedy).
+- The story behind my YouTube channel in [/spaces/mi-amigo-melquiades](/spaces/mi-amigo-melquiades/).
 
 **Want to see how things evolve?** Keep track of all the changes and updates on the site at [/changelog](/changelog).
