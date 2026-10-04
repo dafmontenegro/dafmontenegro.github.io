@@ -37,6 +37,11 @@
   weight = 90
 
 [[footer]]
+  name = "Press Kit"
+  pageRef = "press"
+  weight = 95
+
+[[footer]]
   name = "Privacy"
   pageRef = "privacy"
   weight = 100
