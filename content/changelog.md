@@ -12,6 +12,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-04 | [Projects](/projects/postgresql-docs-rag/) | New project: "PostgreSQL Docs RAG", where the table of contents defines the chunks and a mis-calibrated out-of-scope threshold gets caught and fixed |
 | 2026-10-03 | [Projects](/projects/texas-holdem-preflop-trainer/) | New project: "Texas Hold'em Preflop", with the exact odds of all 169 starting hands and five tools to explore them |
 | 2026-10-03 | [About](/about/#my-favorite-book) | New "My favorite book" section, with a button that brings yellow butterflies drifting in across the page — catch one and it shows a line of the novel |
 | 2026-10-03 | [Mi Amigo Melquiades](/spaces/mi-amigo-melquiades/) | The story behind the channel name now lives in its own Space, with a new cover: Melquíades' parchments sealed by an ouroboros |
