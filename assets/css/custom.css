@@ -77,3 +77,13 @@
   line-clamp: 3;
   overflow: hidden;
 }
+
+/* Clamping alone only trims the long ones; a two-line summary still made its row
+   shorter than its neighbours, so the list stayed ragged. Reserving three lines
+   whether or not the text fills them is what actually makes every row equal.
+   The em fallback covers browsers without the lh unit. */
+.cw-summary-clamp,
+#search-results .italic {
+  min-height: 4.5em;
+  min-height: calc(3 * 1lh);
+}
