@@ -3,7 +3,7 @@ title: "Who am I?"
 description: "Who is Daniel Felipe Montenegro? A Systems and Computer Engineer and AI software developer who builds AI platforms and loves cinema, music and literature."
 summary: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
 Date: 2024-10-12
-lastmod: 2026-10-03
+lastmod: 2026-10-04
 images: ["img/og-about.jpg"]
 tags: []
 showBreadcrumbs: false
@@ -109,9 +109,9 @@ They don't last. Reach one. Nothing holds them for long. Try anyway.
 ## Where can we be friends?
 Keep in mind that **I don't use social networks, so you won't find me there.** 
 
-Until recently I was using **X** as something similar to an open journal where I collected everything I learned... However, everything that is there **will end up being progressively integrated here (on my website)**; which will result in this being my unique and cozy place.
+For a while I used **X** as something similar to an open journal where I collected everything I learned... Everything that was there **now lives here (on my website)**; which makes this my unique and cozy place.
 
-So, in the meantime, I invite you to be my friend on:
+So, I invite you to be my friend on:
 
 ### Duolingo
 ![Duolingo QR @dafmontenegro](img/duolingo-qr.jpg)
