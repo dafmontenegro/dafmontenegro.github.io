@@ -12,6 +12,8 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-04 | [Literature](/spaces/literature/) | New space: "Literature", the lines that stay with me and the paintings they travelled with, arranged by the voice that wrote each one |
+| 2026-10-04 | [Spaces](/spaces)               | Spaces are now ordered by hand rather than by date, and three of them drop the "Space" from their title |
 | 2026-10-04 | [Music](/spaces/music/#jam-of-the-moment) | New Jam of the Moment: "Gepe & Silvana Estrada - Hablar de Ti" |
 | 2026-10-04 | [Blog](/blog)                   | Lists across the site now show 10 entries per page instead of 5 |
 | 2026-10-04 | [Projects](/projects/texas-holdem-preflop-trainer/) | New cover for "Texas Hold'em Preflop": a card shark dealer holding the two aces, replacing the plain grid-and-cards illustration |

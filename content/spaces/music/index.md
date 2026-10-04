@@ -1,8 +1,9 @@
 ---
-title: "Music Space"
+title: "Music"
 description: "These are the soundtracks of my life, carefully selected for appropriate character development and growth in each arc."
 summary: "These are the soundtracks of my life, carefully selected for appropriate character development and growth in each arc."
 date: 2024-10-21
+weight: 40
 lastmod: 2026-10-04
 featureAlt: "La La Land"
 coverAlt: "La La Land"

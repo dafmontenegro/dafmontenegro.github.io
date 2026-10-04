@@ -3,6 +3,7 @@ title: "Paw Prints"
 description: "Max, Dante, Luna, Cosmo, Kiki and Dogo: the companions who have shared my home and left their paw prints on my heart."
 summary: "Max, Dante, Luna, Cosmo, Kiki and Dogo: the companions who have shared my home and left their paw prints on my heart. Some of them are still here and the others live on in every memory, from Max's first day to Dogo's, the dog Dante adopted before he left. This is their corner of my website, so they can stay here forever."
 date: 2024-02-01
+weight: 70
 lastmod: 2026-10-01
 featureAlt: "A collage of my dogs and cats around the words Te amamos"
 coverAlt: "A collage of my dogs and cats around the words Te amamos"

@@ -109,7 +109,7 @@ They don't last. Reach one. Nothing holds them for long. Try anyway.
 ## Where can we be friends?
 Keep in mind that **I don't use social networks, so you won't find me there.** 
 
-For a while I used **X** as something similar to an open journal where I collected everything I learned... Everything that was there **now lives here (on my website)**; which makes this my unique and cozy place.
+For a while I used **X** as something similar to an open journal where I collected everything I learned... Everything that was there **now lives here (on my website)**, in [Literature](/spaces/literature/); which makes this my unique and cozy place.
 
 So, I invite you to be my friend on:
 

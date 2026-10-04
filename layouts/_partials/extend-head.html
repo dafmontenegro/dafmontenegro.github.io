@@ -99,3 +99,17 @@
     <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
   {{ end }}
 {{ end }}
+
+{{/* Pages that set `literature` carry the quotes of the open journal: the `quote`
+     shortcode needs nothing of its own, but the `quote-random` button and the light it
+     leaves on the quote it lands on do. Same arrangement as the assets above: they load
+     here rather than from the shortcode, because Hugo renders a page's content more
+     than once per build and a shortcode cannot reliably emit anything exactly once. */}}
+{{ if .Params.literature }}
+  {{ with resources.Get "css/literature.css" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" />
+  {{ end }}
+  {{ with resources.Get "js/literature.js" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+    <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+  {{ end }}
+{{ end }}
