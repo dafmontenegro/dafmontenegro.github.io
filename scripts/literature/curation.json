@@ -89,6 +89,12 @@
    ]
   },
   {
+   "heading": "Gabriel García Márquez",
+   "ids": [
+    "garcia-marquez-cien-anos-petra-cotes"
+   ]
+  },
+  {
    "heading": "Single Lines",
    "ids": [
     "1602034812419969024",
@@ -113,8 +119,7 @@
     "1830016292012900355",
     "1830018973179478411",
     "1834438178301784428",
-    "1848655971456848177",
-    "garcia-marquez-cien-anos-petra-cotes"
+    "1848655971456848177"
    ],
    "note": "Authors I copied out once and never returned to, in the order I found them."
   },
@@ -228,7 +233,7 @@
   },
   "1606560083730735104": {
    "cite": "Juan Rulfo, Cartas a Clara",
-   "body": "Estas pláticas que yo tengo con mi conciencia son a veces muy largas, duran días enteros; por eso no resulta que me ponga a contártelas en esta pobre carta. De verdad, cuídate mucho, come y duerme bien y sueña con los angelitos y no en esta cosa maligna que soy yo. Pero no me olvides."
+   "body": "\"Estas pláticas que yo tengo con mi conciencia son a veces muy largas, duran días enteros; por eso no resulta que me ponga a contártelas en esta pobre carta. De verdad, cuídate mucho, come y duerme bien y sueña con los angelitos y no en esta cosa maligna que soy yo. Pero no me olvides.\""
   },
   "1610199841736368132": {
    "note": "Japanese, 物の哀れ — “the pathos of things”. Not sadness at things but the ache of noticing that they pass: the cherry blossom is moving *because* it falls. Named by the scholar Motoori Norinaga in the eighteenth century, reading the Genji."
@@ -269,7 +274,7 @@
    "note": "From *Silver Linings Playbook*, where Pat writes the word on a sheet of paper and tapes it to the wall. *Excelsior* is Latin for *ever upward*, and in the film it is the rule he gives himself: to keep looking for the silver lining in whatever happens. Pat Sr.’s speech from the same film is in [Cinema](/spaces/cinema/#favorite-drama-film)."
   },
   "garcia-marquez-cien-anos-petra-cotes": {
-   "body": "Aureliano Segundo pensaba sin decirlo que el mal no estaba en el mundo, sino en algún lugar recóndito del misterioso corazón de Petra Cotes, donde algo había ocurrido durante el diluvio que volvió estériles a los animales y escurridizo el dinero. Intrigado con ese enigma, escarbó tan profundamente en los sentimientos de ella, que buscando el interés encontró el amor porque tratando de que ella lo quisiera terminó por quererla. Petra Cotes, por su parte, lo iba queriendo más a medida que sentía aumentar su cariño, y fue así como en la plenitud del otoño volvió a creer en la superstición juvenil de que la pobreza era una servidumbre del amor.",
+   "body": "\"Aureliano Segundo pensaba sin decirlo que el mal no estaba en el mundo, sino en algún lugar recóndito del misterioso corazón de Petra Cotes, donde algo había ocurrido durante el diluvio que volvió estériles a los animales y escurridizo el dinero. Intrigado con ese enigma, escarbó tan profundamente en los sentimientos de ella, que buscando el interés encontró el amor porque tratando de que ella lo quisiera terminó por quererla. Petra Cotes, por su parte, lo iba queriendo más a medida que sentía aumentar su cariño, y fue así como en la plenitud del otoño volvió a creer en la superstición juvenil de que la pobreza era una servidumbre del amor\"",
    "cite": "Cien años de soledad, Gabriel García Márquez",
    "date": "2025-11-28"
   }

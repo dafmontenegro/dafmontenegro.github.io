@@ -117,7 +117,7 @@ They are **quoted as I published them**, in the language I read them in, which i
   cite="Juan Rulfo, Cartas a Clara"
   date="2022-12-24"
   url="https://x.com/dafmontenegro/status/1606560083730735104" >}}
-Estas pláticas que yo tengo con mi conciencia son a veces muy largas, duran días enteros; por eso no resulta que me ponga a contártelas en esta pobre carta. De verdad, cuídate mucho, come y duerme bien y sueña con los angelitos y no en esta cosa maligna que soy yo. Pero no me olvides.
+"Estas pláticas que yo tengo con mi conciencia son a veces muy largas, duran días enteros; por eso no resulta que me ponga a contártelas en esta pobre carta. De verdad, cuídate mucho, come y duerme bien y sueña con los angelitos y no en esta cosa maligna que soy yo. Pero no me olvides."
 {{< /quote >}}
 
 {{< quote
@@ -355,6 +355,16 @@ To love that well which thou must leave ere long."
 
 ---
 
+## Gabriel García Márquez
+
+{{< quote
+  cite="Cien años de soledad, Gabriel García Márquez"
+  date="2025-11-28" >}}
+"Aureliano Segundo pensaba sin decirlo que el mal no estaba en el mundo, sino en algún lugar recóndito del misterioso corazón de Petra Cotes, donde algo había ocurrido durante el diluvio que volvió estériles a los animales y escurridizo el dinero. Intrigado con ese enigma, escarbó tan profundamente en los sentimientos de ella, que buscando el interés encontró el amor porque tratando de que ella lo quisiera terminó por quererla. Petra Cotes, por su parte, lo iba queriendo más a medida que sentía aumentar su cariño, y fue así como en la plenitud del otoño volvió a creer en la superstición juvenil de que la pobreza era una servidumbre del amor"
+{{< /quote >}}
+
+---
+
 ## Single Lines
 
 Authors I copied out once and never returned to, in the order I found them.
@@ -527,12 +537,6 @@ Authors I copied out once and never returned to, in the order I found them.
   date="2024-10-22"
   url="https://x.com/dafmontenegro/status/1848655971456848177" >}}
 «Una sola cosa importa: aprender a ser perdedor»
-{{< /quote >}}
-
-{{< quote
-  cite="Cien años de soledad, Gabriel García Márquez"
-  date="2025-11-28" >}}
-Aureliano Segundo pensaba sin decirlo que el mal no estaba en el mundo, sino en algún lugar recóndito del misterioso corazón de Petra Cotes, donde algo había ocurrido durante el diluvio que volvió estériles a los animales y escurridizo el dinero. Intrigado con ese enigma, escarbó tan profundamente en los sentimientos de ella, que buscando el interés encontró el amor porque tratando de que ella lo quisiera terminó por quererla. Petra Cotes, por su parte, lo iba queriendo más a medida que sentía aumentar su cariño, y fue así como en la plenitud del otoño volvió a creer en la superstición juvenil de que la pobreza era una servidumbre del amor.
 {{< /quote >}}
 
 ---
