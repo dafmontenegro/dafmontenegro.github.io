@@ -26,6 +26,21 @@
   var QUOTE_MS = 7000; // how long a caught butterfly rests before flying on
 
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+  /* SWARM and MAX are tuned for a desktop viewport. A phone's screen holds a
+     fraction of that area, so the same fixed count does not thin out the way it
+     does on a monitor: it piles up densely enough to bury the text underneath,
+     and each butterfly keeps three infinite CSS animations running on a
+     3D-transformed, gradient-filled SVG, so hundreds of them at once also reads
+     as lag rather than a cloud. Scaling the count by the viewport's own area
+     against a desktop reference keeps the density — and the cost — the same on
+     any screen. */
+  var REFERENCE_AREA = 1920 * 1080;
+  var MIN_DENSITY = 0.18; // never below this share, however small the screen
+
+  function density() {
+    var area = window.innerWidth * window.innerHeight;
+    return Math.max(MIN_DENSITY, Math.min(1, area / REFERENCE_AREA));
+  }
 
   var layer = null;
   var flock = [];
@@ -443,8 +458,9 @@
       return;
     }
 
-    var room = Math.max(0, MAX - flock.length);
-    var n = Math.min(SWARM, room);
+    var scale = density();
+    var room = Math.max(0, Math.round(MAX * scale) - flock.length);
+    var n = Math.min(Math.round(SWARM * scale), room);
     for (var i = 0; i < n; i++) {
       /* Spread over the window, one by one. Because they all live exactly as long,
          they will later go out in the same order and at the same pace. */
