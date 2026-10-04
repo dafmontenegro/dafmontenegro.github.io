@@ -3,7 +3,7 @@ title: "Music Space"
 description: "These are the soundtracks of my life, carefully selected for appropriate character development and growth in each arc."
 summary: "These are the soundtracks of my life, carefully selected for appropriate character development and growth in each arc."
 date: 2024-10-21
-lastmod: 2025-02-01
+lastmod: 2026-10-04
 featureAlt: "La La Land"
 coverAlt: "La La Land"
 coverCaption: "La La Land"
@@ -20,9 +20,9 @@ These are the soundtracks of my life, carefully selected for appropriate **chara
 ## Jam of the Moment
 Enjoy the song I can't stop listening to right now! This track is my current obsession.
 
-### El Kalvo - Protagonista Estelar
+### Gepe & Silvana Estrada - Hablar de Ti
 
-{{< youtube id="5U1vKxAUT54" loading="lazy" >}}
+{{< youtube id="PY4E4l6Aej0" loading="lazy" >}}
 
 ---
 

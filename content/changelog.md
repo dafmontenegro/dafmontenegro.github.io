@@ -12,6 +12,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-04 | [Music](/spaces/music/#jam-of-the-moment) | New Jam of the Moment: "Gepe & Silvana Estrada - Hablar de Ti" |
 | 2026-10-04 | [Blog](/blog)                   | Lists across the site now show 10 entries per page instead of 5 |
 | 2026-10-04 | [Projects](/projects/texas-holdem-preflop-trainer/) | New cover for "Texas Hold'em Preflop": a card shark dealer holding the two aces, replacing the plain grid-and-cards illustration |
 | 2026-10-04 | [Projects](/projects/postgresql-docs-rag/) | New project: "PostgreSQL Docs RAG", where the table of contents defines the chunks and a mis-calibrated out-of-scope threshold gets caught and fixed |
