@@ -2,7 +2,7 @@
 title: "PostgreSQL Docs RAG"
 description: "A RAG system over the PostgreSQL documentation where the table of contents defines the chunks, with a distance threshold recalibrated after it failed."
 summary: "A retrieval system over four chapters of the PostgreSQL documentation, built to test one claim: that the structure of the source HTML decides whether retrieval works, long before the embedding model gets a say. It covers the parser bug that produced empty chunks without a single error, why the table of contents makes better chunk boundaries than a token counter, and the out-of-scope threshold that looked well-calibrated until adversarial questions proved it wasn't."
-date: 2026-10-04
+date: 2026-08-07
 lastmod: 2026-10-04
 featureAlt: "Seventy-four horizontal bars on a dark background, indented by section depth and coloured by chapter"
 coverAlt: "Seventy-four horizontal bars on a dark background, indented by section depth and coloured by chapter"
