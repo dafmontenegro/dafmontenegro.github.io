@@ -4,13 +4,13 @@ description: "“What happens up on that screen means something.” Jack Conrad,
 summary: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 date: 2024-10-12
 weight: 20
-lastmod: 2026-10-04
+lastmod: 2026-10-08
 featureAlt: "Manny from Babylon"
 coverAlt: "Manny from Babylon"
 coverCaption: "Manny from Babylon"
 thumbnailAlt: "Manny from Babylon"
 categories: ["cinema"]
-tags: ["babylon", "chainsaw-man", "memories-of-murder", "planet-of-the-apes", "everything-everywhere-all-at-once", "lego-batman", "the-devil-all-the-time", "green-book", "top-gun-maverick", "spy-x-family", "puss-in-boots", "la-la-land", "arcane", "the-founder"]
+tags: ["babylon", "chainsaw-man", "memories-of-murder", "planet-of-the-apes", "everything-everywhere-all-at-once", "lego-batman", "the-devil-all-the-time", "green-book", "top-gun-maverick", "dolemite-is-my-name", "spy-x-family", "puss-in-boots", "la-la-land", "a-knight-of-the-seven-kingdoms", "arcane", "the-founder", "se7en"]
 ---
 I want to start with something that ***Jack Conrad says in Babylon*** about what cinema is; something that, for me, **embodies** its *true essence*: something **beautiful** and **magical**... something **full of meaning**.
 
@@ -77,7 +77,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 ### Main Pick: Everything Everywhere All at Once (2022)
 
-![Everything Everywhere All at Once poster](img/everything-everywhere-all-at-once.jpg "[Everything Everywhere All at Once (2022). IMDb](https://www.imdb.com/title/tt3450958/)")
+![Everything Everywhere All at Once poster](img/everything-everywhere-all-at-once.jpg "[Everything Everywhere All at Once (2022). IMDb](https://www.imdb.com/title/tt6710474/)")
 
 > CEO Waymond: You think I'm weak don't you?
 > 
@@ -115,7 +115,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 [^4]: [Guardians of the Galaxy: Vol. 2 (2017)](https://www.imdb.com/title/tt3896198/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
 - **Spider-Man (2018 - 2023): Into the Spider-Verse, and Across the Spider-Verse.** Spider-Man 2099, Peter B. Parker, and Spider-Punk, great characters!
-- **Batman Nolan's Trilogy (2005 - 2012): Begings, The Dark Knight, and The Dark Knight Rises (best)**
+- **Batman Nolan's Trilogy (2005 - 2012): Begins, The Dark Knight, and The Dark Knight Rises (best)**
 - **Batman: The Killing Joke (2016)**
 - **Deadpool & Wolverine (2024)**
 
@@ -129,6 +129,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 ### Honorable Mentions:
 - **Nightcrawler (2014)**
+- **Se7en (1995).** Its ending left me with a question I couldn't shake, so I wrote about it: [Se7en: The Death of Mills?](/blog/se7en-the-death-of-mills/)
 - **Split (2016)**
 
 > You are different from the rest. Your heart is pure! Rejoice! The broken are the more evolved. Rejoice.
@@ -138,8 +139,10 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 [^5]: [Split (2016)](https://www.imdb.com/title/tt4972582/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
 - **Parasite (2019)**
+- **The Soul Keeper (2002).** Someday I want to give my stone to someone.
 - **The Prestige (2006)**
 - **Nightmare Alley (2021)**
+- **Dogman (2023)**
 - **Shutter Island (2010)**
 - **Eternal Sunshine of the Spotless Mind (2004)**
 
@@ -160,7 +163,9 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 [^6]: [Silver Linings Playbook (2012)](https://www.imdb.com/title/tt1045658/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
 - **The Glass Castle (2017)**
+- **Hamnet (2025)**
 - **Seven Pounds (2008)**
+- **Southpaw (2015)**
 - **The White Tiger (2019).**
 > Balram: Rich men are born with opportunities they can waste.
 >
@@ -169,11 +174,13 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 [^7]: [The White Tiger (2019)](https://www.imdb.com/title/tt6571548/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
 - **We Bought a Zoo (2011).** 20 seconds of insane courage!
-- **Babylon (2012)**
+- **Babylon (2022)**
+- **The Judge (2014)**
 - **Collateral Beauty (2016)**
 - **The Iron Claw (2023)**
-- **Aftersun (2012)**
+- **Aftersun (2022)**
 - **Palmer (2021)**
+- **The Dark Side of the Heart (1992)**
 
 ---
 
@@ -194,7 +201,33 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 [^8]: [John Wick: Chapter 3 - Parabellum (2019)](https://www.imdb.com/title/tt6146586/quotes/) - Quotes - IMDb. (s. f.). IMDb.
 
 - **Léon: The Professional (1994)**
+- **The Red Sea Diving Resort (2019)**
 - **Civil War (2024)**
+
+---
+
+## Favorite Comedy Film
+
+### Main Pick: Dolemite Is My Name (2019)
+
+![Dolemite Is My Name poster](img/dolemite-is-my-name.jpg "[Dolemite Is My Name (2019). IMDb](https://www.imdb.com/title/tt8526872/)")
+
+> Rudy Ray Moore: [Speaking with the Bihari Brothers about them helping finance the production of "Dolemite" by giving up future royalties to his records] I'm going to bet on myself. Ain't nobody going to put me on the screen except for me, and everybody I talk to say they want to see a "Dolemite" movie.
+>
+> Julius Bihari: Well, we understand. You're not supposed to make a movie for the five square blocks of people you know.
+>
+> Rudy Ray Moore: [takes pause] Well... that's fine with me. 'Cause every city in America got those same five blocks. And those folks is going to love it!
+>
+> — <cite>Dolemite Is My Name (2019)[^14]</cite>
+
+[^14]: [Dolemite Is My Name (2019)](https://www.imdb.com/title/tt8526872/quotes/) - Quotes - IMDb. (s. f.). IMDb.
+
+### Honorable Mentions:
+- **Cantinflas (2014)**
+- **Bad Boys: Ride or Die (2024)**
+- **Ted (2012 - 2015)**
+- **The Dictator (2012)**
+- **Get Hard (2015)**
 
 ---
 
@@ -293,12 +326,14 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 ## Favorite Serie
 
-### Main Pick: Arcane (2021 - 2024)
+### Main Pick: A Knight of the Seven Kingdoms (2026)
 
-![Arcane poster](img/arcane.jpg "[Arcane (2021 - 2024). IMDb](https://www.imdb.com/title/tt11126994/)")
+![A Knight of the Seven Kingdoms poster](img/a-knight-of-the-seven-kingdoms.jpg "[A Knight of the Seven Kingdoms (2026). IMDb](https://www.imdb.com/title/tt27497448/)")
 
 ### Honorable Mentions:
+- **Arcane (2021 - 2024)**
 - **Baby Reindeer (2024).** The monologue in chapter six is too honest: [Donny Dunn Breaks Down On Stage](https://www.youtube.com/watch?v=khstPnH89ZM)
+- **South Park (1997).** My favorite comedy show, with its own space for my favorite episodes: [South Park](/spaces/south-park/)
 - **The Last of Us (2023).** Episode 3: Wow! My favorite game is the second one, so I’m really looking forward to the second season.
 - **Love, Death & Robots (2019).** My Favorite Episodes:
     - **S1.E7** ∙ Beyond the Aquila Rift
