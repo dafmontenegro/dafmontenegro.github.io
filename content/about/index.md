@@ -131,7 +131,7 @@ Definitely yes, and to continue, there are plenty of **related sections**:
 - All my thoughts in [/thoughts](/thoughts).
 - My music space in [/spaces/music](/spaces/music).
 - My cinema space in [/spaces/cinema](/spaces/cinema).
-- My sense of humor in [/spaces/comedy](/spaces/comedy).
+- My sense of humor in [/spaces/south-park](/spaces/south-park/).
 - The story behind my YouTube channel in [/spaces/mi-amigo-melquiades](/spaces/mi-amigo-melquiades/).
 
 **Want to see how things evolve?** Keep track of all the changes and updates on the site at [/changelog](/changelog).
