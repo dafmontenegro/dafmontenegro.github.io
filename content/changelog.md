@@ -12,6 +12,10 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-08 | [Cinema](/spaces/cinema/#favorite-serie) | New Favorite Serie: "A Knight of the Seven Kingdoms", with Arcane moving to the honorable mentions |
+| 2026-10-08 | [Cinema](/spaces/cinema/) | Added 8 honorable mentions, among them "Se7en" with a link to its post, and fixed two release years and a poster link |
+| 2026-10-08 | [Cinema](/spaces/cinema/#favorite-comedy-film) | The comedy films now live in Cinema as "Favorite Comedy Film", with "The Dictator" and "Get Hard" added |
+| 2026-10-08 | [South Park](/spaces/south-park/) | The Comedy space is now "South Park", with a new cover; old links to it still work |
 | 2026-10-04 | [My Birthday](/blog/my-birthday/) | The childhood photographs now say who is in them, how old I am and where they were taken, so they can be found and understood years from now |
 | 2026-10-04 | [Press Kit](/press/)            | New page: "Press Kit", with both photographs in six versions each - as shot, cut out, on white, and cropped upright, wide and square - linked from About and the footer |
 | 2026-10-04 | [Literature](/spaces/literature/) | New space: "Literature", the lines that stay with me and the paintings they travelled with, arranged by the voice that wrote each one |
