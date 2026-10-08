@@ -1,16 +1,17 @@
 ---
-title: "Comedy"
-description: "Life is more beautiful with laughter. Comedy reminds us we share the same follies and failures, and turns our flaws into anecdotes that unite us."
-summary: "Life becomes more beautiful when accompanied by laughter, and comedy reminds us that we all share the same follies and failures. It allows us to de-dramatize and see the extraordinary in the everyday, where even our flaws and downfalls become anecdotes that at the end of the day unite and humanize us."
+title: "South Park"
+description: "Life is more beautiful with laughter. My favorite South Park episodes, character by character, in the Latin American Spanish dub I love."
+summary: "Life becomes more beautiful when accompanied by laughter, and comedy reminds us that we all share the same follies and failures. South Park is my favorite comedy show, for its sharp satire and social critique: here are my favorite episodes, character by character, in the Latin American Spanish dub."
 date: 2024-10-03
 weight: 50
-lastmod: 2026-10-04
-featureAlt: "Dolemite Is My Name (2019)"
-coverAlt: "Dolemite Is My Name (2019)"
-coverCaption: "Dolemite Is My Name (2019)"
-thumbnailAlt: "Dolemite Is My Name (2019)"
+lastmod: 2026-10-08
+aliases: ["/spaces/comedy/"]
+featureAlt: "Stan, Kyle, Cartman, and Kenny"
+coverAlt: "Stan, Kyle, Cartman, and Kenny"
+coverCaption: "Stan, Kyle, Cartman, and Kenny"
+thumbnailAlt: "Stan, Kyle, Cartman, and Kenny"
 categories: ["comedy"]
-tags: ["south-park", "dolemite-is-my-name", "cantinflas"]
+tags: ["south-park", "cantinflas"]
 ---
 ***Life becomes more beautiful*** when accompanied by laughter, and comedy reminds us that we all share the same **follies and failures**. It allows us to de-dramatize and see the extraordinary in the everyday, where even **our flaws and downfalls** become anecdotes that at the end of the day unite and **humanize us**.
 
@@ -24,19 +25,15 @@ When was the last time you **laughed out loud**?
 
 ---
 
-## South Park
-
-![Stan, Kyle, Cartman, and Kenny](img/south-park.jpg "Stan, Kyle, Cartman, and Kenny")
-
 South Park is undoubtedly my favorite comedy show, far above others like **Rick and Morty** or even The **Simpsons**. What I value most about South Park is its **sharp satire** and **social critique**. In a single episode, the series has the ability to offer multiple perspectives while being **brutally incisive** about the contradictions that permeate our society. It does not merely question the behaviors or customs of individuals, groups, or institutions; rather, **it exposes the flaws and absurdities that we often overlook.**
 
-Many episodes of South Park are **simply entertainin**g, but others invite reflection on one or several topics, thus generating change or, at the very least, raising **necessary awareness**.
+Many episodes of South Park are **simply entertaining**, but others invite reflection on one or several topics, thus generating change or, at the very least, raising **necessary awareness**.
 
 {{< lead >}}
 My collection is in **Spanish** because I love the **Latin dubbed version**.
 {{< /lead >}}
 
-### Top Episodes: Butters
+## Top Episodes: Butters
 
 ![My favorite character Butters Stotch](img/butters.png "**My favorite character Butters Stotch**")
 
@@ -52,7 +49,7 @@ My collection is in **Spanish** because I love the **Latin dubbed version**.
 - **Vamos, vamos gobierno** | [Temporada 17 Ep 1](https://www.southpark.lat/episodios/8motqv/south-park-vamos-vamos-gobierno-temporada-17-ep-1)
 - **Crea tus vídeos como Tonta, P-ta, Malcriada** | [Temporada 8 Ep 12](https://www.southpark.lat/episodios/uixekv/south-park-crea-tus-videos-como-tonta-p-ta-malcriada-temporada-8-ep-12?isRandom=true)
 
-### Top Episodes: Cartman
+## Top Episodes: Cartman
 
 ![Cartman](img/cartman.png "Cartman")
 
@@ -73,7 +70,7 @@ My collection is in **Spanish** because I love the **Latin dubbed version**.
 - **Muere Hippie, Muere** | [Temporada 9 Ep 2](https://www.southpark.lat/episodios/xahxl6/south-park-muere-hippie-muere-temporada-9-ep-2)
 - **Sin Colillas** | [Temporada 7 Ep 13](https://www.southpark.lat/episodios/u9u3rq/south-park-sin-colillas-temporada-7-ep-13)
 
-### Top Episodes: Randy
+## Top Episodes: Randy
 
 ![Randy Marsh](img/randy.jpg "Randy Marsh")
 
@@ -87,7 +84,7 @@ My collection is in **Spanish** because I love the **Latin dubbed version**.
 - **Espaldas babosas** | [Temporada 8 Ep 7](https://www.southpark.lat/episodios/n6dj9t/south-park-espaldas-babosas-temporada-8-ep-7)
 - **Carrera de autos de madera** | [Temporada 13 Ep 6](https://www.southpark.lat/episodios/oki0th/south-park-carrera-de-autos-de-madera-temporada-13-ep-6)
 
-### Top Episodes: Stan
+## Top Episodes: Stan
 
 ![Stan](img/stan.png "Stan")
 
@@ -101,7 +98,7 @@ My collection is in **Spanish** because I love the **Latin dubbed version**.
 - **Guitar Rar-o** | [Temporada 11 Ep 13](https://www.southpark.lat/episodios/xv5ktr/south-park-guitar-rar-o-temporada-11-ep-13)
 - **El uso apropiado del condón** | [Temporada 5 Ep 7](https://www.southpark.lat/episodios/t746u2/south-park-el-uso-apropiado-del-condon-temporada-5-ep-7)
 
-### Top Episodes: Kyle
+## Top Episodes: Kyle
 
 ![Kyle](img/kyle.png "Kyle")
 
@@ -117,29 +114,6 @@ My collection is in **Spanish** because I love the **Latin dubbed version**.
 - **Jódete** | [Temporada 18 Ep 1](https://www.southpark.lat/episodios/q743k3/south-park-jodete-temporada-18-ep-1)
 - **La noche de los vagabundos vivientes** | [Temporada 11 Ep 7](https://www.southpark.lat/episodios/jp51b1/south-park-la-noche-de-los-vagabundos-vivientes-temporada-11-ep-7)
 - **CENTIiPADHUMANO** | [Temporada 15 Ep 1](https://www.southpark.lat/episodios/j6a6zs/south-park-centiipadhumano-temporada-15-ep-1)
-
----
-
-## Favorite Comedy Film
-
-### Main Pick: Dolemite Is My Name (2019)
-
-![Dolemite Is My Name poster](img/dolemite-is-my-name.jpg "[Dolemite Is My Name (2019). IMDb](https://www.imdb.com/title/tt8526872/)")
-
-> Rudy Ray Moore: [Speaking with the Bihari Brothers about them helping finance the production of "Dolemite" by giving up future royalties to his records] I'm going to bet on myself. Ain't nobody going to put me on the screen except for me, and everybody I talk to say they want to see a "Dolemite" movie.
->
-> Julius Bihari: Well, we understand. You're not supposed to make a movie for the five square blocks of people you know.
->
-> Rudy Ray Moore: [takes pause] Well... that's fine with me. 'Cause every city in America got those same five blocks. And those folks is going to love it!
->
-> — <cite>Dolemite Is My Name (2019)[^1]</cite>
-
-[^1]: [Dolemite Is My Name (2019)](https://www.imdb.com/title/tt8526872/quotes/) - Quotes - IMDb. (s. f.). IMDb.
-
-### Honorable Mentions:
-- **Cantinflas (2014)**
-- **Bad Boys: Ride or Die (2024)**
-- **Ted (2012 - 2015)**
 
 ---
 
