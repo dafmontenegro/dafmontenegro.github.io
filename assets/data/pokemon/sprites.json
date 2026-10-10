@@ -1,0 +1,86 @@
+{
+  "pichu": {
+    "name": "Pichu",
+    "file": "img/pokemon/pichu.gif",
+    "width": 44,
+    "height": 49
+  },
+  "pikachu": {
+    "name": "Pikachu",
+    "file": "img/pokemon/pikachu.gif",
+    "width": 50,
+    "height": 46
+  },
+  "charmander": {
+    "name": "Charmander",
+    "file": "img/pokemon/charmander.gif",
+    "width": 41,
+    "height": 42
+  },
+  "charmeleon": {
+    "name": "Charmeleon",
+    "file": "img/pokemon/charmeleon.gif",
+    "width": 66,
+    "height": 56
+  },
+  "charizard": {
+    "name": "Charizard",
+    "file": "img/pokemon/charizard.gif",
+    "width": 87,
+    "height": 89
+  },
+  "munchlax": {
+    "name": "Munchlax",
+    "file": "img/pokemon/munchlax.gif",
+    "width": 46,
+    "height": 48
+  },
+  "snorlax": {
+    "name": "Snorlax",
+    "file": "img/pokemon/snorlax.gif",
+    "width": 74,
+    "height": 75
+  },
+  "gastly": {
+    "name": "Gastly",
+    "file": "img/pokemon/gastly.gif",
+    "width": 67,
+    "height": 75
+  },
+  "haunter": {
+    "name": "Haunter",
+    "file": "img/pokemon/haunter.gif",
+    "width": 85,
+    "height": 69
+  },
+  "gengar": {
+    "name": "Gengar",
+    "file": "img/pokemon/gengar.gif",
+    "width": 74,
+    "height": 63
+  },
+  "ditto": {
+    "name": "Ditto",
+    "file": "img/pokemon/ditto.gif",
+    "width": 47,
+    "height": 32
+  },
+  "psyduck": {
+    "name": "Psyduck",
+    "file": "img/pokemon/psyduck.gif",
+    "width": 39,
+    "height": 46
+  },
+  "golduck": {
+    "name": "Golduck",
+    "file": "img/pokemon/golduck.gif",
+    "width": 60,
+    "height": 59
+  },
+  "mew": {
+    "name": "Mew",
+    "file": "img/pokemon/mew.gif",
+    "width": 77,
+    "height": 53
+  }
+}
