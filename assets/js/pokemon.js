@@ -3,11 +3,11 @@
    Fetched by assets/js/koi.js the first time the Poké Ball (or Caesar's Window on the
    photo) is pressed on the homepage, never before. Each press brings out one Pokémon that
    plays with the author's photo, and with the rest of the page, in a way its kind is
-   known for: Pikachu shocks it, Charmander sets it alight, Snorlax falls asleep on it
-   until it plays the Poké Flute, Gengar takes it into the shadows, Ditto turns into it,
-   Psyduck's headache sends the whole page lurching, and the three Kanto starters evolve
-   side by side until Charizard Mega Evolves and flies off. A Pokémon that evolves does so during its act, as in the games, and the text
-   box of koi.js narrates it in the games' own words.
+   known for: Pikachu shocks it, Charmander sets it alight, Snorlax falls asleep against
+   it until it plays the Poké Flute, Gengar takes its place as a prank, Ditto turns the page
+   into Ditto, and Psyduck's headache sends the whole page lurching. A Pokémon that
+   evolves does so during its act, as in the games, and the text box of koi.js narrates
+   it in the games' own words.
 
    The sprites are the animated ones from Pokémon Black and White, fetched by
    scripts/pokemon/build.py; their sizes and fingerprinted addresses arrive in one JSON
@@ -105,8 +105,14 @@
     this.el.style.transform = this.at(this.x, this.y);
   };
 
+  /* The sprites face left; a flipped one faces right, towards the photo from its left. */
   Mon.prototype.at = function (x, y) {
-    return "translate(" + (x - this.w / 2).toFixed(1) + "px," + (y - this.h).toFixed(1) + "px)";
+    return "translate(" + (x - this.w / 2).toFixed(1) + "px," + (y - this.h).toFixed(1) + "px)" + (this.flipped ? " scaleX(-1)" : "");
+  };
+
+  Mon.prototype.flip = function (on) {
+    this.flipped = on;
+    this.el.style.transform = this.at(this.x, this.y);
   };
 
   Mon.prototype.z = function (z) {
@@ -163,9 +169,9 @@
   }
 
   /* A small pixel drawing that rises from (x, y) and fades: a heart, a bolt, a Z. */
-  function float(art, colours, x, y, rise, duration, delay) {
+  function float(art, colours, x, y, rise, duration, delay, size) {
     if (still()) return;
-    var svg = Koi.pixels(art, colours, "pkmn-prop", 2);
+    var svg = Koi.pixels(art, colours, "pkmn-prop", size || 2);
     svg.style.zIndex = IN_FRONT;
     scene.appendChild(svg);
     var from = "translate(" + x + "px," + y + "px)";
@@ -189,67 +195,30 @@
     avatar.classList.toggle(effect, on);
   }
 
-  /* Evolution: the Pokémon stop, every form flashes in turn with the next, faster and
-     faster, until the new ones hold. As in the games, nobody moves on before the text box
-     has finished saying so. One or several at once: the Kanto starters evolve together. */
-  function evolveAll(mons, tos) {
-    var froms = mons.map(function (mon) {
-      return mon.key;
-    });
-    var one = mons.length === 1;
-    var told = Koi.say([one ? "What? " + name(froms[0]) + " is evolving!" : "What? Your POKéMON are evolving!"]);
+  /* The evolution: the Pokémon stops, both forms flash in turn faster and faster until the
+     new one holds. As in the games, nobody moves on before the text box has finished. */
+  function evolve(mon, to) {
+    var from = mon.key;
+    var told = Koi.say(["What? " + name(from) + " is evolving!"]);
     var steps = still() ? [] : FLICKER;
-    mons.forEach(function (mon) {
-      mon.el.classList.add("is-silhouette");
-    });
+    mon.el.classList.add("is-silhouette");
     return (function swap(i) {
       if (i === steps.length) {
-        mons.forEach(function (mon, k) {
-          mon.show(tos[k]);
-          mon.el.classList.remove("is-silhouette");
-          burst(mon.x, mon.y - mon.h / 2);
-        });
-        var names = tos.map(name);
-        var into = names.length === 1 ? names[0] : names.slice(0, -1).join(", ") + " and " + names[names.length - 1];
+        mon.show(to);
+        mon.el.classList.remove("is-silhouette");
+        burst(mon.x, mon.y - mon.h / 2);
         return told.then(function () {
-          return Koi.say([one ? "Congratulations! Your " + name(froms[0]) + " evolved into " + into + "!" : "Congratulations! They evolved into " + into + "!"]);
+          return Koi.say(["Congratulations! Your " + name(from) + " evolved into " + name(to) + "!"]);
         });
       }
-      mons.forEach(function (mon, k) {
-        mon.show(i % 2 ? froms[k] : tos[k]);
-      });
+      mon.show(i % 2 ? from : to);
       return wait(steps[i]).then(function () {
         return swap(i + 1);
       });
     })(0);
   }
 
-  function evolve(mon, to) {
-    return evolveAll([mon], [to]);
-  }
-
-  /* Mega Evolution: the Mega Stone answers, a sphere of every colour closes round the
-     Pokémon, and it comes out of it changed. */
-  async function megaEvolve(mon, to, stone) {
-    var told = Koi.say([stone + " is reacting to the Key Stone!"]);
-    var sphere = document.createElement("div");
-    sphere.className = "pkmn-mega";
-    sphere.style.left = mon.x + "px";
-    sphere.style.top = mon.y - mon.h / 2 + "px";
-    sphere.style.zIndex = IN_FRONT + 1;
-    scene.appendChild(sphere);
-    mon.el.classList.add("is-silhouette");
-    await wait(ms(1300));
-    mon.show(to);
-    mon.el.classList.remove("is-silhouette");
-    sphere.remove();
-    burst(mon.x, mon.y - mon.h / 2);
-    await told;
-    await Koi.say([name(mon.key.replace(/-mega.*/, "")) + " has Mega Evolved into " + name(to) + "!"]);
-  }
-
-  /* A pixel drawing that flies from one point to another and is gone: a fireball, a
-     drop of water. */
+  /* A pixel drawing that flies from one point to another and is gone: an ember. */
   function shoot(art, colours, from, to, duration, size) {
     if (still()) return Promise.resolve();
     var svg = Koi.pixels(art, colours, "pkmn-prop", size || 2);
@@ -268,15 +237,73 @@
       });
   }
 
-  /* A flame that stands where it is put, flickering, until it is put out. */
-  function flame(x, y, colours) {
-    var svg = Koi.pixels(FLAME, colours, "pkmn-prop pkmn-flicker", 2);
+  /* A flame that stands where it is put, its base at (x, y), flickering through its three
+     drawings, until it is put out. `size` is CSS px per pixel. */
+  function flame(x, y, size) {
+    size = size || 3;
+    var svg = Koi.pixelFrames(FIRE, FIRE_COLOURS, "pkmn-prop pkmn-fire", size);
     svg.style.zIndex = IN_FRONT;
-    svg.style.left = x - 7 + "px";
-    svg.style.top = y - 18 + "px";
-    svg.style.animationDelay = -Math.random() + "s";
+    svg.style.left = x - (9 * size) / 2 + "px";
+    svg.style.top = y - 13 * size + "px";
+    svg.style.setProperty("--pkmn-fire-delay", -Math.random() * 0.36 + "s");
     scene.appendChild(svg);
     return svg;
+  }
+
+  /* A jet of fire from (from) to (to): flames thrown one after another, growing as they
+     fly. Runs until the returned function is called. */
+  function flamethrower(from, to) {
+    if (still()) return function () {};
+    var jet = setInterval(function () {
+      var svg = Koi.pixelFrames(FIRE, FIRE_COLOURS, "pkmn-prop pkmn-fire", 2);
+      svg.style.zIndex = IN_FRONT;
+      svg.style.left = "0px";
+      svg.style.top = "0px";
+      scene.appendChild(svg);
+      var spread = (Math.random() - 0.5) * 24;
+      svg
+        .animate(
+          [
+            { transform: "translate(" + from[0] + "px," + from[1] + "px) rotate(90deg) scale(0.5)", opacity: 1 },
+            { transform: "translate(" + to[0] + "px," + (to[1] + spread) + "px) rotate(90deg) scale(1.6)", opacity: 0.9, offset: 0.8 },
+            { transform: "translate(" + (to[0] + 14) + "px," + (to[1] + spread - 10) + "px) rotate(90deg) scale(1.9)", opacity: 0 }
+          ],
+          { duration: 520, easing: "ease-out" }
+        )
+        .finished.then(function () {
+          svg.remove();
+        });
+    }, 45);
+    return function () {
+      clearInterval(jet);
+    };
+  }
+
+  /* Sparks rising off a fire, until the returned function is called. */
+  function embers(xs, y) {
+    if (still()) return function () {};
+    var rising = setInterval(function () {
+      var x = xs[(Math.random() * xs.length) | 0];
+      float(SPARK, SPARK_COLOURS, x + (Math.random() - 0.5) * 20, y, [(Math.random() - 0.5) * 30, -70 - Math.random() * 50], 1100, 0, 2);
+    }, 90);
+    return function () {
+      clearInterval(rising);
+    };
+  }
+
+  /* The rings of a roar, spreading out of a mouth. */
+  function roar(x, y) {
+    if (still()) return;
+    for (var i = 0; i < 4; i++) {
+      var ring = document.createElement("div");
+      ring.className = "pkmn-roar";
+      ring.style.left = x + "px";
+      ring.style.top = y + "px";
+      ring.style.zIndex = IN_FRONT;
+      ring.style.animationDelay = i * 0.18 + "s";
+      scene.appendChild(ring);
+      setTimeout(ring.remove.bind(ring), 1200 + i * 180);
+    }
   }
 
   function putOut(flames) {
@@ -290,7 +317,7 @@
   }
 
   /* Darkness over the whole page but the photo, which is lifted above it. */
-  function night(on) {
+  function night(on, duration) {
     var veil = document.querySelector(".pkmn-night");
     if (on && !veil) {
       veil = document.createElement("div");
@@ -302,7 +329,7 @@
       document.body.appendChild(veil);
       avatar.classList.add("is-lifted");
     } else if (!on && veil) {
-      veil.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(600) }).finished.then(function () {
+      veil.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(duration || 600), fill: "forwards" }).finished.then(function () {
         veil.remove();
         avatar.classList.remove("is-lifted");
       });
@@ -314,12 +341,32 @@
     return document.querySelector(selector);
   }
 
-  /* The page coming apart: header, content and footer each lurch their own way. */
+  /* The page coming apart: header, content and footer each lurch their own way. Turned
+     off, each part eases back from wherever the lurch had left it, rather than snapping
+     into place: its pose at that instant is read, the lurch removed, and the pose
+     animated back to none. Returns when the page is settled. */
   function chaos(on) {
+    var settling = [];
     ["body > header", "#main-content", "body footer"].forEach(function (selector, i) {
       var el = page(selector);
-      if (el) el.classList.toggle("pkmn-chaos-" + i, on && !still());
+      if (!el) return;
+      var name = "pkmn-chaos-" + i;
+      if (on) {
+        el.classList.toggle(name, !still());
+        return;
+      }
+      if (!el.classList.contains(name)) return;
+      var pose = getComputedStyle(el);
+      var from = { transform: pose.transform, filter: pose.filter };
+      el.classList.remove(name);
+      settling.push(
+        el.animate([from, { transform: "none", filter: "none" }], {
+          duration: ms(1100),
+          easing: "cubic-bezier(0.34, 1.4, 0.5, 1)"
+        }).finished
+      );
     });
+    return Promise.all(settling);
   }
 
   /* ---------------------------------------------------------------------------------
@@ -332,31 +379,73 @@
   var ZED = ["zzzzz", "...z.", "..z..", ".z...", "zzzzz"];
   var ZED_COLOURS = { z: "#93c5fd" };
   var NOTE = ["..nnn", "..n.n", "..n.n", "..n..", "nnn..", "nnn.."];
-  var NOTE_COLOURS = { n: "#a78bfa" };
+  var NOTE_COLOURS = [{ n: "#a78bfa" }, { n: "#f472b6" }, { n: "#38bdf8" }, { n: "#facc15" }];
+  /* The Poké Flute: a pale recorder, as the games' bag icon draws it. */
+  var FLUTE = [
+    "..oooooooooooooo..",
+    ".owwkwwkwwkwwwwwwo",
+    "oowwwwwwwwwwwwwwwo",
+    ".owwwwwwwwwwwwwwbo",
+    "..oooooooooooooo.."
+  ];
+  var FLUTE_COLOURS = { o: "#475569", w: "#e0f2fe", k: "#1e3a8a", b: "#38bdf8" };
   var QUESTION = [".qqq.", "q...q", "....q", "...q.", "..q..", ".....", "..q.."];
   var QUESTION_COLOURS = { q: "#60a5fa" };
-  var FLAME = ["...r...", "..rr...", "..ror..", ".rorr..", ".roorr.", "rooyorr", "royyyor", "royyyor", ".ryyyr."];
-  var FIRE_COLOURS = { r: "#dc2626", o: "#f97316", y: "#fde047" };
-  var BLUE_FIRE_COLOURS = { r: "#1e3a8a", o: "#3b82f6", y: "#bae6fd" };
+  /* A flame in three drawings, shown in turn: leaning left, leaning right, standing tall. */
+  var FIRE = [
+    [
+      "....r....",
+      "...rr....",
+      "...ror...",
+      "..roor...",
+      "..rooor..",
+      ".rooyor..",
+      ".royyoor.",
+      "rooyyyor.",
+      "royyyyyor",
+      "royywyyor",
+      "royywwyor",
+      ".royyyor.",
+      "..rrrrr.."
+    ],
+    [
+      ".....r...",
+      ".....rr..",
+      "....ror..",
+      "...roor..",
+      "..rooor..",
+      "..rooyor.",
+      ".rooyyor.",
+      ".royyyoor",
+      "royyyyyor",
+      "royywyyor",
+      "royywwyor",
+      ".royyyor.",
+      "..rrrrr.."
+    ],
+    [
+      "....r....",
+      "....r....",
+      "...ror...",
+      "...ror...",
+      "..rooor..",
+      "..royor..",
+      ".rooyyor.",
+      ".royyyor.",
+      "royyyyyor",
+      "royywyyor",
+      "royywwyor",
+      ".royyyor.",
+      "..rrrrr.."
+    ]
+  ];
+  var FIRE_COLOURS = { r: "#b91c1c", o: "#f97316", y: "#fde047", w: "#fffbeb" };
+  var SPARK = ["yy", "yy"];
+  var SPARK_COLOURS = { y: "#fde047" };
   var FIREBALL = [".ooo.", "oyyyo", "oyyyo", "oyyyo", ".ooo."];
-  var DROP = [".b.", "bbb", "bwb", ".b."];
-  var DROP_COLOURS = { b: "#38bdf8", w: "#e0f2fe" };
+  var FIREBALL_COLOURS = { o: "#f97316", y: "#fde047" };
   var CRUMB = ["cc", "cc"];
   var CRUMB_COLOURS = { c: "#b91c1c" };
-  var GRIN = [
-    "rrr................rrr",
-    ".rrrr............rrrr.",
-    "..rrrr..........rrrr..",
-    "...rr............rr...",
-    "......................",
-    "w....................w",
-    "ww..................ww",
-    ".wwwwwwwwwwwwwwwwwwww.",
-    "..wkwwkwwkwwkwwkwwkw..",
-    "...wwwwwwwwwwwwwwww...",
-    ".....wwwwwwwwwwww....."
-  ];
-  var GRIN_COLOURS = { r: "#ef4444", w: "#f8fafc", k: "#4c1d95" };
 
   /* ---------------------------------------------------------------------------------
      The acts. */
@@ -391,156 +480,241 @@
     mon.remove();
   }
 
-  /* Charmander, on its own: it spits embers at the photo, which catches fire round its
-     rim, and looks very pleased with itself until the flames die down. */
+  /* Charmander spits embers at the photo, which catches fire at its rim. It evolves twice,
+     facing the photo all along; Charizard lets out a roar that shakes the page, sets the
+     whole photo ablaze with a Flamethrower, and flies a lap round it trailing fire before
+     it is gone into the sky. The fire burns down, and the photo is left a little toasted. */
   async function charmander() {
     var R = radius;
     var mon = new Mon("charmander", -R * 0.3, R + 4, BEHIND);
+    mon.flip(true);
     Koi.say(["Go! CHARMANDER!"]);
-    await mon.go(-R - 40, R + 4, 700, "ease-out");
+    await mon.go(-R - 44, R + 4, 700, "ease-out");
     mon.z(IN_FRONT);
     await wait(300);
+
     var told = Koi.say(["CHARMANDER used EMBER!"]);
     for (var i = 0; i < 3; i++) {
-      shoot(FIREBALL, FIRE_COLOURS, [mon.x + 6, mon.y - mon.h * 0.75], [-R * 0.75 + i * 18, R * 0.35 - i * 26], 380);
-      await wait(ms(200));
+      shoot(FIREBALL, FIREBALL_COLOURS, [mon.x + 14, mon.y - mon.h * 0.75], [-R * 0.85, R * 0.45 - i * 10], 380);
+      await wait(ms(220));
     }
-    await wait(ms(250));
+    var flames = [flame(-R * 0.85, R * 0.6), flame(-R * 0.6, R * 0.85, 2)];
+    await told;
+
+    await evolve(mon, "charmeleon");
+    flames.push(flame(-R * 0.3, R + 2, 2));
+    await evolve(mon, "charizard");
+    await mon.go(-R - 62, R + 8, 300);
+
+    told = Koi.say(["CHARIZARD let out a mighty roar!"]);
+    roar(mon.x + mon.w * 0.3, mon.y - mon.h * 0.72);
+    tremor(3);
+    for (var h = 0; h < 3; h++) await mon.hop(mon.x, mon.y, 8, 200);
+    tremor(0);
+    await told;
+
+    told = Koi.say(["CHARIZARD used FLAMETHROWER!"]);
+    var stop = flamethrower([mon.x + mon.w * 0.3, mon.y - mon.h * 0.72], [-R * 0.2, -R * 0.15]);
+    await wait(ms(700));
     photo("is-burning", true);
-    var flames = [];
-    for (var a = 15; a <= 165; a += 25) {
+    for (var a = 0; a <= 360; a += 30) {
       var t = (a * Math.PI) / 180;
-      flames.push(flame(Math.cos(t) * R, Math.sin(t) * R + 4, FIRE_COLOURS));
+      flames.push(flame(Math.cos(t) * R * 0.98, Math.sin(t) * R * 0.98 + 14, a % 60 ? 2 : 3));
     }
+    var sparks = embers([-R * 0.6, 0, R * 0.6], -R * 0.6);
     await told;
+    stop();
     await Koi.say(["The photo caught fire!"]);
-    await Koi.say(["CHARMANDER looks very proud of itself."]);
-    await putOut(flames);
-    photo("is-burning", false);
-    mon.z(BEHIND);
-    await mon.go(-R * 0.3, R + 4, 700);
-    mon.remove();
-  }
 
-  /* The three Kanto starters, together: Bulbasaur, Charmander and Squirtle come out round
-     the photo and evolve side by side, twice. Venusaur fires a Solar Beam into the sky,
-     Blastoise its Hydro Pump, and Charizard Mega Evolves into Mega Charizard X and flies
-     a lap of the photo trailing blue fire before it is gone. */
-  async function kanto() {
-    var R = radius;
-    var leaf = new Mon("bulbasaur", -R * 0.3, R + 4, BEHIND);
-    var shell = new Mon("squirtle", R * 0.3, R + 4, BEHIND);
-    var fire = new Mon("charmander", 0, -R * 0.2, BEHIND);
-    Koi.say(["Go! BULBASAUR! CHARMANDER! SQUIRTLE!"]);
-    await Promise.all([leaf.go(-R - 38, R + 4, 700, "ease-out"), shell.go(R + 58, R + 4, 700, "ease-out")]);
-    leaf.z(IN_FRONT);
-    shell.z(IN_FRONT);
-    setTimeout(function () {
-      fire.z(IN_FRONT);
-    }, ms(250));
-    await fire.hop(0, -R + 8, 50, 650);
-    await evolveAll([leaf, fire, shell], ["ivysaur", "charmeleon", "wartortle"]);
-    await evolveAll([leaf, fire, shell], ["venusaur", "charizard", "blastoise"]);
-
-    var told = Koi.say(["VENUSAUR used SOLAR BEAM!"]);
-    photo("is-sunlit", true);
-    var beam = document.createElement("div");
-    beam.className = "pkmn-beam";
-    beam.style.zIndex = IN_FRONT;
-    beam.style.left = leaf.x - 6 + "px";
-    beam.style.top = leaf.y - leaf.h * 0.7 + "px";
-    scene.appendChild(beam);
-    await told;
-    beam.remove();
-    photo("is-sunlit", false);
-
-    told = Koi.say(["BLASTOISE used HYDRO PUMP!"]);
-    for (var d = 0; d < 14; d++) {
-      shoot(DROP, DROP_COLOURS, [shell.x - 18, shell.y - shell.h * 0.8], [shell.x - 120 - Math.random() * 60, -R - 140 - Math.random() * 80], 700, 3);
-      await wait(ms(90));
-    }
-    await told;
-
-    await megaEvolve(fire, "charizard-mega-x", "CHARIZARDITE X");
-    told = Koi.say(["MEGA CHARIZARD X used FLY!"]);
-    var lap = [];
-    var orbit = R + 60;
-    for (var a = 270; a <= 630; a += 30) {
-      var t = (a * Math.PI) / 180;
-      lap.push([Math.cos(t) * orbit, Math.sin(t) * orbit * 0.75 + 30]);
-    }
+    told = Koi.say(["CHARIZARD used FLY!"]);
     var trail = still()
       ? 0
       : setInterval(function () {
-          float(FLAME, BLUE_FIRE_COLOURS, fire.x - 7, fire.y - fire.h * 0.3, [0, 16], 700);
-        }, 110);
-    await fire.go(lap[0][0], lap[0][1], 400);
-    await fire.path(lap.slice(1), 2200, "linear");
-    await fire.go(orbit + 80, -window.innerHeight * 0.8, 900, "ease-in");
+          float(FIREBALL, FIREBALL_COLOURS, mon.x, mon.y - mon.h * 0.3, [0, 18], 600, 0, 2);
+        }, 90);
+    var lap = [];
+    var orbit = R + 70;
+    for (var deg = 180; deg <= 540; deg += 30) {
+      var r = (deg * Math.PI) / 180;
+      lap.push([Math.cos(r) * orbit, Math.sin(r) * orbit * 0.7 + 30]);
+    }
+    await mon.go(lap[0][0], lap[0][1], 400, "ease-out");
+    var turn = setInterval(function () {
+      /* Face the way it is flying: right along the top of the lap, left along the bottom. */
+      mon.flip(mon.y < 30);
+    }, 120);
+    await mon.path(lap.slice(1), 2400, "linear");
+    clearInterval(turn);
+    mon.flip(true);
+    await mon.go(orbit + 120, -window.innerHeight * 0.8, 900, "ease-in");
     clearInterval(trail);
-    fire.remove();
+    mon.remove();
     await told;
 
-    leaf.z(BEHIND);
-    shell.z(BEHIND);
-    await Promise.all([leaf.go(-R * 0.3, R + 4, 700), shell.go(R * 0.3, R + 4, 700)]);
-    leaf.remove();
-    shell.remove();
+    told = Koi.say(["The fire burned out.", "The photo is a little toasted."]);
+    sparks();
+    await putOut(flames);
+    photo("is-burning", false);
+    await told;
   }
 
-  /* Munchlax comes looking for food and takes a bite out of the page: the red box under
-     the photo. It evolves; Snorlax climbs on top of the photo and falls asleep there,
-     squashing it, and only the Poké Flute wakes it, as in the games: the photo plays it. */
+  /* Munchlax comes looking for food and eats its way along the red box under the photo,
+     a bite at a time. It evolves; Snorlax lies down against the photo, pushing it over, and
+     sleeps there, and only the Poké Flute wakes it, as in the games: the photo plays it. */
+  var bitten = null;
+
   async function munchlax() {
     var R = radius;
-    var banner = page("#main-content .rounded-md.bg-primary-100");
+    var box = page("#main-content .rounded-md.bg-primary-100");
     var mon = new Mon("munchlax", -R * 0.3, R + 4, BEHIND);
     Koi.say(["Go! MUNCHLAX!"]);
     await mon.go(-R - 30, R + 4, 600, "ease-out");
     mon.z(IN_FRONT);
     await Koi.say(["MUNCHLAX is looking for something to eat..."]);
-    if (banner) {
+
+    if (box) {
       var a = avatar.getBoundingClientRect();
-      var b = banner.getBoundingClientRect();
-      var bx = b.left - (a.left + a.width / 2) + 46;
-      var by = b.top - (a.top + a.height / 2) + 2;
-      await mon.hop(bx, by, 40, 700);
-      var told = Koi.say(["MUNCHLAX took a bite out of the page!"]);
-      banner.classList.add("pkmn-bitten");
-      for (var c = 0; c < 6; c++) {
-        float(CRUMB, CRUMB_COLOURS, bx - 14 + c * 6, by + 4, [c * 4 - 10, 30], 900, c * 80);
+      var b = box.getBoundingClientRect();
+      var cx = a.left + a.width / 2;
+      var top = b.top - (a.top + a.height / 2) + 2;
+      var bites = [];
+      var lines = [
+        "MUNCHLAX took a bite out of the page!",
+        "MUNCHLAX is still hungry!",
+        "Munch... munch...",
+        "MUNCHLAX ate its fill!"
+      ];
+      await mon.hop(b.left - cx + 30, top, 40, 700);
+      for (var k = 0; k < lines.length; k++) {
+        var at = 30 + k * 30;
+        if (k) await mon.hop(b.left - cx + at, top, 12, 300);
+        var told = Koi.say([lines[k]]);
+        for (var chew = 0; chew < 2; chew++) await mon.hop(mon.x, top, 6, 180);
+        bites.push(at);
+        bite(box, bites);
+        for (var c = 0; c < 5; c++) {
+          float(CRUMB, CRUMB_COLOURS, mon.x - 10 + c * 5, top + 4, [c * 5 - 12, 34], 900, c * 70);
+        }
+        await told;
       }
-      await mon.hop(bx, by, 8, 220);
-      await mon.hop(bx, by, 8, 220);
-      await told;
       await mon.hop(-R - 30, R + 4, 40, 700);
     }
+
     await evolve(mon, "snorlax");
-    await mon.hop(0, -R + 26, 60, 750);
-    photo("is-squashed", true);
-    var told2 = Koi.say(["SNORLAX used REST!", "SNORLAX fell asleep on top of the photo!"]);
-    for (var i = 0; i < 4; i++) {
-      float(ZED, ZED_COLOURS, mon.x + 18, mon.y - mon.h, [24, -50], 1600, i * 700);
-    }
+
+    /* Falling asleep, slowly: it sways as it yawns, sinks, and settles lying down against
+       the photo, which gives under its weight. The standing sprite and the lying one
+       cross-fade where it sinks, so the change of pose is never a jump. */
+    var told2 = Koi.say(["SNORLAX is getting sleepy..."]);
+    /* Lying beside the photo, to its left, not across it. */
+    var sleeper = new Mon("snorlax-asleep", -R - 24, R + 14);
+    sleeper.el.style.opacity = 0;
+    var base = mon.at(mon.x, mon.y);
+    mon.el.style.transformOrigin = "50% 100%";
+    await mon.el.animate(
+      [
+        { transform: base },
+        { transform: base + " rotate(-7deg)" },
+        { transform: base + " rotate(6deg)" },
+        { transform: base + " rotate(-5deg)" },
+        { transform: base + " rotate(0deg)" }
+      ],
+      { duration: ms(1800), easing: "ease-in-out" }
+    ).finished;
     await told2;
+    var settle = { duration: ms(700), easing: "ease-in", fill: "forwards" };
+    mon.el.animate([{ transform: base, opacity: 1 }, { transform: base + " scale(1.15, 0.55)", opacity: 0 }], settle);
+    await sleeper.el.animate([{ opacity: 0 }, { opacity: 1 }], settle).finished;
+    sleeper.el.style.opacity = 1;
+    mon.el.style.visibility = "hidden";
+    photo("is-tilted", true);
+    var snoring = still()
+      ? 0
+      : setInterval(function () {
+          float(ZED, ZED_COLOURS, sleeper.x - 16, sleeper.y - sleeper.h, [-30, -60], 1800, 0, 3);
+        }, 700);
+    await Koi.say(["SNORLAX used REST!", "SNORLAX fell asleep against the photo!"]);
+
+    /* The photo takes out the Poké Flute and plays it: notes stream out of the flute in
+       waves of colour, rising high over the page. */
+    /* Held at the photo's right rim, above the badge, its bell pointing out of the photo
+       and up; Snorlax sleeps on the other side. */
+    var flute = Koi.pixels(FLUTE, FLUTE_COLOURS, "pkmn-prop pkmn-flute", 4);
+    flute.style.left = R * 0.62 + "px";
+    flute.style.top = -R * 0.42 + "px";
+    flute.style.zIndex = IN_FRONT;
+    scene.appendChild(flute);
     photo("is-playing", true);
-    for (var n = 0; n < 6; n++) {
-      float(NOTE, NOTE_COLOURS, (n % 2 ? 1 : -1) * (R + 10), R * 0.2, [(n % 2 ? 1 : -1) * 18, -46], 1400, n * 260);
-    }
+    var n = 0;
+    var tune = still()
+      ? 0
+      : setInterval(function () {
+          var drift = Math.sin(n / 2) * 40;
+          float(NOTE, NOTE_COLOURS[n % NOTE_COLOURS.length], R * 0.62 + 66, -R * 0.42 - 30, [40 + drift, -140 - (n % 3) * 20], 1900, 0, 4);
+          n++;
+        }, 170);
     await Koi.say(["The photo played the POKé FLUTE!", "Now, that's a catchy tune!"]);
+    clearInterval(tune);
+    clearInterval(snoring);
     photo("is-playing", false);
+    flute.remove();
+
+    /* Waking: the lying sprite fades as the standing one stretches back up. */
+    photo("is-tilted", false);
+    mon.el.style.visibility = "";
+    mon.el.getAnimations().forEach(function (anim) {
+      anim.cancel();
+    });
+    var wake = { duration: ms(600), easing: "ease-out" };
+    sleeper.el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(600), fill: "forwards" });
+    await mon.el.animate(
+      [
+        { transform: base + " scale(1.15, 0.55)", opacity: 0 },
+        { transform: base + " scale(0.92, 1.12)", opacity: 1, offset: 0.7 },
+        { transform: base, opacity: 1 }
+      ],
+      wake
+    ).finished;
+    sleeper.remove();
     await Koi.say(["SNORLAX woke up!"]);
-    photo("is-squashed", false);
     await mon.hop(-R - 30, R + 6, 30, 650);
     mon.z(BEHIND);
     await mon.go(-R * 0.2, R + 6, 700);
     mon.remove();
   }
 
-  /* Gastly seeps out of the photo's shadow while the whole page goes dark, and evolves
-     twice. Gengar licks the photo, which shivers, then uses Phantom Force: it sinks into
-     the photo and takes it into the shadows, leaving its grin where the photo was, until
-     it bursts back out and the light comes back. */
+  /* Munchlax's bites out of the red box: round bites off its top edge, cut with a mask,
+     so the box itself is never touched and comes back whole when the mask goes. */
+  function bite(box, xs) {
+    var layers = xs
+      .map(function (x) {
+        return "radial-gradient(circle 14px at " + x + "px 0, transparent 96%, #000 100%)";
+      })
+      .join(",");
+    box.style.webkitMask = layers;
+    box.style.mask = layers;
+    box.style.webkitMaskComposite = xs
+      .map(function () {
+        return "source-in";
+      })
+      .join(",");
+    box.style.maskComposite = "intersect";
+    bitten = box;
+  }
+
+  function unbite() {
+    if (!bitten) return;
+    ["webkitMask", "mask", "webkitMaskComposite", "maskComposite"].forEach(function (property) {
+      bitten.style[property] = "";
+    });
+    bitten = null;
+  }
+
+  /* Gastly seeps out of the photo's shadow while the page dims, and evolves twice. Gengar
+     licks the photo, which shivers, then uses Phantom Force: it sinks into the photo, and
+     the photo slowly becomes Gengar's own portrait, a prank rather than a fright. Then
+     everything eases back: the portrait dissolves into the photo again, Gengar slips out
+     from behind it and sinks back into the shadows as the light comes back with it. */
   async function gastly() {
     var R = radius;
     night(true);
@@ -561,125 +735,166 @@
 
     var told = Koi.say(["GENGAR used PHANTOM FORCE!"]);
     mon.z(BEHIND);
-    mon.go(0, R * 0.3, 500, "ease-in");
-    await mon.fade(500);
-    photo("is-taken", true);
-    var grin = Koi.pixels(GRIN, GRIN_COLOURS, "pkmn-prop pkmn-grin", 4);
-    grin.style.zIndex = IN_FRONT;
-    grin.style.left = "-44px";
-    grin.style.top = "-22px";
-    scene.appendChild(grin);
+    mon.go(0, R * 0.3, 600, "ease-in");
+    await mon.fade(600);
+
+    /* Gengar's portrait, in the photo's own circle: its sprite, large, on the purple of
+       its shadows, fading in over the photo like a picture developing. */
+    var portrait = document.createElement("div");
+    portrait.className = "pkmn-portrait";
+    portrait.style.left = -R + "px";
+    portrait.style.top = -R + "px";
+    portrait.style.width = portrait.style.height = R * 2 + "px";
+    var face = document.createElement("img");
+    face.src = data.gengar.url;
+    face.alt = "";
+    face.width = data.gengar.width * 1.7;
+    face.height = data.gengar.height * 1.7;
+    portrait.appendChild(face);
+    scene.appendChild(portrait);
+    await portrait.animate([{ opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0)" }], { duration: ms(1100), easing: "ease-out", fill: "forwards" }).finished;
     await told;
-    await Koi.say(["The photo vanished into the shadows!"]);
-    grin.remove();
-    burst(0, 0);
-    photo("is-taken", false);
+    await Koi.say(["GENGAR took the photo's place!"]);
+    await Koi.say(["It was just a prank!"]);
+
+    /* And back, slowly: the portrait dissolves into the photo, Gengar slips out from behind
+       it, and as it sinks away the dark and the photo's shade lift with it. */
+    await portrait.animate([{ opacity: 1, filter: "blur(0)" }, { opacity: 0, filter: "blur(6px)" }], { duration: ms(1100), easing: "ease-in", fill: "forwards" }).finished;
+    portrait.remove();
     mon.el.getAnimations().forEach(function (anim) {
       anim.cancel();
     });
     mon.z(IN_FRONT);
-    await mon.go(R + 34, R * 0.15, 250, "ease-out");
-    await Koi.say(["GENGAR came back out of the shadows!"]);
+    mon.el.style.opacity = 0;
+    mon.el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: ms(700), fill: "forwards" });
+    await mon.go(R + 34, R * 0.15, 700, "ease-out");
     var gone = Koi.say(["GENGAR vanished into the shadows!"]);
     mon.z(BEHIND);
     mon.go(0, 0, 700, "ease-in");
     await mon.fade(700);
+    /* Only once it has gone does the light come back, the photo sweeping through green to
+       its own colours. */
     night(false);
     photo("is-shadowed", false);
     await gone;
     mon.remove();
   }
 
-  /* Ditto lands on the photo and transforms into it: the whole photo turns into Ditto,
-     the photo's own pixels recoloured in Ditto's purple, with Ditto's face, wobbling like
-     the jelly it is. It cannot help itself and copies the site's logo and the badge too,
-     then cannot hold any of it and lets go of everything at once. */
+  /* Ditto lands on the photo, hops onto the name under it and uses Transform, not on
+     itself but on the page: letter by letter the name, the headline and the line in the
+     red box turn into Ditto, in Ditto's purple, wobbling like the jelly it is, until it
+     cannot keep it up and every word goes back to what it was.
+
+     What each one becomes is worked out from whatever it says at the time, by rule, so
+     the act survives any change to the homepage's text: every word of the name becomes
+     "Ditto", and in the headline and the red box the last word of every clause does. */
+  var DITTO_LETTERS = "DITO?";
+  var transformed = [];
+
   async function ditto() {
     var R = radius;
+    var section = avatar.parentElement;
+    var heading = section.querySelector("h1");
+    var headline = section.querySelector("h2");
+    var box = page("#main-content .rounded-md.bg-primary-100");
+    var targets = [
+      [heading, true],
+      [headline, false],
+      [box && box.lastElementChild, false]
+    ]
+      .filter(function (target) {
+        return target[0];
+      })
+      .map(function (target) {
+        return [target[0], dittoify(target[0].textContent.trim(), target[1])];
+      });
+
     var mon = new Mon("ditto", R * 0.25, -R - 150);
     mon.el.style.opacity = 0;
     mon.el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: ms(200), fill: "forwards" });
     Koi.say(["Go! DITTO!"]);
     await mon.go(R * 0.25, -R + 6, 700, "cubic-bezier(0.3, 1.5, 0.6, 1)");
-    await wait(300);
-    var told = Koi.say(["DITTO used TRANSFORM!"]);
-    burst(0, 0);
-    mon.el.style.visibility = "hidden";
-    var copy = copyOfPhoto(R * 2);
-    if (copy) {
-      copy.style.left = -R + "px";
-      copy.style.top = -R + "px";
-      copy.style.zIndex = 1;
-      scene.appendChild(copy);
+    if (heading) {
+      var a = avatar.getBoundingClientRect();
+      var h = heading.getBoundingClientRect();
+      await mon.hop(h.right - (a.left + a.width / 2) - 20, h.top - (a.top + a.height / 2) + 6, 40, 650);
     }
+    var told = Koi.say(["DITTO used TRANSFORM!"]);
+    burst(mon.x, mon.y - 16);
+    transformed = targets.map(function (target) {
+      return { el: target[0], text: target[0].textContent };
+    });
+    targets.forEach(function (target) {
+      target[0].setAttribute("aria-label", target[0].textContent.trim());
+      target[0].classList.add("pkmn-dittoed");
+    });
+    await Promise.all(
+      targets.map(function (target) {
+        return morph(target[0], target[1]);
+      })
+    );
     await told;
-    await Koi.say(["DITTO transformed into you!"]);
-    /* The header has one logo per theme, the other one hidden: both are copied. */
-    var copied = Array.prototype.slice.call(document.querySelectorAll("body > header img"));
-    var badge = page(".cw-avatar .cw-badge");
-    if (badge) copied.push(badge);
-    copied.forEach(function (el) {
-      el.classList.add("pkmn-dittoed");
-    });
-    await Koi.say(["...and into everything else it could find!"]);
-    await Koi.say(["But it couldn't keep it up!"]);
-    copied.forEach(function (el) {
-      el.classList.remove("pkmn-dittoed");
-    });
-    burst(0, 0);
-    if (copy) copy.remove();
-    mon.el.style.visibility = "";
-    await mon.hop(R + 30, R + 4, 40, 600);
+    await Koi.say(["DITTO transformed the page into DITTO!"]);
+    await Koi.say(["...but it couldn't keep it up!"]);
+    burst(mon.x, mon.y - 16);
+    await Promise.all(
+      transformed.map(function (saved) {
+        return morph(saved.el, saved.text.trim());
+      })
+    );
+    undoDitto();
+    await mon.hop(R + 30, R + 4, 40, 650);
     await mon.hop(R + 60, R + 4, 18, 350);
     mon.z(BEHIND);
     await mon.go(R * 0.3, R + 4, 600);
     mon.remove();
   }
 
-  /* The photo, as Ditto copies it: shrunk to a few pixels, each mapped to one of four
-     shades of Ditto's purple, inside the photo's circle, with Ditto's face on top. Returns
-     nothing where the photo cannot be read. */
-  function copyOfPhoto(size) {
-    var source = avatar.querySelector("img");
-    if (!source || !source.complete) return null;
-    var PIXELS = 24;
-    var canvas = document.createElement("canvas");
-    canvas.width = canvas.height = PIXELS;
-    var ctx = canvas.getContext("2d");
-    var image;
-    try {
-      ctx.drawImage(source, 0, 0, PIXELS, PIXELS);
-      image = ctx.getImageData(0, 0, PIXELS, PIXELS);
-    } catch (e) {
-      return null;
-    }
-    var shades = [[74, 44, 102], [127, 86, 166], [176, 130, 214], [228, 200, 245]];
-    var d = image.data;
-    for (var i = 0; i < d.length; i += 4) {
-      var p = i / 4;
-      var x = (p % PIXELS) - PIXELS / 2 + 0.5;
-      var y = Math.floor(p / PIXELS) - PIXELS / 2 + 0.5;
-      var light = (0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2]) / 255;
-      var shade = shades[Math.min(3, Math.floor(light * 4.2))];
-      d[i] = shade[0];
-      d[i + 1] = shade[1];
-      d[i + 2] = shade[2];
-      d[i + 3] = x * x + y * y <= (PIXELS / 2) * (PIXELS / 2) ? 255 : 0;
-    }
-    ctx.putImageData(image, 0, 0);
-    /* Ditto's face: two dots and a wide, wobbly smile. */
-    ctx.fillStyle = "#1f1235";
-    [[8, 9], [9, 9], [15, 9], [16, 9], [8, 10], [16, 10], [9, 14], [10, 15], [11, 15], [12, 15], [13, 15], [14, 14]].forEach(function (q) {
-      ctx.fillRect(q[0], q[1], 1, 1);
+  /* A text as Ditto would have it: every word "Ditto", or only the last word before each
+     comma, full stop or other mark that ends a clause, and the one at the very end. */
+  function dittoify(text, everyWord) {
+    var WORD = /[A-Za-zÀ-ÖØ-öø-ÿ'’-]+/g;
+    if (everyWord) return text.replace(WORD, "Ditto");
+    return text.replace(/([^,.;:!?]*?)([A-Za-zÀ-ÖØ-öø-ÿ'’-]+)(\s*(?:[,.;:!?]+|$))/g, function (all, before, word, end) {
+      return before + "Ditto" + end;
     });
-    canvas.className = "pkmn-prop pkmn-copy pkmn-jelly";
-    canvas.style.width = canvas.style.height = size + "px";
-    return canvas;
   }
 
-  /* Psyduck waddles out with its headache, which spins the photo round. It gets worse
-     until Psyduck lets loose a Confusion that sends the whole page lurching, and leaves
-     as confused as it came. */
+  /* Changes an element's text into another, a few more letters settling every step, the
+     rest still Ditto's scramble. */
+  async function morph(el, to) {
+    var from = el.textContent.trim();
+    var length = Math.max(from.length, to.length);
+    var STEPS = still() ? 0 : 12;
+    for (var k = 1; k <= STEPS; k++) {
+      var settled = Math.round((length * k) / STEPS);
+      var out = "";
+      for (var i = 0; i < length; i++) {
+        if (i < settled) out += to.charAt(i);
+        else if (from.charAt(i) === " " || to.charAt(i) === " ") out += " ";
+        else out += DITTO_LETTERS.charAt((Math.random() * DITTO_LETTERS.length) | 0);
+      }
+      el.textContent = out;
+      await wait(55);
+    }
+    el.textContent = to;
+  }
+
+  /* Puts every word Ditto took back as it was, whether the act finished or not. */
+  function undoDitto() {
+    transformed.forEach(function (saved) {
+      saved.el.textContent = saved.text;
+      saved.el.classList.remove("pkmn-dittoed");
+      saved.el.removeAttribute("aria-label");
+    });
+    transformed = [];
+  }
+
+  /* Psyduck waddles out with its headache, which spins the photo round. The headache
+     builds, a step at a time, the page trembling harder and a psychic glow rising round
+     Psyduck, until it lets loose a Confusion that sends the whole page lurching. Then, as
+     the Pokédex says of it, it remembers nothing: it wanders off the wrong way, walks
+     into the photo, and leaves as confused as it came. */
   async function psyduck() {
     var R = radius;
     var mon = new Mon("psyduck", -R * 0.4, R + 4, BEHIND);
@@ -693,23 +908,76 @@
     photo("is-confused", true);
     await told;
     photo("is-confused", false);
-    told = Koi.say(["PSYDUCK's headache is getting worse..."]);
-    for (var k = 0; k < 3; k++) await mon.hop(mon.x, mon.y, 10, 260);
-    await told;
+
+    /* The build-up: three steps, each a little worse. */
+    var steps = [
+      "PSYDUCK's headache is getting worse...",
+      "PSYDUCK is holding its head...",
+      "Something is about to happen..."
+    ];
+    for (var k = 0; k < steps.length; k++) {
+      told = Koi.say([steps[k]]);
+      tremor(k + 1);
+      mon.el.classList.add("is-psychic-" + (k + 1));
+      for (var q = 0; q <= k; q++) {
+        float(QUESTION, QUESTION_COLOURS, mon.x - 14 + q * 12, mon.y - mon.h - 4, [0, -26], 1100, q * 200, 2 + (k > 1 ? 1 : 0));
+      }
+      for (var hops = 0; hops < 2 + k; hops++) await mon.hop(mon.x, mon.y, 6 + k * 3, 260 - k * 40);
+      await told;
+      await wait(ms(400));
+    }
+
     told = Koi.say(["PSYDUCK used CONFUSION!"]);
+    tremor(0);
+    flash();
     chaos(true);
-    for (var q = 0; q < 8; q++) {
-      float(QUESTION, QUESTION_COLOURS, (Math.random() - 0.5) * R * 3, (Math.random() - 0.5) * R * 2, [0, -30], 1100, q * 150);
+    for (var z = 0; z < 10; z++) {
+      float(QUESTION, QUESTION_COLOURS, (Math.random() - 0.5) * R * 3.4, (Math.random() - 0.5) * R * 2.4, [0, -34], 1100, z * 140, 3);
     }
     await told;
-    await wait(ms(900));
-    chaos(false);
-    await Koi.say(["It hurt itself in its confusion!"]);
-    await mon.hop(mon.x, mon.y, 18, 400);
-    await Koi.say(["PSYDUCK is still confused..."]);
+    await wait(ms(1200));
+    await chaos(false);
+    [1, 2, 3].forEach(function (level) {
+      mon.el.classList.remove("is-psychic-" + level);
+    });
+
+    /* And it forgets all of it. */
+    await wait(ms(500));
+    told = Koi.say(["...", "PSYDUCK doesn't remember a thing."]);
+    float(QUESTION, QUESTION_COLOURS, mon.x - 5, mon.y - mon.h - 4, [0, -20], 1600, 0, 3);
+    await told;
+    await mon.go(-R * 0.75, R + 4, 700);
+    photo("is-bumped", true);
+    await mon.hop(-R - 20, R + 4, 14, 350);
+    photo("is-bumped", false);
+    await Koi.say(["PSYDUCK walked into the photo."]);
     mon.z(BEHIND);
-    await mon.go(-R * 0.3, R + 4, 800);
+    await mon.go(-R * 0.3, R + 4, 900);
     mon.remove();
+  }
+
+  /* The page trembling under Psyduck's headache, from 1 (barely) to 3; 0 stops it. */
+  function tremor(level) {
+    if (still()) return;
+    ["body > header", "#main-content", "body footer"].forEach(function (selector) {
+      var el = page(selector);
+      if (!el) return;
+      [1, 2, 3].forEach(function (l) {
+        el.classList.toggle("pkmn-tremor-" + l, l === level);
+      });
+    });
+  }
+
+  /* A flash over the whole page, for the moment the Confusion goes off. */
+  function flash() {
+    if (still()) return;
+    var light = document.createElement("div");
+    light.className = "pkmn-flash";
+    light.setAttribute("aria-hidden", "true");
+    document.body.appendChild(light);
+    setTimeout(function () {
+      light.remove();
+    }, 700);
   }
 
   /* The 404 page's visitor: MissingNo., the glitch the first games turned up where
@@ -859,16 +1127,14 @@
     await told;
   }
 
-  /* Every act, with the National Dex number it is listed under in the Pokédex and, where
-     it is more than one Pokémon, the name it is listed as. */
+  /* Every act, with the National Dex number it is listed under in the Pokédex. */
   var ACTS = {
-    kanto: { dex: 1, title: "Kanto trio", keys: ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "charizard", "charizard-mega-x", "squirtle", "wartortle", "blastoise"], play: kanto, weight: 2 },
-    charmander: { dex: 4, keys: ["charmander"], play: charmander, weight: 3 },
+    charmander: { dex: 4, keys: ["charmander", "charmeleon", "charizard"], play: charmander, weight: 3 },
     psyduck: { dex: 54, keys: ["psyduck"], play: psyduck, weight: 3 },
     gastly: { dex: 92, keys: ["gastly", "haunter", "gengar"], play: gastly, weight: 3 },
     ditto: { dex: 132, keys: ["ditto"], play: ditto, weight: 3 },
     pichu: { dex: 172, keys: ["pichu", "pikachu"], play: pichu, weight: 3 },
-    munchlax: { dex: 446, keys: ["munchlax", "snorlax"], play: munchlax, weight: 3 }
+    munchlax: { dex: 446, keys: ["munchlax", "snorlax", "snorlax-asleep"], play: munchlax, weight: 3 }
   };
 
   /* A weighted draw, never the same act twice in a row. */
@@ -924,7 +1190,11 @@
       return;
     }
     load().then(function () {
-      var met = seen();
+      /* Only what is still on the list counts: a visitor may have met Pokémon this page no
+         longer has. */
+      var met = seen().filter(function (act) {
+        return ACTS[act];
+      });
       var keys = Object.keys(ACTS).sort(function (a, b) {
         return ACTS[a].dex - ACTS[b].dex;
       });
@@ -946,7 +1216,7 @@
         var button = document.createElement("button");
         button.type = "button";
         button.className = "pkmn-dex-entry" + (known ? "" : " is-unseen");
-        var label = ACTS[act].title || first.name;
+        var label = first.name;
         button.setAttribute("aria-label", known ? label : "Unknown Pokémon, number " + ACTS[act].dex);
         button.innerHTML =
           '<span class="pkmn-dex-no">' + pad(ACTS[act].dex) + "</span>" +
@@ -1042,14 +1312,18 @@
         console.error(error);
       })
       .then(function () {
-        ["is-zapped", "is-burning", "is-sunlit", "is-squashed", "is-playing", "is-shadowed", "is-shivering", "is-taken", "is-confused"].forEach(function (effect) {
+        ["is-zapped", "is-burning", "is-tilted", "is-playing", "is-shadowed", "is-shivering", "is-confused", "is-bumped"].forEach(function (effect) {
           photo(effect, false);
         });
         /* Whatever an act did to the rest of the page is undone, even if it failed. */
         night(false);
         chaos(false);
-        var bitten = page(".pkmn-bitten");
-        if (bitten) bitten.classList.remove("pkmn-bitten");
+        undoDitto();
+        tremor(0);
+        unbite();
+        scene.querySelectorAll(".pkmn-portrait").forEach(function (left) {
+          left.remove();
+        });
         busy = false;
       });
   }

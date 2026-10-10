@@ -53,7 +53,8 @@
   var EVOLVE_AT = 0.995; // share of the page read that counts as reaching the gate
   var REBIRTH_BELOW = 0.9; // after the dragon has gone, scrolling back under this share
   var BIRTH_MS = 650; // the carp coming out and the waterfall pouring
-  var HOLD_DEX_MS = 500; // how long the homepage's ball is held down to open the Pokédex
+  var HOLD_DEX_MS = 400; // how long the homepage's ball is held down to open the Pokédex
+  var HOLD_SLACK = 24; // px a held pointer may wander before the hold no longer counts
   var SWIM_MS = 220; // ms after the last scroll the fish stops swimming
   var TYPE_MS = 28; // ms per letter in the text box
   var HOLD_MS = 1100; // ms a line stays once it is typed out
@@ -143,6 +144,18 @@
     svg.setAttribute("aria-hidden", "true");
     if (className) svg.setAttribute("class", className);
     svg.innerHTML = pixelMarkup(rows, colours);
+    return svg;
+  }
+
+  /* The same, with several drawings in one: each frame is a group of its own, and the CSS
+     shows them in turn (the flames of assets/js/pokemon.js flicker this way). */
+  function pixelFrames(frames, colours, className, size) {
+    var svg = pixels(frames[0], colours, className, size);
+    svg.innerHTML = frames
+      .map(function (rows, i) {
+        return '<g class="px-frame px-frame-' + i + '">' + pixelMarkup(rows, colours) + "</g>";
+      })
+      .join("");
     return svg;
   }
 
@@ -279,24 +292,37 @@
        right click and the up arrow open it too, so a mouse or a keyboard can get there. */
     var held = false;
     var holdTimer = 0;
+    var holdFrom = null;
     function openDex() {
       held = true;
-      clearTimeout(holdTimer);
+      stopHold();
       loadPokemon().then(function () {
         if (window.KoiPokemon) window.KoiPokemon.dex(ball);
       });
     }
-    ball.addEventListener("pointerdown", function () {
+    /* While it is held the ball shakes and a ring fills round it, so the hold is felt to
+       be doing something; a pointer that drifts a little does not lose it, only one that
+       moves away. */
+    function stopHold() {
+      clearTimeout(holdTimer);
+      holdFrom = null;
+      set(ball, "is-holding", false);
+    }
+    ball.addEventListener("pointerdown", function (e) {
       held = false;
+      holdFrom = [e.clientX, e.clientY];
+      ball.setPointerCapture(e.pointerId);
+      replay(ball, "is-holding");
       holdTimer = setTimeout(openDex, HOLD_DEX_MS);
       /* Fetched from the first touch, so it is there by the time the hold or the press
          needs it. */
       loadPokemon();
     });
-    ["pointerup", "pointerleave", "pointercancel"].forEach(function (type) {
-      ball.addEventListener(type, function () {
-        clearTimeout(holdTimer);
-      });
+    ball.addEventListener("pointermove", function (e) {
+      if (holdFrom && Math.hypot(e.clientX - holdFrom[0], e.clientY - holdFrom[1]) > HOLD_SLACK) stopHold();
+    });
+    ["pointerup", "pointercancel"].forEach(function (type) {
+      ball.addEventListener(type, stopHold);
     });
     ball.addEventListener("contextmenu", function (e) {
       e.preventDefault();
@@ -774,6 +800,7 @@
   window.Koi = {
     say: say,
     pixels: pixels,
+    pixelFrames: pixelFrames,
     openBall: openBall,
     reduced: reduced,
     runtime: sprites.runtime,
