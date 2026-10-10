@@ -161,16 +161,15 @@
   transition: opacity 0.4s ease;
 }
 
-/* On a phone or a narrow tablet there is no margin for the climb, so it runs over the
-   text; the script marks it as resting once the page stops moving, and it steps aside.
-   Once faded it is also hidden, which takes it out of rendering: its animated sprites
-   stop playing instead of playing unseen. */
-.koi.is-on.is-narrow.is-resting {
-  visibility: hidden;
-  opacity: 0;
-  transition:
-    opacity 0.4s ease,
-    visibility 0s 0.4s;
+/* On a phone or a narrow tablet there is no margin for the climb, so there is none: no
+   gate and no fall, only the carp's leap at the end of the page. */
+.koi.is-narrow .koi-gate,
+.koi.is-narrow .koi-fall {
+  display: none;
+}
+
+.koi.is-leaping .koi-fish {
+  transition: transform 0.9s cubic-bezier(0.15, 0.7, 0.3, 1);
 }
 
 /* The torii. Its opacity is set by the script, rising as the carp gets closer. */
@@ -696,12 +695,6 @@
   filter: brightness(0) invert(1) drop-shadow(0 0 2px #ffd34d) drop-shadow(0 0 6px #ffb800);
 }
 
-/* Ditto's copy of the photo: the photo itself, shrunk to a few pixels and recoloured
-   in Ditto's purple. */
-.pkmn-copy {
-  border-radius: 50%;
-}
-
 /* What the Pokémon do to the photo. */
 .cw-avatar.is-zapped > :first-child {
   animation: pkmn-zap 0.9s steps(1) 1;
@@ -771,17 +764,231 @@
   }
 }
 
-.cw-avatar.is-levitating > :first-child {
-  filter: drop-shadow(0 0 14px rgba(244, 114, 182, 0.85));
-  animation: pkmn-levitate 1.6s ease-in-out infinite alternate;
+/* Charmander's embers: the photo scorched and glowing while its rim burns. */
+.cw-avatar.is-burning > :first-child {
+  filter: sepia(0.55) saturate(1.7) contrast(1.15) brightness(0.92) drop-shadow(0 0 16px #f97316);
 }
 
-@keyframes pkmn-levitate {
+.pkmn-flicker {
+  transform-box: fill-box;
+  animation: pkmn-flicker 0.28s steps(2) infinite alternate;
+}
+
+@keyframes pkmn-flicker {
+  to {
+    scale: 0.85 1.15;
+  }
+}
+
+/* Venusaur's Solar Beam: sunlight on the photo, and a beam straight up into the sky. */
+.cw-avatar.is-sunlit > :first-child {
+  filter: brightness(1.25) saturate(1.2) drop-shadow(0 0 18px #fde047);
+}
+
+.pkmn-beam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 100vh;
+  margin-top: -100vh;
+  background: linear-gradient(to right, #fde04700, #fef9c3 30%, #ffffff 50%, #fef9c3 70%, #fde04700);
+  box-shadow: 0 0 18px #fde047;
+  transform-origin: bottom;
+  animation: pkmn-beam 1.6s ease-out forwards;
+}
+
+@keyframes pkmn-beam {
   from {
-    transform: translateY(0);
+    scale: 0.2 0;
+  }
+  20% {
+    scale: 1 1;
+  }
+  80% {
+    opacity: 1;
   }
   to {
-    transform: translateY(-14px);
+    opacity: 0;
+    scale: 1.6 1;
+  }
+}
+
+/* A Mega Evolution: a sphere of every colour, turning, closing round the Pokémon. */
+.pkmn-mega {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110px;
+  height: 110px;
+  margin: -55px 0 0 -55px;
+  border-radius: 50%;
+  background: conic-gradient(#f43f5e, #f59e0b, #fde047, #22c55e, #38bdf8, #6366f1, #d946ef, #f43f5e);
+  -webkit-mask: radial-gradient(circle, transparent 52%, #000 55%, #000 63%, transparent 66%);
+  mask: radial-gradient(circle, transparent 52%, #000 55%, #000 63%, transparent 66%);
+  animation: pkmn-mega 1.3s ease-in forwards;
+}
+
+@keyframes pkmn-mega {
+  from {
+    opacity: 0;
+    rotate: 0deg;
+    scale: 1.8;
+  }
+  30% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    rotate: 540deg;
+    scale: 0.7;
+  }
+}
+
+/* Snorlax asleep on top of the photo, squashing it; the photo still manages the flute. */
+.cw-avatar.is-squashed > :first-child {
+  transform: scale(1.06, 0.84);
+  transform-origin: bottom;
+}
+
+.cw-avatar.is-squashed.is-playing > :first-child {
+  animation: pkmn-play-squashed 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes pkmn-play-squashed {
+  from {
+    transform: scale(1.06, 0.84) rotate(-4deg);
+  }
+  to {
+    transform: scale(1.06, 0.84) rotate(4deg);
+  }
+}
+
+/* Munchlax's bite out of the red box under the photo: two round bites off its top
+   edge, cut with a mask so the box itself is untouched. */
+.pkmn-bitten {
+  -webkit-mask:
+    radial-gradient(circle 13px at 34px 0, transparent 96%, #000 100%),
+    radial-gradient(circle 10px at 56px 2px, transparent 96%, #000 100%);
+  -webkit-mask-composite: source-in;
+  mask:
+    radial-gradient(circle 13px at 34px 0, transparent 96%, #000 100%),
+    radial-gradient(circle 10px at 56px 2px, transparent 96%, #000 100%);
+  mask-composite: intersect;
+}
+
+/* Gengar's night: the whole page dark but for a pool of light round the photo, which is
+   lifted above the veil. */
+.pkmn-night {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--x) var(--y), transparent 0 110px, rgba(17, 8, 33, 0.82) 280px);
+  animation: pkmn-night 0.8s ease-out;
+}
+
+@keyframes pkmn-night {
+  from {
+    opacity: 0;
+  }
+}
+
+.cw-avatar.is-lifted {
+  z-index: 31;
+}
+
+/* Phantom Force: the photo sinks into the dark, and only Gengar's grin is left. */
+.cw-avatar.is-taken > :first-child {
+  opacity: 0;
+  transform: scale(0.2) rotate(-25deg);
+}
+
+.pkmn-grin {
+  animation: pkmn-grin 0.6s ease-out;
+}
+
+@keyframes pkmn-grin {
+  from {
+    opacity: 0;
+    scale: 0.6;
+  }
+}
+
+/* Ditto's copy of the photo, and of anything else it copies: Ditto's purple, wobbling
+   like jelly. */
+.pkmn-copy {
+  border-radius: 50%;
+}
+
+.pkmn-jelly,
+.pkmn-dittoed {
+  animation: pkmn-jelly 0.9s ease-in-out infinite;
+}
+
+.pkmn-dittoed {
+  filter: brightness(0.75) sepia(1) hue-rotate(225deg) saturate(3.2);
+}
+
+@keyframes pkmn-jelly {
+  0%,
+  100% {
+    scale: 1 1;
+  }
+  25% {
+    scale: 1.07 0.93;
+  }
+  50% {
+    scale: 0.95 1.05;
+  }
+  75% {
+    scale: 1.03 0.97;
+  }
+}
+
+/* Psyduck's Confusion: header, content and footer each lurch their own way, and the
+   colours go wrong. */
+.pkmn-chaos-0 {
+  animation: pkmn-chaos-0 0.5s ease-in-out infinite alternate;
+}
+
+.pkmn-chaos-1 {
+  animation: pkmn-chaos-1 0.7s ease-in-out infinite alternate;
+}
+
+.pkmn-chaos-2 {
+  animation: pkmn-chaos-2 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes pkmn-chaos-0 {
+  from {
+    transform: rotate(-4deg) translateX(-20px);
+    filter: hue-rotate(0deg);
+  }
+  to {
+    transform: rotate(3deg) translateX(24px) skewX(8deg);
+    filter: hue-rotate(160deg);
+  }
+}
+
+@keyframes pkmn-chaos-1 {
+  from {
+    transform: rotate(2deg) skewY(-3deg) scale(0.97);
+    filter: hue-rotate(0deg) saturate(1);
+  }
+  to {
+    transform: rotate(-3deg) skewY(2deg) translateY(14px) scale(1.02);
+    filter: hue-rotate(-140deg) saturate(2);
+  }
+}
+
+@keyframes pkmn-chaos-2 {
+  from {
+    transform: translateX(30px) rotate(5deg);
+  }
+  to {
+    transform: translateX(-30px) rotate(-6deg);
+    filter: invert(1);
   }
 }
 
@@ -999,7 +1206,12 @@
   .cw-avatar.is-playing > :first-child,
   .cw-avatar.is-shivering > :first-child,
   .cw-avatar.is-confused > :first-child,
-  .cw-avatar.is-levitating > :first-child {
+  .cw-avatar.is-squashed.is-playing > :first-child,
+  .pkmn-flicker,
+  .pkmn-mega,
+  .pkmn-beam,
+  .pkmn-jelly,
+  .pkmn-dittoed {
     animation: none;
   }
 
