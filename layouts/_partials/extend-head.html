@@ -113,3 +113,9 @@
     <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
   {{ end }}
 {{ end }}
+
+{{/* Every page carries the Poké Ball and the carp that climbs the waterfall, unless it
+     sets `koi: false`; the assets and what the scripts need to know are in koi.html. */}}
+{{ if ne .Params.koi false }}
+  {{ partial "koi.html" . }}
+{{ end }}

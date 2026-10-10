@@ -1,0 +1,885 @@
+/* The carp that climbs the waterfall, the Poké Ball it comes out of, and the Pokémon the
+   ball releases: the drawing behind assets/js/koi.js and assets/js/pokemon.js.
+
+   Three layers sit over the page, none of which takes part in its layout:
+   - the ball, a real button beside Congo's scroll-to-top button and styled like it;
+   - the climb (.koi): the torii, the waterfall, the golden trail and the fish;
+   - the stage (.pkmn) the released Pokémon act on, and the text box they speak through.
+
+   Everything that moves does so by `transform`, `opacity` or `filter` on a few small
+   elements, so the browser composites it without repainting the page. The pixel art is
+   drawn at 2 CSS px per pixel, which stays sharp on every common screen density. */
+
+:root {
+  --koi-ink: #2a2324; /* the black of the torii's top beam */
+}
+
+.dark {
+  --koi-ink: #64748b; /* a black beam would vanish into the dark theme */
+}
+
+/* The text box's typeface, a free reproduction of the 8-bit games' lettering (SIL Open
+   Font License). Only downloaded when the box first appears, and only its Latin glyphs. */
+@font-face {
+  font-family: "Press Start 2P";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/press-start-2p-latin.woff2") format("woff2");
+}
+
+/* ------------------------------------------------------------------------------------
+   The homepage's ball. The script sizes and places it: 40px in the bottom corner of a
+   wide screen, 48px where the scroll-to-top button would be on a narrow one. */
+
+.koi-ball {
+  position: fixed;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  background: rgba(var(--color-neutral), 0.5);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+}
+
+.dark .koi-ball {
+  background: rgba(var(--color-neutral-800), 0.5);
+}
+
+.koi-ball:focus-visible {
+  outline: 2px solid rgb(var(--color-primary-500));
+  outline-offset: 2px;
+}
+
+.koi-ball svg {
+  overflow: visible;
+  transition: transform 0.2s ease;
+}
+
+.koi-ball:hover svg {
+  transform: rotate(-14deg);
+}
+
+/* The light in the button comes on under the pointer, as a ball's does when it is ready. */
+.koi-ball-light {
+  transition: fill 0.2s ease;
+}
+
+.koi-ball:hover .koi-ball-light,
+.koi-ball:focus-visible .koi-ball-light {
+  fill: #fde68a;
+}
+
+/* The top half opens on its hinge at the back of the ball. */
+.koi-ball-top {
+  transform-box: fill-box;
+  transform-origin: 0 100%;
+}
+
+.koi-ball.is-opening .koi-ball-top {
+  animation: koi-ball-open 0.6s ease;
+}
+
+@keyframes koi-ball-open {
+  30%,
+  60% {
+    transform: translateY(-3px) rotate(-34deg);
+  }
+}
+
+/* The flash of a Pokémon coming out. */
+.koi-ball::after {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, rgba(255, 255, 255, 0.7) 35%, transparent 70%);
+  opacity: 0;
+  content: "";
+  pointer-events: none;
+}
+
+.koi-ball.is-opening::after {
+  animation: koi-ball-flash 0.6s ease-out;
+}
+
+@keyframes koi-ball-flash {
+  25% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+/* Pressed while a Pokémon is still out: the ball rocks, as it does in the games. */
+.koi-ball.is-wiggling svg {
+  animation: koi-ball-wiggle 0.5s ease-in-out;
+}
+
+@keyframes koi-ball-wiggle {
+  25% {
+    transform: rotate(-18deg);
+  }
+  75% {
+    transform: rotate(18deg);
+  }
+}
+
+/* ------------------------------------------------------------------------------------
+   The climb. The script places the gate, the fall and the fish on the line straight up
+   from the ball, and sizes the fall; this file decides how they appear, move and leave. */
+
+.koi {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  contain: strict;
+  transition:
+    opacity 0.4s ease,
+    visibility 0s 0.4s;
+}
+
+.koi.is-on {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* On a phone or a narrow tablet there is no margin for the climb, so it runs over the
+   text; the script marks it as resting once the page stops moving, and it steps aside.
+   Once faded it is also hidden, which takes it out of rendering: its animated sprites
+   stop playing instead of playing unseen. */
+.koi.is-on.is-narrow.is-resting {
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 0.4s ease,
+    visibility 0s 0.4s;
+}
+
+/* The torii. Its opacity is set by the script, rising as the carp gets closer. */
+.koi-gate {
+  position: absolute;
+}
+
+.koi.is-born .koi-gate {
+  animation: koi-gate-in 0.5s ease-out both;
+}
+
+@keyframes koi-gate-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+/* Once the carp is through, the gate gives way. */
+.koi.is-evolved .koi-gate {
+  animation: koi-gate-out 1.2s ease-in forwards;
+}
+
+@keyframes koi-gate-out {
+  to {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+/* The waterfall, from the foot of the torii down to the ball; the script sets where it
+   starts and its height. It pours down when the carp comes out, and drains up into the dragon at the
+   end, both by scaling from its top. */
+.koi-fall {
+  position: absolute;
+  width: 4px;
+  margin-left: -2px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, rgba(14, 165, 233, 0.55), rgba(14, 165, 233, 0.25));
+  transform-origin: top;
+}
+
+.dark .koi-fall {
+  background: linear-gradient(to bottom, rgba(125, 211, 252, 0.5), rgba(125, 211, 252, 0.18));
+}
+
+.koi.is-narrow .koi-fall {
+  width: 3px;
+  margin-left: -1.5px;
+}
+
+.koi.is-born .koi-fall {
+  animation: koi-pour 0.65s ease-in both;
+}
+
+.koi.is-draining .koi-fall {
+  animation: koi-drain 1.2s ease-in forwards;
+}
+
+@keyframes koi-pour {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes koi-drain {
+  to {
+    transform: scaleY(0);
+  }
+}
+
+/* Streaks of water falling. They only run while the page moves, so a page left still
+   asks nothing of the compositor. */
+.koi-fall::before {
+  position: absolute;
+  top: -16px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.85) 0 4px,
+    transparent 4px 16px
+  );
+  animation: koi-flow 0.45s linear infinite paused;
+}
+
+.koi.is-swimming .koi-fall::before,
+.koi.is-born .koi-fall::before {
+  animation-play-state: running;
+}
+
+@keyframes koi-flow {
+  to {
+    transform: translateY(16px);
+  }
+}
+
+/* The golden trail: the stretch of the fall the carp has already climbed. */
+.koi-trail {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #f59e0b, #fcd34d);
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+
+/* The fish is a point on the line; the script slides it up and down. Its body is what
+   the animations here move, so the two never fight over one transform. */
+.koi-fish {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  will-change: transform;
+}
+
+.koi.is-gliding .koi-fish {
+  transition: transform 0.7s ease-in-out;
+}
+
+.koi-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Out of the ball: from a point of light to a fish. */
+.koi.is-born .koi-body {
+  animation: koi-emerge 0.55s ease-out both;
+}
+
+@keyframes koi-emerge {
+  from {
+    filter: brightness(0) invert(1);
+    transform: translateY(24px) scale(0);
+  }
+  60% {
+    filter: brightness(0) invert(1);
+    transform: translateY(0) scale(1.1);
+  }
+}
+
+.koi-sprite {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  margin: 0;
+  image-rendering: pixelated;
+  translate: -50% -50%;
+  user-select: none;
+}
+
+/* Drawn at two thirds of the sprite's size. */
+.koi-carp {
+  width: 31.33px;
+  height: 42px;
+  rotate: 35deg;
+  transition: rotate 0.35s ease;
+}
+
+/* The dragon of Pokémon SoulSilver, rearing up, drawn at the same two thirds as the carp.
+   Its head is at the top, and it stands with that head at the gate, as far from the head
+   of the screen as the gate stood. While it waits it breathes, a slow rise and fall: the
+   sprite is a single frame. */
+.koi-dragon {
+  width: 53.33px;
+  height: 53.33px;
+  translate: -55% -25%;
+}
+
+.koi.is-evolved .koi-dragon {
+  animation: koi-breathe 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes koi-breathe {
+  to {
+    translate: -55% calc(-25% - 3px);
+  }
+}
+
+/* Only the form on show is rendered. An animated image that is merely transparent keeps
+   playing; one that is not visible stops. */
+.koi-dragon,
+.koi.shows-dragon .koi-carp {
+  visibility: hidden;
+}
+
+.koi.shows-dragon .koi-dragon {
+  visibility: visible;
+}
+
+/* The sprite faces left, into the page. Tilted, the carp points its nose up the fall as
+   it climbs, and down it when the reader goes back up the page. */
+.koi-fish.is-down .koi-carp {
+  rotate: -35deg;
+}
+
+/* The carp answers a click (Splash) and, on a computer, can be dragged up and down. */
+.koi.is-on .koi-carp {
+  cursor: grab;
+  pointer-events: auto;
+  touch-action: pan-y;
+}
+
+.koi.is-dragged .koi-carp {
+  cursor: grabbing;
+}
+
+/* A tail beat while the page is moving. */
+.koi.is-swimming .koi-carp {
+  animation: koi-sway 0.32s ease-in-out infinite alternate;
+}
+
+@keyframes koi-sway {
+  from {
+    translate: calc(-50% - 3px) -50%;
+  }
+  to {
+    translate: calc(-50% + 3px) -50%;
+  }
+}
+
+/* MAGIKARP used SPLASH! Two flops in place. */
+.koi.is-splashing .koi-body {
+  animation: koi-splash 0.9s ease-in-out;
+}
+
+@keyframes koi-splash {
+  20%,
+  60% {
+    transform: translateY(-16px) rotate(-10deg);
+  }
+  40%,
+  80% {
+    transform: translateY(0);
+  }
+}
+
+/* Once it has arrived, the dragon is a link to its story. */
+.koi-story {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.koi.is-evolved .koi-story {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* The evolution, as the games draw it: both forms as glowing silhouettes, swapped faster
+   and faster by the script until the dragon holds. */
+.koi.is-evolving .koi-sprite {
+  filter: brightness(0) invert(1) drop-shadow(0 0 2px #ffd34d) drop-shadow(0 0 6px #ffb800);
+  transition: none;
+}
+
+/* Then a burst of light where the carp stood. */
+.koi-body::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #fff6c8 30%, rgba(255, 214, 77, 0.45) 55%, transparent 72%);
+  opacity: 0;
+  translate: -50% -50%;
+  content: "";
+  pointer-events: none;
+}
+
+.koi.is-flashing .koi-body::before {
+  animation: koi-flash 0.9s ease-out;
+}
+
+@keyframes koi-flash {
+  0% {
+    opacity: 1;
+    scale: 0.3;
+  }
+  100% {
+    opacity: 0;
+    scale: 1.4;
+  }
+}
+
+/* The glint of a shiny: four pixel sparkles twinkling round the dragon, each on its own
+   beat, for as long as the gate takes to give way. */
+.koi-sparkle,
+.koi-cloud {
+  position: absolute;
+  opacity: 0;
+  translate: -50% -50%;
+}
+
+.koi-sparkle-0 {
+  top: -16px;
+  left: -36px;
+}
+
+.koi-sparkle-1 {
+  top: -22px;
+  left: 20px;
+}
+
+.koi-sparkle-2 {
+  top: 30px;
+  left: -38px;
+}
+
+.koi-sparkle-3 {
+  top: 26px;
+  left: 22px;
+}
+
+.koi.is-sparkling .koi-sparkle {
+  animation: koi-twinkle 0.8s ease-in-out 4;
+}
+
+.koi.is-sparkling .koi-sparkle-1 {
+  animation-delay: 0.2s;
+}
+
+.koi.is-sparkling .koi-sparkle-2 {
+  animation-delay: 0.4s;
+}
+
+.koi.is-sparkling .koi-sparkle-3 {
+  animation-delay: 0.6s;
+}
+
+@keyframes koi-twinkle {
+  0%,
+  100% {
+    opacity: 0;
+    scale: 0.4;
+  }
+  50% {
+    opacity: 1;
+    scale: 1.2;
+  }
+}
+
+/* Clouds gather under the dragon, below its coils and never over its face, and rise
+   with it. */
+.koi-cloud-0 {
+  top: 48px;
+  left: -24px;
+}
+
+.koi-cloud-1 {
+  top: 54px;
+  left: 2px;
+}
+
+.koi-cloud-2 {
+  top: 46px;
+  left: 16px;
+}
+
+.koi.is-clouded .koi-cloud {
+  animation: koi-cloud-in 0.5s ease-out forwards;
+}
+
+.koi.is-clouded .koi-cloud-1 {
+  animation-delay: 0.15s;
+}
+
+.koi.is-clouded .koi-cloud-2 {
+  animation-delay: 0.3s;
+}
+
+@keyframes koi-cloud-in {
+  from {
+    opacity: 0;
+    scale: 0.3;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+/* And the dragon goes up into the sky. */
+.koi.is-ascending .koi-body {
+  animation: koi-ascend 1.8s ease-in forwards;
+}
+
+@keyframes koi-ascend {
+  to {
+    opacity: 0;
+    transform: translateY(-160px);
+  }
+}
+
+/* ------------------------------------------------------------------------------------
+   The text box: the games' dialogue window, at the bottom of the screen. */
+
+.koi-box {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  z-index: 45;
+  box-sizing: border-box;
+  width: min(27rem, calc(100% - 32px));
+  min-height: 70px;
+  padding: 14px 18px;
+  border: 3px solid #334155;
+  border-radius: 6px;
+  background: #f8fafc;
+  box-shadow:
+    inset 0 0 0 3px #f8fafc,
+    inset 0 0 0 5px #94a3b8,
+    0 6px 18px rgba(0, 0, 0, 0.25);
+  color: #1e293b;
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  font-size: 10px;
+  line-height: 1.9;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  translate: -50% 8px;
+  transition:
+    opacity 0.2s ease,
+    translate 0.2s ease,
+    visibility 0s 0.2s;
+}
+
+.koi-box.is-open {
+  visibility: visible;
+  opacity: 1;
+  translate: -50% 0;
+  transition:
+    opacity 0.2s ease,
+    translate 0.2s ease;
+}
+
+/* The arrow that blinks in the corner of the games' window. */
+.koi-box::after {
+  position: absolute;
+  right: 12px;
+  bottom: 8px;
+  font-size: 8px;
+  content: "\25BC";
+  animation: koi-blink 0.8s steps(2, jump-none) infinite;
+}
+
+@keyframes koi-blink {
+  to {
+    opacity: 0;
+  }
+}
+
+/* What assistive technology reads: the whole line, never shown. */
+.koi-box-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* On a narrow screen the box leaves the ball's corner free. */
+@media (max-width: 767px) {
+  .koi-box {
+    right: 80px;
+    left: 16px;
+    width: auto;
+    translate: 0 8px;
+  }
+
+  .koi-box.is-open {
+    translate: 0 0;
+  }
+}
+
+/* ------------------------------------------------------------------------------------
+   The homepage's Pokémon. They act around the photo, inside its own box (.cw-avatar),
+   in a scene centred on it: behind the photo when they hide or peek out from it, in
+   front of it the rest of the time. The photo is lifted above the scene's back plane,
+   and the badge above the photo. */
+
+.cw-avatar > :first-child {
+  position: relative;
+  z-index: 1;
+  transition:
+    transform 0.6s cubic-bezier(0.3, 1.4, 0.5, 1),
+    filter 0.6s ease;
+}
+
+.cw-avatar .cw-badge {
+  z-index: 2;
+}
+
+.pkmn-scene {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+}
+
+.pkmn-sprite,
+.pkmn-prop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  margin: 0;
+  image-rendering: pixelated;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+}
+
+.pkmn-sprite.is-silhouette {
+  filter: brightness(0) invert(1) drop-shadow(0 0 2px #ffd34d) drop-shadow(0 0 6px #ffb800);
+}
+
+/* Ditto's copy of the photo: the photo itself, shrunk to a few pixels and recoloured
+   in Ditto's purple. */
+.pkmn-copy {
+  border-radius: 50%;
+}
+
+/* What the Pokémon do to the photo. */
+.cw-avatar.is-zapped > :first-child {
+  animation: pkmn-zap 0.9s steps(1) 1;
+}
+
+@keyframes pkmn-zap {
+  0%,
+  40%,
+  80% {
+    filter: brightness(1.8) saturate(0.2) sepia(1) hue-rotate(10deg) drop-shadow(0 0 12px #fde047);
+  }
+  20%,
+  60% {
+    filter: invert(1) drop-shadow(0 0 12px #fde047);
+  }
+  100% {
+    filter: none;
+  }
+}
+
+/* Playing the Poké Flute: a sway in time with the tune. */
+.cw-avatar.is-playing > :first-child {
+  animation: pkmn-play 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes pkmn-play {
+  from {
+    transform: rotate(-4deg);
+  }
+  to {
+    transform: rotate(4deg);
+  }
+}
+
+/* Snorlax leans on it from the left. */
+.cw-avatar.is-tilted > :first-child {
+  transform: rotate(9deg) translateX(6px);
+}
+
+.cw-avatar.is-shadowed > :first-child {
+  filter: brightness(0.45) saturate(0.4) hue-rotate(220deg);
+}
+
+.cw-avatar.is-shivering > :first-child {
+  animation: pkmn-shiver 0.08s linear 8 alternate;
+}
+
+@keyframes pkmn-shiver {
+  to {
+    transform: translateX(3px) rotate(1deg);
+  }
+}
+
+.cw-avatar.is-confused > :first-child {
+  animation: pkmn-confused 1.6s cubic-bezier(0.4, 0, 0.3, 1.3);
+}
+
+@keyframes pkmn-confused {
+  60% {
+    transform: rotate(380deg);
+  }
+  80% {
+    transform: rotate(350deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.cw-avatar.is-levitating > :first-child {
+  filter: drop-shadow(0 0 14px rgba(244, 114, 182, 0.85));
+  animation: pkmn-levitate 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes pkmn-levitate {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-14px);
+  }
+}
+
+/* A flash where a Pokémon evolves or transforms. */
+.pkmn-burst {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8rem;
+  height: 8rem;
+  margin: -4rem 0 0 -4rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #fff6c8 30%, rgba(255, 214, 77, 0.4) 55%, transparent 72%);
+  pointer-events: none;
+  animation: koi-flash 0.8s ease-out forwards;
+}
+
+/* The 404 page's visitor acts on a stage of its own, over the page. */
+.pkmn {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+
+/* MissingNo.: a block of garbage that will not hold still. */
+.pkmn-glitch {
+  animation: pkmn-glitch 0.32s steps(1) infinite;
+}
+
+@keyframes pkmn-glitch {
+  0% {
+    translate: 0 0;
+    filter: none;
+  }
+  25% {
+    translate: -3px 1px;
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    translate: 2px -2px;
+    filter: invert(1);
+  }
+  75% {
+    translate: 1px 2px;
+    filter: none;
+  }
+}
+
+/* ------------------------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .koi-ball svg,
+  .koi-carp {
+    transition: none;
+  }
+
+  .koi-ball.is-opening .koi-ball-top,
+  .koi-ball.is-opening::after,
+  .koi-ball.is-wiggling svg,
+  .koi.is-born .koi-body,
+  .koi.is-born .koi-gate,
+  .koi.is-born .koi-fall,
+  .koi.is-born .koi-fall::before,
+  .koi.is-swimming .koi-fall::before,
+  .koi.is-swimming .koi-carp,
+  .koi.is-splashing .koi-body,
+  .koi.is-flashing .koi-body::before,
+  .koi.is-sparkling .koi-sparkle,
+  .koi.is-draining .koi-fall,
+  .koi.is-clouded .koi-cloud,
+  .koi.is-evolved .koi-dragon,
+  .koi-box::after,
+  .pkmn-glitch,
+  .cw-avatar.is-zapped > :first-child,
+  .cw-avatar.is-playing > :first-child,
+  .cw-avatar.is-shivering > :first-child,
+  .cw-avatar.is-confused > :first-child,
+  .cw-avatar.is-levitating > :first-child {
+    animation: none;
+  }
+
+  .cw-avatar > :first-child {
+    transition: none;
+  }
+
+  /* Without the ascent, the dragon simply fades. */
+  .koi.is-ascending .koi-body {
+    animation: none;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+}
+
+@media print {
+  .koi,
+  .koi-ball,
+  .koi-box,
+  .pkmn,
+  .pkmn-scene {
+    display: none !important;
+  }
+}

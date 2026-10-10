@@ -1,0 +1,41 @@
+{{/* The Poké Ball, the carp that climbs the waterfall and the Pokémon the ball releases
+     on the homepage (assets/js/koi.js, assets/js/pokemon.js, assets/css/koi.css). Called
+     from extend-head.html on every page that does not set `koi: false`.
+
+     The stylesheet and koi.js load with the page. pokemon.js and everything it shows are
+     only fetched when the ball first releases a Pokémon, so their addresses are handed to
+     koi.js instead, through a <script type="application/json"> block, with the sprites of
+     the climb and the address of the section on the About page that tells its story (the
+     dragon links to it: rename that heading and this anchor has to follow).
+
+     The homepage's Pokémon are listed in assets/data/pokemon/sprites.json, written by
+     scripts/pokemon/build.py. The addresses the script needs are the fingerprinted ones,
+     which only exist at build time, so they are merged into a copy of that file built
+     here: one JSON resource, fingerprinted in turn, which pokemon.js fetches. Being the
+     same for every page, it is built once per build (partialCached). */}}
+{{ with resources.Get "css/koi.css" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" />
+{{ end }}
+{{- $config := dict "runtime" (partialCached "koi-runtime.html" .) -}}
+{{- with resources.Get "img/koi/magikarp-shiny.gif" | fingerprint site.Params.fingerprintAlgorithm }}
+  {{- $config = merge $config (dict "carp" .RelPermalink) -}}
+{{- end }}
+{{- with resources.Get "img/koi/gyarados-shiny-soulsilver.png" | fingerprint site.Params.fingerprintAlgorithm }}
+  {{- $config = merge $config (dict "dragon" .RelPermalink) -}}
+{{- end }}
+{{- with resources.Get "js/pokemon.js" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+  {{- $config = merge $config (dict "pokemon" .RelPermalink) -}}
+{{- end }}
+{{- with site.GetPage "/about" }}
+  {{- $config = merge $config (dict "story" (print .RelPermalink "#the-carp-and-the-dragon")) -}}
+{{- end }}
+{{- if .IsHome }}
+  {{- $config = merge $config (dict "home" true) -}}
+{{- end }}
+{{- if eq .Kind "404" }}
+  {{- $config = merge $config (dict "missing" true) -}}
+{{- end }}
+<script type="application/json" id="koi-sprites">{{ $config | jsonify | safeJS }}</script>
+{{ with resources.Get "js/koi.js" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+  <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+{{ end }}

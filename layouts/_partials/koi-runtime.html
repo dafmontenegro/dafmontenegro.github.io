@@ -1,0 +1,13 @@
+{{/* The Pokémon's sprite data as pokemon.js reads it: assets/data/pokemon/sprites.json
+     with each sprite's fingerprinted address added as `url`. Returns that file's address.
+     Called through partialCached from koi.html, so it is built once per build. */}}
+{{- $runtime := dict -}}
+{{- with resources.Get "data/pokemon/sprites.json" }}
+  {{- range $key, $sprite := . | transform.Unmarshal }}
+    {{- with resources.Get $sprite.file | fingerprint site.Params.fingerprintAlgorithm }}
+      {{- $runtime = merge $runtime (dict $key (merge $sprite (dict "url" .RelPermalink))) -}}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- $file := $runtime | jsonify | resources.FromString "data/pokemon/runtime.json" | fingerprint site.Params.fingerprintAlgorithm -}}
+{{- return $file.RelPermalink -}}
