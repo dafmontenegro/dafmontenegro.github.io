@@ -115,6 +115,16 @@
     this.el.style.transform = this.at(this.x, this.y);
   };
 
+  /* Draws the sprite at `k` times its size, keeping its feet where they are; for a pose
+     taken from another game, drawn at another scale than the Pokémon's other sprites. */
+  Mon.prototype.resize = function (k) {
+    this.w = Math.round(this.w * k);
+    this.h = Math.round(this.h * k);
+    this.el.width = this.w;
+    this.el.height = this.h;
+    this.el.style.transform = this.at(this.x, this.y);
+  };
+
   Mon.prototype.z = function (z) {
     this.el.style.zIndex = z;
   };
@@ -152,6 +162,19 @@
     this.el.remove();
   };
 
+  /* Goes back behind the photo and is gone: it walks in towards the middle, where the
+     photo covers the whole of it, fading on the way, so it is never seen cut off by the
+     photo's rim and then vanish all at once. */
+  function hide(mon, duration) {
+    duration = duration || 900;
+    mon.z(BEHIND);
+    var going = mon.go((mon.x < 0 ? -1 : 1) * radius * 0.15, radius * 0.35 + mon.h * 0.5, duration, "ease-in");
+    mon.el.animate([{ opacity: 1 }, { opacity: 1, offset: 0.45 }, { opacity: 0 }], { duration: ms(duration), fill: "forwards" });
+    return going.then(function () {
+      mon.remove();
+    });
+  }
+
   /* A flash where something changes form. */
   function burst(x, y) {
     var flash = document.createElement("div");
@@ -184,6 +207,30 @@
           { transform: to + " scale(1)", opacity: 0 }
         ],
         { duration: duration, delay: delay || 0, fill: "both", easing: "ease-out" }
+      )
+      .finished.then(function () {
+        svg.remove();
+      });
+  }
+
+  /* A note of the Poké Flute: born small at the flute's bell, it grows as it rises and
+     drifts, like coloured smoke, and fades high above. */
+  function note(colours, x, y, dx, dy) {
+    var svg = Koi.pixels(NOTE, colours, "pkmn-prop", 3);
+    svg.style.zIndex = IN_FRONT;
+    scene.appendChild(svg);
+    var at = function (k, scale) {
+      return "translate(" + (x + dx * k) + "px," + (y + dy * k) + "px) scale(" + scale + ")";
+    };
+    svg
+      .animate(
+        [
+          { transform: at(0, 0.3), opacity: 0 },
+          { transform: at(0.1, 0.5), opacity: 1, offset: 0.1 },
+          { transform: at(0.6, 1.3), opacity: 0.95, offset: 0.6 },
+          { transform: at(1, 1.9), opacity: 0 }
+        ],
+        { duration: 2600, easing: "ease-out" }
       )
       .finished.then(function () {
         svg.remove();
@@ -250,35 +297,6 @@
     return svg;
   }
 
-  /* A jet of fire from (from) to (to): flames thrown one after another, growing as they
-     fly. Runs until the returned function is called. */
-  function flamethrower(from, to) {
-    if (still()) return function () {};
-    var jet = setInterval(function () {
-      var svg = Koi.pixelFrames(FIRE, FIRE_COLOURS, "pkmn-prop pkmn-fire", 2);
-      svg.style.zIndex = IN_FRONT;
-      svg.style.left = "0px";
-      svg.style.top = "0px";
-      scene.appendChild(svg);
-      var spread = (Math.random() - 0.5) * 24;
-      svg
-        .animate(
-          [
-            { transform: "translate(" + from[0] + "px," + from[1] + "px) rotate(90deg) scale(0.5)", opacity: 1 },
-            { transform: "translate(" + to[0] + "px," + (to[1] + spread) + "px) rotate(90deg) scale(1.6)", opacity: 0.9, offset: 0.8 },
-            { transform: "translate(" + (to[0] + 14) + "px," + (to[1] + spread - 10) + "px) rotate(90deg) scale(1.9)", opacity: 0 }
-          ],
-          { duration: 520, easing: "ease-out" }
-        )
-        .finished.then(function () {
-          svg.remove();
-        });
-    }, 45);
-    return function () {
-      clearInterval(jet);
-    };
-  }
-
   /* Sparks rising off a fire, until the returned function is called. */
   function embers(xs, y) {
     if (still()) return function () {};
@@ -291,19 +309,92 @@
     };
   }
 
-  /* The rings of a roar, spreading out of a mouth. */
-  function roar(x, y) {
+  /* Sparks sprayed from a mouth, towards `side` (1 right, -1 left). */
+  function spray(from, side) {
     if (still()) return;
-    for (var i = 0; i < 4; i++) {
-      var ring = document.createElement("div");
-      ring.className = "pkmn-roar";
-      ring.style.left = x + "px";
-      ring.style.top = y + "px";
-      ring.style.zIndex = IN_FRONT;
-      ring.style.animationDelay = i * 0.18 + "s";
-      scene.appendChild(ring);
-      setTimeout(ring.remove.bind(ring), 1200 + i * 180);
+    for (var i = 0; i < 16; i++) {
+      var angle = (Math.random() - 0.5) * 1.6;
+      var reach = 50 + Math.random() * 70;
+      float(SPARK, SPARK_COLOURS, from[0], from[1], [side * Math.cos(angle) * reach, Math.sin(angle) * reach - 20], 700, i * 30, 2);
     }
+  }
+
+  /* A wave of heat over the whole page. */
+  function heat() {
+    if (still()) return;
+    var wave = document.createElement("div");
+    wave.className = "pkmn-heat";
+    wave.setAttribute("aria-hidden", "true");
+    var r = avatar.getBoundingClientRect();
+    wave.style.setProperty("--x", r.left + r.width / 2 + "px");
+    wave.style.setProperty("--y", r.top + r.height / 2 + "px");
+    document.body.appendChild(wave);
+    setTimeout(wave.remove.bind(wave), 1200);
+  }
+
+  /* A shadow on the ground under a Pokémon's feet. */
+  function ground(x, y) {
+    var shadow = document.createElement("div");
+    shadow.className = "pkmn-ground";
+    shadow.style.left = x + "px";
+    shadow.style.top = y + "px";
+    shadow.style.zIndex = BEHIND;
+    scene.appendChild(shadow);
+    return shadow;
+  }
+
+  /* Charizard's shadow, flying high over the page: its silhouette, four times its size,
+     sweeping across the whole screen from left to right. */
+  function skyShadow() {
+    if (still()) return Promise.resolve();
+    var sky = document.createElement("div");
+    sky.className = "pkmn";
+    sky.setAttribute("aria-hidden", "true");
+    var shape = document.createElement("img");
+    var c = data.charizard;
+    shape.src = c.url;
+    shape.alt = "";
+    shape.className = "pkmn-sky-shadow";
+    shape.width = c.width * 4;
+    shape.height = c.height * 4;
+    sky.appendChild(shape);
+    document.body.appendChild(sky);
+    var w = c.width * 4;
+    return shape
+      .animate(
+        [
+          { transform: "translate(" + -w + "px," + window.innerHeight * 0.05 + "px) scaleX(-1)" },
+          { transform: "translate(" + window.innerWidth + "px," + window.innerHeight * 0.3 + "px) scaleX(-1)" }
+        ],
+        { duration: 1700, easing: "linear" }
+      )
+      .finished.then(function () {
+        sky.remove();
+      });
+  }
+
+  /* Fire Blast over the photo: flames in the shape of 大, blooming out from its middle. */
+  function fireBlast(R) {
+    var u = R * 0.32;
+    var points = [
+      [0, -3], [0, -2],
+      [-3, -1], [-2, -1], [-1, -1], [0, -1], [1, -1], [2, -1], [3, -1],
+      [0, 0],
+      [-1, 1], [-2, 2], [1, 1], [2, 2]
+    ];
+    var flames = [];
+    return Promise.all(
+      points.map(function (p) {
+        var delay = ms(Math.hypot(p[0], p[1] + 1) * 90);
+        return wait(delay).then(function () {
+          var f = flame(p[0] * u, p[1] * u + 20, 3);
+          f.classList.add("pkmn-blast");
+          flames.push(f);
+        });
+      })
+    ).then(function () {
+      return flames;
+    });
   }
 
   function putOut(flames) {
@@ -506,48 +597,55 @@
     await evolve(mon, "charizard");
     await mon.go(-R - 62, R + 8, 300);
 
+    /* The roar: Charizard rears up, the page shakes, a wave of heat washes over it and
+       sparks spray from its jaws. */
     told = Koi.say(["CHARIZARD let out a mighty roar!"]);
-    roar(mon.x + mon.w * 0.3, mon.y - mon.h * 0.72);
+    var mouth = [mon.x + mon.w * 0.3, mon.y - mon.h * 0.72];
+    mon.el.style.transformOrigin = "50% 100%";
+    mon.el.animate([{ scale: "1" }, { scale: "1.18" }, { scale: "1.12" }, { scale: "1.18" }, { scale: "1" }], { duration: ms(1100), easing: "ease-in-out" });
+    heat();
     tremor(3);
-    for (var h = 0; h < 3; h++) await mon.hop(mon.x, mon.y, 8, 200);
+    spray(mouth, 1);
+    await wait(ms(1000));
     tremor(0);
     await told;
 
-    told = Koi.say(["CHARIZARD used FLAMETHROWER!"]);
-    var stop = flamethrower([mon.x + mon.w * 0.3, mon.y - mon.h * 0.72], [-R * 0.2, -R * 0.15]);
-    await wait(ms(700));
-    photo("is-burning", true);
-    for (var a = 0; a <= 360; a += 30) {
-      var t = (a * Math.PI) / 180;
-      flames.push(flame(Math.cos(t) * R * 0.98, Math.sin(t) * R * 0.98 + 14, a % 60 ? 2 : 3));
-    }
-    var sparks = embers([-R * 0.6, 0, R * 0.6], -R * 0.6);
+    /* Fly: it crouches and takes off, its shadow on the ground shrinking under it; then,
+       high above, its shadow sweeps across the whole page. */
+    told = Koi.say(["CHARIZARD used FLY!"]);
+    var shadow = ground(mon.x, mon.y);
+    await mon.hop(mon.x, mon.y, 6, 220);
+    shadow.animate([{ opacity: 0.5, scale: "1" }, { opacity: 0, scale: "0.2" }], { duration: ms(800), fill: "forwards" });
+    await mon.go(mon.x + 30, -window.innerHeight, 800, "ease-in");
+    shadow.remove();
+    await skyShadow();
     await told;
-    stop();
+
+    /* Fire Blast: it dives back down beside the photo and lands with a thud, spits a ball
+       of fire into it, and the fire blooms over the photo in the shape the move has had
+       since the first games: the character 大, "great". */
+    told = Koi.say(["CHARIZARD used FIRE BLAST!"]);
+    mon.flip(false);
+    mon.x = R + 64;
+    mon.y = -window.innerHeight;
+    mon.el.style.transform = mon.at(mon.x, mon.y);
+    await mon.go(R + 64, R + 8, 550, "ease-in");
+    tremor(3);
+    setTimeout(function () {
+      tremor(0);
+    }, ms(300));
+    await wait(ms(350));
+    mouth = [mon.x - mon.w * 0.3, mon.y - mon.h * 0.72];
+    await shoot(FIREBALL, FIREBALL_COLOURS, mouth, [-6, -R * 0.35], 320, 4);
+    photo("is-burning", true);
+    flames = flames.concat(await fireBlast(R));
+    var sparks = embers([-R * 0.6, 0, R * 0.6], -R * 0.8);
+    await told;
     await Koi.say(["The photo caught fire!"]);
 
-    told = Koi.say(["CHARIZARD used FLY!"]);
-    var trail = still()
-      ? 0
-      : setInterval(function () {
-          float(FIREBALL, FIREBALL_COLOURS, mon.x, mon.y - mon.h * 0.3, [0, 18], 600, 0, 2);
-        }, 90);
-    var lap = [];
-    var orbit = R + 70;
-    for (var deg = 180; deg <= 540; deg += 30) {
-      var r = (deg * Math.PI) / 180;
-      lap.push([Math.cos(r) * orbit, Math.sin(r) * orbit * 0.7 + 30]);
-    }
-    await mon.go(lap[0][0], lap[0][1], 400, "ease-out");
-    var turn = setInterval(function () {
-      /* Face the way it is flying: right along the top of the lap, left along the bottom. */
-      mon.flip(mon.y < 30);
-    }, 120);
-    await mon.path(lap.slice(1), 2400, "linear");
-    clearInterval(turn);
+    told = Koi.say(["CHARIZARD flew away!"]);
     mon.flip(true);
-    await mon.go(orbit + 120, -window.innerHeight * 0.8, 900, "ease-in");
-    clearInterval(trail);
+    await mon.go(R + 220, -window.innerHeight, 1000, "ease-in");
     mon.remove();
     await told;
 
@@ -607,7 +705,9 @@
        cross-fade where it sinks, so the change of pose is never a jump. */
     var told2 = Koi.say(["SNORLAX is getting sleepy..."]);
     /* Lying beside the photo, to its left, not across it. */
-    var sleeper = new Mon("snorlax-asleep", -R - 24, R + 14);
+    /* A little larger than its sheet, to match the standing Snorlax it replaces. */
+    var sleeper = new Mon("snorlax-asleep", -R - 32, R + 14);
+    sleeper.resize(1.2);
     sleeper.el.style.opacity = 0;
     var base = mon.at(mon.x, mon.y);
     mon.el.style.transformOrigin = "50% 100%";
@@ -639,8 +739,8 @@
        waves of colour, rising high over the page. */
     /* Held at the photo's right rim, above the badge, its bell pointing out of the photo
        and up; Snorlax sleeps on the other side. */
-    var flute = Koi.pixels(FLUTE, FLUTE_COLOURS, "pkmn-prop pkmn-flute", 4);
-    flute.style.left = R * 0.62 + "px";
+    var flute = Koi.pixels(FLUTE, FLUTE_COLOURS, "pkmn-prop pkmn-flute", 3);
+    flute.style.left = R * 0.66 + "px";
     flute.style.top = -R * 0.42 + "px";
     flute.style.zIndex = IN_FRONT;
     scene.appendChild(flute);
@@ -650,7 +750,7 @@
       ? 0
       : setInterval(function () {
           var drift = Math.sin(n / 2) * 40;
-          float(NOTE, NOTE_COLOURS[n % NOTE_COLOURS.length], R * 0.62 + 66, -R * 0.42 - 30, [40 + drift, -140 - (n % 3) * 20], 1900, 0, 4);
+          note(NOTE_COLOURS[n % NOTE_COLOURS.length], R * 0.66 + 48, -R * 0.42 - 22, 40 + drift, -230 - (n % 3) * 30);
           n++;
         }, 170);
     await Koi.say(["The photo played the POKé FLUTE!", "Now, that's a catchy tune!"]);
@@ -678,9 +778,7 @@
     sleeper.remove();
     await Koi.say(["SNORLAX woke up!"]);
     await mon.hop(-R - 30, R + 6, 30, 650);
-    mon.z(BEHIND);
-    await mon.go(-R * 0.2, R + 6, 700);
-    mon.remove();
+    await hide(mon, 1000);
   }
 
   /* Munchlax's bites out of the red box: round bites off its top edge, cut with a mask,
@@ -759,29 +857,36 @@
 
     /* And back, slowly: the portrait dissolves into the photo, Gengar slips out from behind
        it, and as it sinks away the dark and the photo's shade lift with it. */
-    await portrait.animate([{ opacity: 1, filter: "blur(0)" }, { opacity: 0, filter: "blur(6px)" }], { duration: ms(1100), easing: "ease-in", fill: "forwards" }).finished;
+    await portrait.animate([{ opacity: 1, filter: "blur(0)" }, { opacity: 0, filter: "blur(6px)" }], { duration: ms(1500), easing: "ease-in-out", fill: "forwards" }).finished;
     portrait.remove();
     mon.el.getAnimations().forEach(function (anim) {
       anim.cancel();
     });
     mon.z(IN_FRONT);
     mon.el.style.opacity = 0;
-    mon.el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: ms(700), fill: "forwards" });
-    await mon.go(R + 34, R * 0.15, 700, "ease-out");
+    mon.el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: ms(1000), fill: "forwards" });
+    await mon.go(R + 34, R * 0.15, 1000, "ease-out");
+    await mon.hop(mon.x, mon.y, 10, 400);
     var gone = Koi.say(["GENGAR vanished into the shadows!"]);
+    await wait(ms(400));
     mon.z(BEHIND);
-    mon.go(0, 0, 700, "ease-in");
-    await mon.fade(700);
-    /* Only once it has gone does the light come back, the photo sweeping through green to
-       its own colours. */
-    night(false);
+    mon.go(0, 0, 1400, "ease-in-out");
+    await mon.fade(1400);
+    /* Only once it has gone does the light come back, slowly, the photo sweeping through
+       green to its own colours: the photo's usual quick transition is lengthened for it. */
+    var picture = avatar.firstElementChild;
+    picture.style.transition = "filter " + ms(2000) / 1000 + "s ease-in-out";
+    night(false, 2000);
     photo("is-shadowed", false);
     await gone;
+    await wait(ms(1200));
+    picture.style.transition = "";
     mon.remove();
   }
 
-  /* Ditto lands on the photo, hops onto the name under it and uses Transform, not on
-     itself but on the page: letter by letter the name, the headline and the line in the
+  /* Ditto lands on the photo and transforms into the other Pokémon of this ball, Pikachu,
+     Gengar and Charizard, each in Ditto's own purple. Then it tries the author: it hops
+     onto the name under the photo and uses Transform, not on itself but on the page: letter by letter the name, the headline and the line in the
      red box turn into Ditto, in Ditto's purple, wobbling like the jelly it is, until it
      cannot keep it up and every word goes back to what it was.
 
@@ -789,6 +894,7 @@
      the act survives any change to the homepage's text: every word of the name becomes
      "Ditto", and in the headline and the red box the last word of every clause does. */
   var DITTO_LETTERS = "DITO?";
+  var DITTO_FORMS = ["pikachu", "gengar", "charizard"];
   var transformed = [];
 
   async function ditto() {
@@ -809,17 +915,35 @@
         return [target[0], dittoify(target[0].textContent.trim(), target[1])];
       });
 
-    var mon = new Mon("ditto", R * 0.25, -R - 150);
+    var mon = new Mon("ditto", R * 0.1, -R - 150);
     mon.el.style.opacity = 0;
     mon.el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: ms(200), fill: "forwards" });
     Koi.say(["Go! DITTO!"]);
-    await mon.go(R * 0.25, -R + 6, 700, "cubic-bezier(0.3, 1.5, 0.6, 1)");
+    await mon.go(R * 0.1, -R + 6, 700, "cubic-bezier(0.3, 1.5, 0.6, 1)");
+
+    /* On top of the photo it copies the Pokémon that came out of this ball before it,
+       one after another, in its own purple and wobbling: it never quite gets the colour. */
+    var told = Koi.say(["DITTO used TRANSFORM!"]);
+    await told;
+    mon.el.classList.add("is-ditto-form");
+    for (var f = 0; f < DITTO_FORMS.length; f++) {
+      burst(mon.x, mon.y - mon.h / 2);
+      mon.show(DITTO_FORMS[f]);
+      await mon.hop(mon.x, mon.y, 14, 320);
+      await Koi.say(["DITTO transformed into " + name(DITTO_FORMS[f]) + "!"]);
+    }
+    burst(mon.x, mon.y - mon.h / 2);
+    mon.show("ditto");
+    mon.el.classList.remove("is-ditto-form");
+
+    /* And then it tries its hardest copy: the author, by way of the page's own words. */
+    await Koi.say(["Now DITTO wants to transform into YOU!"]);
     if (heading) {
       var a = avatar.getBoundingClientRect();
       var h = heading.getBoundingClientRect();
       await mon.hop(h.right - (a.left + a.width / 2) - 20, h.top - (a.top + a.height / 2) + 6, 40, 650);
     }
-    var told = Koi.say(["DITTO used TRANSFORM!"]);
+    told = Koi.say(["DITTO used TRANSFORM!"]);
     burst(mon.x, mon.y - 16);
     transformed = targets.map(function (target) {
       return { el: target[0], text: target[0].textContent };
@@ -834,8 +958,8 @@
       })
     );
     await told;
-    await Koi.say(["DITTO transformed the page into DITTO!"]);
-    await Koi.say(["...but it couldn't keep it up!"]);
+    await Koi.say(["DITTO transformed into... DITTO?"]);
+    await Koi.say(["It couldn't keep it up!"]);
     burst(mon.x, mon.y - 16);
     await Promise.all(
       transformed.map(function (saved) {
@@ -845,9 +969,7 @@
     undoDitto();
     await mon.hop(R + 30, R + 4, 40, 650);
     await mon.hop(R + 60, R + 4, 18, 350);
-    mon.z(BEHIND);
-    await mon.go(R * 0.3, R + 4, 600);
-    mon.remove();
+    await hide(mon);
   }
 
   /* A text as Ditto would have it: every word "Ditto", or only the last word before each
@@ -951,9 +1073,7 @@
     await mon.hop(-R - 20, R + 4, 14, 350);
     photo("is-bumped", false);
     await Koi.say(["PSYDUCK walked into the photo."]);
-    mon.z(BEHIND);
-    await mon.go(-R * 0.3, R + 4, 900);
-    mon.remove();
+    await hide(mon, 1000);
   }
 
   /* The page trembling under Psyduck's headache, from 1 (barely) to 3; 0 stops it. */
@@ -1132,7 +1252,7 @@
     charmander: { dex: 4, keys: ["charmander", "charmeleon", "charizard"], play: charmander, weight: 3 },
     psyduck: { dex: 54, keys: ["psyduck"], play: psyduck, weight: 3 },
     gastly: { dex: 92, keys: ["gastly", "haunter", "gengar"], play: gastly, weight: 3 },
-    ditto: { dex: 132, keys: ["ditto"], play: ditto, weight: 3 },
+    ditto: { dex: 132, keys: ["ditto", "pikachu", "gengar", "charizard"], play: ditto, weight: 3 },
     pichu: { dex: 172, keys: ["pichu", "pikachu"], play: pichu, weight: 3 },
     munchlax: { dex: 446, keys: ["munchlax", "snorlax", "snorlax-asleep"], play: munchlax, weight: 3 }
   };
