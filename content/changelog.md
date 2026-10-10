@@ -12,6 +12,9 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-10 | [Home](/)                       | A Poké Ball beside the photo, and Caesar's Window on it, now bring out a Pokémon that plays with the photo and evolves while it does |
+| 2026-10-10 | [About](/about/#the-carp-and-the-dragon) | A shiny Magikarp now climbs a waterfall up the edge of every long page as you read, and becomes a red Gyarados at the torii when you reach the end. New section: "The Carp and the Dragon" |
+| 2026-10-10 | [404](/404.html)                | A wild MissingNo. appeared |
 | 2026-10-08 | [Cinema](/spaces/cinema/#favorite-serie) | New Favorite Serie: "A Knight of the Seven Kingdoms", with Arcane moving to the honorable mentions |
 | 2026-10-08 | [Cinema](/spaces/cinema/) | Added 8 honorable mentions, among them "Se7en" with a link to its post, and fixed two release years and a poster link |
 | 2026-10-08 | [Cinema](/spaces/cinema/#favorite-comedy-film) | The comedy films now live in Cinema as "Favorite Comedy Film", with "The Dictator" and "Get Hard" added |
