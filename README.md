@@ -27,7 +27,7 @@ These files override templates from Congo or Hugo. **Review them whenever Congo 
 
 | File | Based on | Change |
 | --- | --- | --- |
-| `layouts/_partials/profile.html` | Congo 2.14 | Eager-loaded author photo with a Caesar's Window badge |
+| `layouts/_partials/profile.html` | Congo 2.14 | Eager-loaded author photo with a Caesar's Window badge, which is a button that opens the Poké Ball |
 | `layouts/_partials/article-link.html` | Congo 2.14 | List thumbnails cropped from the center instead of Hugo's "smart" crop |
 | `layouts/_partials/opengraph.html` | Hugo 0.167 | Shared title is "Page · Daniel Felipe Montenegro" outside the homepage |
 | `layouts/_partials/twitter_cards.html` | Hugo 0.167 | Same title change for X cards |
@@ -38,7 +38,7 @@ These are additions, not overrides:
 
 | File | Purpose |
 | --- | --- |
-| `layouts/_partials/extend-head.html` | schema.org `Person` data on the homepage and About page, and the per-page assets behind a front matter flag: the book-chapter stylesheet on `bookChapter`, the butterflies assets on `butterflies`, the preflop stylesheet, script and data on `preflop`, and the Literature stylesheet and script on `literature` (Congo hook) |
+| `layouts/_partials/extend-head.html` | schema.org `Person` data on the homepage and About page, and the per-page assets behind a front matter flag: the book-chapter stylesheet on `bookChapter`, the butterflies assets on `butterflies`, the preflop stylesheet, script and data on `preflop`, and the Literature stylesheet and script on `literature`; plus, on every page unless it sets `koi: false`, the Poké Ball through `koi.html` (Congo hook) |
 | `assets/css/custom.css` | Caesar's Window styles for the badge, the 404 page and light/dark variants (bundled by Congo) |
 | `assets/css/butterflies.css` | Styles for the butterflies shortcode: the button, the 3D wings and their beat, and the quote card (loaded only on pages with `butterflies: true`) |
 | `assets/js/butterflies.js` | The flight engine behind the butterflies shortcode: the arrivals, the wandering, the dodging and the catching |
@@ -46,6 +46,13 @@ These are additions, not overrides:
 | `assets/js/preflop.js` | The five preflop tools. Reads `assets/data/preflop/hands.json` once and builds whichever tools the page mounts; the head-to-head matrix is fetched on demand, since only one of them needs it |
 | `assets/css/literature.css` | Styles for the Literature space: the "open at random" button and the wash of colour left on the quote it lands on, plus the one rule that turns off Congo's own quotation marks, so the quotes keep the punctuation they were published with (loaded only on pages with `literature: true`) |
 | `assets/js/literature.js` | The "open at random" button. It builds the button itself, so a reader without JavaScript is never shown a control that cannot work |
+| `layouts/_partials/koi.html`, `koi-runtime.html` | Load the Poké Ball: koi.css and koi.js with the page, and the addresses of everything fetched later (pokemon.js, the sprites, the story's anchor) as a JSON block. `koi-runtime.html` builds, once per build, the fingerprinted sprite list pokemon.js reads |
+| `assets/css/koi.css` | Styles for the homepage's Poké Ball, the climb (torii, waterfall, golden trail, carp, the evolution and the dragon's ascent), the text box, and what the homepage's Pokémon do to the photo |
+| `assets/js/koi.js` | The carp that climbs the waterfall, and the homepage's Poké Ball. On every long page but the homepage, a shiny Magikarp comes out at the foot of the screen's right edge and climbs a waterfall up to a torii as the page is read, leaving a golden trail, framed by the same margin at both ends; at the end of the page it evolves into a Gyarados that rises into the clouds and links to the story in About (`#the-carp-and-the-dragon`). Only the scroll starts it; clicking the carp makes it Splash, and on a computer it can be dragged to scroll. Tied to the scroll only: the page is measured on resize, never on scroll, and each frame only writes transforms. Under 768px it starts hidden, shows while the page moves and hides when it stops. On the homepage it builds the Poké Ball instead. Also holds the games' text box and the pixel-art drawing the Pokémon share |
+| `assets/js/pokemon.js` | The homepage's Pokémon, fetched the first time the ball or the badge is pressed there. Each press brings out one Pokémon that plays with the photo and evolves during its act: Pichu, Charmander, Munchlax, Gastly, Ditto, Psyduck and, rarely, Mew. Also MissingNo., the 404 page's visitor |
+| `assets/img/koi/` | The carp, the animated shiny Magikarp of Pokémon Black and White, and the dragon, the shiny Gyarados of Pokémon SoulSilver |
+| `assets/img/pokemon/`, `assets/data/pokemon/` | The homepage's Pokémon: their animated Black and White sprites, and their names and sizes. Written by `scripts/pokemon/build.py` |
+| `static/fonts/press-start-2p-latin.woff2` | The text box's typeface, [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P) (SIL Open Font License), Latin glyphs only |
 | `assets/data/preflop/` | The figures the tools draw, generated by [holdem-preflop-equity](https://github.com/dafmontenegro/holdem-preflop-equity) and documented field by field there. Fingerprinted by Hugo along with the code, so a change to the numbers busts the cache with it |
 
 ## Writing Content
@@ -114,6 +121,16 @@ An artwork named in `curation.json` without a `source` is one that never travell
 
 `build.py` splits each post into the quote, its attribution and the artwork's reference by documented rules, and **stops the build** rather than publishing a post those rules cannot read; the corrections live in `curation.json`, alongside the quotes that had to be transcribed out of an image. Quotes are emitted verbatim. Dates are shifted to `America/Bogota` before the day is taken, so each piece carries the day it was written rather than the UTC one. Requires Pillow.
 
+### Pokémon Sprites
+
+The homepage's Pokémon are fetched, not hand-placed, so the roster can grow:
+
+```sh
+python3 scripts/pokemon/build.py
+```
+
+It downloads each Pokémon's animated *Black and White* sprite from the [PokeAPI sprites](https://github.com/PokeAPI/sprites) repository by National Dex number and records its size. A new Pokémon is a line in its `ROSTER`, plus an act in `assets/js/pokemon.js`. Requires Pillow and curl.
+
 ## Build and Deploy
 
 Every push to `master` runs `.github/workflows/hugo.yaml`, which:
@@ -131,4 +148,4 @@ To preview locally (Hugo extended and Go installed): `hugo server`.
 
 All content © Daniel Felipe Montenegro. All rights reserved.
 
-Third-party works keep their own rights and are credited on the pages where they appear, including the artworks by [Mónica Páez](https://monicapaez.com/), film stills and book covers. The Congo theme is licensed under the [MIT License](https://github.com/jpanther/congo/blob/dev/LICENSE).
+Third-party works keep their own rights and are credited on the pages where they appear, including the artworks by [Mónica Páez](https://monicapaez.com/), film stills and book covers. The Pokémon sprites are © Nintendo, Creatures Inc. and GAME FREAK inc., from *Pokémon Black and White* and, for the Gyarados, *Pokémon SoulSilver*. The Congo theme is licensed under the [MIT License](https://github.com/jpanther/congo/blob/dev/LICENSE).
