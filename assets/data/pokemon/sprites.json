@@ -71,6 +71,96 @@
     "width": 39,
     "height": 46
   },
+  "jigglypuff": {
+    "name": "Jigglypuff",
+    "file": "img/pokemon/jigglypuff.gif",
+    "width": 47,
+    "height": 46
+  },
+  "abra": {
+    "name": "Abra",
+    "file": "img/pokemon/abra.gif",
+    "width": 62,
+    "height": 53
+  },
+  "kadabra": {
+    "name": "Kadabra",
+    "file": "img/pokemon/kadabra.gif",
+    "width": 78,
+    "height": 61
+  },
+  "alakazam": {
+    "name": "Alakazam",
+    "file": "img/pokemon/alakazam.gif",
+    "width": 92,
+    "height": 69
+  },
+  "eevee": {
+    "name": "Eevee",
+    "file": "img/pokemon/eevee.gif",
+    "width": 46,
+    "height": 47
+  },
+  "vaporeon": {
+    "name": "Vaporeon",
+    "file": "img/pokemon/vaporeon.gif",
+    "width": 50,
+    "height": 59
+  },
+  "jolteon": {
+    "name": "Jolteon",
+    "file": "img/pokemon/jolteon.gif",
+    "width": 47,
+    "height": 49
+  },
+  "flareon": {
+    "name": "Flareon",
+    "file": "img/pokemon/flareon.gif",
+    "width": 66,
+    "height": 60
+  },
+  "espeon": {
+    "name": "Espeon",
+    "file": "img/pokemon/espeon.gif",
+    "width": 63,
+    "height": 58
+  },
+  "umbreon": {
+    "name": "Umbreon",
+    "file": "img/pokemon/umbreon.gif",
+    "width": 43,
+    "height": 51
+  },
+  "leafeon": {
+    "name": "Leafeon",
+    "file": "img/pokemon/leafeon.gif",
+    "width": 62,
+    "height": 59
+  },
+  "glaceon": {
+    "name": "Glaceon",
+    "file": "img/pokemon/glaceon.gif",
+    "width": 76,
+    "height": 54
+  },
+  "rotom": {
+    "name": "Rotom",
+    "file": "img/pokemon/rotom.gif",
+    "width": 89,
+    "height": 60
+  },
+  "giratina": {
+    "name": "Giratina",
+    "file": "img/pokemon/giratina.gif",
+    "width": 102,
+    "height": 89
+  },
+  "giratina-origin": {
+    "name": "Giratina",
+    "file": "img/pokemon/giratina-origin.gif",
+    "width": 91,
+    "height": 88
+  },
   "snorlax-asleep": {
     "name": "Snorlax",
     "file": "img/pokemon/snorlax-asleep.gif",
