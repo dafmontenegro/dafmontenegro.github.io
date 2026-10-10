@@ -3,7 +3,7 @@ title: "Who am I?"
 description: "Who is Daniel Felipe Montenegro? A Systems and Computer Engineer and AI software developer who builds AI platforms and loves cinema, music and literature."
 summary: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
 Date: 2024-10-12
-lastmod: 2026-10-04
+lastmod: 2026-10-10
 images: ["img/og-about.jpg"]
 tags: []
 showBreadcrumbs: false
@@ -72,6 +72,19 @@ Caesar from the Planet of the Apes trilogy is **my favorite fictional character*
 For these reasons, I decided to make Caesar's symbol **my personal symbol** as well, because I believe in others as much as I believe in myself, and because **I dream to be a great leader one day**. I prepare myself every day with all my efforts to be worthy of that dream and many others that I carry **in my heart**.
 
 ![Apes Together Strong: Apes making Caesar's symbol with their arms](img/apes-together-strong.jpg "Apes Together Strong: Apes making Caesar's symbol with their arms")
+
+## The Carp and the Dragon
+If you have read a page of this site to the end, a golden carp has been climbing beside you.
+
+An old story tells of carp swimming up a river, against the current, until they reach a waterfall called the [Dragon Gate](https://en.wikipedia.org/wiki/Longmen_(mythology)). Most of them fall back. The few that leap it **become dragons**.
+
+I have always loved [koi](https://en.wikipedia.org/wiki/Koi), and this one is made of gold. **Every day I swim at that waterfall**: against the current, a little higher each time, with the gate in sight.
+
+At the top stands a [torii](https://en.wikipedia.org/wiki/Torii), my own addition to the story. It marks **the line between the ordinary and the sacred**, and that is exactly what the waterfall is.
+
+The carp is a shiny Magikarp, and the dragon is the [red Gyarados of the Lake of Rage](https://bulbapedia.bulbagarden.net/wiki/Red_Gyarados), the first shiny so many of us ever met, in *Pokémon SoulSilver*: that game and *Pokémon Emerald* are my favorites.
+
+The carp is drawn from *Pokémon Black and White*, the dragon from *Pokémon SoulSilver*. Pokémon © Nintendo, Creatures Inc. and GAME FREAK inc.
 
 ## Tit For Tat 
 Among the many ideas that have shaped my way of thinking, few have **fascinated me** as much as the **Tit For Tat strategy**. Originally introduced by **Anatol Rapoport** in the competition organized **by Robert Axelrod in 1980**, it stands as the winning and emblematic strategy of the [Prisoner’s Dilemma](/tags/prisoners-dilemma), one of my favorite problems in **game theory**.
