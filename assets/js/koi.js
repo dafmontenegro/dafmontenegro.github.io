@@ -8,6 +8,10 @@
    has the carp that leaps the falls become a dragon; the dragon then rises into the
    clouds. Scrolling back up brings the carp out again. Nothing but the scroll starts it.
 
+   On a phone there is no margin to climb in: the fall would run over the text. There the
+   reader is left alone while reading, and only the end is kept: at the foot of the page
+   the carp leaps up from the bottom of the screen, evolves in mid-air and rises away.
+
    The homepage has a Poké Ball instead, beside the photo's Caesar's Window badge, which
    is a second way to press it: each press releases a Pokémon from assets/js/pokemon.js,
    which is only fetched then.
@@ -21,8 +25,8 @@
      changes, never while it scrolls, so a frame never forces a layout.
    - Everything that moves does so by `transform` or `opacity`, which the browser
      composites without repainting the page, and classes change only when the state does.
-   - Where the climb runs over the text, it hides once the page stops moving and is taken
-     out of rendering, so its animated sprite stops playing.
+   - On a phone, where the climb would run over the text, nothing is shown while the page
+     is read.
 
    The carp is the animated shiny Magikarp of Pokémon Black and White; the dragon, the
    shiny Gyarados of Pokémon SoulSilver, the one of the Lake of Rage. Both are served from
@@ -42,8 +46,8 @@
   /* The climb is framed evenly: the gate stands as far from the head of the screen as the
      foot of the fall from its foot. */
   var MARGIN = 24;
-  var GATE_TOP_NARROW = 84; // on a narrow screen the gate stands under the header instead
-  var FOOT_NARROW = 96; // and the fall ends above the scroll-to-top button
+  var LEAP_HEIGHT = 0.4; // on a phone, how far up the screen the carp leaps, as a share
+  var LEAP_MS = 900; // and how long the leap takes
   var CARP_REACH = 26; // px from the tilted carp's centre to its lowest pixel, as measured
   var MIN_SCROLL = 0.5; // pages scrolling less than this share of a screen get no climb
   var EVOLVE_AT = 0.995; // share of the page read that counts as reaching the gate
@@ -51,7 +55,6 @@
   var BIRTH_MS = 650; // the carp coming out and the waterfall pouring
   var HOLD_DEX_MS = 500; // how long the homepage's ball is held down to open the Pokédex
   var SWIM_MS = 220; // ms after the last scroll the fish stops swimming
-  var REST_MS = 1800; // ms after that before the climb hides, on a narrow screen
   var TYPE_MS = 28; // ms per letter in the text box
   var HOLD_MS = 1100; // ms a line stays once it is typed out
   /* The in-game evolution: both forms as silhouettes, swapped faster and faster until the
@@ -389,7 +392,6 @@
   var frame = 0;
   var timers = [];
   var swimTimer = 0;
-  var restTimer = 0;
   var drag = null;
   var splashing = false;
 
@@ -470,21 +472,28 @@
 
      Where the page has a margin (768px and up, Congo's md breakpoint) the climb runs up
      the very edge of the screen, like a scrollbar of its own, framed by the same margin
-     at its head and its foot. On a narrower screen there is no margin, so it runs up the
-     line of Congo's scroll-to-top button, from above that button to under the header. */
+     at its head and its foot. On a narrower screen there is no climb, only the leap at
+     the end: from under the bottom of the screen, in its middle, up to the point where
+     the carp evolves. */
   function measure() {
     room = root.scrollHeight - window.innerHeight;
     long = room > window.innerHeight * MIN_SCROLL;
     narrow = window.innerWidth < 768;
     set(layer, "is-narrow", narrow);
 
-    var main = document.getElementById("main-content") || document.body;
-    col = narrow ? main.getBoundingClientRect().right - BALL_NARROW / 2 : root.clientWidth - EDGE - BALL / 2;
+    if (narrow) {
+      col = root.clientWidth / 2;
+      gateY = window.innerHeight * (1 - LEAP_HEIGHT) - 40;
+      rest = window.innerHeight + 60;
+      fish.style.left = col + "px";
+      return;
+    }
 
-    var gateTop = narrow ? GATE_TOP_NARROW : MARGIN;
+    var gateTop = MARGIN;
+    col = root.clientWidth - EDGE - BALL / 2;
     gateY = gateTop + (TORII.length * PX) / 2;
     fallTop = gateTop + TORII.length * PX - 2;
-    fallBottom = window.innerHeight - (narrow ? FOOT_NARROW : MARGIN);
+    fallBottom = window.innerHeight - MARGIN;
     rest = fallBottom - CARP_REACH;
 
     gate.style.top = gateTop + "px";
@@ -538,7 +547,6 @@
     });
     set(fish, "is-down", false);
     place(0);
-    wake(REST_MS + BIRTH_MS);
     set(layer, "is-on", true);
     replay(layer, "is-born");
     /* Off again once the entrance has played, so that no later change of animation on the
@@ -559,10 +567,35 @@
     }, BIRTH_MS);
   }
 
+  /* On a phone, the whole of it at the end of the page: the carp leaps up from below the
+     screen and evolves where the leap tops out. */
+  function leap() {
+    timers.forEach(clearTimeout);
+    timers = [];
+    stage = "born";
+    ["is-evolving", "shows-dragon", "is-evolved", "is-flashing", "is-sparkling", "is-draining",
+      "is-clouded", "is-ascending", "is-splashing", "is-born"].forEach(function (name) {
+      set(layer, name, false);
+    });
+    set(fish, "is-down", false);
+    if (!dragon.getAttribute("src")) fetchDragon();
+    fish.style.transform = "translate3d(0," + rest + "px,0)";
+    set(layer, "is-on", true);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        set(layer, "is-leaping", true);
+        fish.style.transform = "translate3d(0," + gateY.toFixed(1) + "px,0)";
+        later(function () {
+          set(layer, "is-leaping", false);
+          evolve();
+        }, reduced.matches ? 0 : LEAP_MS);
+      });
+    });
+  }
+
   function evolve() {
     if (stage !== "born") return;
     stage = "evolving";
-    hold();
     if (!dragon.getAttribute("src")) fetchDragon();
     set(fish, "is-down", false);
     say(["What? MAGIKARP is evolving!"]);
@@ -607,7 +640,6 @@
     later(function () {
       stage = "ascended";
       set(layer, "is-on", false);
-      wake(REST_MS);
     }, GONE_AT);
   }
 
@@ -621,28 +653,10 @@
     if (splashing || stage !== "born") return;
     splashing = true;
     replay(layer, "is-splashing");
-    hold();
     say(["MAGIKARP used SPLASH!", "But nothing happened!"]).then(function () {
       splashing = false;
       set(layer, "is-splashing", false);
-      wake(REST_MS);
     });
-  }
-
-  /* On a narrow screen there is no margin to swim in, so the climb runs over the text.
-     It only shows while the page moves, and steps aside once the reader stops to read. */
-  function wake(ms) {
-    set(layer, "is-resting", false);
-    clearTimeout(restTimer);
-    restTimer = setTimeout(function () {
-      if (stage === "evolving" || splashing) return;
-      set(layer, "is-resting", true);
-    }, ms);
-  }
-
-  function hold() {
-    clearTimeout(restTimer);
-    set(layer, "is-resting", false);
   }
 
   /* On a computer the carp can be dragged up and down the fall, which scrolls the page
@@ -683,6 +697,14 @@
       lastY = y;
       if (!long) return;
 
+      /* On a phone nothing shows while the page is read: the carp is only armed again once
+         the reader has gone back up, and leaps when the end is reached. */
+      if (narrow) {
+        if (stage === "ascended" && scrolled() < REBIRTH_BELOW) stage = "hidden";
+        if (stage === "hidden" && scrolled() >= EVOLVE_AT) leap();
+        return;
+      }
+
       if (stage === "hidden" || (stage === "ascended" && scrolled() < REBIRTH_BELOW)) {
         birth(scrolled());
         return;
@@ -695,7 +717,6 @@
       swimTimer = setTimeout(function () {
         set(layer, "is-swimming", false);
       }, SWIM_MS);
-      wake(REST_MS);
     });
   }
 
@@ -703,7 +724,7 @@
      its new place without waking it. */
   function onResize() {
     measure();
-    if (stage === "born" && !gliding) place(Math.min(scrolled(), EVOLVE_AT - 0.001));
+    if (stage === "born" && !gliding && !narrow) place(Math.min(scrolled(), EVOLVE_AT - 0.001));
   }
 
   /* ---------------------------------------------------------------------------------
