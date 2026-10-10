@@ -46,6 +46,22 @@ ROSTER = {
     "gengar": (94, "Gengar"),
     "ditto": (132, "Ditto"),
     "psyduck": (54, "Psyduck"),
+    "jigglypuff": (39, "Jigglypuff"),
+    "abra": (63, "Abra"),
+    "kadabra": (64, "Kadabra"),
+    "alakazam": (65, "Alakazam"),
+    "eevee": (133, "Eevee"),
+    "vaporeon": (134, "Vaporeon"),
+    "jolteon": (135, "Jolteon"),
+    "flareon": (136, "Flareon"),
+    "espeon": (196, "Espeon"),
+    "umbreon": (197, "Umbreon"),
+    "leafeon": (470, "Leafeon"),
+    "glaceon": (471, "Glaceon"),
+    "rotom": (479, "Rotom"),
+    "giratina": (487, "Giratina"),
+    # A form is filed under the Dex number and the form's name.
+    "giratina-origin": ("487-origin", "Giratina"),
 }
 
 

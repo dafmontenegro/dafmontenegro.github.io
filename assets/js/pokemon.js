@@ -344,8 +344,9 @@
   }
 
   /* Charizard's shadow, flying high over the page: its silhouette, four times its size,
-     sweeping across the whole screen from left to right. */
-  function skyShadow() {
+     sweeping across the whole screen, left to right (way 1) or back (way -1), facing the
+     way it flies. */
+  function skyShadow(way) {
     if (still()) return Promise.resolve();
     var sky = document.createElement("div");
     sky.className = "pkmn";
@@ -363,8 +364,12 @@
     return shape
       .animate(
         [
-          { transform: "translate(" + -w + "px," + window.innerHeight * 0.05 + "px) scaleX(-1)" },
-          { transform: "translate(" + window.innerWidth + "px," + window.innerHeight * 0.3 + "px) scaleX(-1)" }
+          way > 0
+            ? { transform: "translate(" + -w + "px," + window.innerHeight * 0.05 + "px) scaleX(-1)" }
+            : { transform: "translate(" + window.innerWidth + "px," + window.innerHeight * 0.4 + "px)" },
+          way > 0
+            ? { transform: "translate(" + window.innerWidth + "px," + window.innerHeight * 0.3 + "px) scaleX(-1)" }
+            : { transform: "translate(" + -w + "px," + window.innerHeight * 0.15 + "px)" }
         ],
         { duration: 1700, easing: "linear" }
       )
@@ -373,7 +378,11 @@
       });
   }
 
-  /* Fire Blast over the photo: flames in the shape of 大, blooming out from its middle. */
+  /* Fire Blast over the photo: flames in the shape of 大. It is born as one small flame in
+     the middle of the photo and grows out into the whole character, every flame travelling
+     out from the middle as it swells. The flames are gathered in one group, centred on the
+     photo, so the whole character can then be thrown at once; it resolves with that group
+     once the fire is fully grown. */
   function fireBlast(R) {
     var u = R * 0.32;
     var points = [
@@ -382,19 +391,60 @@
       [0, 0],
       [-1, 1], [-2, 2], [1, 1], [2, 2]
     ];
-    var flames = [];
-    return Promise.all(
-      points.map(function (p) {
-        var delay = ms(Math.hypot(p[0], p[1] + 1) * 90);
-        return wait(delay).then(function () {
-          var f = flame(p[0] * u, p[1] * u + 20, 3);
-          f.classList.add("pkmn-blast");
-          flames.push(f);
-        });
-      })
-    ).then(function () {
-      return flames;
+    var GROW = 1300;
+    var group = document.createElement("div");
+    group.className = "pkmn-blast";
+    group.style.zIndex = IN_FRONT;
+    scene.appendChild(group);
+    points.forEach(function (p) {
+      var f = flame(p[0] * u, p[1] * u + 20, 3);
+      group.appendChild(f);
+      var reach = Math.hypot(p[0], p[1] + 1);
+      f.animate(
+        [
+          { transform: "translate(" + -p[0] * u + "px," + -(p[1] + 1) * u + "px) scale(0.1)", opacity: 0 },
+          { transform: "translate(" + -p[0] * u * 0.7 + "px," + -(p[1] + 1) * u * 0.7 + "px) scale(0.35)", opacity: 1, offset: 0.25 },
+          { transform: "translate(0,0) scale(1)", opacity: 1 }
+        ],
+        { duration: ms(GROW), delay: ms(reach * 60), easing: "cubic-bezier(0.3, 0.9, 0.4, 1.15)", fill: "backwards" }
+      );
     });
+    return wait(ms(GROW + 3.2 * 60)).then(function () {
+      return group;
+    });
+  }
+
+  /* The photo's rim, charred: a ring of soot darkening to the very edge, its inner margin
+     torn ragged by noise, so it reads as burnt paper rather than a drawn circle. Every
+     scorch is torn differently. */
+  var scorches = 0;
+
+  function charred(R) {
+    var id = "pkmn-char-" + scorches++;
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 100 100");
+    svg.setAttribute("class", "pkmn-scorch");
+    svg.style.left = -R + "px";
+    svg.style.top = -R + "px";
+    svg.style.width = svg.style.height = R * 2 + "px";
+    svg.innerHTML =
+      "<defs>" +
+      '<radialGradient id="' + id + '-g">' +
+      '<stop offset="0.58" stop-color="#451a03" stop-opacity="0"/>' +
+      '<stop offset="0.74" stop-color="#78350f" stop-opacity="0.55"/>' +
+      '<stop offset="0.86" stop-color="#1c0a02" stop-opacity="0.9"/>' +
+      '<stop offset="1" stop-color="#0c0502" stop-opacity="1"/>' +
+      "</radialGradient>" +
+      '<filter id="' + id + '-f" x="-10%" y="-10%" width="120%" height="120%">' +
+      '<feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="3" seed="' + ((Math.random() * 999) | 0) + '"/>' +
+      '<feDisplacementMap in="SourceGraphic" scale="18"/>' +
+      "</filter>" +
+      '<clipPath id="' + id + '-c"><circle cx="50" cy="50" r="50"/></clipPath>' +
+      "</defs>" +
+      '<g clip-path="url(#' + id + '-c)">' +
+      '<circle cx="50" cy="50" r="56" fill="url(#' + id + '-g)" filter="url(#' + id + '-f)"/>' +
+      "</g>";
+    return svg;
   }
 
   function putOut(flames) {
@@ -531,6 +581,23 @@
     ]
   ];
   var FIRE_COLOURS = { r: "#b91c1c", o: "#f97316", y: "#fde047", w: "#fffbeb" };
+  var DROP = [".b.", "bbb", "bwb", ".b."];
+  var LEAF = ["...gg", "..ggg", ".gglg", "ggg..", "g...."];
+  var SNOW = [".w.w.", "..w..", "wwwww", "..w..", ".w.w."];
+  var PINK = ["..p..", "..p..", "ppwpp", "..p..", "..p.."];
+  var RING = [".yyy.", "y...y", "y...y", "y...y", ".yyy."];
+  var EEVEE_ART = {
+    drop: [DROP, { b: "#38bdf8", w: "#e0f2fe" }],
+    bolt: [["...yy.", "..yy..", ".yy...", "yyyyy.", "...yy.", "..yy..", ".yy...", "yy....", "y....."], { y: "#facc15" }],
+    spark: [[".oo.", "oyyo", "oyyo", ".oo."], { o: "#f97316", y: "#fde047" }],
+    leaf: [LEAF, { g: "#22c55e", l: "#bbf7d0" }],
+    snow: [SNOW, { w: "#e0f2fe" }],
+    pink: [PINK, { p: "#f9a8d4", w: "#ffffff" }],
+    ring: [RING, { y: "#facc15" }]
+  };
+  /* Kadabra's spoon. */
+  var SPOON = ["..ss", ".sss", ".ss.", "s...", "s...", "s..."];
+  var SPOON_COLOURS = { s: "#cbd5e1" };
   var SPARK = ["yy", "yy"];
   var SPARK_COLOURS = { y: "#fde047" };
   var FIREBALL = [".ooo.", "oyyyo", "oyyyo", "oyyyo", ".ooo."];
@@ -580,7 +647,7 @@
     var mon = new Mon("charmander", -R * 0.3, R + 4, BEHIND);
     mon.flip(true);
     Koi.say(["Go! CHARMANDER!"]);
-    await mon.go(-R - 44, R + 4, 700, "ease-out");
+    await mon.go(-R - 58, R + 4, 700, "ease-out");
     mon.z(IN_FRONT);
     await wait(300);
 
@@ -593,9 +660,9 @@
     await told;
 
     await evolve(mon, "charmeleon");
-    flames.push(flame(-R * 0.3, R + 2, 2));
     await evolve(mon, "charizard");
-    await mon.go(-R - 62, R + 8, 300);
+    /* Charizard is twice Charmander's size: it steps back to give the photo room. */
+    await mon.go(-R - 92, R + 8, 400);
 
     /* The roar: Charizard rears up, the page shakes, a wave of heat washes over it and
        sparks spray from its jaws. */
@@ -606,6 +673,9 @@
     heat();
     tremor(3);
     spray(mouth, 1);
+    /* Charmander's embers go out under the roar: the scene is clear for what follows. */
+    putOut(flames);
+    flames = [];
     await wait(ms(1000));
     tremor(0);
     await told;
@@ -618,7 +688,10 @@
     shadow.animate([{ opacity: 0.5, scale: "1" }, { opacity: 0, scale: "0.2" }], { duration: ms(800), fill: "forwards" });
     await mon.go(mon.x + 30, -window.innerHeight, 800, "ease-in");
     shadow.remove();
-    await skyShadow();
+    /* It circles overhead: its shadow sweeps across the page one way, then back. */
+    await skyShadow(1);
+    await wait(ms(300));
+    await skyShadow(-1);
     await told;
 
     /* Fire Blast: it dives back down beside the photo and lands with a thud, spits a ball
@@ -637,9 +710,18 @@
     await wait(ms(350));
     mouth = [mon.x - mon.w * 0.3, mon.y - mon.h * 0.72];
     await shoot(FIREBALL, FIREBALL_COLOURS, mouth, [-6, -R * 0.35], 320, 4);
+    /* The 大 forms over the photo, then flies out of it at whoever is watching, growing
+       until it leaves the screen in a wave of heat; it only crosses the photo's face in
+       passing. The photo is left burning at the rim. */
+    var blast = await fireBlast(R);
+    await wait(ms(250));
+    heat();
+    tremor(2);
     photo("is-burning", true);
-    flames = flames.concat(await fireBlast(R));
-    var sparks = embers([-R * 0.6, 0, R * 0.6], -R * 0.8);
+    await blast.animate([{ transform: "scale(1)", opacity: 1 }, { transform: "scale(7)", opacity: 0 }], { duration: ms(800), easing: "ease-in", fill: "forwards" }).finished;
+    blast.remove();
+    tremor(0);
+    var sparks = embers([-R * 0.8, -R * 0.4, R * 0.4, R * 0.8], -R * 0.7);
     await told;
     await Koi.say(["The photo caught fire!"]);
 
@@ -649,11 +731,18 @@
     mon.remove();
     await told;
 
+    /* The fire burns out and leaves its mark: the photo's rim charred, for a while. */
     told = Koi.say(["The fire burned out.", "The photo is a little toasted."]);
     sparks();
+    var scorch = charred(R);
+    scene.appendChild(scorch);
+    scorch.animate([{ opacity: 0 }, { opacity: 1 }], { duration: ms(800), fill: "forwards" });
     await putOut(flames);
     photo("is-burning", false);
     await told;
+    await wait(ms(800));
+    await scorch.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(1600), easing: "ease-in", fill: "forwards" }).finished;
+    scorch.remove();
   }
 
   /* Munchlax comes looking for food and eats its way along the red box under the photo,
@@ -1100,6 +1189,409 @@
     }, 700);
   }
 
+
+  /* ---------------------------------------------------------------------------------
+     Eevee. Eevee evolves by a stone, or by friendship by day or by night, and here the
+     photo provides the means: Caesar's Window, the badge on the photo, becomes the stone,
+     or the photo shines like the sun or the moon, according to the site's theme, light
+     for day and dark for night, as Espeon and Umbreon need. Which one is drawn at random. */
+
+  var EEVEE_PATHS = [
+    { form: "vaporeon", stone: "water", stoneName: "WATER STONE", move: "VAPOREON used WATER GUN!", art: "drop" },
+    { form: "jolteon", stone: "thunder", stoneName: "THUNDER STONE", move: "JOLTEON used THUNDER SHOCK!", art: "bolt" },
+    { form: "flareon", stone: "fire", stoneName: "FIRE STONE", move: "FLAREON used EMBER!", art: "spark" },
+    { form: "leafeon", stone: "leaf", stoneName: "LEAF STONE", move: "LEAFEON used RAZOR LEAF!", art: "leaf" },
+    { form: "glaceon", stone: "ice", stoneName: "ICE STONE", move: "GLACEON used ICY WIND!", art: "snow" },
+    { form: "friendship" }
+  ];
+
+  async function eevee() {
+    var R = radius;
+    var badge = page(".cw-avatar .cw-badge");
+    var path = EEVEE_PATHS[(Math.random() * EEVEE_PATHS.length) | 0];
+    if (path.form === "friendship") {
+      var dark = document.documentElement.classList.contains("dark");
+      path = dark
+        ? { form: "umbreon", glow: "moon", line: "The photo is shining like the moon...", move: "UMBREON's rings are glowing!", art: "ring" }
+        : { form: "espeon", glow: "sun", line: "The photo is shining like the sun...", move: "ESPEON used PSYCHIC!", art: "pink" };
+    }
+    var loading = preload([path.form]);
+
+    var mon = new Mon("eevee", R * 0.3, R + 4, BEHIND);
+    Koi.say(["Go! EEVEE!"]);
+    await mon.go(R + 48, R + 4, 700, "ease-out");
+    mon.z(IN_FRONT);
+    await Koi.say(["EEVEE is curious about Caesar's Window..."]);
+    await mon.hop(R + 32, R + 4, 16, 380);
+    await mon.hop(R + 40, R + 4, 10, 300);
+
+    if (path.stone && badge) {
+      badge.classList.add("pkmn-stone", "pkmn-stone-" + path.stone);
+      burst(R * 0.75, R * 0.75);
+      await Koi.say(["Caesar's Window turned into a " + path.stoneName + "!"]);
+      await Koi.say(["EEVEE touched the " + path.stoneName + "!"]);
+    } else {
+      photo("is-" + path.glow, true);
+      await Koi.say([path.line]);
+      await Koi.say(["EEVEE is very fond of you!"]);
+    }
+    await loading;
+    await evolve(mon, path.form);
+    if (badge) badge.classList.remove("pkmn-stone", "pkmn-stone-" + path.stone);
+
+    /* And the new form shows the photo what it can do. */
+    var aura = document.createElement("div");
+    aura.className = "pkmn-aura pkmn-aura-" + path.form;
+    aura.style.left = -R + "px";
+    aura.style.top = -R + "px";
+    aura.style.width = aura.style.height = R * 2 + "px";
+    scene.appendChild(aura);
+    if (path.form === "umbreon") night(true);
+    var told = Koi.say([path.move]);
+    var shower = still()
+      ? 0
+      : setInterval(function () {
+          var art = EEVEE_ART[path.art];
+          var x = (Math.random() - 0.5) * R * 2.4;
+          var falls = path.art === "leaf" || path.art === "snow" || path.art === "drop";
+          float(art[0], art[1], x, falls ? -R - 30 : R * 0.6, [(Math.random() - 0.5) * 40, falls ? R * 2 : -R * 1.6], 1600, 0, 3);
+        }, 140);
+    await told;
+    await wait(ms(1200));
+    clearInterval(shower);
+    await aura.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(900), fill: "forwards" }).finished;
+    aura.remove();
+    if (path.glow) photo("is-" + path.glow, false);
+    if (path.form === "umbreon") night(false, 1200);
+    await mon.hop(R + 40, R + 4, 18, 400);
+    await hide(mon);
+  }
+
+  /* ---------------------------------------------------------------------------------
+     Jigglypuff sings, and the whole page falls asleep, as everyone does in the anime. Then
+     it sees nobody listened, puffs up with rage, and draws on the photo with its marker:
+     a moustache, left there for a while after the page wakes up. */
+
+  async function jigglypuff() {
+    var R = radius;
+    var mon = new Mon("jigglypuff", -R * 0.3, R + 4, BEHIND);
+    Koi.say(["Go! JIGGLYPUFF!"]);
+    await mon.go(-R - 34, R + 4, 700, "ease-out");
+    mon.z(IN_FRONT);
+    await mon.hop(-R - 34, R + 4, 14, 350);
+
+    var told = Koi.say(["JIGGLYPUFF used SING!"]);
+    var n = 0;
+    var song = still()
+      ? 0
+      : setInterval(function () {
+          note(NOTE_COLOURS[n % 2 ? 1 : 0], mon.x + 10, mon.y - mon.h, (n % 2 ? 1 : -1) * 40, -170);
+          n++;
+        }, 260);
+    await wait(ms(1400));
+    lull(true);
+    await told;
+    told = Koi.say(["Jiggly... puff... jiggly... puff..."]);
+    for (var z = 0; z < 4; z++) float(ZED, ZED_COLOURS, (z % 2 ? 1 : -1) * R * 0.4, -R * 0.6, [z * 6, -60], 1800, z * 500, 3);
+    await told;
+    clearInterval(song);
+    await Koi.say(["The whole page fell asleep!"]);
+
+    /* Nobody listened. */
+    await Koi.say(["JIGGLYPUFF looks around...", "Nobody listened to its song!"]);
+    var base = mon.at(mon.x, mon.y);
+    mon.el.style.transformOrigin = "50% 100%";
+    told = Koi.say(["JIGGLYPUFF is furious!"]);
+    await mon.el.animate(
+      [
+        { transform: base },
+        { transform: base + " scale(1.45)", offset: 0.4 },
+        { transform: base + " scale(1.45) translateX(-2px)", offset: 0.5 },
+        { transform: base + " scale(1.45) translateX(2px)", offset: 0.6 },
+        { transform: base + " scale(1.45) translateX(-2px)", offset: 0.7 },
+        { transform: base }
+      ],
+      { duration: ms(1500), easing: "ease-in-out" }
+    ).finished;
+    await told;
+
+    /* The moustache, drawn stroke by stroke across the upper lip. Its place is measured
+       against the author's photo as it is: a new photo may want it moved. */
+    told = Koi.say(["JIGGLYPUFF drew on the photo!"]);
+    await mon.hop(-R * 0.55, -R * 0.15, 40, 600);
+    var mustache = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    mustache.setAttribute("viewBox", "-34 -12 68 20");
+    mustache.setAttribute("class", "pkmn-prop pkmn-mustache");
+    mustache.style.width = R * 0.62 + "px";
+    mustache.style.left = -R * 0.36 + "px";
+    mustache.style.top = -R * 0.3 + "px";
+    mustache.style.zIndex = IN_FRONT;
+    mustache.innerHTML =
+      '<path d="M -30 2 C -32 -8 -22 -10 -14 -5 C -8 -1 -3 -3 0 -6 C 3 -3 8 -1 14 -5 C 22 -10 32 -8 30 2" ' +
+      'pathLength="1" fill="none" stroke="#111827" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>';
+    scene.appendChild(mustache);
+    mustache.firstChild.animate([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], { duration: ms(1100), easing: "ease-in-out", fill: "forwards" });
+    await wait(ms(1200));
+    await told;
+
+    lull(false);
+    await Koi.say(["The page woke up!"]);
+    await Koi.say(["...with a little souvenir."]);
+    await mon.hop(-R - 34, R + 4, 40, 600);
+    await hide(mon);
+    await wait(ms(1500));
+    await mustache.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(1200), fill: "forwards" }).finished;
+    mustache.remove();
+  }
+
+  /* The whole page falling asleep: a heavy, blurred dusk over all of it but the photo,
+     which is lifted above it. */
+  function lull(on) {
+    var veil = document.querySelector(".pkmn-lull");
+    if (on && !veil) {
+      veil = document.createElement("div");
+      veil.className = "pkmn-lull";
+      veil.setAttribute("aria-hidden", "true");
+      document.body.appendChild(veil);
+      avatar.classList.add("is-lifted");
+    } else if (!on && veil) {
+      veil.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(900), fill: "forwards" }).finished.then(function () {
+        veil.remove();
+        avatar.classList.remove("is-lifted");
+      });
+    }
+  }
+
+  /* ---------------------------------------------------------------------------------
+     Rotom, the Pokémon that slips into machines, slips into the site's light switch:
+     the theme button. Possessed, it flips the site between light and dark until Rotom
+     tires of it and pops back out, and the site is left as the reader had it. The class
+     on <html> is changed directly, never the preference Congo stores, so nothing of this
+     outlives the act. */
+
+  var themeWas = null;
+
+  async function rotom() {
+    var R = radius;
+    var root = document.documentElement;
+    var switcher = Array.prototype.slice.call(document.querySelectorAll("[id^='appearance-switcher']")).filter(function (el) {
+      return el.offsetParent;
+    })[0];
+    var mon = new Mon("rotom", 0, -R * 0.2, BEHIND);
+    mon.el.style.opacity = 0;
+    mon.el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: ms(400), fill: "forwards" });
+    Koi.say(["Go! ROTOM!"]);
+    mon.z(IN_FRONT);
+    await mon.path([[-R - 40, -R * 0.6], [R + 40, -R * 0.8], [R + 50, R * 0.3]], 1300, "ease-in-out");
+    await Koi.say(["ROTOM is looking for something to possess..."]);
+    if (!switcher) {
+      await hide(mon);
+      return;
+    }
+
+    var a = avatar.getBoundingClientRect();
+    var s = switcher.getBoundingClientRect();
+    var sx = s.left + s.width / 2 - (a.left + a.width / 2);
+    var sy = s.top + s.height / 2 - (a.top + a.height / 2) + mon.h / 2;
+    await mon.go(sx, sy, 900, "ease-in");
+    burst(sx, sy - mon.h / 2);
+    await mon.fade(200);
+    switcher.classList.add("pkmn-possessed");
+
+    var told = Koi.say(["ROTOM possessed the light switch!"]);
+    themeWas = root.classList.contains("dark");
+    var flips = still() ? [] : [500, 400, 300, 220, 160, 120, 100, 100, 140, 220, 400];
+    for (var i = 0; i < flips.length; i++) {
+      root.classList.toggle("dark");
+      await wait(flips[i]);
+    }
+    await told;
+    await Koi.say(["The lights are going crazy!"]);
+    for (var j = 0; j < 4 && !still(); j++) {
+      root.classList.toggle("dark");
+      await wait(600);
+    }
+    restoreTheme();
+    switcher.classList.remove("pkmn-possessed");
+
+    mon.el.getAnimations().forEach(function (anim) {
+      anim.cancel();
+    });
+    mon.el.style.opacity = 1;
+    burst(sx, sy - mon.h / 2);
+    await Koi.say(["ROTOM popped out of the switch!"]);
+    await mon.go(R + 50, R * 0.3, 900, "ease-out");
+    await hide(mon);
+  }
+
+  function restoreTheme() {
+    if (themeWas === null) return;
+    document.documentElement.classList.toggle("dark", themeWas);
+    themeWas = null;
+  }
+
+  /* ---------------------------------------------------------------------------------
+     Giratina, the Renegade, banished to the Distortion World. The photo darkens and opens
+     into a rift to that world; Giratina comes out of it in its Altered Forme, then uses
+     Shadow Force and drags the page through the rift with it: in the Distortion World the
+     page hangs upside down, and Giratina takes its Origin Forme, as it does there. Then it
+     goes back through the rift, the page rights itself, and the rift closes with the same
+     slow sweep of colour as Gengar's prank. */
+
+  async function giratina() {
+    var R = radius;
+    night(true);
+    photo("is-shadowed", true);
+    var rift = document.createElement("div");
+    rift.className = "pkmn-rift";
+    rift.style.left = -R + "px";
+    rift.style.top = -R + "px";
+    rift.style.width = rift.style.height = R * 2 + "px";
+    scene.appendChild(rift);
+    await rift.animate([{ opacity: 0, scale: "0.3" }, { opacity: 1, scale: "1" }], { duration: ms(1200), easing: "ease-out", fill: "forwards" }).finished;
+    await Koi.say(["A rift opened in the photo!"]);
+
+    var mon = new Mon("giratina", 0, R * 0.4);
+    var base = mon.at(mon.x, mon.y);
+    mon.el.style.transformOrigin = "50% 70%";
+    mon.el.animate([{ transform: base + " scale(0.1)", opacity: 0 }, { transform: base + " scale(1)", opacity: 1 }], { duration: ms(1400), easing: "ease-out" });
+    await wait(ms(1400));
+    var told = Koi.say(["GIRATINA appeared from the DISTORTION WORLD!"]);
+    await mon.go(R + 70, -R * 0.1, 1200, "ease-in-out");
+    await told;
+
+    told = Koi.say(["GIRATINA used SHADOW FORCE!"]);
+    await mon.go(0, R * 0.4, 800, "ease-in");
+    base = mon.at(mon.x, mon.y);
+    await mon.el.animate([{ transform: base + " scale(1)", opacity: 1 }, { transform: base + " scale(0.1)", opacity: 0 }], { duration: ms(700), easing: "ease-in", fill: "forwards" }).finished;
+    upside(true);
+    await told;
+    await wait(ms(900));
+    await Koi.say(["The page was dragged into the DISTORTION WORLD!"]);
+
+    mon.el.getAnimations().forEach(function (anim) {
+      anim.cancel();
+    });
+    mon.show("giratina-origin");
+    base = mon.at(mon.x, mon.y);
+    mon.el.animate([{ transform: base + " scale(0.1)", opacity: 0 }, { transform: base + " scale(1)", opacity: 1 }], { duration: ms(1200), easing: "ease-out" });
+    await wait(ms(1200));
+    told = Koi.say(["GIRATINA changed to its ORIGIN FORME!"]);
+    await mon.path([[-R - 70, -R * 0.2], [-R * 0.3, -R - 40], [R + 70, -R * 0.2], [0, R * 0.4]], 2600, "ease-in-out");
+    await told;
+
+    told = Koi.say(["GIRATINA returned to the DISTORTION WORLD."]);
+    base = mon.at(mon.x, mon.y);
+    await mon.el.animate([{ transform: base + " scale(1)", opacity: 1 }, { transform: base + " scale(0.1)", opacity: 0 }], { duration: ms(900), easing: "ease-in", fill: "forwards" }).finished;
+    mon.remove();
+    upside(false);
+    await wait(ms(1400));
+    var picture = avatar.firstElementChild;
+    picture.style.transition = "filter " + ms(2000) / 1000 + "s ease-in-out";
+    rift.animate([{ opacity: 1, scale: "1" }, { opacity: 0, scale: "0.3" }], { duration: ms(1500), easing: "ease-in", fill: "forwards" });
+    night(false, 2000);
+    photo("is-shadowed", false);
+    await told;
+    await wait(ms(1500));
+    rift.remove();
+    picture.style.transition = "";
+  }
+
+  /* The page upside down: the header and everything under it each turned on their own
+     middle, slowly. */
+  function upside(on) {
+    ["body > header", "body > div.relative"].forEach(function (selector) {
+      var el = page(selector);
+      if (!el) return;
+      el.classList.add("pkmn-turnable");
+      el.classList.toggle("pkmn-upside", on && !still());
+    });
+  }
+
+  /* ---------------------------------------------------------------------------------
+     Abra sleeps eighteen hours a day, and teleports in its sleep: it sends the photo
+     elsewhere on the page. It evolves; Kadabra, bending its spoon, sends it here and there
+     faster; it evolves again, and Alakazam brings it home with Psychic. */
+
+  var moved = null;
+
+  async function abra() {
+    var R = radius;
+    moved = avatar.firstElementChild;
+    var a = avatar.getBoundingClientRect();
+    var reach = Math.max(60, Math.min(300, window.innerWidth / 2 - R - 16));
+    var below = Math.max(80, Math.min(240, window.innerHeight - a.bottom - 40));
+    var spots = [[-reach, 30], [reach, -10], [0, below], [-reach * 0.6, below * 0.8], [reach * 0.7, below * 0.5], [0, 0]];
+
+    var mon = new Mon("abra", -R * 0.3, R + 4, BEHIND);
+    Koi.say(["Go! ABRA!"]);
+    await mon.go(-R - 34, R + 4, 700, "ease-out");
+    mon.z(IN_FRONT);
+    for (var z = 0; z < 3; z++) float(ZED, ZED_COLOURS, mon.x - 6, mon.y - mon.h, [-20, -50], 1600, z * 500, 2);
+    await Koi.say(["ABRA is fast asleep..."]);
+    var told = Koi.say(["ABRA used TELEPORT in its sleep!"]);
+    await teleport(spots[0]);
+    await told;
+    await Koi.say(["The photo was teleported!"]);
+
+    await evolve(mon, "kadabra");
+    var spoon = Koi.pixels(SPOON, SPOON_COLOURS, "pkmn-prop pkmn-spoon", 3);
+    spoon.style.left = mon.x - 30 + "px";
+    spoon.style.top = mon.y - mon.h * 0.7 + "px";
+    spoon.style.zIndex = IN_FRONT;
+    scene.appendChild(spoon);
+    told = Koi.say(["KADABRA used TELEPORT!", "Again! And again!"]);
+    for (var t = 1; t < spots.length - 1; t++) {
+      await teleport(spots[t]);
+      await wait(ms(450));
+    }
+    await told;
+    spoon.remove();
+
+    await evolve(mon, "alakazam");
+    told = Koi.say(["ALAKAZAM used PSYCHIC!"]);
+    mon.el.classList.add("is-psychic-2");
+    moved.classList.add("pkmn-psychic-hold");
+    moved.style.transition = "transform " + ms(1600) / 1000 + "s cubic-bezier(0.3, 1.3, 0.5, 1)";
+    moved.style.transform = "";
+    await wait(ms(1700));
+    moved.classList.remove("pkmn-psychic-hold");
+    mon.el.classList.remove("is-psychic-2");
+    await told;
+    await Koi.say(["ALAKAZAM put the photo back where it belongs."]);
+    moved.style.transition = "";
+    moved = null;
+    await hide(mon);
+  }
+
+  /* The photo vanishing with a flash and appearing elsewhere, (dx, dy) from its place. */
+  async function teleport(spot) {
+    var r = moved.getBoundingClientRect();
+    var a = avatar.getBoundingClientRect();
+    var cx = r.left + r.width / 2 - (a.left + a.width / 2);
+    var cy = r.top + r.height / 2 - (a.top + a.height / 2);
+    burst(cx, cy);
+    moved.style.transition = "none";
+    await moved.animate([{ opacity: 1, scale: "1" }, { opacity: 0, scale: "0.2 1.4" }], { duration: ms(180), fill: "forwards" }).finished;
+    moved.style.transform = "translate(" + spot[0] + "px," + spot[1] + "px)";
+    burst(spot[0], spot[1]);
+    await moved.animate([{ opacity: 0, scale: "0.2 1.4" }, { opacity: 1, scale: "1" }], { duration: ms(220), fill: "forwards" }).finished;
+    moved.getAnimations().forEach(function (anim) {
+      anim.cancel();
+    });
+  }
+
+  function homePicture() {
+    if (!moved) return;
+    moved.getAnimations().forEach(function (anim) {
+      anim.cancel();
+    });
+    moved.style.transform = "";
+    moved.style.transition = "";
+    moved.classList.remove("pkmn-psychic-hold");
+    moved = null;
+  }
+
   /* The 404 page's visitor: MissingNo., the glitch the first games turned up where
      something was missing. It is not a sprite: its block of garbage is drawn anew a few
      times a second, in the shape of the original, a reversed L of scrambled tiles.
@@ -1254,7 +1746,12 @@
     gastly: { dex: 92, keys: ["gastly", "haunter", "gengar"], play: gastly, weight: 3 },
     ditto: { dex: 132, keys: ["ditto", "pikachu", "gengar", "charizard"], play: ditto, weight: 3 },
     pichu: { dex: 172, keys: ["pichu", "pikachu"], play: pichu, weight: 3 },
-    munchlax: { dex: 446, keys: ["munchlax", "snorlax", "snorlax-asleep"], play: munchlax, weight: 3 }
+    munchlax: { dex: 446, keys: ["munchlax", "snorlax", "snorlax-asleep"], play: munchlax, weight: 3 },
+    jigglypuff: { dex: 39, keys: ["jigglypuff"], play: jigglypuff, weight: 3 },
+    abra: { dex: 63, keys: ["abra", "kadabra", "alakazam"], play: abra, weight: 3 },
+    eevee: { dex: 133, keys: ["eevee"], play: eevee, weight: 3 },
+    rotom: { dex: 479, keys: ["rotom"], play: rotom, weight: 3 },
+    giratina: { dex: 487, keys: ["giratina", "giratina-origin"], play: giratina, weight: 2 }
   };
 
   /* A weighted draw, never the same act twice in a row. */
@@ -1432,7 +1929,7 @@
         console.error(error);
       })
       .then(function () {
-        ["is-zapped", "is-burning", "is-tilted", "is-playing", "is-shadowed", "is-shivering", "is-confused", "is-bumped"].forEach(function (effect) {
+        ["is-zapped", "is-burning", "is-tilted", "is-playing", "is-shadowed", "is-shivering", "is-confused", "is-bumped", "is-sun", "is-moon"].forEach(function (effect) {
           photo(effect, false);
         });
         /* Whatever an act did to the rest of the page is undone, even if it failed. */
@@ -1441,8 +1938,15 @@
         undoDitto();
         tremor(0);
         unbite();
-        scene.querySelectorAll(".pkmn-portrait").forEach(function (left) {
+        scene.querySelectorAll(".pkmn-portrait, .pkmn-scorch, .pkmn-aura, .pkmn-rift, .pkmn-mustache, .pkmn-spoon").forEach(function (left) {
           left.remove();
+        });
+        lull(false);
+        upside(false);
+        restoreTheme();
+        homePicture();
+        document.querySelectorAll(".pkmn-stone, .pkmn-possessed").forEach(function (el) {
+          el.className = el.className.replace(/\bpkmn-(stone|possessed)\S*/g, "").trim();
         });
         busy = false;
       });
