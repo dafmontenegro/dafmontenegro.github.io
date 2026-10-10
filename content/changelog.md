@@ -12,6 +12,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-10 | [Home](/)                       | Five more Pokémon for the Poké Ball: Jigglypuff, Abra, Eevee (Caesar's Window becomes its evolution stone), Rotom and Giratina |
 | 2026-10-10 | [About](/about/#the-carp-and-the-dragon) | On phones the carp no longer climbs over the text: it leaps up and becomes a dragon only when you reach the end of a page |
 | 2026-10-10 | [Home](/)                       | New Pokémon for the Poké Ball: a Charmander that grows into a roaring, fire-breathing Charizard, and a Psyduck, a Gengar, a Snorlax and a Ditto that get their hands on the rest of the page |
 | 2026-10-10 | [Home](/)                       | A Poké Ball beside the photo, and Caesar's Window on it, now bring out a Pokémon that plays with the photo and evolves while it does |
