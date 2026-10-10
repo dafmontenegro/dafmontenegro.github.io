@@ -49,6 +49,7 @@
   var EVOLVE_AT = 0.995; // share of the page read that counts as reaching the gate
   var REBIRTH_BELOW = 0.9; // after the dragon has gone, scrolling back under this share
   var BIRTH_MS = 650; // the carp coming out and the waterfall pouring
+  var HOLD_DEX_MS = 500; // how long the homepage's ball is held down to open the Pokédex
   var SWIM_MS = 220; // ms after the last scroll the fish stops swimming
   var REST_MS = 1800; // ms after that before the climb hides, on a narrow screen
   var TYPE_MS = 28; // ms per letter in the text box
@@ -269,7 +270,49 @@
       '<circle class="koi-ball-light" cx="16" cy="16" r="1.6" fill="#e2e8f0"/>' +
       "</g></svg>";
     document.body.appendChild(ball);
-    ball.addEventListener("click", release);
+
+    /* A press releases a Pokémon at random. Held down, the ball opens the Pokédex
+       instead, to choose one: nothing on the page says so, it is there to be found. A
+       right click and the up arrow open it too, so a mouse or a keyboard can get there. */
+    var held = false;
+    var holdTimer = 0;
+    function openDex() {
+      held = true;
+      clearTimeout(holdTimer);
+      loadPokemon().then(function () {
+        if (window.KoiPokemon) window.KoiPokemon.dex(ball);
+      });
+    }
+    ball.addEventListener("pointerdown", function () {
+      held = false;
+      holdTimer = setTimeout(openDex, HOLD_DEX_MS);
+      /* Fetched from the first touch, so it is there by the time the hold or the press
+         needs it. */
+      loadPokemon();
+    });
+    ["pointerup", "pointerleave", "pointercancel"].forEach(function (type) {
+      ball.addEventListener(type, function () {
+        clearTimeout(holdTimer);
+      });
+    });
+    ball.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      if (!held) openDex();
+    });
+    ball.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        openDex();
+      }
+    });
+    ball.addEventListener("click", function () {
+      /* The release of a hold that opened the Pokédex is not a press. */
+      if (held) {
+        held = false;
+        return;
+      }
+      release();
+    });
     /* Caesar's Window, on the photo, is a second way to press the ball; it spins on its
        centre as it does. */
     document.querySelectorAll("[data-koi-release]").forEach(function (element) {
@@ -302,8 +345,8 @@
     });
   }
 
-  /* Fetches assets/js/pokemon.js the first time, and hands it the press. */
-  function release(name) {
+  /* Fetches assets/js/pokemon.js, once. */
+  function loadPokemon() {
     if (!loading) {
       loading = new Promise(function (resolve, reject) {
         var script = document.createElement("script");
@@ -313,7 +356,12 @@
         document.head.appendChild(script);
       });
     }
-    loading.then(function () {
+    return loading;
+  }
+
+  /* Hands a press to assets/js/pokemon.js. */
+  function release(name) {
+    loadPokemon().then(function () {
       if (window.KoiPokemon) window.KoiPokemon.release(typeof name === "string" ? name : undefined);
     });
   }

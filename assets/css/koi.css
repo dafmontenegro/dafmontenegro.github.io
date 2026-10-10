@@ -47,6 +47,10 @@
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   cursor: pointer;
+  /* Held down, it opens the Pokédex: no text selection or system menu in the way. */
+  -webkit-touch-callout: none;
+  user-select: none;
+  touch-action: manipulation;
 }
 
 .dark .koi-ball {
@@ -805,6 +809,141 @@
   contain: strict;
 }
 
+/* The Pokédex: the homepage ball's hidden menu, drawn like the text box. */
+.pkmn-dex {
+  position: fixed;
+  z-index: 46;
+  box-sizing: border-box;
+  width: 15.5rem;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  margin: 0;
+  padding: 10px 8px 8px;
+  border: 3px solid #334155;
+  border-radius: 6px;
+  background: #f8fafc;
+  box-shadow:
+    inset 0 0 0 3px #f8fafc,
+    inset 0 0 0 5px #94a3b8,
+    0 8px 24px rgba(0, 0, 0, 0.3);
+  color: #1e293b;
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  font-size: 9px;
+  line-height: 1.6;
+  animation: pkmn-dex-in 0.18s ease-out;
+}
+
+@keyframes pkmn-dex-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+}
+
+.pkmn-dex-title {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 6px 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px dashed #cbd5e1;
+}
+
+.pkmn-dex ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pkmn-dex li {
+  margin: 0;
+  padding: 0;
+}
+
+.pkmn-dex-entry {
+  display: grid;
+  grid-template-columns: 2.6em 40px 1fr;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 2px 6px;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* The games' cursor: a pointing triangle on the entry that is chosen. */
+.pkmn-dex-entry:hover,
+.pkmn-dex-entry:focus-visible {
+  outline: none;
+  background: #e2e8f0;
+}
+
+.pkmn-dex-entry:hover .pkmn-dex-no::before,
+.pkmn-dex-entry:focus-visible .pkmn-dex-no::before {
+  content: "\25B6";
+  margin-right: 2px;
+  font-size: 7px;
+}
+
+.pkmn-dex-entry img {
+  justify-self: center;
+  width: auto;
+  max-width: 40px;
+  height: auto;
+  max-height: 36px;
+  margin: 0;
+  image-rendering: pixelated;
+}
+
+/* Not met yet: a silhouette, as the games show a Pokémon only seen from afar. */
+.pkmn-dex-entry.is-unseen img {
+  filter: brightness(0);
+  opacity: 0.55;
+}
+
+.pkmn-dex-entry.is-unseen .pkmn-dex-name {
+  color: #64748b;
+}
+
+/* The 404 page tearing as MissingNo. arrives: horizontal bands slipping sideways. */
+.pkmn-tear {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(124, 58, 237, 0.18) 0 6px,
+    transparent 6px 22px,
+    rgba(244, 114, 182, 0.14) 22px 26px,
+    transparent 26px 48px
+  );
+  animation: pkmn-tear 0.45s steps(5) forwards;
+}
+
+@keyframes pkmn-tear {
+  0% {
+    transform: translateX(-12px);
+  }
+  50% {
+    transform: translateX(14px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+}
+
+/* Caesar's Window, where MissingNo. lands next to it: split into colours and skewed for a
+   moment. */
+.cw-404-window.is-glitched img {
+  filter: drop-shadow(3px 0 0 #f0f) drop-shadow(-3px 0 0 #0ff);
+  transform: translateX(3px) skewX(-8deg);
+}
+
 /* MissingNo.: a block of garbage that will not hold still. */
 .pkmn-glitch {
   animation: pkmn-glitch 0.32s steps(1) infinite;
@@ -854,6 +993,8 @@
   .koi.is-evolved .koi-dragon,
   .koi-box::after,
   .pkmn-glitch,
+  .pkmn-dex,
+  .pkmn-tear,
   .cw-avatar.is-zapped > :first-child,
   .cw-avatar.is-playing > :first-child,
   .cw-avatar.is-shivering > :first-child,

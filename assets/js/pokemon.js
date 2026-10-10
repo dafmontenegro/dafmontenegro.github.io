@@ -11,6 +11,9 @@
    scripts/pokemon/build.py; their sizes and fingerprinted addresses arrive in one JSON
    file. Only the sprites of the act about to play are downloaded.
 
+   Holding the ball down opens a Pokédex instead (koi.js decides which), to choose the
+   act: every one is listed, the ones not yet met as a silhouette and "???".
+
    Everything moves with the Web Animations API, on `transform` and `opacity`, which the
    browser composites without repainting the page; nothing runs between acts. */
 
@@ -461,61 +464,163 @@
     mon.remove();
   }
 
-  /* The 404 page's visitor: MissingNo., the glitch that turns up where something is
-     missing. It is not a sprite: its block of garbage is drawn anew a few times a second,
-     in the shape of the original, a reversed L of scrambled tiles, beside Caesar's Window. */
+  /* The 404 page's visitor: MissingNo., the glitch the first games turned up where
+     something was missing. It is not a sprite: its block of garbage is drawn anew a few
+     times a second, in the shape of the original, a reversed L of scrambled tiles.
+
+     It is a scene of its own, and never on screen without the text box saying what it
+     is: the page tears, MissingNo. pieces itself together beside Caesar's Window and
+     scrambles the 404, jumps round the window glitching it at every landing, and comes
+     apart again as it flees. */
+  var TILE = 4; // pixels per tile
+  var COLS = 6;
+  var ROWS = 8;
+  var SCALE = 3; // CSS px per pixel
+  var GLITCH = ["#1f2937", "#6b7280", "#d1d5db", "#ffffff", "#7c3aed", "#f472b6"];
+  var SCRAMBLE = "4044?#%&@$0Ø▓░▒";
+
   async function missingno() {
     var stage = document.createElement("div");
     stage.className = "pkmn";
     stage.setAttribute("aria-hidden", "true");
     document.body.appendChild(stage);
+
     var canvas = document.createElement("canvas");
-    var TILE = 4;
-    var COLS = 6;
-    var ROWS = 8;
     canvas.width = TILE * COLS;
     canvas.height = TILE * ROWS;
     canvas.className = "pkmn-prop pkmn-glitch";
-    canvas.style.width = canvas.width * 3 + "px";
-    canvas.style.height = canvas.height * 3 + "px";
+    var width = canvas.width * SCALE;
+    var height = canvas.height * SCALE;
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
     var ctx = canvas.getContext("2d");
-    var colours = ["#1f2937", "#6b7280", "#d1d5db", "#ffffff", "#7c3aed", "#f472b6"];
+
+    /* The tiles of the L, in a shuffled order: it appears and disappears a tile at a time. */
+    var tiles = [];
+    for (var ty = 0; ty < ROWS; ty++) {
+      for (var tx = 0; tx < COLS; tx++) {
+        if (!(ty < 4 && tx < 3)) tiles.push([tx, ty]);
+      }
+    }
+    tiles.sort(function () {
+      return Math.random() - 0.5;
+    });
+    var shown = 0;
     function scramble() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (var ty = 0; ty < ROWS; ty++) {
-        for (var tx = 0; tx < COLS; tx++) {
-          if (ty < 4 && tx < 3) continue; // the empty corner of the L
-          for (var p = 0; p < TILE * TILE; p++) {
-            ctx.fillStyle = colours[(Math.random() * colours.length) | 0];
-            ctx.fillRect(tx * TILE + (p % TILE), ty * TILE + ((p / TILE) | 0), 1, 1);
-          }
+      for (var t = 0; t < shown; t++) {
+        for (var p = 0; p < TILE * TILE; p++) {
+          ctx.fillStyle = GLITCH[(Math.random() * GLITCH.length) | 0];
+          ctx.fillRect(tiles[t][0] * TILE + (p % TILE), tiles[t][1] * TILE + ((p / TILE) | 0), 1, 1);
         }
       }
     }
-    scramble();
-    var width = canvas.width * 3;
-    var height = canvas.height * 3;
-    var window404 = document.querySelector(".cw-404-window");
-    var r = window404 ? window404.getBoundingClientRect() : { right: window.innerWidth / 2, top: 120, height: 0 };
-    var x = Math.min(r.right + 32, window.innerWidth - width - 12);
-    var y = r.top + r.height / 2 - height / 2;
-    canvas.style.transform = "translate(" + x + "px," + y + "px)";
+
+    var win = document.querySelector(".cw-404-window");
+    var heading = document.querySelector(".cw-404 h1");
+    var r = win ? win.getBoundingClientRect() : { left: window.innerWidth / 2 - 80, right: window.innerWidth / 2 + 80, top: 120, bottom: 280, height: 160 };
+    var mid = r.top + r.height / 2 - height / 2;
+    /* Where it lands, round the window: right, above left, left, below right, and right
+       again, kept inside the screen. */
+    var spots = [
+      [r.right + 28, mid],
+      [r.left - width - 28, r.top - 20],
+      [r.left - width - 36, mid + 30],
+      [r.right + 12, r.bottom - height + 30],
+      [r.right + 28, mid]
+    ].map(function (spot) {
+      return [
+        Math.max(12, Math.min(spot[0], window.innerWidth - width - 12)),
+        Math.max(12, Math.min(spot[1], window.innerHeight - height - 110))
+      ];
+    });
+    function land(spot) {
+      canvas.style.transform = "translate(" + spot[0] + "px," + spot[1] + "px)";
+    }
+
+    var noise = still() ? 0 : setInterval(scramble, 120);
+
+    /* The page tears. */
+    if (!still()) {
+      var tear = document.createElement("div");
+      tear.className = "pkmn-tear";
+      stage.appendChild(tear);
+      setTimeout(function () {
+        tear.remove();
+      }, 500);
+      await wait(350);
+    }
+
+    /* It pieces itself together, a tile at a time. */
+    land(spots[0]);
     stage.appendChild(canvas);
-    var noise = still() ? 0 : setInterval(scramble, 140);
-    await Koi.say(["A wild MISSINGNO. appeared!", "It came looking for this page too."]);
-    await wait(2500);
+    /* Each line is queued before the one before it ends, so the box never closes while
+       MissingNo. is on screen. */
+    var told = Koi.say(["A wild MISSINGNO. appeared!"]);
+    var next = Koi.say(["It came looking for this page too."]);
+    for (shown = 0; shown < tiles.length; shown += 3) {
+      scramble();
+      await wait(ms(40));
+    }
+    shown = tiles.length;
+    scramble();
+
+    /* The 404 does not survive it. */
+    if (heading && !still()) {
+      var original = heading.textContent;
+      heading.setAttribute("aria-label", original.trim());
+      for (var k = 0; k < 14; k++) {
+        heading.textContent = original.trim().replace(/./g, function () {
+          return SCRAMBLE[(Math.random() * SCRAMBLE.length) | 0];
+        });
+        await wait(80);
+      }
+      heading.textContent = original;
+      heading.removeAttribute("aria-label");
+    }
+    await told;
+
+    /* It jumps round the window, which glitches every time it lands. */
+    var fled = null;
+    if (!still()) {
+      for (var j = 1; j < spots.length; j++) {
+        if (j === spots.length - 1) fled = Koi.say(["The wild MISSINGNO. fled!"]);
+        canvas.style.visibility = "hidden";
+        await wait(100);
+        land(spots[j]);
+        canvas.style.visibility = "";
+        if (win) {
+          win.classList.add("is-glitched");
+          setTimeout(win.classList.remove.bind(win.classList, "is-glitched"), 160);
+        }
+        await wait(400);
+      }
+    }
+    if (!fled) fled = Koi.say(["The wild MISSINGNO. fled!"]);
+    await next;
+
+    /* And it flees, coming apart as it goes. */
+    told = fled;
+    while (shown > 0) {
+      shown -= 3;
+      scramble();
+      await wait(ms(40));
+    }
     clearInterval(noise);
     stage.remove();
+    await told;
   }
 
+  /* Every act, with the National Dex number and the form it is listed under in the
+     Pokédex. */
   var ACTS = {
-    pichu: { keys: ["pichu", "pikachu"], play: pichu, weight: 3 },
-    charmander: { keys: ["charmander", "charmeleon", "charizard"], play: charmander, weight: 3 },
-    munchlax: { keys: ["munchlax", "snorlax"], play: munchlax, weight: 3 },
-    gastly: { keys: ["gastly", "haunter", "gengar"], play: gastly, weight: 3 },
-    ditto: { keys: ["ditto"], play: ditto, weight: 3 },
-    psyduck: { keys: ["psyduck", "golduck"], play: psyduck, weight: 3 },
-    mew: { keys: ["mew"], play: mew, weight: 1 } // the rare one: about one press in 17
+    charmander: { dex: 4, keys: ["charmander", "charmeleon", "charizard"], play: charmander, weight: 3 },
+    psyduck: { dex: 54, keys: ["psyduck", "golduck"], play: psyduck, weight: 3 },
+    gastly: { dex: 92, keys: ["gastly", "haunter", "gengar"], play: gastly, weight: 3 },
+    ditto: { dex: 132, keys: ["ditto"], play: ditto, weight: 3 },
+    mew: { dex: 151, keys: ["mew"], play: mew, weight: 1 }, // the rare one: about one press in 17
+    pichu: { dex: 172, keys: ["pichu", "pikachu"], play: pichu, weight: 3 },
+    munchlax: { dex: 446, keys: ["munchlax", "snorlax"], play: munchlax, weight: 3 }
   };
 
   /* A weighted draw, never the same act twice in a row. */
@@ -532,6 +637,121 @@
       if (roll < 0) return pool[i];
     }
     return pool[0];
+  }
+
+  /* ---------------------------------------------------------------------------------
+     The Pokédex: what holding the ball down opens. It lists every act, and any of them
+     can be chosen. The ones this visitor has already met show their name and sprite; the
+     others are a silhouette and "???", and choosing one is how it is met. What has been
+     met is remembered in this browser only, and nothing breaks where it cannot be. */
+
+  var SEEN = "koi-pokedex";
+  var dexMenu = null;
+
+  function seen() {
+    try {
+      return JSON.parse(localStorage.getItem(SEEN)) || [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function see(act) {
+    try {
+      var list = seen();
+      if (list.indexOf(act) < 0) {
+        list.push(act);
+        localStorage.setItem(SEEN, JSON.stringify(list));
+      }
+    } catch (e) {}
+  }
+
+  function pad(n) {
+    return ("00" + n).slice(-3);
+  }
+
+  function dex(ball) {
+    if (dexMenu) {
+      closeDex();
+      return;
+    }
+    load().then(function () {
+      var met = seen();
+      var keys = Object.keys(ACTS).sort(function (a, b) {
+        return ACTS[a].dex - ACTS[b].dex;
+      });
+
+      dexMenu = document.createElement("div");
+      dexMenu.className = "pkmn-dex";
+      dexMenu.setAttribute("role", "dialog");
+      dexMenu.setAttribute("aria-label", "Pokédex");
+      var title = document.createElement("p");
+      title.className = "pkmn-dex-title";
+      title.innerHTML = "<span>POKéDEX</span><span>SEEN " + met.length + "/" + keys.length + "</span>";
+      dexMenu.appendChild(title);
+
+      var list = document.createElement("ul");
+      keys.forEach(function (act) {
+        var known = met.indexOf(act) >= 0;
+        var first = data[ACTS[act].keys[0]];
+        var item = document.createElement("li");
+        var button = document.createElement("button");
+        button.type = "button";
+        button.className = "pkmn-dex-entry" + (known ? "" : " is-unseen");
+        button.setAttribute("aria-label", known ? first.name : "Unknown Pokémon, number " + ACTS[act].dex);
+        button.innerHTML =
+          '<span class="pkmn-dex-no">' + pad(ACTS[act].dex) + "</span>" +
+          '<img src="' + first.url + '" alt="" width="' + first.width + '" height="' + first.height + '">' +
+          '<span class="pkmn-dex-name">' + (known ? first.name.toUpperCase() : "???") + "</span>";
+        button.addEventListener("click", function () {
+          closeDex();
+          release(act);
+        });
+        item.appendChild(button);
+        list.appendChild(item);
+      });
+      dexMenu.appendChild(list);
+
+      /* Above the ball, its right edge on the ball's. */
+      var r = ball.getBoundingClientRect();
+      dexMenu.style.right = window.innerWidth - r.right + "px";
+      dexMenu.style.bottom = window.innerHeight - r.top + 10 + "px";
+      document.body.appendChild(dexMenu);
+
+      dexMenu.addEventListener("keydown", onDexKey);
+      setTimeout(function () {
+        document.addEventListener("pointerdown", onOutside);
+      });
+      dexMenu.dexBall = ball;
+      dexMenu.querySelector("button").focus();
+    });
+  }
+
+  function closeDex() {
+    if (!dexMenu) return;
+    var ball = dexMenu.dexBall;
+    document.removeEventListener("pointerdown", onOutside);
+    dexMenu.remove();
+    dexMenu = null;
+    if (ball) ball.focus({ preventScroll: true });
+  }
+
+  function onOutside(e) {
+    if (dexMenu && !dexMenu.contains(e.target) && e.target !== dexMenu.dexBall) closeDex();
+  }
+
+  /* Up and down move through the list, as in the games; Escape closes it. */
+  function onDexKey(e) {
+    var buttons = Array.prototype.slice.call(dexMenu.querySelectorAll("button"));
+    var at = buttons.indexOf(document.activeElement);
+    if (e.key === "Escape") {
+      e.preventDefault();
+      closeDex();
+    } else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      var next = (at + (e.key === "ArrowDown" ? 1 : -1) + buttons.length) % buttons.length;
+      buttons[next].focus();
+    }
   }
 
   function release(act) {
@@ -558,6 +778,7 @@
     busy = true;
     act = act || draw();
     previous = act;
+    see(act);
     load()
       .then(function () {
         return preload(ACTS[act].keys);
@@ -579,5 +800,5 @@
       });
   }
 
-  window.KoiPokemon = { release: release };
+  window.KoiPokemon = { release: release, dex: dex };
 })();
