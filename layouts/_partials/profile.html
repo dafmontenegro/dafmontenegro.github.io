@@ -1,7 +1,8 @@
 {{/* Copy of Congo 2.14's _partials/profile.html. Changes: the author photo is the first thing visitors
      see on the homepage, so it loads eagerly instead of lazily (faster Largest Contentful Paint); the
      WebP setting is read from site.Params because home/profile.html calls this partial without a
-     context; and the photo carries a Caesar's Window badge (styles in assets/css/custom.css). */}}
+     context; and the photo carries a Caesar's Window badge (styles in assets/css/custom.css), which is a
+     button that opens the Poké Ball. */}}
 {{ $align := .align | default "center" }}
 <section
   class="not-prose {{ if eq $align "start" }}
@@ -21,14 +22,16 @@
       {{ $webp := site.Params.enableImageWebp | default true }}
       <div class="cw-avatar">
         {{ partial "picture.html" (dict "img" $authorImage "alt" $altText "class" $imgClass "lazy" $lazy "webp" $webp) }}
-        <span class="cw-badge" aria-hidden="true">
+        {{/* Visitors took the badge for a button, so it is one: it opens the Poké Ball
+             (assets/js/koi.js), which listens for `data-koi-release`. */}}
+        <button type="button" class="cw-badge" data-koi-release aria-label="Open the Poké Ball" title="Open the Poké Ball">
           {{ with resources.Get "svg/black-caesars-window.svg" }}
             <img class="cw-light" src="{{ .RelPermalink }}" alt="" width="40" height="40" />
           {{ end }}
           {{ with resources.Get "svg/white-caesars-window.svg" }}
             <img class="cw-dark" src="{{ .RelPermalink }}" alt="" width="40" height="40" />
           {{ end }}
-        </span>
+        </button>
       </div>
     {{ end }}
   {{ end }}
