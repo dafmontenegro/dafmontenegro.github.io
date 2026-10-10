@@ -78,7 +78,7 @@ If you have read a page of this site to the end, a golden carp has been climbing
 
 An old story tells of carp swimming up a river, against the current, until they reach a waterfall called the [Dragon Gate](https://en.wikipedia.org/wiki/Longmen_(mythology)). Most of them fall back. The few that leap it **become dragons**.
 
-I have always loved [koi](https://en.wikipedia.org/wiki/Koi), and this one is made of gold. **Every day I swim at that waterfall**: against the current, a little higher each time, with the gate in sight.
+I have always loved [koi](https://en.wikipedia.org/wiki/Koi). The one on this site is golden, and it is **still climbing**.
 
 At the top stands a [torii](https://en.wikipedia.org/wiki/Torii), my own addition to the story. It marks **the line between the ordinary and the sacred**, and that is exactly what the waterfall is.
 
