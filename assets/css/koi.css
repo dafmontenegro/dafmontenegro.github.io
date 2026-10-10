@@ -842,29 +842,63 @@
   }
 }
 
-/* The rings of Charizard's roar. */
-.pkmn-roar {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  margin: -20px 0 0 -20px;
-  border: 3px solid rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  opacity: 0;
+/* Charizard's roar: a wave of heat over the page, strongest round the photo. */
+.pkmn-heat {
+  position: fixed;
+  inset: 0;
+  z-index: 34;
   pointer-events: none;
-  animation: pkmn-roar 0.9s ease-out both;
+  background: radial-gradient(circle at var(--x) var(--y), rgba(253, 186, 116, 0.55), rgba(234, 88, 12, 0.25) 45%, transparent 75%);
+  animation: pkmn-heat 1.1s ease-out forwards;
 }
 
-@keyframes pkmn-roar {
+@keyframes pkmn-heat {
   from {
-    opacity: 0.9;
-    scale: 0.3;
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
   }
   to {
     opacity: 0;
-    scale: 3.4;
   }
 }
+
+/* The shadow under a Pokémon about to take off. */
+.pkmn-ground {
+  position: absolute;
+  width: 70px;
+  height: 14px;
+  margin: -7px 0 0 -35px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+/* Charizard's shadow flying over the page. */
+.pkmn-sky-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  margin: 0;
+  filter: brightness(0) blur(2px);
+  opacity: 0.22;
+  image-rendering: pixelated;
+}
+
+/* The flames of Fire Blast burst into being. */
+.pkmn-blast {
+  animation: pkmn-blast 0.35s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+
+@keyframes pkmn-blast {
+  from {
+    opacity: 0;
+    scale: 0.2;
+  }
+}
+
 
 /* The Poké Flute, held at the photo's right rim while it plays, its bell turned out and
    up, swaying with the tune. It turns on its mouthpiece, the end against the photo. */
@@ -971,12 +1005,12 @@
 }
 
 /* Phantom Force: Gengar's portrait in the photo's circle, over the photo, under the
-   badge. Its sprite fills the frame from the bottom, as a head-and-shoulders photo does. */
+   badge. Its sprite sits a little above the middle, where a face sits in a portrait. */
 .pkmn-portrait {
   position: absolute;
   z-index: 1;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
   border-radius: 50%;
@@ -986,7 +1020,7 @@
 
 .pkmn-portrait img {
   max-width: none;
-  margin: 0 0 -8% 0;
+  margin: -10% 0 0 0;
   image-rendering: pixelated;
 }
 
@@ -995,6 +1029,12 @@
 .pkmn-dittoed {
   display: inline-block;
   color: #a78bfa !important;
+  animation: pkmn-jelly 0.9s ease-in-out infinite;
+}
+
+/* Ditto in another Pokémon's shape: the colour it never gets right, and the wobble. */
+.pkmn-sprite.is-ditto-form {
+  filter: brightness(0.8) sepia(1) hue-rotate(225deg) saturate(2.6);
   animation: pkmn-jelly 0.9s ease-in-out infinite;
 }
 
@@ -1275,7 +1315,8 @@
   .cw-avatar.is-zapped > :first-child img,
   .cw-avatar.is-zapped > img:first-child,
   .pkmn-fire .px-frame,
-  .pkmn-roar,
+  .pkmn-heat,
+  .pkmn-blast,
   .cw-avatar.is-playing > :first-child,
   .cw-avatar.is-shivering > :first-child,
   .cw-avatar.is-confused > :first-child,
@@ -1285,7 +1326,8 @@
   .pkmn-tremor-2,
   .pkmn-tremor-3,
   .pkmn-flash,
-  .pkmn-dittoed {
+  .pkmn-dittoed,
+  .pkmn-sprite.is-ditto-form {
     animation: none;
   }
 
