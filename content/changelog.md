@@ -13,7 +13,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
 | 2026-10-10 | [About](/about/#the-carp-and-the-dragon) | On phones the carp no longer climbs over the text: it leaps up and becomes a dragon only when you reach the end of a page |
-| 2026-10-10 | [Home](/)                       | New Pokémon for the Poké Ball: the three Kanto starters, a Charmander that sets the photo alight, and a Psyduck, a Gengar, a Snorlax and a Ditto that get their hands on the rest of the page |
+| 2026-10-10 | [Home](/)                       | New Pokémon for the Poké Ball: a Charmander that grows into a roaring, fire-breathing Charizard, and a Psyduck, a Gengar, a Snorlax and a Ditto that get their hands on the rest of the page |
 | 2026-10-10 | [Home](/)                       | A Poké Ball beside the photo, and Caesar's Window on it, now bring out a Pokémon that plays with the photo and evolves while it does |
 | 2026-10-10 | [About](/about/#the-carp-and-the-dragon) | A shiny Magikarp now climbs a waterfall up the edge of every long page as you read, and becomes a red Gyarados at the torii when you reach the end. New section: "The Carp and the Dragon" |
 | 2026-10-10 | [404](/404.html)                | A wild MissingNo. appeared |
