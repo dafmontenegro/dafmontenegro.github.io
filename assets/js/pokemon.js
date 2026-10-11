@@ -586,6 +586,8 @@
   var SNOW = [".w.w.", "..w..", "wwwww", "..w..", ".w.w."];
   var PINK = ["..p..", "..p..", "ppwpp", "..p..", "..p.."];
   var RING = [".yyy.", "y...y", "y...y", "y...y", ".yyy."];
+  var BUBBLE = [".bb.", "b..b", "b..b", ".bb."];
+  var MOON = ["..yyy..", ".yyyy..", "yyyy...", "yyyy...", "yyyy...", ".yyyyd.", "..yyy.."];
   var EEVEE_ART = {
     drop: [DROP, { b: "#38bdf8", w: "#e0f2fe" }],
     bolt: [["...yy.", "..yy..", ".yy...", "yyyyy.", "...yy.", "..yy..", ".yy...", "yy....", "y....."], { y: "#facc15" }],
@@ -973,8 +975,8 @@
     mon.remove();
   }
 
-  /* Ditto lands on the photo and transforms into the other Pokémon of this ball, Pikachu,
-     Gengar and Charizard, each in Ditto's own purple. Then it tries the author: it hops
+  /* Ditto lands on the photo and transforms into four of the other Pokémon of this ball,
+     drawn at random each time from every sprite the site has, each in Ditto's own purple. Then it tries the author: it hops
      onto the name under the photo and uses Transform, not on itself but on the page: letter by letter the name, the headline and the line in the
      red box turn into Ditto, in Ditto's purple, wobbling like the jelly it is, until it
      cannot keep it up and every word goes back to what it was.
@@ -983,7 +985,25 @@
      the act survives any change to the homepage's text: every word of the name becomes
      "Ditto", and in the headline and the red box the last word of every clause does. */
   var DITTO_LETTERS = "DITO?";
-  var DITTO_FORMS = ["pikachu", "gengar", "charizard"];
+  var DITTO_COPIES = 4; // how many Pokémon Ditto copies before it tries the author
+  /* Sprites that are poses or forms of a Pokémon already listed, not Pokémon of their own:
+     Ditto does not copy someone lying asleep. */
+  var DITTO_SKIPS = ["ditto", "snorlax-asleep"];
+
+  /* Whom Ditto copies this time: any of the Pokémon the site has sprites for, drawn afresh
+     on every press, so it grows with the roster without being told. */
+  function dittoForms() {
+    var pool = Object.keys(data).filter(function (key) {
+      return DITTO_SKIPS.indexOf(key) < 0;
+    });
+    for (var i = pool.length - 1; i > 0; i--) {
+      var j = (Math.random() * (i + 1)) | 0;
+      var swap = pool[i];
+      pool[i] = pool[j];
+      pool[j] = swap;
+    }
+    return pool.slice(0, DITTO_COPIES);
+  }
   var transformed = [];
 
   async function ditto() {
@@ -1004,22 +1024,25 @@
         return [target[0], dittoify(target[0].textContent.trim(), target[1])];
       });
 
+    /* Only the sprites of this time's copies are fetched, while Ditto drops in. */
+    var forms = dittoForms();
+    var ready = preload(forms);
     var mon = new Mon("ditto", R * 0.1, -R - 150);
     mon.el.style.opacity = 0;
     mon.el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: ms(200), fill: "forwards" });
     Koi.say(["Go! DITTO!"]);
     await mon.go(R * 0.1, -R + 6, 700, "cubic-bezier(0.3, 1.5, 0.6, 1)");
 
-    /* On top of the photo it copies the Pokémon that came out of this ball before it,
-       one after another, in its own purple and wobbling: it never quite gets the colour. */
+    /* On top of the photo it copies four of the ball's Pokémon, one after another, in its
+       own purple and wobbling: it never quite gets the colour. */
     var told = Koi.say(["DITTO used TRANSFORM!"]);
-    await told;
+    await Promise.all([told, ready]);
     mon.el.classList.add("is-ditto-form");
-    for (var f = 0; f < DITTO_FORMS.length; f++) {
+    for (var f = 0; f < forms.length; f++) {
       burst(mon.x, mon.y - mon.h / 2);
-      mon.show(DITTO_FORMS[f]);
+      mon.show(forms[f]);
       await mon.hop(mon.x, mon.y, 14, 320);
-      await Koi.say(["DITTO transformed into " + name(DITTO_FORMS[f]) + "!"]);
+      await Koi.say(["DITTO transformed into " + name(forms[f]) + "!"]);
     }
     burst(mon.x, mon.y - mon.h / 2);
     mon.show("ditto");
@@ -1048,13 +1071,32 @@
     );
     await told;
     await Koi.say(["DITTO transformed into... DITTO?"]);
-    await Koi.say(["It couldn't keep it up!"]);
+    /* It loses its grip on every shape at once: it flickers through all four copies,
+       faster and faster, while the page's words come back, and collapses into a puddle of
+       itself. */
+    var losing = Koi.say(["It couldn't keep it up!"]);
     burst(mon.x, mon.y - 16);
-    await Promise.all(
+    var restoring = Promise.all(
       transformed.map(function (saved) {
         return morph(saved.el, saved.text.trim());
       })
     );
+    if (!still()) {
+      mon.el.classList.add("is-ditto-form");
+      var beat = 220;
+      for (var k = 0; k < forms.length * 3; k++) {
+        mon.show(forms[k % forms.length]);
+        await wait(beat);
+        beat = Math.max(50, beat * 0.82);
+      }
+      mon.show("ditto");
+      mon.el.classList.remove("is-ditto-form");
+      burst(mon.x, mon.y - 16);
+      mon.el.style.transformOrigin = "50% 100%";
+      await mon.el.animate([{ scale: "1 1" }, { scale: "1.6 0.4" }, { scale: "0.9 1.15" }, { scale: "1 1" }], { duration: ms(700), easing: "ease-out" }).finished;
+    }
+    await restoring;
+    await losing;
     undoDitto();
     await mon.hop(R + 30, R + 4, 40, 650);
     await mon.hop(R + 60, R + 4, 18, 350);
@@ -1192,30 +1234,99 @@
 
   /* ---------------------------------------------------------------------------------
      Eevee. Eevee evolves by a stone, or by friendship by day or by night, and here the
-     photo provides the means: Caesar's Window, the badge on the photo, becomes the stone,
-     or the photo shines like the sun or the moon, according to the site's theme, light
-     for day and dark for night, as Espeon and Umbreon need. Which one is drawn at random. */
+     photo provides the means: a stone appears on Caesar's Window, the badge on the photo,
+     or the photo shines like the sun or the moon. Pressed at random, the evolution is drawn
+     at random, friendship following the site's theme (light for Espeon's day, dark for
+     Umbreon's night); from the Pokédex any one of them can be chosen. Each evolution then
+     shows the page what it can do, in a weather of its own. */
 
-  var EEVEE_PATHS = [
-    { form: "vaporeon", stone: "water", stoneName: "WATER STONE", move: "VAPOREON used WATER GUN!", art: "drop" },
-    { form: "jolteon", stone: "thunder", stoneName: "THUNDER STONE", move: "JOLTEON used THUNDER SHOCK!", art: "bolt" },
-    { form: "flareon", stone: "fire", stoneName: "FIRE STONE", move: "FLAREON used EMBER!", art: "spark" },
-    { form: "leafeon", stone: "leaf", stoneName: "LEAF STONE", move: "LEAFEON used RAZOR LEAF!", art: "leaf" },
-    { form: "glaceon", stone: "ice", stoneName: "ICE STONE", move: "GLACEON used ICY WIND!", art: "snow" },
-    { form: "friendship" }
+  var EEVEE_PATHS = {
+    vaporeon: { dex: 134, stone: "water", stoneName: "WATER STONE", move: "VAPOREON used WATER GUN!", after: "The page is flooding!", show: flood },
+    jolteon: { dex: 135, stone: "thunder", stoneName: "THUNDER STONE", move: "JOLTEON used THUNDER!", after: "Lightning struck the photo!", show: thunder },
+    flareon: { dex: 136, stone: "fire", stoneName: "FIRE STONE", move: "FLAREON used FIRE SPIN!", after: "The photo is trapped in a ring of fire!", show: fireSpin },
+    espeon: { dex: 196, glow: "sun", line: "The photo is shining like the sun...", move: "ESPEON used PSYCHIC!", after: "The whole page is floating!", show: psychic },
+    umbreon: { dex: 197, glow: "moon", line: "The photo is shining like the moon...", move: "UMBREON used MOONLIGHT!", after: "Night fell over the page.", show: moonlight },
+    leafeon: { dex: 470, stone: "leaf", stoneName: "LEAF STONE", move: "LEAFEON used LEAF STORM!", after: "A gust of leaves swept the page!", show: leafStorm },
+    glaceon: { dex: 471, stone: "ice", stoneName: "ICE STONE", move: "GLACEON used BLIZZARD!", after: "The photo froze solid!", show: blizzard }
+  };
+  var EEVEE_FORMS = Object.keys(EEVEE_PATHS);
+
+  /* The evolution stones, drawn: a gem of the element's colour with its symbol inside.
+     The ice stone is a cut crystal, so it never reads as the water stone. */
+  var ROUND = [
+    "....bbbb....",
+    "..bbbbbbbb..",
+    ".bbbbbbbbbb.",
+    ".bbbbbbbbbb.",
+    "bbbbbbbbbbbb",
+    "bbbbbbbbbbbb",
+    "bbbbbbbbbbbb",
+    "bbbbbbbbbbbd",
+    ".bbbbbbbbbd.",
+    ".bbbbbbbbdd.",
+    "..bbbbbbdd..",
+    "....dddd...."
   ];
+  var CRYSTAL = [
+    ".....bb.....",
+    "....bbbb....",
+    "...bbbbbb...",
+    "..bbbbbbbb..",
+    ".bbbbbbbbbb.",
+    "bbbbbbbbbbbb",
+    "bbbbbbbbbbbd",
+    ".bbbbbbbbbd.",
+    "..bbbbbbbd..",
+    "...bbbbbd...",
+    "....bbdd....",
+    ".....dd....."
+  ];
+  var SYMBOLS = {
+    water: ["..s...", ".sss..", "sssss.", "sssss.", ".sss..", "......"],
+    thunder: ["...ss.", "..ss..", ".ssss.", "...ss.", "..ss..", ".s...."],
+    fire: ["..s...", ".ss.s.", ".ssss.", "ssssss", "ssssss", ".ssss."],
+    leaf: ["....ss", "..sss.", ".ssss.", "ssss..", "s.s...", "s....."],
+    ice: [".s.s..", "..s...", "sssss.", "..s...", ".s.s..", "......"]
+  };
+  var STONE_COLOURS = {
+    water: { b: "#3b82f6", d: "#1e3a8a", s: "#e0f2fe" },
+    thunder: { b: "#facc15", d: "#a16207", s: "#7c2d12" },
+    fire: { b: "#f97316", d: "#9a3412", s: "#fde047" },
+    leaf: { b: "#22c55e", d: "#14532d", s: "#dcfce7" },
+    ice: { b: "#a5f3fc", d: "#0e7490", s: "#ffffff" }
+  };
 
-  async function eevee() {
+  function stoneArt(stone) {
+    var base = stone === "ice" ? CRYSTAL : ROUND;
+    var symbol = SYMBOLS[stone];
+    return base.map(function (row, y) {
+      return row
+        .split("")
+        .map(function (c, x) {
+          var sy = y - 3;
+          var sx = x - 3;
+          if (c !== "." && sy >= 0 && sy < symbol.length && symbol[sy][sx] === "s") return "s";
+          return c;
+        })
+        .join("");
+    });
+  }
+
+  async function eevee(chosen) {
     var R = radius;
     var badge = page(".cw-avatar .cw-badge");
-    var path = EEVEE_PATHS[(Math.random() * EEVEE_PATHS.length) | 0];
-    if (path.form === "friendship") {
-      var dark = document.documentElement.classList.contains("dark");
-      path = dark
-        ? { form: "umbreon", glow: "moon", line: "The photo is shining like the moon...", move: "UMBREON's rings are glowing!", art: "ring" }
-        : { form: "espeon", glow: "sun", line: "The photo is shining like the sun...", move: "ESPEON used PSYCHIC!", art: "pink" };
+    var form = chosen;
+    if (!form) {
+      /* At random: a stone, or friendship, which the theme decides. */
+      var draw = EEVEE_FORMS.filter(function (f) {
+        return f !== "espeon" && f !== "umbreon";
+      }).concat(["friendship"]);
+      form = draw[(Math.random() * draw.length) | 0];
+      if (form === "friendship") form = document.documentElement.classList.contains("dark") ? "umbreon" : "espeon";
     }
-    var loading = preload([path.form]);
+    var path = EEVEE_PATHS[form];
+    see("eevee:" + form);
+    var loading = preload([form]);
 
     var mon = new Mon("eevee", R * 0.3, R + 4, BEHIND);
     Koi.say(["Go! EEVEE!"]);
@@ -1225,17 +1336,28 @@
     await mon.hop(R + 32, R + 4, 16, 380);
     await mon.hop(R + 40, R + 4, 10, 300);
 
+    /* The stone, drawn on the badge, glinting; or the photo's light. */
+    var stone = null;
     var glints = 0;
-    if (path.stone && badge) {
-      badge.classList.add("pkmn-stone", "pkmn-stone-" + path.stone);
-      burst(R * 0.75, R * 0.75);
-      /* The stone glints while Eevee looks at it. */
+    var b = badge ? badge.getBoundingClientRect() : null;
+    var a = avatar.getBoundingClientRect();
+    var bx = b ? b.left + b.width / 2 - (a.left + a.width / 2) : R * 0.75;
+    var by = b ? b.top + b.height / 2 - (a.top + a.height / 2) : R * 0.75;
+    if (path.stone) {
+      stone = Koi.pixels(stoneArt(path.stone), STONE_COLOURS[path.stone], "pkmn-prop pkmn-stone-gem", 3);
+      stone.style.left = bx - 18 + "px";
+      stone.style.top = by - 18 + "px";
+      stone.style.zIndex = IN_FRONT;
+      scene.appendChild(stone);
+      if (badge) badge.classList.add("pkmn-stone", "pkmn-stone-" + path.stone);
+      burst(bx, by);
       glints = still()
         ? 0
         : setInterval(function () {
-            float(PINK, { p: "#fef9c3", w: "#ffffff" }, R * 0.75 + (Math.random() - 0.5) * 50, R * 0.75 + (Math.random() - 0.5) * 50, [0, -14], 700, 0, 2);
+            float(PINK, { p: "#fef9c3", w: "#ffffff" }, bx + (Math.random() - 0.5) * 50, by + (Math.random() - 0.5) * 50, [0, -14], 700, 0, 2);
           }, 180);
-      await Koi.say(["Caesar's Window turned into a " + path.stoneName + "!"]);
+      await Koi.say(["A " + path.stoneName + " appeared on Caesar's Window!"]);
+      await mon.hop(bx + 26, R + 4, 18, 380);
       await Koi.say(["EEVEE touched the " + path.stoneName + "!"]);
     } else {
       photo("is-" + path.glow, true);
@@ -1244,35 +1366,239 @@
     }
     await loading;
     clearInterval(glints);
-    await evolve(mon, path.form);
+    if (stone) {
+      burst(bx, by);
+      stone.remove();
+    }
+    await evolve(mon, form);
     if (badge) badge.classList.remove("pkmn-stone", "pkmn-stone-" + path.stone);
 
-    /* And the new form shows the photo what it can do. */
+    var told = Koi.say([path.move]);
+    await path.show(mon, told, path.after);
+    if (path.glow) photo("is-" + path.glow, false);
+    await mon.hop(mon.x, mon.y, 18, 400);
+    await hide(mon);
+  }
+
+  /* A layer over the whole page for an evolution's weather; gone when the act is. */
+  function weather() {
+    var sky = document.createElement("div");
+    sky.className = "pkmn pkmn-weather";
+    sky.setAttribute("aria-hidden", "true");
+    document.body.appendChild(sky);
+    return sky;
+  }
+
+  /* A pixel drawing travelling across the weather layer, from (x0, y0) to (x1, y1). */
+  function drift(sky, art, colours, size, x0, y0, x1, y1, duration, spin) {
+    var svg = Koi.pixels(art, colours, "pkmn-prop", size);
+    sky.appendChild(svg);
+    svg
+      .animate(
+        [
+          { transform: "translate(" + x0 + "px," + y0 + "px) rotate(0deg)", opacity: 0 },
+          { opacity: 1, offset: 0.1 },
+          { opacity: 1, offset: 0.85 },
+          { transform: "translate(" + x1 + "px," + y1 + "px) rotate(" + (spin || 0) + "deg)", opacity: 0 }
+        ],
+        { duration: duration, easing: "linear" }
+      )
+      .finished.then(function () {
+        svg.remove();
+      });
+  }
+
+  function every(ms_, fn) {
+    if (still()) return function () {};
+    var id = setInterval(fn, ms_);
+    return function () {
+      clearInterval(id);
+    };
+  }
+
+  async function finishWeather(sky, told, after) {
+    await told;
+    await Koi.say([after]);
+    await wait(ms(600));
+  }
+
+  /* Vaporeon: the page floods from the bottom, bubbles rise, and the photo floats on it. */
+  async function flood(mon, told, after) {
+    var sky = weather();
+    var water = document.createElement("div");
+    water.className = "pkmn-flood";
+    sky.appendChild(water);
+    photo("is-floating", true);
+    var bubbles = every(110, function () {
+      var x = Math.random() * window.innerWidth;
+      drift(sky, BUBBLE, { b: "#e0f2fe" }, 2 + ((Math.random() * 2) | 0), x, window.innerHeight, x + (Math.random() - 0.5) * 30, window.innerHeight * 0.55, 1800);
+    });
+    await finishWeather(sky, told, after);
+    await wait(ms(1200));
+    bubbles();
+    water.classList.add("is-draining");
+    photo("is-floating", false);
+    await wait(ms(1300));
+    sky.remove();
+  }
+
+  /* Jolteon: three bolts of lightning from the top of the screen strike the photo, each
+     with a flash of the whole screen. */
+  async function thunder(mon, told, after) {
+    var sky = weather();
+    var a = avatar.getBoundingClientRect();
+    var cx = a.left + a.width / 2;
+    var top = a.top + 8;
+    for (var k = 0; k < 3; k++) {
+      var bolt = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      bolt.setAttribute("class", "pkmn-strike");
+      bolt.setAttribute("width", window.innerWidth);
+      bolt.setAttribute("height", window.innerHeight);
+      var x = cx + (k - 1) * 18;
+      var points = [];
+      var steps = 9;
+      for (var i = 0; i <= steps; i++) {
+        points.push(x + (i === steps ? 0 : (Math.random() - 0.5) * 60) + "," + (top * i) / steps);
+      }
+      bolt.innerHTML =
+        '<polyline points="' + points.join(" ") + '" fill="none" stroke="#fde047" stroke-width="7" stroke-linejoin="bevel"/>' +
+        '<polyline points="' + points.join(" ") + '" fill="none" stroke="#fffbeb" stroke-width="3" stroke-linejoin="bevel"/>';
+      sky.appendChild(bolt);
+      flash();
+      photo("is-zapped", true);
+      tremor(2);
+      await wait(ms(260));
+      bolt.remove();
+      tremor(0);
+      photo("is-zapped", false);
+      await wait(ms(420));
+    }
+    var sparks = every(140, function () {
+      var angle = Math.random() * Math.PI * 2;
+      float(EEVEE_ART.bolt[0], EEVEE_ART.bolt[1], Math.cos(angle) * radius * 1.05, Math.sin(angle) * radius * 1.05, [Math.cos(angle) * 24, Math.sin(angle) * 24], 600, 0, 2);
+    });
+    await finishWeather(sky, told, after);
+    sparks();
+    sky.remove();
+  }
+
+  /* Flareon: a ring of fire spinning round the photo, and a wave of heat. */
+  async function fireSpin(mon, told, after) {
+    var R = radius;
+    var ring = document.createElement("div");
+    ring.className = "pkmn-firespin";
+    ring.style.zIndex = IN_FRONT;
+    scene.appendChild(ring);
+    for (var deg = 0; deg < 360; deg += 36) {
+      var t = (deg * Math.PI) / 180;
+      var f = flame(Math.cos(t) * (R + 16), Math.sin(t) * (R + 16) + 18, 3);
+      ring.appendChild(f);
+    }
+    heat();
+    photo("is-burning", true);
+    var sparks = embers([-R, -R * 0.5, 0, R * 0.5, R], -R);
+    await finishWeather(null, told, after);
+    sparks();
+    await ring.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(700), fill: "forwards" }).finished;
+    ring.remove();
+    photo("is-burning", false);
+  }
+
+  /* Leafeon: a storm of leaves blows across the whole page, which sways in the gust. */
+  async function leafStorm(mon, told, after) {
+    var sky = weather();
+    sway(true);
+    var leaves = every(60, function () {
+      var y = Math.random() * window.innerHeight;
+      drift(sky, LEAF, { g: Math.random() < 0.5 ? "#22c55e" : "#16a34a", l: "#bbf7d0" }, 3, -30, y, window.innerWidth + 30, y + (Math.random() - 0.3) * 160, 1500 + Math.random() * 800, 540);
+    });
+    await finishWeather(sky, told, after);
+    leaves();
+    sway(false);
+    await wait(ms(1600));
+    sky.remove();
+  }
+
+  /* Glaceon: a blizzard over the whole page, frost creeping in from the screen's edges,
+     and the photo frozen. */
+  async function blizzard(mon, told, after) {
+    var sky = weather();
+    var frost = document.createElement("div");
+    frost.className = "pkmn-frost";
+    sky.appendChild(frost);
+    photo("is-frozen", true);
+    var snow = every(50, function () {
+      var x = Math.random() * (window.innerWidth + 200) - 100;
+      drift(sky, SNOW, { w: "#f0f9ff" }, 2 + ((Math.random() * 2) | 0), x, -20, x - 120, window.innerHeight + 20, 2200 + Math.random() * 1200, 180);
+    });
+    await finishWeather(sky, told, after);
+    snow();
+    frost.classList.add("is-melting");
+    photo("is-frozen", false);
+    await wait(ms(1500));
+    sky.remove();
+  }
+
+  /* Espeon: Psychic lifts the photo, turning slowly, and the whole page floats with it,
+     in a pink shimmer. */
+  async function psychic(mon, told, after) {
+    var R = radius;
+    photo("is-levitating", true);
+    floatPage(true);
+    var shimmer = every(120, function () {
+      var angle = Math.random() * Math.PI * 2;
+      float(PINK, { p: "#f9a8d4", w: "#ffffff" }, Math.cos(angle) * (R + 20), Math.sin(angle) * (R + 20), [0, -20], 900, 0, 3);
+    });
+    await finishWeather(null, told, after);
+    shimmer();
+    floatPage(false);
+    photo("is-levitating", false);
+    await wait(ms(900));
+  }
+
+  /* Umbreon: night falls, stars come out across the sky with a moon, and Umbreon's rings
+     glow round the photo. */
+  async function moonlight(mon, told, after) {
+    var R = radius;
+    night(true);
+    var sky = weather();
+    var moon = Koi.pixels(MOON, { y: "#fef3c7", d: "#fde68a" }, "pkmn-prop pkmn-moon", 5);
+    moon.style.left = window.innerWidth * 0.78 + "px";
+    moon.style.top = window.innerHeight * 0.08 + "px";
+    sky.appendChild(moon);
+    for (var i = 0; i < 26; i++) {
+      var star = Koi.pixels(PINK, { p: "#fef9c3", w: "#ffffff" }, "pkmn-prop pkmn-star", 2);
+      star.style.left = Math.random() * window.innerWidth + "px";
+      star.style.top = Math.random() * window.innerHeight * 0.6 + "px";
+      star.style.animationDelay = -Math.random() * 2 + "s";
+      sky.appendChild(star);
+    }
     var aura = document.createElement("div");
-    aura.className = "pkmn-aura pkmn-aura-" + path.form;
+    aura.className = "pkmn-aura pkmn-aura-umbreon";
     aura.style.left = -R + "px";
     aura.style.top = -R + "px";
     aura.style.width = aura.style.height = R * 2 + "px";
     scene.appendChild(aura);
-    if (path.form === "umbreon") night(true);
-    var told = Koi.say([path.move]);
-    var shower = still()
-      ? 0
-      : setInterval(function () {
-          var art = EEVEE_ART[path.art];
-          var x = (Math.random() - 0.5) * R * 2.4;
-          var falls = path.art === "leaf" || path.art === "snow" || path.art === "drop";
-          float(art[0], art[1], x, falls ? -R - 30 : R * 0.6, [(Math.random() - 0.5) * 40, falls ? R * 2 : -R * 1.6], 1600, 0, 3);
-        }, 140);
-    await told;
-    await wait(ms(1200));
-    clearInterval(shower);
-    await aura.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(900), fill: "forwards" }).finished;
+    await finishWeather(sky, told, after);
+    await sky.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(1200), fill: "forwards" }).finished;
+    sky.remove();
     aura.remove();
-    if (path.glow) photo("is-" + path.glow, false);
-    if (path.form === "umbreon") night(false, 1200);
-    await mon.hop(R + 40, R + 4, 18, 400);
-    await hide(mon);
+    night(false, 1200);
+  }
+
+  /* The page swaying in a gust, and the page floating on Psychic. */
+  function sway(on) {
+    ["body > header", "body > div.relative"].forEach(function (selector) {
+      var el = page(selector);
+      if (el) el.classList.toggle("pkmn-sway", on && !still());
+    });
+  }
+
+  function floatPage(on) {
+    ["body > header", "body > div.relative"].forEach(function (selector) {
+      var el = page(selector);
+      if (el) el.classList.toggle("pkmn-afloat", on && !still());
+    });
   }
 
   /* ---------------------------------------------------------------------------------
@@ -1567,21 +1893,56 @@
     await wait(ms(900));
     await Koi.say(["The page was dragged into the DISTORTION WORLD!"]);
 
-    mon.el.getAnimations().forEach(function (anim) {
-      anim.cancel();
+    mon.remove();
+
+    /* In the Distortion World, Giratina comes out on a stage of its own over everything,
+       never upside down itself: from the rift, wherever the turned page has put it, it
+       swells to twice its size in the middle of the screen and sweeps across it, facing
+       the way it flies, trailing shadows of itself, then shrinks back into the rift. On
+       the turned page itself it would be upside down at the bottom of the screen, dimmed
+       by the dark, and lost. */
+    var sky = weather();
+    var c = data["giratina-origin"];
+    var giant = document.createElement("img");
+    giant.className = "pkmn-giant";
+    giant.src = c.url;
+    giant.alt = "";
+    giant.width = c.width;
+    giant.height = c.height;
+    sky.appendChild(giant);
+    var W = window.innerWidth;
+    var H = window.innerHeight;
+    var BIG = Math.min(2.2, (W * 0.4) / c.width);
+    var gate = rift.getBoundingClientRect();
+    var gx = gate.left + gate.width / 2;
+    var gy = gate.top + gate.height / 2;
+    var at = function (x, y, scale, right) {
+      return "translate(" + (x - c.width / 2) + "px," + (y - c.height / 2) + "px) scale(" + (right ? -scale : scale) + "," + scale + ")";
+    };
+    var fly = function (frames, duration, easing) {
+      return giant.animate(frames, { duration: ms(duration), easing: easing || "ease-in-out", fill: "forwards" }).finished;
+    };
+    var shadows = every(90, function () {
+      var ghost = giant.cloneNode();
+      ghost.classList.add("is-ghost");
+      ghost.style.transform = getComputedStyle(giant).transform;
+      sky.appendChild(ghost);
+      ghost.animate([{ opacity: 0.4 }, { opacity: 0 }], { duration: 700, fill: "forwards" }).finished.then(function () {
+        ghost.remove();
+      });
     });
-    mon.show("giratina-origin");
-    base = mon.at(mon.x, mon.y);
-    mon.el.animate([{ transform: base + " scale(0.1)", opacity: 0 }, { transform: base + " scale(1)", opacity: 1 }], { duration: ms(1200), easing: "ease-out" });
-    await wait(ms(1200));
+
+    await fly([{ transform: at(gx, gy, 0.15), opacity: 0 }, { transform: at(W * 0.5, H * 0.42, BIG), opacity: 1 }], 1300, "ease-out");
     told = Koi.say(["GIRATINA changed to its ORIGIN FORME!"]);
-    await mon.path([[-R - 70, -R * 0.2], [-R * 0.3, -R - 40], [R + 70, -R * 0.2], [0, R * 0.4]], 2600, "ease-in-out");
+    await fly([{ transform: at(W * 0.5, H * 0.42, BIG) }, { transform: at(W * 0.18, H * 0.3, BIG * 0.85) }], 1100);
+    await fly([{ transform: at(W * 0.18, H * 0.3, BIG * 0.85, true) }, { transform: at(W * 0.82, H * 0.5, BIG * 0.85, true) }], 1700);
+    await fly([{ transform: at(W * 0.82, H * 0.5, BIG * 0.85) }, { transform: at(W * 0.5, H * 0.42, BIG) }], 1100);
     await told;
 
     told = Koi.say(["GIRATINA returned to the DISTORTION WORLD."]);
-    base = mon.at(mon.x, mon.y);
-    await mon.el.animate([{ transform: base + " scale(1)", opacity: 1 }, { transform: base + " scale(0.1)", opacity: 0 }], { duration: ms(900), easing: "ease-in", fill: "forwards" }).finished;
-    mon.remove();
+    await fly([{ transform: at(W * 0.5, H * 0.42, BIG), opacity: 1 }, { transform: at(gx, gy, 0.15), opacity: 0 }], 1100, "ease-in");
+    shadows();
+    sky.remove();
     upside(false);
     await wait(ms(1400));
     var picture = avatar.firstElementChild;
@@ -1842,12 +2203,12 @@
     charmander: { dex: 4, keys: ["charmander", "charmeleon", "charizard"], play: charmander, weight: 3 },
     psyduck: { dex: 54, keys: ["psyduck"], play: psyduck, weight: 3 },
     gastly: { dex: 92, keys: ["gastly", "haunter", "gengar"], play: gastly, weight: 3 },
-    ditto: { dex: 132, keys: ["ditto", "pikachu", "gengar", "charizard"], play: ditto, weight: 3 },
+    ditto: { dex: 132, keys: ["ditto"], play: ditto, weight: 3 },
     pichu: { dex: 172, keys: ["pichu", "pikachu"], play: pichu, weight: 3 },
     munchlax: { dex: 446, keys: ["munchlax", "snorlax", "snorlax-asleep"], play: munchlax, weight: 3 },
     jigglypuff: { dex: 39, keys: ["jigglypuff"], play: jigglypuff, weight: 3 },
     abra: { dex: 63, keys: ["abra", "kadabra", "alakazam"], play: abra, weight: 3 },
-    eevee: { dex: 133, keys: ["eevee"], play: eevee, weight: 3 },
+    eevee: { dex: 133, keys: ["eevee"], play: eevee, weight: 3, variants: EEVEE_FORMS },
     rotom: { dex: 479, keys: ["rotom"], play: rotom, weight: 3 },
     giratina: { dex: 487, keys: ["giratina", "giratina-origin"], play: giratina, weight: 2 }
   };
@@ -1924,25 +2285,54 @@
       dexMenu.appendChild(title);
 
       var list = document.createElement("ul");
-      keys.forEach(function (act) {
-        var known = met.indexOf(act) >= 0;
-        var first = data[ACTS[act].keys[0]];
+      var all = seen();
+      /* One entry: its number, sprite and name, or a silhouette and "???" when not yet
+         met. */
+      function entry(no, sprite, label, known, choose) {
         var item = document.createElement("li");
         var button = document.createElement("button");
         button.type = "button";
         button.className = "pkmn-dex-entry" + (known ? "" : " is-unseen");
-        var label = first.name;
-        button.setAttribute("aria-label", known ? label : "Unknown Pokémon, number " + ACTS[act].dex);
+        button.setAttribute("aria-label", known ? label : "Unknown Pokémon, number " + no);
         button.innerHTML =
-          '<span class="pkmn-dex-no">' + pad(ACTS[act].dex) + "</span>" +
-          '<img src="' + first.url + '" alt="" width="' + first.width + '" height="' + first.height + '">' +
+          '<span class="pkmn-dex-no">' + pad(no) + "</span>" +
+          '<img src="' + sprite.url + '" alt="" width="' + sprite.width + '" height="' + sprite.height + '">' +
           '<span class="pkmn-dex-name">' + (known ? label.toUpperCase() : "???") + "</span>";
         button.addEventListener("click", function () {
           closeDex();
-          release(act);
+          choose();
         });
         item.appendChild(button);
         list.appendChild(item);
+      }
+      keys.forEach(function (act) {
+        var first = data[ACTS[act].keys[0]];
+        /* The Pokémon itself: its act, at random where it has variants. */
+        entry(ACTS[act].dex, first, first.name + (ACTS[act].variants ? " ?" : ""), met.indexOf(act) >= 0, function () {
+          release(act);
+        });
+        /* Its variants, if any, in one row of small sprites under it, so they do not
+           crowd the list: silhouettes until met, named on hover and to screen readers. */
+        if (ACTS[act].variants) {
+          var row = document.createElement("li");
+          row.className = "pkmn-dex-variants";
+          ACTS[act].variants.forEach(function (form) {
+            var known = all.indexOf(act + ":" + form) >= 0;
+            var sprite = data[form];
+            var button = document.createElement("button");
+            button.type = "button";
+            button.className = "pkmn-dex-variant" + (known ? "" : " is-unseen");
+            button.title = known ? sprite.name : "???";
+            button.setAttribute("aria-label", known ? sprite.name : "Unknown Pokémon, number " + EEVEE_PATHS[form].dex);
+            button.innerHTML = '<img src="' + sprite.url + '" alt="" width="' + sprite.width + '" height="' + sprite.height + '">';
+            button.addEventListener("click", function () {
+              closeDex();
+              release(act, form);
+            });
+            row.appendChild(button);
+          });
+          list.appendChild(row);
+        }
       });
       dexMenu.appendChild(list);
 
@@ -1988,7 +2378,7 @@
     }
   }
 
-  function release(act) {
+  function release(act, variant) {
     if (busy) {
       Koi.wiggle();
       return;
@@ -2020,14 +2410,16 @@
       .then(function () {
         return Koi.openBall();
       })
-      .then(ACTS[act].play)
+      .then(function () {
+        return ACTS[act].play(variant);
+      })
       .catch(function (error) {
         /* An act that fails must not leave the ball stuck: it is reported, and the photo
            and the ball are given back below. */
         console.error(error);
       })
       .then(function () {
-        ["is-zapped", "is-burning", "is-tilted", "is-playing", "is-shadowed", "is-shivering", "is-confused", "is-bumped", "is-sun", "is-moon"].forEach(function (effect) {
+        ["is-zapped", "is-burning", "is-tilted", "is-playing", "is-shadowed", "is-shivering", "is-confused", "is-bumped", "is-sun", "is-moon", "is-floating", "is-frozen", "is-levitating"].forEach(function (effect) {
           photo(effect, false);
         });
         /* Whatever an act did to the rest of the page is undone, even if it failed. */
@@ -2036,11 +2428,16 @@
         undoDitto();
         tremor(0);
         unbite();
-        scene.querySelectorAll(".pkmn-portrait, .pkmn-scorch, .pkmn-aura, .pkmn-rift, .pkmn-mustache, .pkmn-spoon, .pkmn-mic, .pkmn-anger").forEach(function (left) {
+        scene.querySelectorAll(".pkmn-portrait, .pkmn-scorch, .pkmn-aura, .pkmn-rift, .pkmn-mustache, .pkmn-spoon, .pkmn-mic, .pkmn-anger, .pkmn-firespin, .pkmn-stone-gem").forEach(function (left) {
           left.remove();
         });
         lull(false);
         upside(false);
+        sway(false);
+        floatPage(false);
+        document.querySelectorAll(".pkmn-weather").forEach(function (left) {
+          left.remove();
+        });
         restoreTheme();
         homePicture();
         document.querySelectorAll(".pkmn-stone, .pkmn-possessed").forEach(function (el) {
