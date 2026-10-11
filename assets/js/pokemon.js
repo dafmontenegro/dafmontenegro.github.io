@@ -1225,9 +1225,16 @@
     await mon.hop(R + 32, R + 4, 16, 380);
     await mon.hop(R + 40, R + 4, 10, 300);
 
+    var glints = 0;
     if (path.stone && badge) {
       badge.classList.add("pkmn-stone", "pkmn-stone-" + path.stone);
       burst(R * 0.75, R * 0.75);
+      /* The stone glints while Eevee looks at it. */
+      glints = still()
+        ? 0
+        : setInterval(function () {
+            float(PINK, { p: "#fef9c3", w: "#ffffff" }, R * 0.75 + (Math.random() - 0.5) * 50, R * 0.75 + (Math.random() - 0.5) * 50, [0, -14], 700, 0, 2);
+          }, 180);
       await Koi.say(["Caesar's Window turned into a " + path.stoneName + "!"]);
       await Koi.say(["EEVEE touched the " + path.stoneName + "!"]);
     } else {
@@ -1236,6 +1243,7 @@
       await Koi.say(["EEVEE is very fond of you!"]);
     }
     await loading;
+    clearInterval(glints);
     await evolve(mon, path.form);
     if (badge) badge.classList.remove("pkmn-stone", "pkmn-stone-" + path.stone);
 
@@ -1268,26 +1276,70 @@
   }
 
   /* ---------------------------------------------------------------------------------
-     Jigglypuff sings, and the whole page falls asleep, as everyone does in the anime. Then
-     it sees nobody listened, puffs up with rage, and draws on the photo with its marker:
-     a moustache, left there for a while after the page wakes up. */
+     Jigglypuff sings into its microphone, and the whole page falls asleep, as everyone
+     does in the anime. Then it sees nobody listened, jumps up and down in a fury, and does
+     what it does in the anime: its microphone is also a marker, and it draws on the face
+     of whoever slept. Here, a moustache on the photo, drawn pixel by pixel, left there for
+     a while after the page wakes up. */
+
+  /* The moustache, in pixels: a handlebar, its ends curling up. */
+  var MUSTACHE = [
+    "k............k",
+    "kk.kkk..kkk.kk",
+    ".kkkkkkkkkkkk.",
+    "..kkkk..kkkk.."
+  ];
+  var MUSTACHE_COLOURS = { k: "#111827" };
+  /* Jigglypuff's microphone: a round grey head on a dark handle. */
+  var MIC = [".ggg.", "gwggg", "ggggg", ".ggg.", "..k..", "..k..", "..k..", "..k.."];
+  var MIC_COLOURS = { g: "#94a3b8", w: "#f1f5f9", k: "#1f2937" };
+  /* The vein of anger the games draw over a furious Pokémon. */
+  var ANGER = ["r.r.r", ".r.r.", "r...r", ".r.r.", "r.r.r"];
+  var ANGER_COLOURS = { r: "#ef4444" };
+  /* Where the upper lip is on the author's photo, as a share of the photo's radius from
+     its centre, and the tilt of the smile. Measured on assets/img/daniel-felipe-montenegro
+     .jpg: a new photo needs these measured again. */
+  var LIP = { x: -0.07, y: -0.42, tilt: -7 };
 
   async function jigglypuff() {
     var R = radius;
     var mon = new Mon("jigglypuff", -R * 0.3, R + 4, BEHIND);
+    var mic = Koi.pixels(MIC, MIC_COLOURS, "pkmn-prop pkmn-mic", 2);
+    mic.style.zIndex = IN_FRONT + 1;
+    scene.appendChild(mic);
+    /* The microphone stays in Jigglypuff's hand, wherever it hops: placed every frame
+       from where the sprite is drawn. */
+    var holding = true;
+    var hand = function () {
+      if (!holding || !mic.isConnected) return;
+      var m = mon.el.getBoundingClientRect();
+      var c = scene.getBoundingClientRect();
+      mic.style.left = m.right - c.left - 10 + "px";
+      mic.style.top = m.top - c.top + m.height * 0.35 + "px";
+      requestAnimationFrame(hand);
+    };
+    requestAnimationFrame(hand);
+
     Koi.say(["Go! JIGGLYPUFF!"]);
-    await mon.go(-R - 34, R + 4, 700, "ease-out");
+    await mon.go(-R - 40, R + 4, 700, "ease-out");
     mon.z(IN_FRONT);
-    await mon.hop(-R - 34, R + 4, 14, 350);
+    await mon.hop(-R - 40, R + 4, 14, 350);
 
     var told = Koi.say(["JIGGLYPUFF used SING!"]);
+    mic.classList.add("is-singing");
     var n = 0;
     var song = still()
       ? 0
       : setInterval(function () {
-          note(NOTE_COLOURS[n % 2 ? 1 : 0], mon.x + 10, mon.y - mon.h, (n % 2 ? 1 : -1) * 40, -170);
+          var m = mic.getBoundingClientRect();
+          var c = scene.getBoundingClientRect();
+          note(NOTE_COLOURS[n % 2 ? 1 : 0], m.left - c.left, m.top - c.top, (n % 2 ? 1 : -1) * 40, -170);
           n++;
         }, 260);
+    /* It sways as it sings. */
+    var base = mon.at(mon.x, mon.y);
+    mon.el.style.transformOrigin = "50% 100%";
+    var sway = mon.el.animate([{ transform: base + " rotate(-6deg)" }, { transform: base + " rotate(6deg)" }], { duration: ms(520), direction: "alternate", iterations: Infinity, easing: "ease-in-out" });
     await wait(ms(1400));
     lull(true);
     await told;
@@ -1295,50 +1347,74 @@
     for (var z = 0; z < 4; z++) float(ZED, ZED_COLOURS, (z % 2 ? 1 : -1) * R * 0.4, -R * 0.6, [z * 6, -60], 1800, z * 500, 3);
     await told;
     clearInterval(song);
+    sway.cancel();
+    mic.classList.remove("is-singing");
     await Koi.say(["The whole page fell asleep!"]);
 
-    /* Nobody listened. */
+    /* Nobody listened: it puffs up, goes red and jumps up and down in a fury, the page
+       shaking every time it lands. */
     await Koi.say(["JIGGLYPUFF looks around...", "Nobody listened to its song!"]);
-    var base = mon.at(mon.x, mon.y);
-    mon.el.style.transformOrigin = "50% 100%";
     told = Koi.say(["JIGGLYPUFF is furious!"]);
-    await mon.el.animate(
-      [
-        { transform: base },
-        { transform: base + " scale(1.45)", offset: 0.4 },
-        { transform: base + " scale(1.45) translateX(-2px)", offset: 0.5 },
-        { transform: base + " scale(1.45) translateX(2px)", offset: 0.6 },
-        { transform: base + " scale(1.45) translateX(-2px)", offset: 0.7 },
-        { transform: base }
-      ],
-      { duration: ms(1500), easing: "ease-in-out" }
-    ).finished;
+    mon.el.classList.add("is-furious");
+    var vein = Koi.pixels(ANGER, ANGER_COLOURS, "pkmn-prop pkmn-anger", 3);
+    vein.style.zIndex = IN_FRONT + 1;
+    vein.style.left = mon.x + 8 + "px";
+    vein.style.top = mon.y - mon.h - 18 + "px";
+    scene.appendChild(vein);
+    mon.el.style.scale = "1.3";
+    for (var jump = 0; jump < 4; jump++) {
+      await mon.hop(mon.x + (jump % 2 ? 6 : -6), mon.y, 26, 300);
+      tremor(2);
+      setTimeout(function () {
+        tremor(0);
+      }, ms(120));
+      vein.style.left = mon.x + 8 + "px";
+    }
+    mon.el.style.scale = "";
     await told;
+    vein.remove();
 
-    /* The moustache, drawn stroke by stroke across the upper lip. Its place is measured
-       against the author's photo as it is: a new photo may want it moved. */
-    told = Koi.say(["JIGGLYPUFF drew on the photo!"]);
-    await mon.hop(-R * 0.55, -R * 0.15, 40, 600);
-    var mustache = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    mustache.setAttribute("viewBox", "-34 -12 68 20");
-    mustache.setAttribute("class", "pkmn-prop pkmn-mustache");
-    mustache.style.width = R * 0.62 + "px";
-    mustache.style.left = -R * 0.36 + "px";
-    mustache.style.top = -R * 0.3 + "px";
+    /* It climbs onto the photo and draws the moustache on the upper lip, the marker
+       travelling along it as the pixels appear. */
+    var lipX = LIP.x * R;
+    var lipY = LIP.y * R;
+    var size = Math.max(2, Math.round((R * 0.4) / MUSTACHE[0].length));
+    var width = MUSTACHE[0].length * size;
+    told = Koi.say(["JIGGLYPUFF used its marker!"]);
+    await mon.hop(lipX - width / 2 - 30, lipY + 30, 50, 650);
+    var mustache = Koi.pixels(MUSTACHE, MUSTACHE_COLOURS, "pkmn-prop pkmn-mustache", size);
+    mustache.style.left = lipX - width / 2 + "px";
+    mustache.style.top = lipY - (MUSTACHE.length * size) / 2 + "px";
+    mustache.style.rotate = LIP.tilt + "deg";
     mustache.style.zIndex = IN_FRONT;
-    mustache.innerHTML =
-      '<path d="M -30 2 C -32 -8 -22 -10 -14 -5 C -8 -1 -3 -3 0 -6 C 3 -3 8 -1 14 -5 C 22 -10 32 -8 30 2" ' +
-      'pathLength="1" fill="none" stroke="#111827" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>';
     scene.appendChild(mustache);
-    mustache.firstChild.animate([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], { duration: ms(1100), easing: "ease-in-out", fill: "forwards" });
-    await wait(ms(1200));
+    holding = false;
+    var DRAW = ms(1400);
+    mustache.animate([{ clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0 0 0)" }], { duration: DRAW, easing: "steps(" + MUSTACHE[0].length + ")", fill: "forwards" });
+    mic.animate(
+      [
+        { left: lipX - width / 2 - 4 + "px", top: lipY - 22 + "px", rotate: "35deg" },
+        { left: lipX + width / 2 - 4 + "px", top: lipY - 24 + "px", rotate: "35deg" }
+      ],
+      { duration: DRAW, easing: "linear", fill: "forwards" }
+    );
+    await wait(DRAW + 200);
     await told;
+    await Koi.say(["JIGGLYPUFF drew on the photo!"]);
+    mon.el.classList.remove("is-furious");
 
     lull(false);
     await Koi.say(["The page woke up!"]);
     await Koi.say(["...with a little souvenir."]);
-    await mon.hop(-R - 34, R + 4, 40, 600);
+    holding = true;
+    mic.getAnimations().forEach(function (anim) {
+      anim.cancel();
+    });
+    requestAnimationFrame(hand);
+    await mon.hop(-R - 40, R + 4, 40, 600);
+    mic.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(600), fill: "forwards" });
     await hide(mon);
+    mic.remove();
     await wait(ms(1500));
     await mustache.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(1200), fill: "forwards" }).finished;
     mustache.remove();
@@ -1400,6 +1476,13 @@
 
     var told = Koi.say(["ROTOM possessed the light switch!"]);
     themeWas = root.classList.contains("dark");
+    /* Sparks crackle off the possessed button for as long as Rotom is in it. */
+    var crackle = still()
+      ? 0
+      : setInterval(function () {
+          var angle = Math.random() * Math.PI * 2;
+          float(EEVEE_ART.bolt[0], { y: "#fb923c" }, sx + Math.cos(angle) * 16, sy - mon.h / 2 + Math.sin(angle) * 16, [Math.cos(angle) * 30, Math.sin(angle) * 30], 500, 0, 2);
+        }, 120);
     var flips = still() ? [] : [500, 400, 300, 220, 160, 120, 100, 100, 140, 220, 400];
     for (var i = 0; i < flips.length; i++) {
       root.classList.toggle("dark");
@@ -1411,6 +1494,7 @@
       root.classList.toggle("dark");
       await wait(600);
     }
+    clearInterval(crackle);
     restoreTheme();
     switcher.classList.remove("pkmn-possessed");
 
@@ -1938,7 +2022,7 @@
         undoDitto();
         tremor(0);
         unbite();
-        scene.querySelectorAll(".pkmn-portrait, .pkmn-scorch, .pkmn-aura, .pkmn-rift, .pkmn-mustache, .pkmn-spoon").forEach(function (left) {
+        scene.querySelectorAll(".pkmn-portrait, .pkmn-scorch, .pkmn-aura, .pkmn-rift, .pkmn-mustache, .pkmn-spoon, .pkmn-mic, .pkmn-anger").forEach(function (left) {
           left.remove();
         });
         lull(false);
