@@ -1749,6 +1749,29 @@
       { duration: DRAW, easing: "steps(" + MUSTACHE[0].length + ")", fill: "forwards" }
     );
     await wait(DRAW + 200);
+
+    /* Done, the microphone goes back to Jigglypuff's hand: from where it stopped, turned
+       the right way up again, and then held as before. */
+    mic.getAnimations().forEach(function (anim) {
+      anim.commitStyles();
+      anim.cancel();
+    });
+    var m = mon.el.getBoundingClientRect();
+    var c = scene.getBoundingClientRect();
+    await mic.animate(
+      [
+        { left: mic.style.left, top: mic.style.top, rotate: "160deg" },
+        { left: m.right - c.left - 10 + "px", top: m.top - c.top + m.height * 0.35 + "px", rotate: "0deg" }
+      ],
+      { duration: ms(500), easing: "ease-in-out", fill: "forwards" }
+    ).finished;
+    mic.getAnimations().forEach(function (anim) {
+      anim.cancel();
+    });
+    mic.style.rotate = "";
+    mic.style.transformOrigin = "";
+    holding = true;
+    requestAnimationFrame(hand);
     await told;
     await Koi.say(["JIGGLYPUFF drew on the photo!"]);
     mon.el.classList.remove("is-furious");
@@ -1756,18 +1779,13 @@
     lull(false);
     await Koi.say(["The page woke up!"]);
     await Koi.say(["...with a little souvenir."]);
-    holding = true;
-    mic.getAnimations().forEach(function (anim) {
-      anim.cancel();
-    });
-    mic.style.transformOrigin = "";
-    requestAnimationFrame(hand);
     await mon.hop(-R - 40, R + 4, 40, 600);
     mic.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(600), fill: "forwards" });
     await hide(mon);
     mic.remove();
-    await wait(ms(1500));
-    await mustache.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(1200), fill: "forwards" }).finished;
+    /* The souvenir stays a while after Jigglypuff has gone. */
+    await wait(ms(4000));
+    await mustache.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(1600), fill: "forwards" }).finished;
     mustache.remove();
   }
 
