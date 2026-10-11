@@ -1291,8 +1291,8 @@
   ];
   var MUSTACHE_COLOURS = { k: "#111827" };
   /* Jigglypuff's microphone: a round grey head on a dark handle. */
-  var MIC = [".ggg.", "gwggg", "ggggg", ".ggg.", "..k..", "..k..", "..k..", "..k.."];
-  var MIC_COLOURS = { g: "#94a3b8", w: "#f1f5f9", k: "#1f2937" };
+  var MIC = [".ggg.", "gwggg", "ggggg", ".ggg.", "..h..", "..h..", "..h..", "..h.."];
+  var MIC_COLOURS = { g: "#cbd5e1", w: "#ffffff", h: "#f472b6" };
   /* The vein of anger the games draw over a furious Pokémon. */
   var ANGER = ["r.r.r", ".r.r.", "r...r", ".r.r.", "r.r.r"];
   var ANGER_COLOURS = { r: "#ef4444" };
@@ -1304,7 +1304,7 @@
   async function jigglypuff() {
     var R = radius;
     var mon = new Mon("jigglypuff", -R * 0.3, R + 4, BEHIND);
-    var mic = Koi.pixels(MIC, MIC_COLOURS, "pkmn-prop pkmn-mic", 2);
+    var mic = Koi.pixels(MIC, MIC_COLOURS, "pkmn-prop pkmn-mic", 3);
     mic.style.zIndex = IN_FRONT + 1;
     scene.appendChild(mic);
     /* The microphone stays in Jigglypuff's hand, wherever it hops: placed every frame
@@ -1370,6 +1370,13 @@
       }, ms(120));
       vein.style.left = mon.x + 8 + "px";
     }
+    /* The fury spends itself: it deflates slowly and the vein fades, before it moves on. */
+    var calm = { duration: ms(600), easing: "ease-out", fill: "forwards" };
+    vein.animate([{ opacity: 1 }, { opacity: 0 }], calm);
+    await mon.el.animate([{ scale: "1.3" }, { scale: "1" }], calm).finished;
+    mon.el.getAnimations().forEach(function (anim) {
+      if (anim.effect && anim.effect.getKeyframes().some(function (k) { return k.scale; })) anim.cancel();
+    });
     mon.el.style.scale = "";
     await told;
     vein.remove();
@@ -1391,12 +1398,18 @@
     holding = false;
     var DRAW = ms(1400);
     mustache.animate([{ clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0 0 0)" }], { duration: DRAW, easing: "steps(" + MUSTACHE[0].length + ")", fill: "forwards" });
+    /* The microphone is held upside down as a marker: its head is the nib, touching the
+       lip where the next pixels appear, and it travels along the moustache in step with
+       them, rising with the tilt of the smile. */
+    var nib = 7.5; // half the microphone's width, so its head is centred on the line
+    var rise = width * Math.sin((-LIP.tilt * Math.PI) / 180);
+    mic.style.transformOrigin = "50% 0";
     mic.animate(
       [
-        { left: lipX - width / 2 - 4 + "px", top: lipY - 22 + "px", rotate: "35deg" },
-        { left: lipX + width / 2 - 4 + "px", top: lipY - 24 + "px", rotate: "35deg" }
+        { left: lipX - width / 2 - nib + "px", top: lipY + rise / 2 - 2 + "px", rotate: "160deg" },
+        { left: lipX + width / 2 - nib + "px", top: lipY - rise / 2 - 2 + "px", rotate: "160deg" }
       ],
-      { duration: DRAW, easing: "linear", fill: "forwards" }
+      { duration: DRAW, easing: "steps(" + MUSTACHE[0].length + ")", fill: "forwards" }
     );
     await wait(DRAW + 200);
     await told;
@@ -1410,6 +1423,7 @@
     mic.getAnimations().forEach(function (anim) {
       anim.cancel();
     });
+    mic.style.transformOrigin = "";
     requestAnimationFrame(hand);
     await mon.hop(-R - 40, R + 4, 40, 600);
     mic.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(600), fill: "forwards" });
