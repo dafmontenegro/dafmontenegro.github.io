@@ -4,10 +4,12 @@ They are the animated sprites of Pokémon Black and White, the same set as the c
 climbs every other page (assets/img/koi/), taken from the PokeAPI sprites repository
 (https://github.com/PokeAPI/sprites), which archives them by National Dex number.
 
-One pose those games never drew is taken from elsewhere: Snorlax asleep, lying down, from
-Pokémon Mystery Dungeon (Spike Chunsoft's own sprite, archived by PMDCollab's SpriteCollab,
-https://github.com/PMDCollab/SpriteCollab). Its frames of breathing are cut from the sheet
-and made into a GIF at twice their size, close to the scale of the other sprites.
+What those games never drew is taken from Pokémon Mystery Dungeon, through PMDCollab's
+SpriteCollab (https://github.com/PMDCollab/SpriteCollab): Snorlax lying asleep (Spike
+Chunsoft's own sprite), and Sylveon, a Pokémon of a later generation (drawn by the
+community, credited in that sprite's credits.txt). The frames of one row of the sheet are
+cut out, trimmed to the space all of them use, and made into a GIF at twice their size,
+close to the scale of the other sprites.
 
 Writes:
   assets/img/pokemon/<pokemon>.gif     the animated sprite, as published
@@ -69,6 +71,8 @@ ROSTER = {
 PMD = "https://raw.githubusercontent.com/PMDCollab/SpriteCollab/master/sprite/{dex}/"
 POSES = {
     "snorlax-asleep": ("0143", "Snorlax", "Sleep", 0),
+    # Row 7 faces down and to the left, as the Black and White sprites do.
+    "sylveon": ("0700", "Sylveon", "Idle", 7),
 }
 PMD_SCALE = 2
 
@@ -104,12 +108,13 @@ def pose(key, dex, name, anim, row):
     height = int(node.find("FrameHeight").text)
     ticks = [int(d.text) for d in node.find("Durations")]
     sheet = Image.open(io.BytesIO(fetch(PMD.format(dex=dex) + f"{anim}-Anim.png"))).convert("RGBA")
-    frames = [
-        sheet.crop((i * width, row * height, (i + 1) * width, (row + 1) * height)).resize(
-            (width * PMD_SCALE, height * PMD_SCALE), Image.NEAREST
-        )
-        for i in range(len(ticks))
-    ]
+    cells = [sheet.crop((i * width, row * height, (i + 1) * width, (row + 1) * height)) for i in range(len(ticks))]
+    # Trimmed to the box every frame fits in: the sheet leaves room for a shadow and for
+    # other animations, which would float the Pokémon above its feet.
+    boxes = [c.getbbox() for c in cells if c.getbbox()]
+    box = (min(b[0] for b in boxes), min(b[1] for b in boxes), max(b[2] for b in boxes), max(b[3] for b in boxes))
+    width, height = box[2] - box[0], box[3] - box[1]
+    frames = [c.crop(box).resize((width * PMD_SCALE, height * PMD_SCALE), Image.NEAREST) for c in cells]
     out = IMG / f"{key}.gif"
     # SpriteCollab times frames in ticks of the games' 60 frames per second.
     frames[0].save(out, save_all=True, append_images=frames[1:], duration=[t * 1000 // 60 for t in ticks],
