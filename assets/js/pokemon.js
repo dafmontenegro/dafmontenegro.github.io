@@ -2006,10 +2006,24 @@
   async function abra() {
     var R = radius;
     moved = avatar.firstElementChild;
+    /* Where the photo lands, worked out on the screen as it is, phone or desktop: anywhere
+       the whole photo fits with a margin, below the header and above the text box at the
+       bottom, as shares of that box. Each spot is turned into an offset from the photo's
+       own place. On a phone the box is narrow and tall, so the photo jumps up and down
+       more than sideways; on a desktop, the other way round. */
     var a = avatar.getBoundingClientRect();
-    var reach = Math.max(60, Math.min(300, window.innerWidth / 2 - R - 16));
-    var below = Math.max(80, Math.min(240, window.innerHeight - a.bottom - 40));
-    var spots = [[-reach, 30], [reach, -10], [0, below], [-reach * 0.6, below * 0.8], [reach * 0.7, below * 0.5], [0, 0]];
+    var r = a.width / 2;
+    var homeX = a.left + r;
+    var homeY = a.top + r;
+    var MARGIN = 12;
+    var left = MARGIN + r;
+    var right = Math.max(left, window.innerWidth - MARGIN - r);
+    var top = MARGIN + r + 60; // under the header's links
+    var bottom = Math.max(top, window.innerHeight - r - 110); // above the text box
+    var spot = function (fx, fy) {
+      return [left + (right - left) * fx - homeX, top + (bottom - top) * fy - homeY];
+    };
+    var spots = [spot(0.05, 0.3), spot(0.95, 0.05), spot(0.5, 1), spot(0.05, 0.85), spot(0.95, 0.6), [0, 0]];
 
     var mon = new Mon("abra", -R * 0.3, R + 4, BEHIND);
     Koi.say(["Go! ABRA!"]);
@@ -2432,7 +2446,7 @@
     act = act || draw();
     previous = act;
     see(act);
-    load()
+    return load()
       .then(function () {
         return preload(ACTS[act].keys);
       })
