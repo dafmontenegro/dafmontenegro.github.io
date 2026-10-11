@@ -1081,6 +1081,11 @@
   }
 }
 
+.pkmn-night.is-deep {
+  background: rgba(10, 9, 32, 0.88);
+  animation: pkmn-night 1.4s ease-in-out;
+}
+
 .cw-avatar.is-lifted {
   z-index: 31;
 }
@@ -1615,9 +1620,9 @@
   width: 140px;
   margin-left: -70px;
   transform-origin: 50% 0;
-  background: linear-gradient(to bottom, rgba(254, 243, 199, 0.35), rgba(254, 243, 199, 0.08));
+  background: linear-gradient(to bottom, rgba(254, 243, 199, 0.22), rgba(254, 243, 199, 0.06));
   clip-path: polygon(42% 0, 58% 0, 100% 100%, 0 100%);
-  animation: pkmn-night 1.4s ease-out both;
+  animation: pkmn-night 1.6s ease-in-out both;
 }
 
 .pkmn-shooting {
@@ -1683,9 +1688,33 @@
   }
 }
 
-.cw-avatar.is-gleaming > :first-child img {
-  filter: brightness(1.12) saturate(1.05);
-  box-shadow: 0 0 28px 8px rgba(254, 243, 199, 0.7);
+/* Sylveon's bow on the photo: it pops on with a little bounce and sways. */
+.pkmn-bow {
+  transform-origin: 50% 60%;
+  animation:
+    pkmn-bow-in 0.6s cubic-bezier(0.3, 1.6, 0.5, 1) both,
+    pkmn-bow-sway 1.4s ease-in-out 0.6s infinite alternate;
+}
+
+@keyframes pkmn-bow-in {
+  from {
+    opacity: 0;
+    scale: 0.2;
+  }
+}
+
+@keyframes pkmn-bow-sway {
+  from {
+    rotate: -4deg;
+  }
+  to {
+    rotate: 4deg;
+  }
+}
+
+.cw-avatar.is-charmed > :first-child img {
+  filter: saturate(1.1) brightness(1.06);
+  box-shadow: 0 0 26px 8px rgba(249, 168, 212, 0.55);
   transition:
     filter 1s ease,
     box-shadow 1s ease;
@@ -1950,6 +1979,7 @@
   .pkmn-shooting,
   .pkmn-sprite.is-ringed,
   .pkmn-gleam,
+  .pkmn-bow,
   .pkmn-aura,
   .pkmn-aura-jolteon,
   .pkmn-lull,
