@@ -1331,7 +1331,8 @@
     var mon = new Mon("eevee", R * 0.3, R + 4, BEHIND);
     Koi.say(["Go! EEVEE!"]);
     await mon.go(R + 48, R + 4, 700, "ease-out");
-    mon.z(IN_FRONT);
+    /* A layer above the stone it is about to touch, so it is never seen behind it. */
+    mon.z(IN_FRONT + 1);
     await Koi.say(["EEVEE is curious about Caesar's Window..."]);
     await mon.hop(R + 32, R + 4, 16, 380);
     await mon.hop(R + 40, R + 4, 10, 300);
@@ -1373,11 +1374,21 @@
     await evolve(mon, form);
     if (badge) badge.classList.remove("pkmn-stone", "pkmn-stone-" + path.stone);
 
+    /* The evolution steps away from Caesar's Window, which it has just used, to give
+       its show room. */
+    await mon.hop(R + 78, R + 4, 22, 520);
+
     var told = Koi.say([path.move]);
     await path.show(mon, told, path.after);
     if (path.glow) photo("is-" + path.glow, false);
     await mon.hop(mon.x, mon.y, 18, 400);
-    await hide(mon);
+
+    /* It leaves walking off to the right, fading: going back behind the photo, as the
+       others do, would take it across the badge in the photo's corner. */
+    var leaving = mon.go(R + 170, R + 4, 1000, "ease-in");
+    await mon.fade(1000);
+    await leaving;
+    mon.remove();
   }
 
   /* A layer over the whole page for an evolution's weather; gone when the act is. */
