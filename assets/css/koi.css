@@ -172,6 +172,64 @@
   }
 }
 
+/* The site's logo on the homepage, where it opens the ball: it spins as the badge does. */
+.koi-logo.is-spinning img {
+  animation: cw-spin 1.1s cubic-bezier(0.25, 1.25, 0.5, 1);
+}
+
+/* A first visitor's hint: a small dialogue box of the games, its tail pointing at what
+   it is about. --tail is where the tail sits, set by the script. */
+.koi-hint {
+  position: fixed;
+  z-index: 47;
+  max-width: min(17rem, calc(100vw - 16px));
+  padding: 9px 12px;
+  border: 3px solid #334155;
+  border-radius: 6px;
+  background: #f8fafc;
+  box-shadow:
+    inset 0 0 0 2px #f8fafc,
+    inset 0 0 0 4px #94a3b8,
+    0 6px 16px rgba(0, 0, 0, 0.25);
+  color: #1e293b;
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  font-size: 9px;
+  line-height: 1.7;
+  cursor: pointer;
+  animation: koi-hint-in 0.3s cubic-bezier(0.3, 1.4, 0.5, 1);
+  transition: opacity 0.3s ease;
+}
+
+.koi-hint::after {
+  position: absolute;
+  left: calc(var(--tail, 50%) - 7px);
+  width: 0;
+  height: 0;
+  border: 7px solid transparent;
+  content: "";
+}
+
+.koi-hint.is-above::after {
+  top: 100%;
+  border-top-color: #334155;
+}
+
+.koi-hint.is-below::after {
+  bottom: 100%;
+  border-bottom-color: #334155;
+}
+
+.koi-hint.is-leaving {
+  opacity: 0;
+}
+
+@keyframes koi-hint-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.95);
+  }
+}
+
 /* ------------------------------------------------------------------------------------
    The climb. The script places the gate, the fall and the fish on the line straight up
    from the ball, and sizes the fall; this file decides how they appear, move and leave. */
@@ -1786,6 +1844,8 @@
   .koi.is-clouded .koi-cloud,
   .koi.is-evolved .koi-dragon,
   .koi-box::after,
+  .koi-hint,
+  .koi-logo.is-spinning img,
   .pkmn-glitch,
   .pkmn-dex,
   .pkmn-tear,

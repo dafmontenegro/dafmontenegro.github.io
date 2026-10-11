@@ -350,6 +350,95 @@
         release();
       });
     });
+
+    /* So is the site's logo, Caesar's Window at the top of every page: everywhere else it
+       goes home, but here it is home already, and a link to the page it is on only reloads
+       it. Here it spins and opens the ball instead. */
+    var logo = document.querySelector("body > header nav a[href='/']");
+    if (logo) {
+      logo.classList.add("koi-logo");
+      logo.addEventListener("click", function (e) {
+        e.preventDefault();
+        replay(logo, "is-spinning");
+        release();
+      });
+    }
+
+    teach();
+  }
+
+  /* ---------------------------------------------------------------------------------
+     Hints, the first time. Nothing on the homepage says the ball or the badges do
+     anything, so a first visitor is told, in the games' own dialogue boxes, pointing at
+     them: the ball, then Caesar's Window; and once they have used it, that holding it
+     opens the Pokédex. Shown until the ball has been used once, then never again; a
+     touch closes them. Remembered in this browser only, and nothing breaks where it
+     cannot be. */
+
+  var HINTS = "koi-hints";
+  var HINT_MS = 3800;
+  var used = false;
+  var bubble = null;
+
+  function hinted() {
+    try {
+      return localStorage.getItem(HINTS) === "done";
+    } catch (e) {
+      return true;
+    }
+  }
+
+  function doneHinting() {
+    try {
+      localStorage.setItem(HINTS, "done");
+    } catch (e) {}
+  }
+
+  /* A dialogue box pointing at `target`: above it where there is room, below it where
+     there is not, kept on the screen. Resolves when it has gone. */
+  function hint(target, text) {
+    dismiss();
+    if (!target) return Promise.resolve();
+    bubble = document.createElement("div");
+    bubble.className = "koi-hint";
+    bubble.setAttribute("role", "status");
+    bubble.textContent = text;
+    document.body.appendChild(bubble);
+    var t = target.getBoundingClientRect();
+    var b = bubble.getBoundingClientRect();
+    var x = Math.max(8, Math.min(t.left + t.width / 2 - b.width / 2, window.innerWidth - b.width - 8));
+    var above = t.top - b.height - 14 > 8;
+    bubble.style.left = x + "px";
+    bubble.style.top = (above ? t.top - b.height - 14 : t.bottom + 14) + "px";
+    bubble.style.setProperty("--tail", t.left + t.width / 2 - x + "px");
+    bubble.classList.add(above ? "is-above" : "is-below");
+    var shown = bubble;
+    shown.addEventListener("click", dismiss);
+    return new Promise(function (resolve) {
+      setTimeout(function () {
+        if (bubble === shown) dismiss();
+        resolve();
+      }, HINT_MS);
+    });
+  }
+
+  function dismiss() {
+    if (!bubble) return;
+    var gone = bubble;
+    bubble = null;
+    gone.classList.add("is-leaving");
+    setTimeout(gone.remove.bind(gone), 300);
+  }
+
+  function teach() {
+    if (hinted()) return;
+    setTimeout(function () {
+      if (used) return;
+      hint(ball, "Psst! Press the Poké Ball.").then(function () {
+        if (used) return;
+        hint(document.querySelector(".cw-avatar .cw-badge"), "Caesar's Window opens it too.");
+      });
+    }, 2500);
   }
 
   /* In the bottom corner of a wide screen; on a narrow one, where Congo's scroll-to-top
@@ -388,11 +477,21 @@
     return loading;
   }
 
-  /* Hands a press to assets/js/pokemon.js. */
+  /* Hands a press to assets/js/pokemon.js. The first one, on the homepage, ends the
+     hints but for the last: once that Pokémon is gone, how to choose one. */
   function release(name) {
-    loadPokemon().then(function () {
-      if (window.KoiPokemon) window.KoiPokemon.release(typeof name === "string" ? name : undefined);
-    });
+    var first = sprites.home && !used && !hinted();
+    used = true;
+    dismiss();
+    loadPokemon()
+      .then(function () {
+        if (window.KoiPokemon) return window.KoiPokemon.release(typeof name === "string" ? name : undefined);
+      })
+      .then(function () {
+        if (!first) return;
+        doneHinting();
+        return hint(ball, "Tip: hold the Poké Ball to choose one.");
+      });
   }
 
   /* ---------------------------------------------------------------------------------
