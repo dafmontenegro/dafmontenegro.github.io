@@ -295,6 +295,8 @@
     var holdFrom = null;
     function openDex() {
       held = true;
+      dismiss();
+      remember("koi-dex-opened", 1);
       stopHold();
       loadPokemon().then(function () {
         if (window.KoiPokemon) window.KoiPokemon.dex(ball);
@@ -368,35 +370,37 @@
   }
 
   /* ---------------------------------------------------------------------------------
-     Hints, the first time. Nothing on the homepage says the ball or the badges do
-     anything, so a first visitor is told, in the games' own dialogue boxes, pointing at
-     them: the ball, then Caesar's Window; and once they have used it, that holding it
-     opens the Pokédex. Shown until the ball has been used once, then never again; a
-     touch closes them. Remembered in this browser only, and nothing breaks where it
-     cannot be. */
+     Hints. Nothing on the homepage says the ball or the badges do anything, and people
+     need telling more than once: so, on every visit, until a visitor has let out a few
+     Pokémon, the games' dialogue boxes point at the ball, at Caesar's Window on the photo
+     and at the logo; and after every Pokémon, until they have opened the Pokédex once,
+     that holding the ball opens it. A touch closes a hint. What has been done is
+     remembered in this browser only; where it cannot be, the hints simply keep showing. */
 
-  var HINTS = "koi-hints";
+  var LEARNT = 5; // Pokémon let out before the visitor is taken to know the ball
   var HINT_MS = 3800;
-  var used = false;
   var bubble = null;
+  var shownThisVisit = false;
 
-  function hinted() {
+  function remembered(key) {
     try {
-      return localStorage.getItem(HINTS) === "done";
+      return Number(localStorage.getItem(key)) || 0;
     } catch (e) {
-      return true;
+      return 0;
     }
   }
 
-  function doneHinting() {
+  function remember(key, value) {
     try {
-      localStorage.setItem(HINTS, "done");
+      localStorage.setItem(key, String(value));
     } catch (e) {}
   }
 
   /* A dialogue box pointing at `target`: above it where there is room, below it where
-     there is not, kept on the screen. Resolves when it has gone. */
-  function hint(target, text) {
+     there is not, kept on the screen; or, with `side`, to its right, or below it where
+     that does not fit, so it covers nothing above it or beside it on the photo (the badge
+     sits on the author's face). Resolves when it has gone. */
+  function hint(target, text, side) {
     dismiss();
     if (!target) return Promise.resolve();
     bubble = document.createElement("div");
@@ -406,12 +410,25 @@
     document.body.appendChild(bubble);
     var t = target.getBoundingClientRect();
     var b = bubble.getBoundingClientRect();
+    /* Beside it if it fits to the right; otherwise (a phone) below it, never to its left,
+       which on the photo would be the author's face. */
+    if (side && t.right + 14 + b.width < window.innerWidth - 8) {
+      bubble.style.left = t.right + 14 + "px";
+      bubble.style.top = Math.max(8, t.top + t.height / 2 - b.height / 2) + "px";
+      bubble.style.setProperty("--tail", t.top + t.height / 2 - Math.max(8, t.top + t.height / 2 - b.height / 2) + "px");
+      bubble.classList.add("is-right");
+    } else if (side) {
+      side = false;
+      var forceBelow = true;
+    }
     var x = Math.max(8, Math.min(t.left + t.width / 2 - b.width / 2, window.innerWidth - b.width - 8));
-    var above = t.top - b.height - 14 > 8;
-    bubble.style.left = x + "px";
-    bubble.style.top = (above ? t.top - b.height - 14 : t.bottom + 14) + "px";
-    bubble.style.setProperty("--tail", t.left + t.width / 2 - x + "px");
-    bubble.classList.add(above ? "is-above" : "is-below");
+    var above = !forceBelow && t.top - b.height - 14 > 8;
+    if (!side) {
+      bubble.style.left = x + "px";
+      bubble.style.top = (above ? t.top - b.height - 14 : t.bottom + 14) + "px";
+      bubble.style.setProperty("--tail", t.left + t.width / 2 - x + "px");
+      bubble.classList.add(above ? "is-above" : "is-below");
+    }
     var shown = bubble;
     shown.addEventListener("click", dismiss);
     return new Promise(function (resolve) {
@@ -431,13 +448,16 @@
   }
 
   function teach() {
-    if (hinted()) return;
+    if (remembered("koi-releases") >= LEARNT) return;
     setTimeout(function () {
-      if (used) return;
-      hint(ball, "Psst! Press the Poké Ball.").then(function () {
-        if (used) return;
-        hint(document.querySelector(".cw-avatar .cw-badge"), "Caesar's Window opens it too.");
-      });
+      if (shownThisVisit) return;
+      hint(ball, "Psst! Press the Poké Ball.")
+        .then(function () {
+          if (!shownThisVisit) return hint(document.querySelector(".cw-avatar .cw-badge"), "Caesar's Window opens it too.", true);
+        })
+        .then(function () {
+          if (!shownThisVisit) return hint(document.querySelector(".koi-logo"), "And so does this one, up here.");
+        });
     }, 2500);
   }
 
@@ -477,20 +497,18 @@
     return loading;
   }
 
-  /* Hands a press to assets/js/pokemon.js. The first one, on the homepage, ends the
-     hints but for the last: once that Pokémon is gone, how to choose one. */
+  /* Hands a press to assets/js/pokemon.js, counting it for the hints; once the Pokémon is
+     gone, the hint about the Pokédex, until it has been opened. */
   function release(name) {
-    var first = sprites.home && !used && !hinted();
-    used = true;
+    shownThisVisit = true;
     dismiss();
+    if (sprites.home) remember("koi-releases", remembered("koi-releases") + 1);
     loadPokemon()
       .then(function () {
         if (window.KoiPokemon) return window.KoiPokemon.release(typeof name === "string" ? name : undefined);
       })
       .then(function () {
-        if (!first) return;
-        doneHinting();
-        return hint(ball, "Tip: hold the Poké Ball to choose one.");
+        if (sprites.home && !remembered("koi-dex-opened")) return hint(ball, "Tip: hold the Poké Ball to choose one.");
       });
   }
 

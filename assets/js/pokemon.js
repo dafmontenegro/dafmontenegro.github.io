@@ -587,7 +587,6 @@
   var PINK = ["..p..", "..p..", "ppwpp", "..p..", "..p.."];
   var RING = [".yyy.", "y...y", "y...y", "y...y", ".yyy."];
   var BUBBLE = [".bb.", "b..b", "b..b", ".bb."];
-  var MOON = ["..yyy..", ".yyyy..", "yyyy...", "yyyy...", "yyyy...", ".yyyyd.", "..yyy.."];
   var EEVEE_ART = {
     drop: [DROP, { b: "#38bdf8", w: "#e0f2fe" }],
     bolt: [["...yy.", "..yy..", ".yy...", "yyyyy.", "...yy.", "..yy..", ".yy...", "yy....", "y....."], { y: "#facc15" }],
@@ -797,7 +796,9 @@
     var told2 = Koi.say(["SNORLAX is getting sleepy..."]);
     /* Lying beside the photo, to its left, not across it. */
     /* A little larger than its sheet, to match the standing Snorlax it replaces. */
-    var sleeper = new Mon("snorlax-asleep", -R - 32, R + 14);
+    /* Placed where it was approved before the sprite was trimmed: the old sheet had 10px
+       of empty space under it and sat 3px off centre, 12px and 4px at this scale. */
+    var sleeper = new Mon("snorlax-asleep", -R - 28, R + 2);
     sleeper.resize(1.2);
     sleeper.el.style.opacity = 0;
     var base = mon.at(mon.x, mon.y);
@@ -1244,10 +1245,11 @@
     vaporeon: { dex: 134, stone: "water", stoneName: "WATER STONE", move: "VAPOREON used WATER GUN!", after: "The page is flooding!", show: flood },
     jolteon: { dex: 135, stone: "thunder", stoneName: "THUNDER STONE", move: "JOLTEON used THUNDER!", after: "Lightning struck the photo!", show: thunder },
     flareon: { dex: 136, stone: "fire", stoneName: "FIRE STONE", move: "FLAREON used FIRE SPIN!", after: "The photo is trapped in a ring of fire!", show: fireSpin },
-    espeon: { dex: 196, glow: "sun", line: "The photo is shining like the sun...", move: "ESPEON used PSYCHIC!", after: "The whole page is floating!", show: psychic },
-    umbreon: { dex: 197, glow: "moon", line: "The photo is shining like the moon...", move: "UMBREON used MOONLIGHT!", after: "Night fell over the page.", show: moonlight },
+    espeon: { dex: 196, charm: "sun", line: "Caesar's Window is shining like the sun!", move: "ESPEON used PSYCHIC!", after: "The whole page is floating!", show: psychic },
+    umbreon: { dex: 197, charm: "moon", line: "Caesar's Window is shining like the moon!", move: "UMBREON used MOONLIGHT!", after: "Night fell over the page.", show: moonlight },
     leafeon: { dex: 470, stone: "leaf", stoneName: "LEAF STONE", move: "LEAFEON used LEAF STORM!", after: "A gust of leaves swept the page!", show: leafStorm },
-    glaceon: { dex: 471, stone: "ice", stoneName: "ICE STONE", move: "GLACEON used BLIZZARD!", after: "The photo froze solid!", show: blizzard }
+    glaceon: { dex: 471, stone: "ice", stoneName: "ICE STONE", move: "GLACEON used BLIZZARD!", after: "The photo froze solid!", show: blizzard },
+    sylveon: { dex: 700, charm: "heart", line: "Caesar's Window turned into a heart!", move: "SYLVEON used DAZZLING GLEAM!", after: "The whole page is sparkling!", show: dazzlingGleam }
   };
   var EEVEE_FORMS = Object.keys(EEVEE_PATHS);
 
@@ -1281,6 +1283,49 @@
     "....bbdd....",
     ".....dd....."
   ];
+  /* Friendship and affection, drawn on the badge instead of a stone: the sun of Espeon's
+     day, the moon of Umbreon's night, the heart of Sylveon's affection. */
+  var CHARMS = {
+    sun: [[
+      ".....y.....",
+      ".y...y...y.",
+      "..y.ooo.y..",
+      "...ooooo...",
+      "..ooowooo..",
+      "yyoowwwooyy",
+      "..ooowooo..",
+      "...ooooo...",
+      "..y.ooo.y..",
+      ".y...y...y.",
+      ".....y....."
+    ], { y: "#fde047", o: "#f59e0b", w: "#fffbeb" }],
+    moon: [[
+      "....mmm....",
+      "..mmmm.....",
+      ".mmmm......",
+      ".mmm.......",
+      "mmmm.......",
+      "mmmd.......",
+      "mmmd.......",
+      ".mmmd......",
+      ".mmmmd...m.",
+      "..mmmmmmm..",
+      "....mmm...."
+    ], { m: "#fef3c7", d: "#fbbf24" }],
+    heart: [[
+      "..pp...pp..",
+      ".pppp.pppp.",
+      "ppwpppppppp",
+      "pwppppppppp",
+      "ppppppppppp",
+      ".ppppppppp.",
+      "..ppppppp..",
+      "...ppppp...",
+      "....ppp....",
+      ".....p....."
+    ], { p: "#f472b6", w: "#ffffff" }]
+  };
+
   var SYMBOLS = {
     water: ["..s...", ".sss..", "sssss.", "sssss.", ".sss..", "......"],
     thunder: ["...ss.", "..ss..", ".ssss.", "...ss.", "..ss..", ".s...."],
@@ -1317,7 +1362,7 @@
     var badge = page(".cw-avatar .cw-badge");
     var form = chosen;
     if (!form) {
-      /* At random: a stone, or friendship, which the theme decides. */
+      /* At random: a stone, affection, or friendship, which the theme decides. */
       var draw = EEVEE_FORMS.filter(function (f) {
         return f !== "espeon" && f !== "umbreon";
       }).concat(["friendship"]);
@@ -1326,6 +1371,7 @@
     }
     var path = EEVEE_PATHS[form];
     see("eevee:" + form);
+    var kind;
     var loading = preload([form]);
 
     var mon = new Mon("eevee", R * 0.3, R + 4, BEHIND);
@@ -1344,25 +1390,29 @@
     var a = avatar.getBoundingClientRect();
     var bx = b ? b.left + b.width / 2 - (a.left + a.width / 2) : R * 0.75;
     var by = b ? b.top + b.height / 2 - (a.top + a.height / 2) : R * 0.75;
+    /* A stone, or a charm (the sun, the moon, a heart), drawn on the badge, glinting. */
+    var kind = path.stone || path.charm;
+    stone = path.stone
+      ? Koi.pixels(stoneArt(path.stone), STONE_COLOURS[path.stone], "pkmn-prop pkmn-stone-gem", 3)
+      : Koi.pixels(CHARMS[path.charm][0], CHARMS[path.charm][1], "pkmn-prop pkmn-stone-gem", 3);
+    stone.style.left = bx - 17 + "px";
+    stone.style.top = by - 17 + "px";
+    stone.style.zIndex = IN_FRONT;
+    scene.appendChild(stone);
+    if (badge) badge.classList.add("pkmn-stone", "pkmn-stone-" + kind);
+    burst(bx, by);
+    glints = still()
+      ? 0
+      : setInterval(function () {
+          float(PINK, { p: "#fef9c3", w: "#ffffff" }, bx + (Math.random() - 0.5) * 50, by + (Math.random() - 0.5) * 50, [0, -14], 700, 0, 2);
+        }, 180);
     if (path.stone) {
-      stone = Koi.pixels(stoneArt(path.stone), STONE_COLOURS[path.stone], "pkmn-prop pkmn-stone-gem", 3);
-      stone.style.left = bx - 18 + "px";
-      stone.style.top = by - 18 + "px";
-      stone.style.zIndex = IN_FRONT;
-      scene.appendChild(stone);
-      if (badge) badge.classList.add("pkmn-stone", "pkmn-stone-" + path.stone);
-      burst(bx, by);
-      glints = still()
-        ? 0
-        : setInterval(function () {
-            float(PINK, { p: "#fef9c3", w: "#ffffff" }, bx + (Math.random() - 0.5) * 50, by + (Math.random() - 0.5) * 50, [0, -14], 700, 0, 2);
-          }, 180);
       await Koi.say(["A " + path.stoneName + " appeared on Caesar's Window!"]);
       await mon.hop(bx + 26, R + 4, 18, 380);
       await Koi.say(["EEVEE touched the " + path.stoneName + "!"]);
     } else {
-      photo("is-" + path.glow, true);
       await Koi.say([path.line]);
+      await mon.hop(bx + 26, R + 4, 18, 380);
       await Koi.say(["EEVEE is very fond of you!"]);
     }
     await loading;
@@ -1372,23 +1422,22 @@
       stone.remove();
     }
     await evolve(mon, form);
-    if (badge) badge.classList.remove("pkmn-stone", "pkmn-stone-" + path.stone);
+    /* Sylveon's sprite comes from another game, drawn heavier: a fifth smaller, it
+       stands as tall as its brothers. */
+    if (form === "sylveon") mon.resize(0.8);
+    if (badge) badge.classList.remove("pkmn-stone", "pkmn-stone-" + kind);
 
-    /* The evolution steps away from Caesar's Window, which it has just used, to give
-       its show room. */
-    await mon.hop(R + 78, R + 4, 22, 520);
+    /* The evolution walks a few steps away from Caesar's Window, which it has just used,
+       to give its show room. */
+    await mon.go(R + 78, R + 4, 700, "ease-in-out");
 
     var told = Koi.say([path.move]);
     await path.show(mon, told, path.after);
-    if (path.glow) photo("is-" + path.glow, false);
-    await mon.hop(mon.x, mon.y, 18, 400);
 
-    /* It leaves behind the photo, as every Pokémon does, the photo being the curtain they
-       come and go behind. The straight way there, from beside the badge, would cross the
-       badge in the photo's corner, so it first hops up the photo's right side, above the
-       badge, and goes behind the photo from there. */
-    await mon.hop(R + 34, -R * 0.1, 30, 600);
-    await hide(mon, 1000);
+    /* And walks back behind the photo, as every Pokémon does, the photo being the curtain
+       they come and go behind. From where it stands it is clear of the badge, so it goes
+       behind the badge too, never across it. */
+    await hide(mon, 1500);
   }
 
   /* A layer over the whole page for an evolution's weather; gone when the act is. */
@@ -1530,23 +1579,25 @@
     sky.remove();
   }
 
-  /* Glaceon: a blizzard over the whole page, frost creeping in from the screen's edges,
-     and the photo frozen. */
+  /* Glaceon: a blizzard over the whole page, drawn as two sheets of snow that drift down
+     and across without end (a background moving, not hundreds of flakes, so it stays
+     smooth on a phone), frost creeping in from the screen's edges, and the photo
+     freezing slowly. Everything eases in and out together. */
   async function blizzard(mon, told, after) {
     var sky = weather();
+    sky.classList.add("pkmn-blizzard");
+    ["is-far", "is-near"].forEach(function (depth) {
+      var snow = document.createElement("div");
+      snow.className = "pkmn-snow " + depth;
+      sky.appendChild(snow);
+    });
     var frost = document.createElement("div");
     frost.className = "pkmn-frost";
     sky.appendChild(frost);
     photo("is-frozen", true);
-    var snow = every(50, function () {
-      var x = Math.random() * (window.innerWidth + 200) - 100;
-      drift(sky, SNOW, { w: "#f0f9ff" }, 2 + ((Math.random() * 2) | 0), x, -20, x - 120, window.innerHeight + 20, 2200 + Math.random() * 1200, 180);
-    });
     await finishWeather(sky, told, after);
-    snow();
-    frost.classList.add("is-melting");
     photo("is-frozen", false);
-    await wait(ms(1500));
+    await sky.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(1600), easing: "ease-in-out", fill: "forwards" }).finished;
     sky.remove();
   }
 
@@ -1567,34 +1618,93 @@
     await wait(ms(900));
   }
 
-  /* Umbreon: night falls, stars come out across the sky with a moon, and Umbreon's rings
-     glow round the photo. */
+  /* Umbreon: Caesar's Window, shining like the moon, rises into the sky and becomes the
+     moon; night falls, stars come out one by one, a shooting star crosses the sky, the
+     moon's light falls on the photo, and Umbreon's rings glow. */
   async function moonlight(mon, told, after) {
     var R = radius;
+    var badge = page(".cw-avatar .cw-badge");
+    var start = badge ? badge.getBoundingClientRect() : avatar.getBoundingClientRect();
     night(true);
     var sky = weather();
-    var moon = Koi.pixels(MOON, { y: "#fef3c7", d: "#fde68a" }, "pkmn-prop pkmn-moon", 5);
-    moon.style.left = window.innerWidth * 0.78 + "px";
-    moon.style.top = window.innerHeight * 0.08 + "px";
+    var moon = Koi.pixels(CHARMS.moon[0], CHARMS.moon[1], "pkmn-prop pkmn-moon", 6);
     sky.appendChild(moon);
-    for (var i = 0; i < 26; i++) {
+    var mx = window.innerWidth * 0.8;
+    var my = window.innerHeight * 0.1;
+    moon.animate(
+      [
+        { transform: "translate(" + (start.left + start.width / 2 - 33) + "px," + (start.top + start.height / 2 - 33) + "px) scale(0.5)" },
+        { transform: "translate(" + mx + "px," + my + "px) scale(1)" }
+      ],
+      { duration: ms(1800), easing: "cubic-bezier(0.3, 0, 0.3, 1)", fill: "forwards" }
+    );
+    for (var i = 0; i < 30; i++) {
       var star = Koi.pixels(PINK, { p: "#fef9c3", w: "#ffffff" }, "pkmn-prop pkmn-star", 2);
       star.style.left = Math.random() * window.innerWidth + "px";
-      star.style.top = Math.random() * window.innerHeight * 0.6 + "px";
-      star.style.animationDelay = -Math.random() * 2 + "s";
+      star.style.top = Math.random() * window.innerHeight * 0.65 + "px";
+      star.style.animationDelay = ms(800 + i * 70) / 1000 + "s, " + -Math.random() * 2 + "s";
       sky.appendChild(star);
     }
-    var aura = document.createElement("div");
-    aura.className = "pkmn-aura pkmn-aura-umbreon";
-    aura.style.left = -R + "px";
-    aura.style.top = -R + "px";
-    aura.style.width = aura.style.height = R * 2 + "px";
-    scene.appendChild(aura);
+    await wait(ms(1600));
+    /* The moon's light on the photo, and on Umbreon's rings. */
+    var a = avatar.getBoundingClientRect();
+    var beam = document.createElement("div");
+    beam.className = "pkmn-moonbeam";
+    var dx = a.left + a.width / 2 - (mx + 33);
+    var dy = a.top + a.height / 2 - (my + 33);
+    beam.style.left = mx + 33 + "px";
+    beam.style.top = my + 33 + "px";
+    beam.style.height = Math.hypot(dx, dy) + "px";
+    beam.style.rotate = Math.atan2(-dx, dy) + "rad";
+    sky.appendChild(beam);
+    photo("is-moonlit", true);
+    mon.el.classList.add("is-ringed");
+    var shooting = every(1400, function () {
+      var y = Math.random() * window.innerHeight * 0.3;
+      var trail = document.createElement("div");
+      trail.className = "pkmn-shooting";
+      trail.style.top = y + "px";
+      sky.appendChild(trail);
+      setTimeout(trail.remove.bind(trail), 1100);
+    });
     await finishWeather(sky, told, after);
-    await sky.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(1200), fill: "forwards" }).finished;
+    shooting();
+    mon.el.classList.remove("is-ringed");
+    photo("is-moonlit", false);
+    night(false, 1600);
+    await sky.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(1600), easing: "ease-in-out", fill: "forwards" }).finished;
     sky.remove();
-    aura.remove();
-    night(false, 1200);
+  }
+
+  /* Sylveon: Dazzling Gleam, a flash of white light from Sylveon that washes the page
+     for a moment, white and gold stars scattering from it and twinkling, a few hearts
+     rising from Sylveon, and the photo left shining with a warm light. */
+  async function dazzlingGleam(mon, told, after) {
+    var sky = weather();
+    var m = mon.el.getBoundingClientRect();
+    var cx = m.left + m.width / 2;
+    var cy = m.top + m.height / 2;
+    var gleam = document.createElement("div");
+    gleam.className = "pkmn-gleam";
+    gleam.style.left = cx + "px";
+    gleam.style.top = cy + "px";
+    sky.appendChild(gleam);
+    flash();
+    if (!still()) {
+      for (var i = 0; i < 26; i++) {
+        var angle = (i / 26) * Math.PI * 2;
+        var reach = 140 + Math.random() * 260;
+        drift(sky, PINK, { p: i % 3 ? "#ffffff" : "#fde68a", w: "#fffbeb" }, 3, cx, cy, cx + Math.cos(angle) * reach, cy + Math.sin(angle) * reach, 1500);
+      }
+      for (var h = 0; h < 3; h++) {
+        float(CHARMS.heart[0], CHARMS.heart[1], mon.x - 10 + h * 10, mon.y - mon.h, [(h - 1) * 16, -50], 1500, h * 250, 2);
+      }
+    }
+    photo("is-gleaming", true);
+    await finishWeather(sky, told, after);
+    photo("is-gleaming", false);
+    await sky.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(900), fill: "forwards" }).finished;
+    sky.remove();
   }
 
   /* The page swaying in a gust, and the page floating on Psychic. */
@@ -2330,53 +2440,63 @@
       var list = document.createElement("ul");
       var all = seen();
       /* One entry: its number, sprite and name, or a silhouette and "???" when not yet
-         met. */
-      function entry(no, sprite, label, known, choose) {
+         met. `more` marks one that opens a page of its own. */
+      function entry(no, sprite, label, known, choose, more) {
         var item = document.createElement("li");
         var button = document.createElement("button");
         button.type = "button";
         button.className = "pkmn-dex-entry" + (known ? "" : " is-unseen");
         button.setAttribute("aria-label", known ? label : "Unknown Pokémon, number " + no);
         button.innerHTML =
-          '<span class="pkmn-dex-no">' + pad(no) + "</span>" +
-          '<img src="' + sprite.url + '" alt="" width="' + sprite.width + '" height="' + sprite.height + '">' +
-          '<span class="pkmn-dex-name">' + (known ? label.toUpperCase() : "???") + "</span>";
-        button.addEventListener("click", function () {
-          closeDex();
-          choose();
-        });
+          '<span class="pkmn-dex-no">' + (no === null ? "" : pad(no)) + "</span>" +
+          (sprite ? '<img src="' + sprite.url + '" alt="" width="' + sprite.width + '" height="' + sprite.height + '">' : "<span></span>") +
+          '<span class="pkmn-dex-name">' + (known ? label.toUpperCase() : "???") + (more ? " ▸" : "") + "</span>";
+        button.addEventListener("click", choose);
         item.appendChild(button);
         list.appendChild(item);
+        return button;
       }
-      keys.forEach(function (act) {
+      /* The Pokédex's first page: every Pokémon. One with variants (Eevee) opens a second
+         page instead of playing at once, so its evolutions never crowd the list. */
+      function front() {
+        list.innerHTML = "";
+        title.innerHTML = "<span>POKéDEX</span><span>SEEN " + met.length + "/" + keys.length + "</span>";
+        keys.forEach(function (act) {
+          var first = data[ACTS[act].keys[0]];
+          if (ACTS[act].variants) {
+            entry(ACTS[act].dex, first, first.name, met.indexOf(act) >= 0, function () {
+              variants(act);
+            }, true);
+          } else {
+            entry(ACTS[act].dex, first, first.name, met.indexOf(act) >= 0, function () {
+              closeDex();
+              release(act);
+            });
+          }
+        });
+      }
+      /* The second page: back, the Pokémon at random, then each of its variants. */
+      function variants(act) {
+        list.innerHTML = "";
+        var forms = ACTS[act].variants;
+        var count = forms.filter(function (form) {
+          return all.indexOf(act + ":" + form) >= 0;
+        }).length;
         var first = data[ACTS[act].keys[0]];
-        /* The Pokémon itself: its act, at random where it has variants. */
-        entry(ACTS[act].dex, first, first.name + (ACTS[act].variants ? " ?" : ""), met.indexOf(act) >= 0, function () {
+        title.innerHTML = "<span>" + first.name.toUpperCase() + "</span><span>SEEN " + count + "/" + forms.length + "</span>";
+        entry(null, null, "◂ Back", true, front).focus();
+        entry(ACTS[act].dex, first, "Random", true, function () {
+          closeDex();
           release(act);
         });
-        /* Its variants, if any, in one row of small sprites under it, so they do not
-           crowd the list: silhouettes until met, named on hover and to screen readers. */
-        if (ACTS[act].variants) {
-          var row = document.createElement("li");
-          row.className = "pkmn-dex-variants";
-          ACTS[act].variants.forEach(function (form) {
-            var known = all.indexOf(act + ":" + form) >= 0;
-            var sprite = data[form];
-            var button = document.createElement("button");
-            button.type = "button";
-            button.className = "pkmn-dex-variant" + (known ? "" : " is-unseen");
-            button.title = known ? sprite.name : "???";
-            button.setAttribute("aria-label", known ? sprite.name : "Unknown Pokémon, number " + EEVEE_PATHS[form].dex);
-            button.innerHTML = '<img src="' + sprite.url + '" alt="" width="' + sprite.width + '" height="' + sprite.height + '">';
-            button.addEventListener("click", function () {
-              closeDex();
-              release(act, form);
-            });
-            row.appendChild(button);
+        forms.forEach(function (form) {
+          entry(EEVEE_PATHS[form].dex, data[form], data[form].name, all.indexOf(act + ":" + form) >= 0, function () {
+            closeDex();
+            release(act, form);
           });
-          list.appendChild(row);
-        }
-      });
+        });
+      }
+      front();
       dexMenu.appendChild(list);
 
       /* Above the ball, its right edge on the ball's. */
@@ -2462,7 +2582,7 @@
         console.error(error);
       })
       .then(function () {
-        ["is-zapped", "is-burning", "is-tilted", "is-playing", "is-shadowed", "is-shivering", "is-confused", "is-bumped", "is-sun", "is-moon", "is-floating", "is-frozen", "is-levitating"].forEach(function (effect) {
+        ["is-zapped", "is-burning", "is-tilted", "is-playing", "is-shadowed", "is-shivering", "is-confused", "is-bumped", "is-floating", "is-frozen", "is-levitating", "is-moonlit", "is-gleaming"].forEach(function (effect) {
           photo(effect, false);
         });
         /* Whatever an act did to the rest of the page is undone, even if it failed. */
@@ -2483,6 +2603,9 @@
         });
         restoreTheme();
         homePicture();
+        document.querySelectorAll(".pkmn-sprite.is-ringed").forEach(function (el) {
+          el.classList.remove("is-ringed");
+        });
         document.querySelectorAll(".pkmn-stone, .pkmn-possessed").forEach(function (el) {
           el.className = el.className.replace(/\bpkmn-(stone|possessed)\S*/g, "").trim();
         });

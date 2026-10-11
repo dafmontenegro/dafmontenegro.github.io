@@ -164,7 +164,13 @@
   "snorlax-asleep": {
     "name": "Snorlax",
     "file": "img/pokemon/snorlax-asleep.gif",
-    "width": 80,
-    "height": 48
+    "width": 66,
+    "height": 38
+  },
+  "sylveon": {
+    "name": "Sylveon",
+    "file": "img/pokemon/sylveon.gif",
+    "width": 58,
+    "height": 62
   }
 }
