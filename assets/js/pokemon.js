@@ -82,6 +82,11 @@
      A Pokémon in the scene. (x, y) is the point under its feet, in px from the centre of
      the photo; the photo's rim is `radius` away. */
 
+  /* Sprites drawn from another game at a heavier scale, shown smaller to stand as tall as
+     the rest: applied every time the sprite is shown, so it is never seen at the wrong
+     size, even for a frame of an evolution. */
+  var DRAWN_AT = { sylveon: 0.8 };
+
   function Mon(key, x, y, z) {
     this.el = document.createElement("img");
     this.el.className = "pkmn-sprite";
@@ -96,9 +101,10 @@
 
   Mon.prototype.show = function (key) {
     var s = data[key];
+    var k = DRAWN_AT[key] || 1;
     this.key = key;
-    this.w = s.width;
-    this.h = s.height;
+    this.w = Math.round(s.width * k);
+    this.h = Math.round(s.height * k);
     this.el.src = s.url;
     this.el.width = s.width;
     this.el.height = s.height;
@@ -458,11 +464,12 @@
   }
 
   /* Darkness over the whole page but the photo, which is lifted above it. */
-  function night(on, duration) {
+  function night(on, duration, deep) {
     var veil = document.querySelector(".pkmn-night");
     if (on && !veil) {
       veil = document.createElement("div");
-      veil.className = "pkmn-night";
+      /* `deep`: a real night, even and dark, the same over the light theme as the dark. */
+      veil.className = "pkmn-night" + (deep ? " is-deep" : "");
       veil.setAttribute("aria-hidden", "true");
       var r = avatar.getBoundingClientRect();
       veil.style.setProperty("--x", r.left + r.width / 2 + "px");
@@ -1249,9 +1256,15 @@
     umbreon: { dex: 197, charm: "moon", line: "Caesar's Window is shining like the moon!", move: "UMBREON used MOONLIGHT!", after: "Night fell over the page.", show: moonlight },
     leafeon: { dex: 470, stone: "leaf", stoneName: "LEAF STONE", move: "LEAFEON used LEAF STORM!", after: "A gust of leaves swept the page!", show: leafStorm },
     glaceon: { dex: 471, stone: "ice", stoneName: "ICE STONE", move: "GLACEON used BLIZZARD!", after: "The photo froze solid!", show: blizzard },
-    sylveon: { dex: 700, charm: "heart", line: "Caesar's Window turned into a heart!", move: "SYLVEON used DAZZLING GLEAM!", after: "The whole page is sparkling!", show: dazzlingGleam }
+    sylveon: { dex: 700, charm: "heart", line: "Caesar's Window turned into a heart!", move: "SYLVEON used DAZZLING GLEAM!", after: "SYLVEON tied its bow on the photo!", show: dazzlingGleam }
   };
   var EEVEE_FORMS = Object.keys(EEVEE_PATHS);
+  var moonGem = null; // the moon left on the badge for Umbreon's Moonlight
+
+  /* Where the text box sits, so nothing is scattered behind it. */
+  function clearOfBox(x, y) {
+    return y < window.innerHeight - 130;
+  }
 
   /* The evolution stones, drawn: a gem of the element's colour with its symbol inside.
      The ice stone is a cut crystal, so it never reads as the water stone. */
@@ -1325,6 +1338,23 @@
       ".....p....."
     ], { p: "#f472b6", w: "#ffffff" }]
   };
+
+  /* Sylveon's bow, tied on the photo. */
+  var BOW = [
+    "dd.........dd",
+    "dpd.......dpd",
+    "dpwd.....dppd",
+    "dpwpd...dpppd",
+    "dpppdd.ddpppd",
+    "dppppdddppppd",
+    "dpppdd.ddpppd",
+    "dppd..dpd.dpd",
+    "ddd..dpd..ddd",
+    ".....dpd.....",
+    "....dpd.dd...",
+    "....dd...d..."
+  ];
+  var BOW_COLOURS = { p: "#f9a8d4", d: "#be185d", w: "#fdf2f8" };
 
   var SYMBOLS = {
     water: ["..s...", ".sss..", "sssss.", "sssss.", ".sss..", "......"],
@@ -1417,15 +1447,15 @@
     }
     await loading;
     clearInterval(glints);
-    if (stone) {
+    /* Umbreon's moon stays on the badge through the evolution: it is the moon that then
+       rises into the sky. Every other stone or charm is used up. */
+    moonGem = form === "umbreon" ? stone : null;
+    if (stone && !moonGem) {
       burst(bx, by);
       stone.remove();
     }
     await evolve(mon, form);
-    /* Sylveon's sprite comes from another game, drawn heavier: a fifth smaller, it
-       stands as tall as its brothers. */
-    if (form === "sylveon") mon.resize(0.8);
-    if (badge) badge.classList.remove("pkmn-stone", "pkmn-stone-" + kind);
+    if (badge && !moonGem) badge.classList.remove("pkmn-stone", "pkmn-stone-" + kind);
 
     /* The evolution walks a few steps away from Caesar's Window, which it has just used,
        to give its show room. */
@@ -1618,68 +1648,94 @@
     await wait(ms(900));
   }
 
-  /* Umbreon: Caesar's Window, shining like the moon, rises into the sky and becomes the
-     moon; night falls, stars come out one by one, a shooting star crosses the sky, the
-     moon's light falls on the photo, and Umbreon's rings glow. */
+  /* Umbreon: the moon on Caesar's Window rises into the sky; a deep night falls over the
+     page, the same in the light theme as in the dark; stars come out one by one, never on
+     the photo or the text box; a shooting star crosses now and then; the moon's light
+     falls on the photo's rim and Umbreon's rings glow. Then it all fades together. */
   async function moonlight(mon, told, after) {
-    var R = radius;
     var badge = page(".cw-avatar .cw-badge");
-    var start = badge ? badge.getBoundingClientRect() : avatar.getBoundingClientRect();
-    night(true);
+    var from = (moonGem || badge || avatar).getBoundingClientRect();
+    var a = avatar.getBoundingClientRect();
+    var W = window.innerWidth;
+    var H = window.innerHeight;
+    night(true, 0, true);
     var sky = weather();
+    var SIZE = 66; // the moon: 11 pixels at 6px
+    /* High in the empty sky to the right of the photo, under the header's links. */
+    var mx = Math.min(W - SIZE - 16, a.right + (W - a.right) * 0.45);
+    var my = Math.max(90, a.top - SIZE * 0.6);
     var moon = Koi.pixels(CHARMS.moon[0], CHARMS.moon[1], "pkmn-prop pkmn-moon", 6);
+    moon.style.transform = "translate(" + (from.left + from.width / 2 - SIZE / 2) + "px," + (from.top + from.height / 2 - SIZE / 2) + "px) scale(0.5)";
     sky.appendChild(moon);
-    var mx = window.innerWidth * 0.8;
-    var my = window.innerHeight * 0.1;
-    moon.animate(
+    /* The gem on the badge and the moon in the sky are one: the moon takes over exactly
+       where the gem was, and the badge goes back to Caesar's Window. */
+    if (moonGem) {
+      moonGem.remove();
+      moonGem = null;
+    }
+    if (badge) badge.classList.remove("pkmn-stone", "pkmn-stone-moon");
+    await moon.animate(
       [
-        { transform: "translate(" + (start.left + start.width / 2 - 33) + "px," + (start.top + start.height / 2 - 33) + "px) scale(0.5)" },
+        { transform: moon.style.transform },
         { transform: "translate(" + mx + "px," + my + "px) scale(1)" }
       ],
-      { duration: ms(1800), easing: "cubic-bezier(0.3, 0, 0.3, 1)", fill: "forwards" }
-    );
-    for (var i = 0; i < 30; i++) {
+      { duration: ms(2000), easing: "cubic-bezier(0.45, 0, 0.25, 1)", fill: "forwards" }
+    ).finished;
+
+    /* Stars, one by one, anywhere but on the photo, the moon or the text box. */
+    var placed = 0;
+    for (var tries = 0; placed < 34 && tries < 400; tries++) {
+      var sx = Math.random() * W;
+      var sy = Math.random() * H * 0.7;
+      var onPhoto = Math.hypot(sx - (a.left + a.width / 2), sy - (a.top + a.height / 2)) < a.width / 2 + 30;
+      var onMoon = Math.hypot(sx - (mx + SIZE / 2), sy - (my + SIZE / 2)) < SIZE;
+      if (onPhoto || onMoon || !clearOfBox(sx, sy)) continue;
       var star = Koi.pixels(PINK, { p: "#fef9c3", w: "#ffffff" }, "pkmn-prop pkmn-star", 2);
-      star.style.left = Math.random() * window.innerWidth + "px";
-      star.style.top = Math.random() * window.innerHeight * 0.65 + "px";
-      star.style.animationDelay = ms(800 + i * 70) / 1000 + "s, " + -Math.random() * 2 + "s";
+      star.style.left = sx + "px";
+      star.style.top = sy + "px";
+      star.style.animationDelay = ms(placed * 60) / 1000 + "s, " + -Math.random() * 2 + "s";
       sky.appendChild(star);
+      placed++;
     }
-    await wait(ms(1600));
-    /* The moon's light on the photo, and on Umbreon's rings. */
-    var a = avatar.getBoundingClientRect();
+
+    /* The moon's light, from the moon to the photo's rim, and the photo silvered by it. */
+    var cx = a.left + a.width / 2;
+    var cy = a.top + a.height / 2;
+    var dx = cx - (mx + SIZE / 2);
+    var dy = cy - (my + SIZE / 2);
     var beam = document.createElement("div");
     beam.className = "pkmn-moonbeam";
-    var dx = a.left + a.width / 2 - (mx + 33);
-    var dy = a.top + a.height / 2 - (my + 33);
-    beam.style.left = mx + 33 + "px";
-    beam.style.top = my + 33 + "px";
-    beam.style.height = Math.hypot(dx, dy) + "px";
+    beam.style.left = mx + SIZE / 2 + "px";
+    beam.style.top = my + SIZE / 2 + "px";
+    beam.style.height = Math.max(0, Math.hypot(dx, dy) - a.width / 2) + "px";
     beam.style.rotate = Math.atan2(-dx, dy) + "rad";
-    sky.appendChild(beam);
+    sky.insertBefore(beam, moon);
     photo("is-moonlit", true);
     mon.el.classList.add("is-ringed");
-    var shooting = every(1400, function () {
-      var y = Math.random() * window.innerHeight * 0.3;
+    var shooting = every(1700, function () {
       var trail = document.createElement("div");
       trail.className = "pkmn-shooting";
-      trail.style.top = y + "px";
+      trail.style.top = Math.random() * Math.min(my, H * 0.25) + "px";
       sky.appendChild(trail);
       setTimeout(trail.remove.bind(trail), 1100);
     });
     await finishWeather(sky, told, after);
+    await wait(ms(600));
+
+    /* Dawn: everything fades at once, at the same pace. */
     shooting();
     mon.el.classList.remove("is-ringed");
     photo("is-moonlit", false);
-    night(false, 1600);
-    await sky.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(1600), easing: "ease-in-out", fill: "forwards" }).finished;
+    night(false, 1800);
+    await sky.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(1800), easing: "ease-in-out", fill: "forwards" }).finished;
     sky.remove();
   }
 
-  /* Sylveon: Dazzling Gleam, a flash of white light from Sylveon that washes the page
-     for a moment, white and gold stars scattering from it and twinkling, a few hearts
-     rising from Sylveon, and the photo left shining with a warm light. */
+  /* Sylveon: Dazzling Gleam, a flash of white light from Sylveon with white and gold stars
+     scattering and twinkling; then Sylveon ties its bow on the photo, which glows a soft
+     pink, and hops for joy, hearts rising from it as it does. */
   async function dazzlingGleam(mon, told, after) {
+    var R = radius;
     var sky = weather();
     var m = mon.el.getBoundingClientRect();
     var cx = m.left + m.width / 2;
@@ -1693,17 +1749,32 @@
     if (!still()) {
       for (var i = 0; i < 26; i++) {
         var angle = (i / 26) * Math.PI * 2;
-        var reach = 140 + Math.random() * 260;
-        drift(sky, PINK, { p: i % 3 ? "#ffffff" : "#fde68a", w: "#fffbeb" }, 3, cx, cy, cx + Math.cos(angle) * reach, cy + Math.sin(angle) * reach, 1500);
-      }
-      for (var h = 0; h < 3; h++) {
-        float(CHARMS.heart[0], CHARMS.heart[1], mon.x - 10 + h * 10, mon.y - mon.h, [(h - 1) * 16, -50], 1500, h * 250, 2);
+        var reach = 140 + Math.random() * 240;
+        var tx = cx + Math.cos(angle) * reach;
+        var ty = cy + Math.sin(angle) * reach;
+        if (!clearOfBox(tx, ty)) ty = Math.min(ty, window.innerHeight - 140);
+        drift(sky, PINK, { p: i % 3 ? "#ffffff" : "#fde68a", w: "#fffbeb" }, 3, cx, cy, tx, ty, 1500);
       }
     }
-    photo("is-gleaming", true);
+    await wait(ms(900));
+
+    /* The bow, tied on top of the photo. */
+    var SIZE = 4;
+    var bow = Koi.pixels(BOW, BOW_COLOURS, "pkmn-prop pkmn-bow", SIZE);
+    bow.style.left = (-BOW[0].length * SIZE) / 2 + "px";
+    bow.style.top = -R - (BOW.length * SIZE) / 2 + 6 + "px";
+    bow.style.zIndex = IN_FRONT;
+    scene.appendChild(bow);
+    photo("is-charmed", true);
+    var hearts = every(380, function () {
+      float(CHARMS.heart[0], CHARMS.heart[1], mon.x - 10 + Math.random() * 20, mon.y - mon.h, [(Math.random() - 0.5) * 50, -70], 1600, 0, 2);
+    });
+    for (var h = 0; h < 3; h++) await mon.hop(mon.x, mon.y, 12, 380);
     await finishWeather(sky, told, after);
-    photo("is-gleaming", false);
-    await sky.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(900), fill: "forwards" }).finished;
+    hearts();
+    photo("is-charmed", false);
+    await bow.animate([{ opacity: 1 }, { opacity: 0, transform: "translateY(-10px)" }], { duration: ms(900), easing: "ease-in", fill: "forwards" }).finished;
+    bow.remove();
     sky.remove();
   }
 
@@ -2582,16 +2653,17 @@
         console.error(error);
       })
       .then(function () {
-        ["is-zapped", "is-burning", "is-tilted", "is-playing", "is-shadowed", "is-shivering", "is-confused", "is-bumped", "is-floating", "is-frozen", "is-levitating", "is-moonlit", "is-gleaming"].forEach(function (effect) {
+        ["is-zapped", "is-burning", "is-tilted", "is-playing", "is-shadowed", "is-shivering", "is-confused", "is-bumped", "is-floating", "is-frozen", "is-levitating", "is-moonlit", "is-charmed"].forEach(function (effect) {
           photo(effect, false);
         });
         /* Whatever an act did to the rest of the page is undone, even if it failed. */
         night(false);
         chaos(false);
         undoDitto();
+        moonGem = null;
         tremor(0);
         unbite();
-        scene.querySelectorAll(".pkmn-portrait, .pkmn-scorch, .pkmn-aura, .pkmn-rift, .pkmn-mustache, .pkmn-spoon, .pkmn-mic, .pkmn-anger, .pkmn-firespin, .pkmn-stone-gem").forEach(function (left) {
+        scene.querySelectorAll(".pkmn-portrait, .pkmn-scorch, .pkmn-aura, .pkmn-rift, .pkmn-mustache, .pkmn-spoon, .pkmn-mic, .pkmn-anger, .pkmn-firespin, .pkmn-stone-gem, .pkmn-bow").forEach(function (left) {
           left.remove();
         });
         lull(false);
