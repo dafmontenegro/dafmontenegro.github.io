@@ -1244,14 +1244,40 @@
   animation: pkmn-night 1.4s ease-out;
 }
 
-/* Its moustache, drawn on with a marker: the stroke is revealed by its dash offset. */
-.pkmn-mustache {
-  overflow: visible;
+/* Its microphone, which is also its marker; it pulses as Jigglypuff sings into it. */
+.pkmn-mic {
+  transform-origin: 50% 100%;
 }
 
-.pkmn-mustache path {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
+.pkmn-mic.is-singing {
+  animation: pkmn-mic 0.26s ease-in-out infinite alternate;
+}
+
+@keyframes pkmn-mic {
+  to {
+    scale: 1.15;
+  }
+}
+
+/* Jigglypuff in a fury: red in the face, puffed up. */
+.pkmn-sprite.is-furious {
+  filter: drop-shadow(0 0 4px #ef4444) sepia(0.4) saturate(2.4) hue-rotate(-20deg);
+}
+
+/* The anger vein over its head, throbbing. */
+.pkmn-anger {
+  animation: pkmn-anger 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes pkmn-anger {
+  to {
+    scale: 1.35;
+  }
+}
+
+/* The pixel moustache, laid on the upper lip. */
+.pkmn-mustache {
+  transform-origin: 50% 50%;
 }
 
 /* Rotom inside the theme button: it shakes and glows orange, as Rotom does. */
@@ -1538,6 +1564,8 @@
   .pkmn-possessed,
   .pkmn-rift,
   .pkmn-spoon,
+  .pkmn-mic.is-singing,
+  .pkmn-anger,
   .cw-avatar.is-playing > :first-child,
   .cw-avatar.is-shivering > :first-child,
   .cw-avatar.is-confused > :first-child,
