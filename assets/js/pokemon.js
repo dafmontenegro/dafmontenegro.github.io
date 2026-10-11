@@ -1383,12 +1383,12 @@
     if (path.glow) photo("is-" + path.glow, false);
     await mon.hop(mon.x, mon.y, 18, 400);
 
-    /* It leaves walking off to the right, fading: going back behind the photo, as the
-       others do, would take it across the badge in the photo's corner. */
-    var leaving = mon.go(R + 170, R + 4, 1000, "ease-in");
-    await mon.fade(1000);
-    await leaving;
-    mon.remove();
+    /* It leaves behind the photo, as every Pokémon does, the photo being the curtain they
+       come and go behind. The straight way there, from beside the badge, would cross the
+       badge in the photo's corner, so it first hops up the photo's right side, above the
+       badge, and goes behind the photo from there. */
+    await mon.hop(R + 34, -R * 0.1, 30, 600);
+    await hide(mon, 1000);
   }
 
   /* A layer over the whole page for an evolution's weather; gone when the act is. */
