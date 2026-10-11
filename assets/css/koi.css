@@ -1318,6 +1318,23 @@
   }
 }
 
+/* Giratina's Origin Forme in the Distortion World, on its own stage over the turned
+   page, glowing so it reads against the dark; and the shadows it trails. */
+.pkmn-giant {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  margin: 0;
+  image-rendering: pixelated;
+  transform-origin: 50% 50%;
+  filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.6)) drop-shadow(0 0 22px rgba(124, 58, 237, 0.5));
+}
+
+.pkmn-giant.is-ghost {
+  filter: brightness(0) drop-shadow(0 0 6px rgba(124, 58, 237, 0.9));
+}
+
 /* The page in the Distortion World: upside down. */
 .pkmn-turnable {
   transition: transform 1.2s cubic-bezier(0.6, 0, 0.3, 1);
@@ -1342,6 +1359,181 @@
 /* The photo held by Alakazam's Psychic on its way home. */
 .pkmn-psychic-hold {
   filter: drop-shadow(0 0 10px #c084fc) drop-shadow(0 0 22px #818cf8);
+}
+
+/* The evolution stone drawn on Caesar's Window: glowing, bobbing gently. */
+.pkmn-stone-gem {
+  filter: drop-shadow(0 0 4px #fff) drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+  animation: pkmn-gem 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes pkmn-gem {
+  to {
+    translate: 0 -4px;
+  }
+}
+
+/* An evolution's weather sits over the whole page, as MissingNo.'s stage does. */
+.pkmn-weather {
+  z-index: 36;
+}
+
+/* Vaporeon: water rising from the bottom of the screen, its surface rippling, draining
+   again at the end; the photo bobs on it. */
+.pkmn-flood {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 38vh;
+  background:
+    radial-gradient(ellipse 40px 10px at 20px 0, rgba(224, 242, 254, 0.7), transparent 70%) 0 0 / 80px 20px repeat-x,
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.55), rgba(3, 105, 161, 0.7));
+  transform-origin: bottom;
+  animation:
+    pkmn-flood 1.4s ease-out both,
+    pkmn-ripple 1.2s linear infinite;
+}
+
+.pkmn-flood.is-draining {
+  animation: pkmn-drain 1.2s ease-in forwards;
+}
+
+@keyframes pkmn-flood {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes pkmn-drain {
+  to {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes pkmn-ripple {
+  to {
+    background-position: 80px 0, 0 0;
+  }
+}
+
+.cw-avatar.is-floating > :first-child {
+  animation: pkmn-bob 1.6s ease-in-out infinite;
+}
+
+@keyframes pkmn-bob {
+  50% {
+    transform: translateY(-10px) rotate(-3deg);
+  }
+}
+
+/* Jolteon's lightning: one bolt drawn from the top of the screen to the photo. */
+.pkmn-strike {
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: drop-shadow(0 0 8px #fde047);
+}
+
+/* Flareon's Fire Spin: the ring of flames turns round the photo. */
+.pkmn-firespin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  animation: pkmn-spin 2.4s linear infinite;
+}
+
+@keyframes pkmn-spin {
+  to {
+    rotate: 1turn;
+  }
+}
+
+/* Leafeon's Leaf Storm: the page sways in the gust. */
+.pkmn-sway {
+  transform-origin: 50% 0;
+  animation: pkmn-sway 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes pkmn-sway {
+  from {
+    transform: rotate(-1.2deg) translateX(-6px);
+  }
+  to {
+    transform: rotate(1.2deg) translateX(6px);
+  }
+}
+
+/* Glaceon's Blizzard: frost creeping in from the screen's edges, the photo frozen. */
+.pkmn-frost {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 120px 40px rgba(224, 242, 254, 0.75);
+  animation: pkmn-night 1.6s ease-out both;
+}
+
+.pkmn-frost.is-melting {
+  animation: pkmn-melt 1.4s ease-in forwards;
+}
+
+@keyframes pkmn-melt {
+  to {
+    opacity: 0;
+  }
+}
+
+.cw-avatar.is-frozen > :first-child img {
+  filter: saturate(0.3) brightness(1.15) hue-rotate(170deg) contrast(0.9);
+  box-shadow:
+    0 0 0 4px rgba(224, 242, 254, 0.9),
+    0 0 26px 8px rgba(186, 230, 253, 0.8);
+  transition:
+    filter 0.8s ease,
+    box-shadow 0.8s ease;
+}
+
+/* Espeon's Psychic: the photo levitates, turning slowly, and the page floats up. */
+.cw-avatar.is-levitating > :first-child {
+  filter: drop-shadow(0 0 14px rgba(232, 121, 249, 0.85));
+  animation: pkmn-levitate 2.4s ease-in-out infinite;
+}
+
+@keyframes pkmn-levitate {
+  50% {
+    transform: translateY(-16px) rotate(12deg);
+  }
+}
+
+.pkmn-afloat {
+  animation: pkmn-afloat 2.4s ease-in-out infinite;
+}
+
+@keyframes pkmn-afloat {
+  50% {
+    transform: translateY(-8px);
+    filter: drop-shadow(0 0 10px rgba(232, 121, 249, 0.4));
+  }
+}
+
+/* Umbreon's Moonlight: a moon and twinkling stars. */
+.pkmn-moon {
+  position: absolute;
+  filter: drop-shadow(0 0 18px #fef3c7);
+  animation: pkmn-night 1.4s ease-out both;
+}
+
+.pkmn-star {
+  position: absolute;
+  animation: pkmn-twinkle-star 1.8s ease-in-out infinite;
+}
+
+@keyframes pkmn-twinkle-star {
+  50% {
+    opacity: 0.2;
+    scale: 0.6;
+  }
 }
 
 /* A flash where a Pokémon evolves or transforms. */
@@ -1459,6 +1651,47 @@
   image-rendering: pixelated;
 }
 
+/* A Pokémon's variants, Eevee's evolutions: one row of small sprites under it. */
+.pkmn-dex .pkmn-dex-variants {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1px;
+  margin: -2px 0 4px 2.2em;
+}
+
+.pkmn-dex-variant {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+}
+
+.pkmn-dex-variant:hover,
+.pkmn-dex-variant:focus-visible {
+  outline: none;
+  background: #e2e8f0;
+}
+
+.pkmn-dex-variant img {
+  width: auto;
+  max-width: 24px;
+  height: auto;
+  max-height: 24px;
+  margin: 0;
+  image-rendering: pixelated;
+}
+
+.pkmn-dex-variant.is-unseen img {
+  filter: brightness(0);
+  opacity: 0.55;
+}
+
 /* Not met yet: a silhouette, as the games show a Pokémon only seen from afar. */
 .pkmn-dex-entry.is-unseen img {
   filter: brightness(0);
@@ -1560,6 +1793,14 @@
   .cw-avatar.is-zapped > img:first-child,
   .pkmn-fire .px-frame,
   .pkmn-heat,
+  .pkmn-stone-gem,
+  .pkmn-flood,
+  .cw-avatar.is-floating > :first-child,
+  .pkmn-firespin,
+  .pkmn-sway,
+  .cw-avatar.is-levitating > :first-child,
+  .pkmn-afloat,
+  .pkmn-star,
   .pkmn-aura,
   .pkmn-aura-jolteon,
   .pkmn-lull,
