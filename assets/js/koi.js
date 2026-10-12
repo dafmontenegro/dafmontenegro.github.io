@@ -295,6 +295,7 @@
     var holdFrom = null;
     function openDex() {
       held = true;
+      shownThisVisit = true; // the ball has been found: no more pointing at it this visit
       dismiss();
       remember("koi-dex-opened", 1);
       stopHold();

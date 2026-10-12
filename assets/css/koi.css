@@ -1731,11 +1731,8 @@
   }
 }
 
-/* Its kiss on the photo's cheek: pressed on with a little bounce, a touch transparent so
-   it reads as a mark on the photo. */
-.pkmn-kiss {
-  opacity: 0.9;
-  rotate: -14deg;
+/* Sylveon's bow tie on the knot of the tie: pressed on with a little bounce. */
+.pkmn-bowtie {
   animation: pkmn-kiss 0.45s cubic-bezier(0.3, 1.6, 0.5, 1) both;
 }
 
@@ -1781,6 +1778,170 @@
   50% {
     opacity: 0.2;
     scale: 0.6;
+  }
+}
+
+/* Porygon's Conversion: the page drawn as developer tools draw it, every element
+   outlined, in a monospaced face, on a blueprint grid. The Pokémon's own scene is left
+   alone. */
+html.pkmn-wireframe body {
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.09) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+html.pkmn-wireframe body > header *,
+html.pkmn-wireframe #main-content *:not(.pkmn-scene, .pkmn-scene *),
+html.pkmn-wireframe body footer * {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace !important;
+  outline: 1px dashed rgba(56, 189, 248, 0.6);
+  outline-offset: -1px;
+}
+
+.pkmn-tag {
+  position: absolute;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: #0284c7;
+  color: #f0f9ff;
+  font: 10px/1.4 ui-monospace, "SFMono-Regular", Menlo, monospace;
+  white-space: nowrap;
+  animation: pkmn-star-in 0.4s ease-out both;
+}
+
+/* Porygon2 reading the source: the page's markup scrolling up a panel at the side. */
+.pkmn-source {
+  position: absolute;
+  top: 12vh;
+  left: 12px;
+  width: min(330px, calc(100vw - 24px));
+  height: 52vh;
+  margin: 0;
+  padding: 10px 12px;
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  border-radius: 6px;
+  background: rgba(2, 6, 23, 0.82);
+  color: #7dd3fc;
+  font: 10px/1.6 ui-monospace, "SFMono-Regular", Menlo, monospace;
+  white-space: pre;
+  -webkit-mask: linear-gradient(transparent, #000 15%, #000 85%, transparent);
+  mask: linear-gradient(transparent, #000 15%, #000 85%, transparent);
+  animation: pkmn-star-in 0.5s ease-out both;
+}
+
+/* On a phone the panel takes the lower half, clear of the photo and the name. */
+@media (max-width: 767px) {
+  .pkmn-source {
+    top: auto;
+    bottom: 120px;
+    height: 34vh;
+  }
+}
+
+.pkmn-source code {
+  display: block;
+  font: inherit;
+  animation: pkmn-scroll-source 16s linear infinite;
+}
+
+.pkmn-source.is-leaving {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+@keyframes pkmn-scroll-source {
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+/* Porygon-Z's Tri Attack: the page jolting sideways, its colours split. */
+.pkmn-glitchy-0,
+.pkmn-glitchy-1 {
+  animation: pkmn-glitchy 0.4s steps(4) infinite;
+}
+
+.pkmn-glitchy-1 {
+  animation-duration: 0.55s;
+}
+
+@keyframes pkmn-glitchy {
+  0% {
+    transform: translate(0, 0);
+    filter: drop-shadow(2px 0 0 #f0f) drop-shadow(-2px 0 0 #0ff);
+  }
+  25% {
+    transform: translate(-8px, 2px) skewX(6deg);
+    filter: drop-shadow(-4px 0 0 #f0f) drop-shadow(4px 0 0 #0ff);
+  }
+  50% {
+    transform: translate(6px, -2px);
+    filter: hue-rotate(90deg);
+  }
+  75% {
+    transform: translate(-3px, 0) skewX(-4deg);
+    filter: drop-shadow(3px 0 0 #f0f) drop-shadow(-3px 0 0 #0ff);
+  }
+}
+
+/* The reboot: a black screen, a boot line and a progress bar filling. */
+.pkmn-reboot {
+  position: fixed;
+  inset: 0;
+  z-index: 48;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: #020617;
+  color: #e2e8f0;
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.pkmn-reboot p {
+  margin: 0;
+}
+
+.pkmn-dots::after {
+  content: "";
+  animation: pkmn-dots 1.2s steps(4) infinite;
+}
+
+@keyframes pkmn-dots {
+  25% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  75% {
+    content: "...";
+  }
+}
+
+.pkmn-progress {
+  width: 180px;
+  height: 10px;
+  padding: 2px;
+  border: 2px solid #e2e8f0;
+}
+
+.pkmn-progress span {
+  display: block;
+  height: 100%;
+  background: #38bdf8;
+  transform-origin: left;
+  animation: pkmn-progress 1.8s steps(12) forwards;
+}
+
+@keyframes pkmn-progress {
+  from {
+    transform: scaleX(0);
   }
 }
 
@@ -2014,8 +2175,13 @@
   .pkmn-shooting,
   .pkmn-sprite.is-ringed,
   .pkmn-gleam,
+  .pkmn-source,
+  .pkmn-source code,
+  .pkmn-glitchy-0,
+  .pkmn-glitchy-1,
+  .pkmn-progress span,
   .pkmn-mist,
-  .pkmn-kiss,
+  .pkmn-bowtie,
   .pkmn-aura,
   .pkmn-aura-jolteon,
   .pkmn-lull,
