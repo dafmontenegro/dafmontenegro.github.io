@@ -1714,17 +1714,35 @@
     beam.className = "pkmn-moonbeam";
     beam.style.left = ox + "px";
     beam.style.top = oy + "px";
-    beam.style.height = Math.max(0, far - SIZE * 0.42 - a.width / 2) + "px";
+    beam.style.height = far - SIZE * 0.42 + "px";
     beam.style.rotate = Math.atan2(-dx, dy) + "rad";
-    sky.insertBefore(beam, moon);
+    /* It reaches all the way to the photo and goes on behind it, as light would: its own
+       layer sits over the night but under the photo, which the night lifts above it. */
+    var under = document.createElement("div");
+    under.className = "pkmn pkmn-under-photo";
+    under.setAttribute("aria-hidden", "true");
+    under.appendChild(beam);
+    document.body.appendChild(under);
     photo("is-moonlit", true);
     mon.el.classList.add("is-ringed");
-    var shooting = every(1700, function () {
+    /* Shooting stars: a shower of three, then one every half second or so, each at its
+       own height, angle and speed. */
+    var shootingStar = function () {
       var trail = document.createElement("div");
       trail.className = "pkmn-shooting";
-      trail.style.top = Math.random() * Math.min(my, H * 0.25) + "px";
+      var duration = 700 + Math.random() * 600;
+      trail.style.top = Math.random() * H * 0.35 + "px";
+      trail.style.setProperty("--tilt", -12 - Math.random() * 18 + "deg");
+      trail.style.animationDuration = duration + "ms";
+      trail.style.width = 80 + Math.random() * 80 + "px";
       sky.appendChild(trail);
-      setTimeout(trail.remove.bind(trail), 1100);
+      setTimeout(trail.remove.bind(trail), duration + 100);
+    };
+    if (!still()) {
+      for (var s3 = 0; s3 < 3; s3++) setTimeout(shootingStar, s3 * 220);
+    }
+    var shooting = every(550, function () {
+      if (Math.random() < 0.8) shootingStar();
     });
     await finishWeather(sky, told, after);
     await wait(ms(600));
@@ -1734,8 +1752,10 @@
     mon.el.classList.remove("is-ringed");
     photo("is-moonlit", false);
     night(false, 1800);
+    under.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(1800), easing: "ease-in-out", fill: "forwards" });
     await sky.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(1800), easing: "ease-in-out", fill: "forwards" }).finished;
     sky.remove();
+    under.remove();
   }
 
   /* Sylveon: Misty Terrain, a soft pink and white mist rolling in over the bottom of the
@@ -2812,7 +2832,7 @@
         upside(false);
         sway(false);
         floatPage(false);
-        document.querySelectorAll(".pkmn-weather").forEach(function (left) {
+        document.querySelectorAll(".pkmn-weather, .pkmn-under-photo").forEach(function (left) {
           left.remove();
         });
         restoreTheme();

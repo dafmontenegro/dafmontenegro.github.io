@@ -1081,6 +1081,12 @@
   }
 }
 
+/* A layer over the night but under the photo, which the night lifts above it: what is
+   there passes behind the photo (Umbreon's moonbeam). */
+.pkmn-under-photo {
+  z-index: 30;
+}
+
 .pkmn-night.is-deep {
   background: rgba(10, 9, 32, 0.88);
   animation: pkmn-night 1.4s ease-in-out;
@@ -1630,21 +1636,24 @@
   left: 0;
   width: 120px;
   height: 2px;
-  background: linear-gradient(to right, transparent, #fef9c3);
+  border-radius: 2px;
+  background: linear-gradient(to right, #fffbeb, rgba(254, 249, 195, 0.6) 30%, transparent);
+  box-shadow: 0 0 6px rgba(254, 249, 195, 0.8);
   animation: pkmn-shoot 1s ease-in forwards;
 }
 
+/* Each one flies from the right edge down to the left, at its own angle (--tilt). */
 @keyframes pkmn-shoot {
   from {
     opacity: 0;
-    transform: translate(105vw, 0) rotate(-20deg);
+    transform: translate(105vw, 0) rotate(var(--tilt, -20deg));
   }
-  20% {
+  15% {
     opacity: 1;
   }
   to {
     opacity: 0;
-    transform: translate(10vw, 30vh) rotate(-20deg);
+    transform: translate(5vw, 32vh) rotate(var(--tilt, -20deg));
   }
 }
 
