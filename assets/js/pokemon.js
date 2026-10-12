@@ -1256,7 +1256,7 @@
     umbreon: { dex: 197, charm: "moon", line: "Caesar's Window is shining like the moon!", move: "UMBREON used MOONLIGHT!", after: "Night fell over the page.", show: moonlight },
     leafeon: { dex: 470, stone: "leaf", stoneName: "LEAF STONE", move: "LEAFEON used LEAF STORM!", after: "A gust of leaves swept the page!", show: leafStorm },
     glaceon: { dex: 471, stone: "ice", stoneName: "ICE STONE", move: "GLACEON used BLIZZARD!", after: "The photo froze solid!", show: blizzard },
-    sylveon: { dex: 700, charm: "heart", line: "Caesar's Window turned into a heart!", move: "SYLVEON used DAZZLING GLEAM!", after: "SYLVEON tied its bow on the photo!", show: dazzlingGleam }
+    sylveon: { dex: 700, charm: "heart", line: "Caesar's Window turned into a heart!", move: "SYLVEON used MISTY TERRAIN!", after: "SYLVEON left a kiss on the photo!", show: mistyKiss }
   };
   var EEVEE_FORMS = Object.keys(EEVEE_PATHS);
   var moonGem = null; // the moon left on the badge for Umbreon's Moonlight
@@ -1339,22 +1339,19 @@
     ], { p: "#f472b6", w: "#ffffff" }]
   };
 
-  /* Sylveon's bow, tied on the photo. */
-  var BOW = [
-    "dd.........dd",
-    "dpd.......dpd",
-    "dpwd.....dppd",
-    "dpwpd...dpppd",
-    "dpppdd.ddpppd",
-    "dppppdddppppd",
-    "dpppdd.ddpppd",
-    "dppd..dpd.dpd",
-    "ddd..dpd..ddd",
-    ".....dpd.....",
-    "....dpd.dd...",
-    "....dd...d..."
+  /* Sylveon's kiss mark, and where the author's cheek is on the photo, as shares of the
+     photo's radius from its centre. Measured on assets/img/daniel-felipe-montenegro.jpg,
+     as the moustache's place is: a new photo needs it measured again. */
+  var KISS = [
+    ".rrr...rrr.",
+    "rrrrr.rrrrr",
+    "rrwrrrrrrrr",
+    ".rrrrrrrrr.",
+    "..rrrrrrr..",
+    "...rrrrr..."
   ];
-  var BOW_COLOURS = { p: "#f9a8d4", d: "#be185d", w: "#fdf2f8" };
+  var KISS_COLOURS = { r: "#ec4899", w: "#fbcfe8" };
+  var CHEEK = { x: 0.13, y: -0.42 };
 
   var SYMBOLS = {
     water: ["..s...", ".sss..", "sssss.", "sssss.", ".sss..", "......"],
@@ -1699,15 +1696,20 @@
     }
 
     /* The moon's light, from the moon to the photo's rim, and the photo silvered by it. */
+    /* It starts at the moon's lit edge, the side that faces the photo, not its middle: a
+       crescent is hollow there, and a beam from the middle showed through the hollow. */
     var cx = a.left + a.width / 2;
     var cy = a.top + a.height / 2;
     var dx = cx - (mx + SIZE / 2);
     var dy = cy - (my + SIZE / 2);
+    var far = Math.hypot(dx, dy);
+    var ox = mx + SIZE / 2 + (dx / far) * SIZE * 0.42;
+    var oy = my + SIZE / 2 + (dy / far) * SIZE * 0.42;
     var beam = document.createElement("div");
     beam.className = "pkmn-moonbeam";
-    beam.style.left = mx + SIZE / 2 + "px";
-    beam.style.top = my + SIZE / 2 + "px";
-    beam.style.height = Math.max(0, Math.hypot(dx, dy) - a.width / 2) + "px";
+    beam.style.left = ox + "px";
+    beam.style.top = oy + "px";
+    beam.style.height = Math.max(0, far - SIZE * 0.42 - a.width / 2) + "px";
     beam.style.rotate = Math.atan2(-dx, dy) + "rad";
     sky.insertBefore(beam, moon);
     photo("is-moonlit", true);
@@ -1731,51 +1733,55 @@
     sky.remove();
   }
 
-  /* Sylveon: Dazzling Gleam, a flash of white light from Sylveon with white and gold stars
-     scattering and twinkling; then Sylveon ties its bow on the photo, which glows a soft
-     pink, and hops for joy, hearts rising from it as it does. */
-  async function dazzlingGleam(mon, told, after) {
+  /* Sylveon: Misty Terrain, a soft pink and white mist rolling in over the bottom of the
+     page, sparkles rising through it; then Draining Kiss: Sylveon goes up to the photo's
+     rim and kisses the author on the cheek, which leaves a pixel kiss mark while hearts
+     burst and the photo blushes. The mist rolls out again, and the kiss stays a while
+     after Sylveon has gone, as Jigglypuff's moustache does. */
+  async function mistyKiss(mon, told, after) {
     var R = radius;
     var sky = weather();
-    var m = mon.el.getBoundingClientRect();
-    var cx = m.left + m.width / 2;
-    var cy = m.top + m.height / 2;
-    var gleam = document.createElement("div");
-    gleam.className = "pkmn-gleam";
-    gleam.style.left = cx + "px";
-    gleam.style.top = cy + "px";
-    sky.appendChild(gleam);
-    flash();
-    if (!still()) {
-      for (var i = 0; i < 26; i++) {
-        var angle = (i / 26) * Math.PI * 2;
-        var reach = 140 + Math.random() * 240;
-        var tx = cx + Math.cos(angle) * reach;
-        var ty = cy + Math.sin(angle) * reach;
-        if (!clearOfBox(tx, ty)) ty = Math.min(ty, window.innerHeight - 140);
-        drift(sky, PINK, { p: i % 3 ? "#ffffff" : "#fde68a", w: "#fffbeb" }, 3, cx, cy, tx, ty, 1500);
-      }
-    }
-    await wait(ms(900));
-
-    /* The bow, tied on top of the photo. */
-    var SIZE = 4;
-    var bow = Koi.pixels(BOW, BOW_COLOURS, "pkmn-prop pkmn-bow", SIZE);
-    bow.style.left = (-BOW[0].length * SIZE) / 2 + "px";
-    bow.style.top = -R - (BOW.length * SIZE) / 2 + 6 + "px";
-    bow.style.zIndex = IN_FRONT;
-    scene.appendChild(bow);
-    photo("is-charmed", true);
-    var hearts = every(380, function () {
-      float(CHARMS.heart[0], CHARMS.heart[1], mon.x - 10 + Math.random() * 20, mon.y - mon.h, [(Math.random() - 0.5) * 50, -70], 1600, 0, 2);
+    var mist = document.createElement("div");
+    mist.className = "pkmn-mist";
+    sky.appendChild(mist);
+    var glitter = every(140, function () {
+      var x = Math.random() * window.innerWidth;
+      var y = window.innerHeight * (0.65 + Math.random() * 0.3);
+      drift(sky, PINK, { p: Math.random() < 0.5 ? "#fbcfe8" : "#ffffff", w: "#ffffff" }, 2, x, y, x + (Math.random() - 0.5) * 40, y - 60 - Math.random() * 60, 1800);
     });
-    for (var h = 0; h < 3; h++) await mon.hop(mon.x, mon.y, 12, 380);
-    await finishWeather(sky, told, after);
-    hearts();
-    photo("is-charmed", false);
-    await bow.animate([{ opacity: 1 }, { opacity: 0, transform: "translateY(-10px)" }], { duration: ms(900), easing: "ease-in", fill: "forwards" }).finished;
-    bow.remove();
+    await told;
+    await wait(ms(800));
+
+    /* The kiss: Sylveon hops up to the photo's right rim, by the cheek. */
+    var told2 = Koi.say(["SYLVEON used DRAINING KISS!"]);
+    var home = [mon.x, mon.y];
+    await mon.hop(R * 0.95, -R * 0.15, 40, 700);
+    var kiss = Koi.pixels(KISS, KISS_COLOURS, "pkmn-prop pkmn-kiss", Math.max(2, Math.round(R / 32)));
+    var size = KISS[0].length * Math.max(2, Math.round(R / 32));
+    kiss.style.left = CHEEK.x * R - size / 2 + "px";
+    kiss.style.top = CHEEK.y * R - size / 4 + "px";
+    kiss.style.zIndex = IN_FRONT;
+    scene.appendChild(kiss);
+    burst(CHEEK.x * R, CHEEK.y * R);
+    photo("is-blushing", true);
+    for (var h = 0; h < 6; h++) {
+      float(CHARMS.heart[0], CHARMS.heart[1], CHEEK.x * R + (h - 2.5) * 10, CHEEK.y * R, [(h - 2.5) * 14, -60 - h * 6], 1500, h * 90, 2);
+    }
+    await told2;
+    await Koi.say([after]);
+    await mon.hop(home[0], home[1], 30, 650);
+
+    glitter();
+    photo("is-blushing", false);
+    mist.classList.add("is-leaving");
+    await wait(ms(1400));
     sky.remove();
+    /* The kiss stays behind, then fades; the act is over before it does. */
+    setTimeout(function () {
+      kiss.animate([{ opacity: 0.9 }, { opacity: 0 }], { duration: ms(1600), fill: "forwards" }).finished.then(function () {
+        kiss.remove();
+      });
+    }, ms(4500));
   }
 
   /* The page swaying in a gust, and the page floating on Psychic. */
@@ -2653,7 +2659,7 @@
         console.error(error);
       })
       .then(function () {
-        ["is-zapped", "is-burning", "is-tilted", "is-playing", "is-shadowed", "is-shivering", "is-confused", "is-bumped", "is-floating", "is-frozen", "is-levitating", "is-moonlit", "is-charmed"].forEach(function (effect) {
+        ["is-zapped", "is-burning", "is-tilted", "is-playing", "is-shadowed", "is-shivering", "is-confused", "is-bumped", "is-floating", "is-frozen", "is-levitating", "is-moonlit", "is-blushing"].forEach(function (effect) {
           photo(effect, false);
         });
         /* Whatever an act did to the rest of the page is undone, even if it failed. */
@@ -2663,7 +2669,7 @@
         moonGem = null;
         tremor(0);
         unbite();
-        scene.querySelectorAll(".pkmn-portrait, .pkmn-scorch, .pkmn-aura, .pkmn-rift, .pkmn-mustache, .pkmn-spoon, .pkmn-mic, .pkmn-anger, .pkmn-firespin, .pkmn-stone-gem, .pkmn-bow").forEach(function (left) {
+        scene.querySelectorAll(".pkmn-portrait, .pkmn-scorch, .pkmn-aura, .pkmn-rift, .pkmn-mustache, .pkmn-spoon, .pkmn-mic, .pkmn-anger, .pkmn-firespin, .pkmn-stone-gem").forEach(function (left) {
           left.remove();
         });
         lull(false);

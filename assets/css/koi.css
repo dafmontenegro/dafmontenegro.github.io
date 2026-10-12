@@ -1688,33 +1688,68 @@
   }
 }
 
-/* Sylveon's bow on the photo: it pops on with a little bounce and sways. */
-.pkmn-bow {
-  transform-origin: 50% 60%;
+/* Sylveon's Misty Terrain: a soft pink and white mist over the bottom of the page, its
+   clouds drifting slowly; it rolls in from below and back out. */
+.pkmn-mist {
+  position: absolute;
+  right: -10%;
+  bottom: 0;
+  left: -10%;
+  height: 42vh;
+  background:
+    radial-gradient(ellipse 30% 40% at 20% 70%, rgba(255, 255, 255, 0.55), transparent 70%),
+    radial-gradient(ellipse 35% 45% at 60% 60%, rgba(251, 207, 232, 0.6), transparent 70%),
+    radial-gradient(ellipse 30% 40% at 90% 75%, rgba(255, 255, 255, 0.5), transparent 70%),
+    linear-gradient(to top, rgba(249, 168, 212, 0.55), rgba(251, 207, 232, 0.25) 60%, transparent);
+  background-size: 140% 100%;
   animation:
-    pkmn-bow-in 0.6s cubic-bezier(0.3, 1.6, 0.5, 1) both,
-    pkmn-bow-sway 1.4s ease-in-out 0.6s infinite alternate;
+    pkmn-mist-in 1.6s ease-out both,
+    pkmn-mist-drift 7s ease-in-out infinite alternate;
 }
 
-@keyframes pkmn-bow-in {
+.pkmn-mist.is-leaving {
+  animation: pkmn-mist-out 1.4s ease-in forwards;
+}
+
+@keyframes pkmn-mist-in {
   from {
     opacity: 0;
-    scale: 0.2;
+    transform: translateY(40%);
   }
 }
 
-@keyframes pkmn-bow-sway {
-  from {
-    rotate: -4deg;
-  }
+@keyframes pkmn-mist-out {
   to {
-    rotate: 4deg;
+    opacity: 0;
+    transform: translateY(40%);
   }
 }
 
-.cw-avatar.is-charmed > :first-child img {
-  filter: saturate(1.1) brightness(1.06);
-  box-shadow: 0 0 26px 8px rgba(249, 168, 212, 0.55);
+@keyframes pkmn-mist-drift {
+  to {
+    background-position: 30% 0;
+  }
+}
+
+/* Its kiss on the photo's cheek: pressed on with a little bounce, a touch transparent so
+   it reads as a mark on the photo. */
+.pkmn-kiss {
+  opacity: 0.9;
+  rotate: -14deg;
+  animation: pkmn-kiss 0.45s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+
+@keyframes pkmn-kiss {
+  from {
+    opacity: 0;
+    scale: 1.8;
+  }
+}
+
+/* The photo blushing. */
+.cw-avatar.is-blushing > :first-child img {
+  filter: saturate(1.15) brightness(1.05) sepia(0.12) hue-rotate(-10deg);
+  box-shadow: 0 0 26px 8px rgba(244, 114, 182, 0.55);
   transition:
     filter 1s ease,
     box-shadow 1s ease;
@@ -1979,7 +2014,8 @@
   .pkmn-shooting,
   .pkmn-sprite.is-ringed,
   .pkmn-gleam,
-  .pkmn-bow,
+  .pkmn-mist,
+  .pkmn-kiss,
   .pkmn-aura,
   .pkmn-aura-jolteon,
   .pkmn-lull,
