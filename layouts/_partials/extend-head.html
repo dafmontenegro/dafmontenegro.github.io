@@ -114,6 +114,10 @@
   {{ end }}
 {{ end }}
 
+{{/* Every page carries the site's analytics events (telemetry.html). Before koi.html, whose
+     script reports through it. */}}
+{{ partial "telemetry.html" . }}
+
 {{/* Every page carries the Poké Ball and the carp that climbs the waterfall, unless it
      sets `koi: false`; the assets and what the scripts need to know are in koi.html. */}}
 {{ if ne .Params.koi false }}

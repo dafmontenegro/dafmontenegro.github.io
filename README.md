@@ -33,12 +33,13 @@ These files override templates from Congo or Hugo. **Review them whenever Congo 
 | `layouts/_partials/twitter_cards.html` | Hugo 0.167 | Same title change for X cards |
 | `layouts/_shortcodes/button.html` | Congo 2.14 | Adds `rel="noopener noreferrer"` to links that open a new tab |
 | `layouts/404.html` | Congo 2.14 | 404 page with Caesar's Window |
+| `layouts/_partials/google_analytics.html` | Hugo 0.167 | Same tag and Do Not Track rule; sets the page's context (content group, colour scheme, viewport band, time zone, automation flag) and two user properties before the first page view. See [Analytics](#analytics) |
 
 These are additions, not overrides:
 
 | File | Purpose |
 | --- | --- |
-| `layouts/_partials/extend-head.html` | schema.org `Person` data on the homepage and About page, and the per-page assets behind a front matter flag: the book-chapter stylesheet on `bookChapter`, the butterflies assets on `butterflies`, the preflop stylesheet, script and data on `preflop`, and the Literature stylesheet and script on `literature`; plus, on every page unless it sets `koi: false`, the Poké Ball through `koi.html` (Congo hook) |
+| `layouts/_partials/extend-head.html` | schema.org `Person` data on the homepage and About page, and the per-page assets behind a front matter flag: the book-chapter stylesheet on `bookChapter`, the butterflies assets on `butterflies`, the preflop stylesheet, script and data on `preflop`, and the Literature stylesheet and script on `literature`; plus, on every page, the analytics events through `telemetry.html`, and, unless it sets `koi: false`, the Poké Ball through `koi.html` (Congo hook) |
 | `assets/css/custom.css` | Caesar's Window styles for the badge, the 404 page and light/dark variants (bundled by Congo) |
 | `assets/css/butterflies.css` | Styles for the butterflies shortcode: the button, the 3D wings and their beat, and the quote card (loaded only on pages with `butterflies: true`) |
 | `assets/js/butterflies.js` | The flight engine behind the butterflies shortcode: the arrivals, the wandering, the dodging and the catching |
@@ -46,6 +47,7 @@ These are additions, not overrides:
 | `assets/js/preflop.js` | The five preflop tools. Reads `assets/data/preflop/hands.json` once and builds whichever tools the page mounts; the head-to-head matrix is fetched on demand, since only one of them needs it |
 | `assets/css/literature.css` | Styles for the Literature space: the "open at random" button and the wash of colour left on the quote it lands on, plus the one rule that turns off Congo's own quotation marks, so the quotes keep the punctuation they were published with (loaded only on pages with `literature: true`) |
 | `assets/js/literature.js` | The "open at random" button. It builds the button itself, so a reader without JavaScript is never shown a control that cannot work |
+| `layouts/_partials/telemetry.html`, `assets/js/telemetry.js` | The site's own analytics events, on every page: the script, and what it needs to know about the page (debug under `hugo server`, the reading time, whether it is the 404) as a JSON block. See [Analytics](#analytics) |
 | `layouts/_partials/koi.html`, `koi-runtime.html` | Load the Poké Ball: koi.css and koi.js with the page, and the addresses of everything fetched later (pokemon.js, the sprites, the story's anchor) as a JSON block. `koi-runtime.html` builds, once per build, the fingerprinted sprite list pokemon.js reads |
 | `assets/css/koi.css` | Styles for the homepage's Poké Ball, the climb (torii, waterfall, golden trail, carp, the evolution and the dragon's ascent), the text box, and what the homepage's Pokémon do to the photo |
 | `assets/js/koi.js` | The carp that climbs the waterfall, and the homepage's Poké Ball. On every long page but the homepage, a shiny Magikarp comes out at the foot of the screen's right edge and climbs a waterfall up to a torii as the page is read, leaving a golden trail, framed by the same margin at both ends; at the end of the page it evolves into a Gyarados that rises into the clouds and links to the story in About (`#the-carp-and-the-dragon`). Only the scroll starts it; clicking the carp makes it Splash, and on a computer it can be dragged to scroll. Tied to the scroll only: the page is measured on resize, never on scroll, and each frame only writes transforms. Under 768px, where the climb would run over the text, nothing shows while the page is read: only at its end does the carp leap up from the bottom of the screen, evolve and rise away. On the homepage it builds the Poké Ball instead, makes the logo and the photo's badge open it, and shows hints in the games' dialogue boxes: pointing at the ball, the badge and the logo on every visit until the visitor has let out five Pokémon, and after each Pokémon how to open the Pokédex, until it has been opened (`localStorage`, keys `koi-releases` and `koi-dex-opened`). Also holds the games' text box and the pixel-art drawing the Pokémon share |
@@ -130,6 +132,72 @@ python3 scripts/pokemon/build.py
 ```
 
 It downloads each Pokémon's animated *Black and White* sprite from the [PokeAPI sprites](https://github.com/PokeAPI/sprites) repository by National Dex number and records its size. What those games never drew, Snorlax lying asleep and Sylveon, is cut from *Pokémon Mystery Dungeon*'s sheets in [PMDCollab's SpriteCollab](https://github.com/PMDCollab/SpriteCollab), trimmed and made into a GIF. A new Pokémon is a line in its `ROSTER`, plus an act in `assets/js/pokemon.js`. Requires Pillow and curl.
+
+## Analytics
+
+The site uses **Google Analytics 4** (property `G-QMJW2TPVMJ`, set in `config/_default/hugo.toml`). GA records page views, the 90 % scroll, outbound clicks and document downloads by itself; everything else below is sent by the site.
+
+**How it is wired.** `layouts/_partials/google_analytics.html` replaces Hugo's embedded template: same tag, same Do Not Track rule, plus the page's context set before the first page view. `assets/js/telemetry.js` defines `window.siteTrack(name, params)` and listens for what any page can do; `koi.js`, `pokemon.js` and `butterflies.js` call `siteTrack` for what only they can see. Where GA is not set up (development builds, or a browser that sends Do Not Track), `siteTrack` sends nothing.
+
+**Checking a change.** Under `hugo server` every event is printed to the browser console as `[telemetry] name {params}` and kept in `window.siteTelemetryLog`. Nothing reaches GA from a development build.
+
+**Never sent:** anything typed or copied, apart from search terms typed into the site's own search box (cut to 100 characters); for a copy, only its length. No event carries an address, a name or an identifier of the visitor.
+
+### Context on every event
+
+| Parameter | Value | Why |
+| --- | --- | --- |
+| `content_group` | Home, Blog post, Project, Space, `<Section> list`, Taxonomy, Not found, or a standalone page's name from its address (About, Privacy…) | GA4's built-in "Content group": compare kinds of page without matching paths |
+| `color_scheme` | `dark` / `light`, as first shown | Whether a change has to look right in both is a question of how many see each |
+| `viewport_band` | `<640`, `640-767`, `768-1023`, `1024-1279`, `1280+` | The widths where the layout changes, not exact pixels |
+| `time_zone` | The browser's IANA zone, e.g. `America/Bogota` | Set against GA's city, it separates a reader from a data-centre machine whose clock is elsewhere |
+| `webdriver` | `yes` / `no` | `navigator.webdriver`: browsers driven by Selenium, Puppeteer or Playwright say so unless told to hide |
+| User property `theme_preference` | `dark`, `light` or `system` | What the visitor chose, not what the page shows |
+| User property `pokemon_seen` | 0-12 | How far into the Poké Ball this browser has got |
+
+### Events
+
+| Event | Sent when | Parameters | Question it answers |
+| --- | --- | --- | --- |
+| `scroll` | 25, 50, 75 and 100 % of a page that scrolls at least half a screen (GA adds 90) | `percent_scrolled` | How far down people read |
+| `article_complete` | The footer under an article's text comes into view | `engaged_seconds` (visible time), `reading_minutes` (Hugo's estimate) | Read or skimmed |
+| `social_click` | A link to LinkedIn, GitHub, X, Telegram, YouTube, Instagram, Spotify or WhatsApp | `network`, `placement` (header, footer, profile, content), `link_url` | Which profiles get visited, and from where |
+| `in_page_link` | A link to a heading of the same page | `link_target`, `placement` (toc, heading, …) | Whether the table of contents is used |
+| `file_download` | A Press Kit photograph (GA's own tracking skips images) | `file_name`, `file_extension`, `link_url`, `link_text` | Which photographs are taken |
+| `search_open` / `search` / `search_result_click` | The search is opened; 1.5 s after typing stops; a result is chosen | `placement`; `search_term`, `result_count`; `link_url`, `result_position` | What people look for and do not find |
+| `theme_toggle` | The light/dark button | `color_scheme` (the one switched to) | |
+| `scroll_to_top` | Congo's "back to top" button | `percent_scrolled` | |
+| `code_copy` | A code block's copy button | `code_language` | Which snippets are useful |
+| `text_copy` | Text copied from the page (at most 10 per page view) | `characters`, `placement` (code, content) | What gets quoted, by size only |
+| `embed_interact` | A YouTube, Vimeo or Spotify player takes focus (a click on it) | `embed_provider` | Whether the embeds are played |
+| `page_translated` | Chrome's translator translates the page | `language` | How many read the site in another language |
+| `page_print` | The page is printed | | |
+| `page_not_found` | The 404 page | `missing_path`, `referrer_host` | Broken links, here or elsewhere |
+| `js_error` | An error in the site's own scripts (at most 5 per page view) | `error_message`, `error_source` | What breaks, on which browsers |
+| `web_vitals` | The page is hidden or left | `lcp_ms`, `cls`, `inp_ms`, `fcp_ms`, `ttfb_ms` (each only where the browser measures it) | How fast the site is for real visitors |
+| `pokeball_press` | The ball, the photo's badge or the logo is pressed on the homepage | `trigger` (ball, badge, logo) | Which way in people find |
+| `pokemon_release` | A Pokémon comes out | `pokemon`, `chosen_from` (random, pokedex), `first_meeting`, `seen_count` | Which acts are met, and how often by choice |
+| `pokemon_act_end` | The photo is given back | `pokemon`, `act_seconds`, `act_failed` | Whether the acts are worth their length |
+| `pokeball_busy` | The ball is pressed while a Pokémon is still out | `pokemon` | Impatience with an act |
+| `eevee_evolve` | Eevee evolves | `form`, `chosen_from` | |
+| `pokedex_open` / `pokedex_page` / `pokedex_dismiss` | The Pokédex opens; its Eevee page opens; it closes without a choice | `trigger` (hold, right_click, arrow_up), `seen_count`; `pokemon`; `method` (escape, outside, ball) | Whether the hidden Pokédex is found |
+| `hint_shown` / `hint_dismiss` | A homepage hint appears; it is closed by a touch | `hint` (ball, badge, logo, pokedex_tip) | Whether the hints work |
+| `missingno_appear` | MissingNo. appears on the 404 page | | |
+| `koi_evolve` | The carp evolves at the end of a page (once per page view) | `mode` (climb, leap) | |
+| `koi_splash` / `koi_drag` / `koi_story_click` | The carp is clicked; dragged as a scrollbar (once per page view); the dragon's link to its story is followed | | Whether the carp is played with |
+| `butterflies_release` / `butterfly_catch` | The About page's butterflies are released; one is caught | | |
+| `quote_random` | Literature's "open at random" button | | |
+| `preflop_use` | The first use of each preflop tool on the page | `tool` (grid, picker, headsup, allin) | Which tools are used. The trainer is left out: it tells the reader that nothing it does is sent anywhere |
+
+### Registering the parameters in GA
+
+GA only shows a parameter in its reports once it is registered (**Admin > Custom definitions**), and only from that moment on. `content_group`, `percent_scrolled`, `search_term`, `file_name`, `file_extension`, `link_url` and `link_text` are built in and need nothing.
+
+- **Custom dimensions, event scope:** `color_scheme`, `viewport_band`, `time_zone`, `webdriver`, `network`, `placement`, `link_target`, `code_language`, `embed_provider`, `language`, `missing_path`, `referrer_host`, `error_message`, `error_source`, `tool`, `trigger`, `pokemon`, `chosen_from`, `first_meeting`, `act_failed`, `form`, `method`, `hint`, `mode`.
+- **Custom dimensions, user scope:** `theme_preference`, `pokemon_seen`.
+- **Custom metrics, event scope:** `engaged_seconds` and `act_seconds` (seconds), `reading_minutes` (minutes), `lcp_ms`, `inp_ms`, `fcp_ms` and `ttfb_ms` (milliseconds), `cls`, `characters`, `result_count`, `result_position`, `seen_count` (standard).
+
+**Configured outside this repo, in GA:** event data retention of 14 months; a data filter, "Solo hostname sitio principal", that keeps only events whose hostname is exactly `montenegrodanielfelipe.com` (copies of the site that kept its tag have sent data under other hostnames), created in Testing on 2026-10-12, which marks events without discarding any until it is made Active; and the link with Search Console. There is no internal-traffic rule: it would need a fixed IP address.
 
 ## Build and Deploy
 

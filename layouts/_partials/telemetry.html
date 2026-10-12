@@ -1,0 +1,21 @@
+{{/* The site's own analytics events (assets/js/telemetry.js), on every page. Called from
+     extend-head.html before koi.html: both scripts are deferred, so they run in the order
+     they appear, and koi.js finds `window.siteTrack` already defined.
+
+     What the script needs to know about the page comes in a JSON block:
+     - debug: under `hugo server`, events are printed to the console instead of being lost,
+       since Congo adds Google Analytics to production builds only.
+     - readingMinutes: Hugo's reading-time estimate, on single pages that have text, so the
+       end of an article can be sent with how long reading it should take.
+     - notFound: on the 404 page, which reports the missing address. */}}
+{{- $config := dict "debug" hugo.IsServer -}}
+{{- if and (eq .Kind "page") (gt .ReadingTime 0) }}
+  {{- $config = merge $config (dict "readingMinutes" .ReadingTime) -}}
+{{- end }}
+{{- if eq .Kind "404" }}
+  {{- $config = merge $config (dict "notFound" true) -}}
+{{- end }}
+<script type="application/json" id="telemetry-config">{{ $config | jsonify | safeJS }}</script>
+{{ with resources.Get "js/telemetry.js" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+  <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+{{ end }}

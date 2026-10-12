@@ -1,0 +1,94 @@
+{{/* Replaces Hugo 0.167's embedded google_analytics.html, which Congo's analytics.html calls in
+     production builds only. The tag and the Do Not Track rule are Hugo's, unchanged; what is
+     added is a set of parameters given to GA before its first page view, so that the page view
+     and every later event (assets/js/telemetry.js) carry them:
+
+     - content_group: what kind of page this is (Home, Blog post, Project, Space, a section's
+       list, Taxonomy, Not found, or a standalone page's name from its address: About,
+       Privacy, Changelog...). GA4 reads this parameter into
+       its built-in "Content group" dimension, so reports can compare kinds of page without
+       matching paths by hand.
+     - color_scheme: "dark" or "light", as the page was first shown. Congo's appearance.js runs
+       earlier in <head> and has already decided it.
+     - viewport_band: the window's width in the bands the layout itself changes at (Tailwind's
+       640, 768, 1024 and 1280 px), rather than the exact width, which no one needs.
+     - time_zone: the browser's IANA time zone. Set against the city GA infers from the
+       network, it tells apart a reader in Singapore from a machine in a Singapore data centre
+       whose clock says somewhere else.
+     - webdriver: "yes" when the browser declares it is driven by automation software
+       (navigator.webdriver), as Selenium, Puppeteer and Playwright do unless told to hide.
+     - User properties, read from what koi.js and pokemon.js keep in this browser:
+       theme_preference ("dark", "light", or "system" when the visitor never chose) and
+       pokemon_seen (how many of the homepage's Pokémon this browser has met).
+
+     None of these can identify a person. Each has to be registered as a custom dimension in
+     GA (Admin > Custom definitions) before reports can show it; the list is in README.md. */}}
+{{- if not site.Config.Privacy.GoogleAnalytics.Disable }}
+{{- with site.Config.Services.GoogleAnalytics.ID }}
+  {{- $id := . }}
+  {{- $group := "" }}
+  {{- if $.IsHome }}
+    {{- $group = "Home" }}
+  {{- else if eq $.Kind "404" }}
+    {{- $group = "Not found" }}
+  {{- else if in (slice "taxonomy" "term") $.Kind }}
+    {{- $group = "Taxonomy" }}
+  {{- else if eq $.Kind "section" }}
+    {{- $group = printf "%s list" (humanize $.Section) }}
+  {{- else if $.Section }}
+    {{- $group = index (dict "blog" "Blog post" "projects" "Project" "spaces" "Space") $.Section | default (humanize $.Section) }}
+  {{- else }}
+    {{- /* From the address, not the title, so a renamed page stays in its group. */}}
+    {{- $group = humanize (path.Base $.RelPermalink) }}
+  {{- end }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ $id }}"></script>
+  <script>
+    var doNotTrack = false;
+    if ({{ site.Config.Privacy.GoogleAnalytics.RespectDoNotTrack }}) {
+      var dnt = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      doNotTrack = dnt == "1" || dnt == "yes";
+    }
+    if (!doNotTrack) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      (function () {
+        function stored(key) {
+          try {
+            return localStorage.getItem(key);
+          } catch (e) {
+            return null;
+          }
+        }
+        var met = 0;
+        try {
+          /* koi-pokedex lists each Pokémon met, plus "eevee:<form>" for each evolution of
+             Eevee: only the Pokémon themselves are counted. */
+          met = (JSON.parse(stored("koi-pokedex")) || []).filter(function (key) {
+            return key.indexOf(":") < 0;
+          }).length;
+        } catch (e) {}
+        var width = window.innerWidth;
+        var zone = "";
+        try {
+          zone = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+        } catch (e) {}
+        gtag("set", {
+          content_group: {{ $group }},
+          color_scheme: document.documentElement.classList.contains("dark") ? "dark" : "light",
+          viewport_band: width < 640 ? "<640" : width < 768 ? "640-767" : width < 1024 ? "768-1023" : width < 1280 ? "1024-1279" : "1280+",
+          time_zone: zone || "(unknown)",
+          webdriver: navigator.webdriver ? "yes" : "no"
+        });
+        gtag("set", "user_properties", {
+          theme_preference: stored("appearance") || "system",
+          pokemon_seen: met
+        });
+      })();
+      gtag("config", {{ $id }});
+    }
+  </script>
+{{- end }}
+{{- end }}
