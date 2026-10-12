@@ -3,7 +3,7 @@ title: "Privacy Policy"
 description: "How montenegrodanielfelipe.com and dafmontenegro.com handle your data: anonymous analytics, cookies, embedded content and the services that host the sites."
 images: ["/og/privacy.jpg"]
 date: 2024-10-12
-lastmod: 2026-09-29
+lastmod: 2026-10-12
 showReadingTime: false
 showPagination: false
 showAuthor: false
@@ -17,7 +17,18 @@ I do not ask for, collect or sell any **personal information**. There are no acc
 ## Google Analytics
 These sites use **Google Analytics 4**, a web analytics service provided by **Google LLC** ("Google"). It uses **cookies** (such as `_ga`) to collect aggregated information like the pages you visit, how long you stay, your approximate location (country or city), your device and browser, and the site that referred you. Google Analytics 4 **does not log or store IP addresses**.
 
-- If your browser sends a **Do Not Track** signal, Google Analytics **does not record your visit** or set its cookies.
+Beyond page views, the site itself tells Google Analytics **what you do on a page**, so I can see what works and what breaks:
+
+- **Reading:** how far down a page you scroll, and whether you reach the end of an article and after how long.
+- **Clicks on the site's controls:** links to my social profiles, the table of contents, the search box, the light/dark button, the code copy button, the Press Kit downloads, the embedded players, and the interactive pieces (the Poké Ball and its Pokémon, the carp, the butterflies, the random quote, the preflop tools except the trainer, which promises that nothing you do in it is sent).
+- **Search:** the words you type into the site's search box, and how many results they found.
+- **Copying:** only **how many characters** you copied, never the text itself.
+- **Technical context:** whether the page is shown light or dark, the width band of your window, your browser's **time zone** (such as America/Bogota), whether the browser says it is driven by automation software, whether it was translated by the browser, how fast the page loaded and responded, and the errors my scripts run into.
+- **Settings remembered in your browser:** whether you chose light or dark, and how many of the homepage's Pokémon you have met.
+
+None of this includes your name, your address or anything else that identifies you, and none of it is sold or shared beyond Google Analytics.
+
+- If your browser sends a **Do Not Track** signal, Google Analytics **does not record your visit** or set its cookies, and none of the above is sent.
 - You can also block analytics cookies in your browser settings or with the [**Google Analytics Opt-out Browser Add-on**](https://tools.google.com/dlpage/gaoptout).
 
 {{< alert "circle-info" >}}
