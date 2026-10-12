@@ -61,6 +61,9 @@ ROSTER = {
     "leafeon": (470, "Leafeon"),
     "glaceon": (471, "Glaceon"),
     "rotom": (479, "Rotom"),
+    "porygon": (137, "Porygon"),
+    "porygon2": (233, "Porygon2"),
+    "porygon-z": (474, "Porygon-Z"),
     "giratina": (487, "Giratina"),
     # A form is filed under the Dex number and the form's name.
     "giratina-origin": ("487-origin", "Giratina"),

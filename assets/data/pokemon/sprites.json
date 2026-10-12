@@ -149,6 +149,24 @@
     "width": 89,
     "height": 60
   },
+  "porygon": {
+    "name": "Porygon",
+    "file": "img/pokemon/porygon.gif",
+    "width": 57,
+    "height": 53
+  },
+  "porygon2": {
+    "name": "Porygon2",
+    "file": "img/pokemon/porygon2.gif",
+    "width": 49,
+    "height": 48
+  },
+  "porygon-z": {
+    "name": "Porygon-Z",
+    "file": "img/pokemon/porygon-z.gif",
+    "width": 39,
+    "height": 58
+  },
   "giratina": {
     "name": "Giratina",
     "file": "img/pokemon/giratina.gif",

@@ -59,6 +59,10 @@
       })
       .then(function (json) {
         data = json;
+        /* Each sprite knows its own key, for what is looked up by it (DRAWN_AT). */
+        Object.keys(data).forEach(function (key) {
+          data[key].key = key;
+        });
         return data;
       });
   }
@@ -1256,7 +1260,7 @@
     umbreon: { dex: 197, charm: "moon", line: "Caesar's Window is shining like the moon!", move: "UMBREON used MOONLIGHT!", after: "Night fell over the page.", show: moonlight },
     leafeon: { dex: 470, stone: "leaf", stoneName: "LEAF STONE", move: "LEAFEON used LEAF STORM!", after: "A gust of leaves swept the page!", show: leafStorm },
     glaceon: { dex: 471, stone: "ice", stoneName: "ICE STONE", move: "GLACEON used BLIZZARD!", after: "The photo froze solid!", show: blizzard },
-    sylveon: { dex: 700, charm: "heart", line: "Caesar's Window turned into a heart!", move: "SYLVEON used MISTY TERRAIN!", after: "SYLVEON left a kiss on the photo!", show: mistyKiss }
+    sylveon: { dex: 700, charm: "heart", line: "Caesar's Window turned into a heart!", move: "SYLVEON used MISTY TERRAIN!", after: "SYLVEON gave you a makeover!", show: mistyMakeover }
   };
   var EEVEE_FORMS = Object.keys(EEVEE_PATHS);
   var moonGem = null; // the moon left on the badge for Umbreon's Moonlight
@@ -1339,19 +1343,20 @@
     ], { p: "#f472b6", w: "#ffffff" }]
   };
 
-  /* Sylveon's kiss mark, and where the author's cheek is on the photo, as shares of the
-     photo's radius from its centre. Measured on assets/img/daniel-felipe-montenegro.jpg,
-     as the moustache's place is: a new photo needs it measured again. */
-  var KISS = [
-    ".rrr...rrr.",
-    "rrrrr.rrrrr",
-    "rrwrrrrrrrr",
-    ".rrrrrrrrr.",
-    "..rrrrrrr..",
-    "...rrrrr..."
+  /* Sylveon's bow tie, and where the knot of the author's tie is on the photo, as shares
+     of the photo's radius from its centre. Measured on assets/img/daniel-felipe-montenegro
+     .jpg, as the moustache's place is: a new photo needs it measured again. */
+  var BOWTIE = [
+    "dd.........dd",
+    "dpdd.....ddpd",
+    "dpwpddddddppd",
+    "dppppdkdppppd",
+    "dpppddddddppd",
+    "dpdd.....ddpd",
+    "dd.........dd"
   ];
-  var KISS_COLOURS = { r: "#ec4899", w: "#fbcfe8" };
-  var CHEEK = { x: 0.13, y: -0.42 };
+  var BOWTIE_COLOURS = { d: "#be185d", p: "#f9a8d4", w: "#fdf2f8", k: "#9d174d" };
+  var KNOT = { x: 0.03, y: 0.11 };
 
   var SYMBOLS = {
     water: ["..s...", ".sss..", "sssss.", "sssss.", ".sss..", "......"],
@@ -1734,11 +1739,11 @@
   }
 
   /* Sylveon: Misty Terrain, a soft pink and white mist rolling in over the bottom of the
-     page, sparkles rising through it; then Draining Kiss: Sylveon goes up to the photo's
-     rim and kisses the author on the cheek, which leaves a pixel kiss mark while hearts
-     burst and the photo blushes. The mist rolls out again, and the kiss stays a while
-     after Sylveon has gone, as Jigglypuff's moustache does. */
-  async function mistyKiss(mon, told, after) {
+     page, sparkles rising through it. Then Sylveon looks at the photo, finds the red tie
+     too serious, and with its ribbons ties a pink bow tie over the knot. The mist rolls
+     out, and the bow tie stays a while after Sylveon has gone, as Jigglypuff's moustache
+     does. */
+  async function mistyMakeover(mon, told, after) {
     var R = radius;
     var sky = weather();
     var mist = document.createElement("div");
@@ -1750,36 +1755,44 @@
       drift(sky, PINK, { p: Math.random() < 0.5 ? "#fbcfe8" : "#ffffff", w: "#ffffff" }, 2, x, y, x + (Math.random() - 0.5) * 40, y - 60 - Math.random() * 60, 1800);
     });
     await told;
-    await wait(ms(800));
+    await Koi.say(["SYLVEON thinks your tie is a little too serious..."]);
 
-    /* The kiss: Sylveon hops up to the photo's right rim, by the cheek. */
-    var told2 = Koi.say(["SYLVEON used DRAINING KISS!"]);
+    /* Its ribbons reach the knot: Sylveon goes to the photo's right rim, level with the
+       tie, sparkles gather on the knot and the bow tie is there. */
     var home = [mon.x, mon.y];
-    await mon.hop(R * 0.95, -R * 0.15, 40, 700);
-    var kiss = Koi.pixels(KISS, KISS_COLOURS, "pkmn-prop pkmn-kiss", Math.max(2, Math.round(R / 32)));
-    var size = KISS[0].length * Math.max(2, Math.round(R / 32));
-    kiss.style.left = CHEEK.x * R - size / 2 + "px";
-    kiss.style.top = CHEEK.y * R - size / 4 + "px";
-    kiss.style.zIndex = IN_FRONT;
-    scene.appendChild(kiss);
-    burst(CHEEK.x * R, CHEEK.y * R);
-    photo("is-blushing", true);
-    for (var h = 0; h < 6; h++) {
-      float(CHARMS.heart[0], CHARMS.heart[1], CHEEK.x * R + (h - 2.5) * 10, CHEEK.y * R, [(h - 2.5) * 14, -60 - h * 6], 1500, h * 90, 2);
+    await mon.hop(R * 0.98, R * 0.45, 30, 650);
+    var size = Math.max(2, Math.round(R / 30));
+    var width = BOWTIE[0].length * size;
+    var kx = KNOT.x * R;
+    var ky = KNOT.y * R;
+    for (var g = 0; g < 8; g++) {
+      var angle = (g / 8) * Math.PI * 2;
+      float(PINK, { p: "#fbcfe8", w: "#ffffff" }, kx + Math.cos(angle) * 34, ky + Math.sin(angle) * 34, [-Math.cos(angle) * 30, -Math.sin(angle) * 30], 600, g * 40, 2);
     }
-    await told2;
+    await wait(ms(650));
+    var bowtie = Koi.pixels(BOWTIE, BOWTIE_COLOURS, "pkmn-prop pkmn-bowtie", size);
+    bowtie.style.left = kx - width / 2 + "px";
+    bowtie.style.top = ky - (BOWTIE.length * size) / 2 + "px";
+    bowtie.style.zIndex = IN_FRONT;
+    scene.appendChild(bowtie);
+    burst(kx, ky);
+    photo("is-charmed", true);
+    for (var h = 0; h < 4; h++) {
+      float(CHARMS.heart[0], CHARMS.heart[1], mon.x - 6 + h * 4, mon.y - mon.h, [(h - 1.5) * 16, -55], 1400, h * 160, 2);
+    }
     await Koi.say([after]);
+    await Koi.say(["You look adorable now."]);
     await mon.hop(home[0], home[1], 30, 650);
 
     glitter();
-    photo("is-blushing", false);
+    photo("is-charmed", false);
     mist.classList.add("is-leaving");
     await wait(ms(1400));
     sky.remove();
-    /* The kiss stays behind, then fades; the act is over before it does. */
+    /* The bow tie stays behind, then fades; the act is over before it does. */
     setTimeout(function () {
-      kiss.animate([{ opacity: 0.9 }, { opacity: 0 }], { duration: ms(1600), fill: "forwards" }).finished.then(function () {
-        kiss.remove();
+      bowtie.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(1600), fill: "forwards" }).finished.then(function () {
+        bowtie.remove();
       });
     }, ms(4500));
   }
@@ -2281,6 +2294,123 @@
     moved = null;
   }
 
+  /* ---------------------------------------------------------------------------------
+     Porygon, the Pokémon made of code, turns the page into what it is made of too. It
+     uses Conversion and the page goes digital: every element outlined as a browser's
+     developer tools draw it, labelled with its tag, on a blueprint grid, in a monospaced
+     face. Porygon2 streams the page's own markup past, as if reading its source. Porygon-Z,
+     the unstable one, glitches the page apart with Tri Attack, and the page reboots. */
+
+  async function porygon() {
+    var R = radius;
+    var mon = new Mon("porygon", -R * 0.3, R + 4, BEHIND);
+    Koi.say(["Go! PORYGON!"]);
+    await mon.go(-R - 44, R + 4, 700, "ease-out");
+    mon.z(IN_FRONT);
+
+    /* Conversion. */
+    var told = Koi.say(["PORYGON used CONVERSION!"]);
+    var layer = weather();
+    wireframe(true, layer);
+    await told;
+    await Koi.say(["The page turned into code!"]);
+
+    /* Its source. */
+    await evolve(mon, "porygon2");
+    told = Koi.say(["PORYGON2 is reading the page's source..."]);
+    var source = streamSource(layer);
+    await told;
+    await wait(ms(2200));
+
+    /* The glitch, and the reboot. */
+    await evolve(mon, "porygon-z");
+    told = Koi.say(["PORYGON-Z used TRI ATTACK!"]);
+    source.classList.add("is-leaving");
+    glitch(true);
+    await told;
+    await wait(ms(900));
+    await Koi.say(["Something went wrong..."]);
+    await reboot();
+    glitch(false);
+    wireframe(false);
+    layer.remove();
+    await Koi.say(["The page rebooted. Everything is fine."]);
+    await hide(mon, 1000);
+  }
+
+  /* The page as developer tools draw it: elements outlined and labelled with their tags,
+     on a grid. The labels sit on the act's own layer, at each element's place. */
+  function wireframe(on, layer) {
+    document.documentElement.classList.toggle("pkmn-wireframe", on);
+    if (!on || !layer) return;
+    var picked = [
+      ["body > header nav", "nav"],
+      [".cw-avatar img", "img"],
+      ["#main-content h1", "h1"],
+      ["#main-content h2", "h2"],
+      ["#main-content .rounded-md.bg-primary-100", "div.alert"],
+      ["body footer", "footer"]
+    ];
+    picked.forEach(function (pick, k) {
+      var el = page(pick[0]);
+      if (!el) return;
+      var r = el.getBoundingClientRect();
+      if (r.width === 0 || r.top > window.innerHeight) return;
+      var tag = document.createElement("span");
+      tag.className = "pkmn-tag";
+      tag.textContent = "<" + pick[1] + "> " + Math.round(r.width) + "×" + Math.round(r.height);
+      tag.style.left = Math.max(4, r.left) + "px";
+      tag.style.top = Math.max(4, r.top - 18) + "px";
+      tag.style.animationDelay = ms(k * 120) / 1000 + "s";
+      layer.appendChild(tag);
+    });
+  }
+
+  /* The page's own markup, line by line, scrolling up a panel beside it. */
+  function streamSource(layer) {
+    var panel = document.createElement("pre");
+    panel.className = "pkmn-source";
+    var markup = (page("#main-content") || document.body).innerHTML
+      .replace(/<!--[\s\S]*?-->/g, "")
+      .replace(/<svg[\s\S]*?<\/svg>/g, "<svg>…</svg>")
+      .replace(/\s+/g, " ")
+      .replace(/>\s*</g, ">\n<")
+      .split("\n")
+      .map(function (line) {
+        return line.length > 60 ? line.slice(0, 57) + "..." : line;
+      })
+      .filter(function (line) {
+        return line.trim();
+      })
+      .slice(0, 80);
+    /* Twice over, so the scroll loops without a seam: it moves up by exactly one copy. */
+    var code = document.createElement("code");
+    code.textContent = markup.concat(markup).join("\n");
+    panel.appendChild(code);
+    layer.appendChild(panel);
+    return panel;
+  }
+
+  /* The page glitching: header and content jolt sideways in RGB-split slices. */
+  function glitch(on) {
+    ["body > header", "body > div.relative"].forEach(function (selector, i) {
+      var el = page(selector);
+      if (el) el.classList.toggle("pkmn-glitchy-" + i, on && !still());
+    });
+  }
+
+  /* A black screen with a boot line and a progress bar; resolves as it fades away. */
+  async function reboot() {
+    var screen = document.createElement("div");
+    screen.className = "pkmn-reboot";
+    screen.setAttribute("aria-hidden", "true");
+    screen.innerHTML = '<p>Rebooting<span class="pkmn-dots"></span></p><div class="pkmn-progress"><span></span></div>';
+    document.body.appendChild(screen);
+    await wait(ms(2000));
+    await screen.animate([{ opacity: 1 }, { opacity: 0 }], { duration: ms(500), fill: "forwards" }).finished;
+    screen.remove();
+  }
+
   /* The 404 page's visitor: MissingNo., the glitch the first games turned up where
      something was missing. It is not a sprite: its block of garbage is drawn anew a few
      times a second, in the shape of the original, a reversed L of scrambled tiles.
@@ -2440,6 +2570,7 @@
     abra: { dex: 63, keys: ["abra", "kadabra", "alakazam"], play: abra, weight: 3 },
     eevee: { dex: 133, keys: ["eevee"], play: eevee, weight: 3, variants: EEVEE_FORMS },
     rotom: { dex: 479, keys: ["rotom"], play: rotom, weight: 3 },
+    porygon: { dex: 137, keys: ["porygon", "porygon2", "porygon-z"], play: porygon, weight: 3 },
     giratina: { dex: 487, keys: ["giratina", "giratina-origin"], play: giratina, weight: 2 }
   };
 
@@ -2526,7 +2657,7 @@
         button.setAttribute("aria-label", known ? label : "Unknown Pokémon, number " + no);
         button.innerHTML =
           '<span class="pkmn-dex-no">' + (no === null ? "" : pad(no)) + "</span>" +
-          (sprite ? '<img src="' + sprite.url + '" alt="" width="' + sprite.width + '" height="' + sprite.height + '">' : "<span></span>") +
+          (sprite ? '<img src="' + sprite.url + '" alt="" width="' + sprite.width + '" height="' + sprite.height + '"' + (DRAWN_AT[sprite.key] ? ' style="scale:' + DRAWN_AT[sprite.key] + '"' : "") + ">" : "<span></span>") +
           '<span class="pkmn-dex-name">' + (known ? label.toUpperCase() : "???") + (more ? " ▸" : "") + "</span>";
         button.addEventListener("click", choose);
         item.appendChild(button);
@@ -2659,7 +2790,7 @@
         console.error(error);
       })
       .then(function () {
-        ["is-zapped", "is-burning", "is-tilted", "is-playing", "is-shadowed", "is-shivering", "is-confused", "is-bumped", "is-floating", "is-frozen", "is-levitating", "is-moonlit", "is-blushing"].forEach(function (effect) {
+        ["is-zapped", "is-burning", "is-tilted", "is-playing", "is-shadowed", "is-shivering", "is-confused", "is-bumped", "is-floating", "is-frozen", "is-levitating", "is-moonlit", "is-charmed"].forEach(function (effect) {
           photo(effect, false);
         });
         /* Whatever an act did to the rest of the page is undone, even if it failed. */
@@ -2669,6 +2800,11 @@
         moonGem = null;
         tremor(0);
         unbite();
+        wireframe(false);
+        glitch(false);
+        document.querySelectorAll(".pkmn-reboot").forEach(function (left) {
+          left.remove();
+        });
         scene.querySelectorAll(".pkmn-portrait, .pkmn-scorch, .pkmn-aura, .pkmn-rift, .pkmn-mustache, .pkmn-spoon, .pkmn-mic, .pkmn-anger, .pkmn-firespin, .pkmn-stone-gem").forEach(function (left) {
           left.remove();
         });
