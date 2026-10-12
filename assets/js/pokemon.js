@@ -25,6 +25,11 @@
   var Koi = window.Koi;
   if (!Koi) return;
 
+  /* Analytics (assets/js/telemetry.js); nothing happens where it is not loaded. */
+  function track(name, params) {
+    if (window.siteTrack) window.siteTrack(name, params);
+  }
+
   /* The in-game evolution, shorter than the carp's: both forms flash in turn, faster and
      faster, until the new one holds. Each number is how long one form stays. */
   var FLICKER = [260, 220, 180, 150, 120, 95, 75, 60, 48, 40];
@@ -1402,6 +1407,7 @@
       if (form === "friendship") form = document.documentElement.classList.contains("dark") ? "umbreon" : "espeon";
     }
     var path = EEVEE_PATHS[form];
+    track("eevee_evolve", { form: form, chosen_from: chosen ? "pokedex" : "random" });
     see("eevee:" + form);
     var kind;
     var loading = preload([form]);
@@ -2641,12 +2647,21 @@
     return ("00" + n).slice(-3);
   }
 
-  function dex(ball) {
+  /* `trigger` is how koi.js was asked to open it (hold, right_click, arrow_up), for
+     analytics. */
+  function dex(ball, trigger) {
     if (dexMenu) {
+      track("pokedex_dismiss", { method: "ball" });
       closeDex();
       return;
     }
     load().then(function () {
+      track("pokedex_open", {
+        trigger: trigger || "(unknown)",
+        seen_count: seen().filter(function (key) {
+          return ACTS[key];
+        }).length
+      });
       /* Only what is still on the list counts: a visitor may have met Pokémon this page no
          longer has. */
       var met = seen().filter(function (act) {
@@ -2705,6 +2720,7 @@
       }
       /* The second page: back, the Pokémon at random, then each of its variants. */
       function variants(act) {
+        track("pokedex_page", { pokemon: act });
         list.innerHTML = "";
         var forms = ACTS[act].variants;
         var count = forms.filter(function (form) {
@@ -2752,7 +2768,10 @@
   }
 
   function onOutside(e) {
-    if (dexMenu && !dexMenu.contains(e.target) && e.target !== dexMenu.dexBall) closeDex();
+    if (dexMenu && !dexMenu.contains(e.target) && e.target !== dexMenu.dexBall) {
+      track("pokedex_dismiss", { method: "outside" });
+      closeDex();
+    }
   }
 
   /* Up and down move through the list, as in the games; Escape closes it. */
@@ -2761,6 +2780,7 @@
     var at = buttons.indexOf(document.activeElement);
     if (e.key === "Escape") {
       e.preventDefault();
+      track("pokedex_dismiss", { method: "escape" });
       closeDex();
     } else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
       e.preventDefault();
@@ -2771,10 +2791,14 @@
 
   function release(act, variant) {
     if (busy) {
+      /* Pressed again while a Pokémon is still out: counted, because many of these would
+         mean the acts run longer than visitors care to wait. */
+      track("pokeball_busy", { pokemon: previous });
       Koi.wiggle();
       return;
     }
     if (act === "missingno") {
+      track("missingno_appear");
       busy = true;
       missingno().then(function () {
         busy = false;
@@ -2791,9 +2815,22 @@
     }
     radius = avatar.offsetWidth / 2;
     busy = true;
+    /* Chosen in the Pokédex, or drawn at random by a press of the ball. */
+    var chosenFrom = act ? "pokedex" : "random";
     act = act || draw();
     previous = act;
+    var firstMeeting = seen().indexOf(act) < 0;
     see(act);
+    var started = performance.now();
+    var failed = false;
+    track("pokemon_release", {
+      pokemon: act,
+      chosen_from: chosenFrom,
+      first_meeting: firstMeeting ? "yes" : "no",
+      seen_count: seen().filter(function (key) {
+        return ACTS[key];
+      }).length
+    });
     return load()
       .then(function () {
         return preload(ACTS[act].keys);
@@ -2808,8 +2845,17 @@
         /* An act that fails must not leave the ball stuck: it is reported, and the photo
            and the ball are given back below. */
         console.error(error);
+        failed = true;
+        if (window.siteReportError) window.siteReportError(error, "pokemon " + act);
       })
       .then(function () {
+        /* How long the act held the page, from the press to the photo given back: with
+           pokeball_busy, it says whether the acts are worth their length. */
+        track("pokemon_act_end", {
+          pokemon: act,
+          act_seconds: Math.round((performance.now() - started) / 100) / 10,
+          act_failed: failed ? "yes" : "no"
+        });
         ["is-zapped", "is-burning", "is-tilted", "is-playing", "is-shadowed", "is-shivering", "is-confused", "is-bumped", "is-floating", "is-frozen", "is-levitating", "is-moonlit", "is-charmed"].forEach(function (effect) {
           photo(effect, false);
         });

@@ -26,6 +26,12 @@
   var QUOTE_MS = 7000; // how long a caught butterfly rests before flying on
 
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  /* Analytics (assets/js/telemetry.js); nothing happens where it is not loaded. The button
+     is counted there; a catch can only be seen from here. */
+  function track(name, params) {
+    if (window.siteTrack) window.siteTrack(name, params);
+  }
   /* SWARM and MAX are tuned for a desktop viewport. A phone's screen holds a
      fraction of that area, so the same fixed count does not thin out the way it
      does on a monitor: it piles up densely enough to bury the text underneath,
@@ -384,6 +390,7 @@
   function catchButterfly(bf) {
     if (bf.resting || bf.leaving) return;
     bf.resting = true;
+    track("butterfly_catch");
     bf.restUntil = performance.now() + QUOTE_MS;
     bf.age -= QUOTE_MS / 1000 + 2; // a butterfly in the hand must not expire mid-sentence
     bf.el.classList.add("cw-bf-resting");

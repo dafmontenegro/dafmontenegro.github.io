@@ -113,6 +113,11 @@
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
   var root = document.documentElement;
 
+  /* Analytics (assets/js/telemetry.js); nothing happens where it is not loaded. */
+  function track(name, params) {
+    if (window.siteTrack) window.siteTrack(name, params);
+  }
+
   /* ---------------------------------------------------------------------------------
      Pixel art: each row is drawn as runs of one colour, so a drawing costs a handful of
      rectangles rather than one per pixel. */
@@ -293,14 +298,16 @@
     var held = false;
     var holdTimer = 0;
     var holdFrom = null;
-    function openDex() {
+    /* `trigger` (hold, right_click or arrow_up) is passed on for analytics, which
+       pokemon.js reports only if this opens the Pokédex rather than closing it. */
+    function openDex(trigger) {
       held = true;
       shownThisVisit = true; // the ball has been found: no more pointing at it this visit
       dismiss();
       remember("koi-dex-opened", 1);
       stopHold();
       loadPokemon().then(function () {
-        if (window.KoiPokemon) window.KoiPokemon.dex(ball);
+        if (window.KoiPokemon) window.KoiPokemon.dex(ball, trigger);
       });
     }
     /* While it is held the ball shakes and a ring fills round it, so the hold is felt to
@@ -316,7 +323,7 @@
       holdFrom = [e.clientX, e.clientY];
       ball.setPointerCapture(e.pointerId);
       replay(ball, "is-holding");
-      holdTimer = setTimeout(openDex, HOLD_DEX_MS);
+      holdTimer = setTimeout(openDex, HOLD_DEX_MS, "hold");
       /* Fetched from the first touch, so it is there by the time the hold or the press
          needs it. */
       loadPokemon();
@@ -329,12 +336,12 @@
     });
     ball.addEventListener("contextmenu", function (e) {
       e.preventDefault();
-      if (!held) openDex();
+      if (!held) openDex("right_click");
     });
     ball.addEventListener("keydown", function (e) {
       if (e.key === "ArrowUp") {
         e.preventDefault();
-        openDex();
+        openDex("arrow_up");
       }
     });
     ball.addEventListener("click", function () {
@@ -343,6 +350,7 @@
         held = false;
         return;
       }
+      track("pokeball_press", { trigger: "ball" });
       release();
     });
     /* Caesar's Window, on the photo, is a second way to press the ball; it spins on its
@@ -350,6 +358,7 @@
     document.querySelectorAll("[data-koi-release]").forEach(function (element) {
       element.addEventListener("click", function () {
         replay(element, "is-spinning");
+        track("pokeball_press", { trigger: "badge" });
         release();
       });
     });
@@ -363,6 +372,7 @@
       logo.addEventListener("click", function (e) {
         e.preventDefault();
         replay(logo, "is-spinning");
+        track("pokeball_press", { trigger: "logo" });
         release();
       });
     }
@@ -400,10 +410,12 @@
   /* A dialogue box pointing at `target`: above it where there is room, below it where
      there is not, kept on the screen; or, with `side`, to its right, or below it where
      that does not fit, so it covers nothing above it or beside it on the photo (the badge
-     sits on the author's face). Resolves when it has gone. */
-  function hint(target, text, side) {
+     sits on the author's face). Resolves when it has gone. `id` names it for analytics,
+     which counts each hint shown and each one closed by a touch. */
+  function hint(target, text, side, id) {
     dismiss();
     if (!target) return Promise.resolve();
+    track("hint_shown", { hint: id });
     bubble = document.createElement("div");
     bubble.className = "koi-hint";
     bubble.setAttribute("role", "status");
@@ -431,7 +443,10 @@
       bubble.classList.add(above ? "is-above" : "is-below");
     }
     var shown = bubble;
-    shown.addEventListener("click", dismiss);
+    shown.addEventListener("click", function () {
+      track("hint_dismiss", { hint: id });
+      dismiss();
+    });
     return new Promise(function (resolve) {
       setTimeout(function () {
         if (bubble === shown) dismiss();
@@ -452,12 +467,12 @@
     if (remembered("koi-releases") >= LEARNT) return;
     setTimeout(function () {
       if (shownThisVisit) return;
-      hint(ball, "Psst! Press the Poké Ball.")
+      hint(ball, "Psst! Press the Poké Ball.", false, "ball")
         .then(function () {
-          if (!shownThisVisit) return hint(document.querySelector(".cw-avatar .cw-badge"), "Caesar's Window opens it too.", true);
+          if (!shownThisVisit) return hint(document.querySelector(".cw-avatar .cw-badge"), "Caesar's Window opens it too.", true, "badge");
         })
         .then(function () {
-          if (!shownThisVisit) return hint(document.querySelector(".koi-logo"), "And so does this one, up here.");
+          if (!shownThisVisit) return hint(document.querySelector(".koi-logo"), "And so does this one, up here.", false, "logo");
         });
     }, 2500);
   }
@@ -509,7 +524,7 @@
         if (window.KoiPokemon) return window.KoiPokemon.release(typeof name === "string" ? name : undefined);
       })
       .then(function () {
-        if (sprites.home && !remembered("koi-dex-opened")) return hint(ball, "Tip: hold the Poké Ball to choose one.");
+        if (sprites.home && !remembered("koi-dex-opened")) return hint(ball, "Tip: hold the Poké Ball to choose one.", false, "pokedex_tip");
       });
   }
 
@@ -538,6 +553,8 @@
   var swimTimer = 0;
   var drag = null;
   var splashing = false;
+  var evolvedOnce = false; // for analytics: evolve and drag are each reported once per page view
+  var draggedOnce = false;
 
   function later(fn, ms) {
     timers.push(setTimeout(fn, ms));
@@ -586,6 +603,9 @@
     story.tabIndex = -1;
     story.title = "Why a carp becomes a dragon";
     story.appendChild(dragon);
+    story.addEventListener("click", function () {
+      track("koi_story_click");
+    });
 
     body.appendChild(carp);
     body.appendChild(story);
@@ -740,6 +760,11 @@
   function evolve() {
     if (stage !== "born") return;
     stage = "evolving";
+    /* Once per page view: scrolling back up and down again evolves it again. */
+    if (!evolvedOnce) {
+      evolvedOnce = true;
+      track("koi_evolve", { mode: narrow ? "leap" : "climb" });
+    }
     if (!dragon.getAttribute("src")) fetchDragon();
     set(fish, "is-down", false);
     say(["What? MAGIKARP is evolving!"]);
@@ -796,6 +821,7 @@
   function splash() {
     if (splashing || stage !== "born") return;
     splashing = true;
+    track("koi_splash");
     replay(layer, "is-splashing");
     say(["MAGIKARP used SPLASH!", "But nothing happened!"]).then(function () {
       splashing = false;
@@ -818,7 +844,14 @@
 
   function onPointerMove(e) {
     if (!drag || !drag.mouse) return;
-    if (Math.abs(e.clientY - drag.y) > 3) drag.moved = true;
+    if (!drag.moved && Math.abs(e.clientY - drag.y) > 3) {
+      drag.moved = true;
+      /* Once per page view: that the climb was found to work as a scrollbar. */
+      if (!draggedOnce) {
+        draggedOnce = true;
+        track("koi_drag");
+      }
+    }
     if (!drag.moved) return;
     var p = Math.min(1, Math.max(0, (rest - e.clientY) / (rest - gateY)));
     /* "instant": the page sets scroll-behavior: smooth, which would make the page lag
