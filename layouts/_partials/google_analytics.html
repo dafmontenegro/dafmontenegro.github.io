@@ -1,7 +1,7 @@
 {{/* Replaces Hugo 0.167's embedded google_analytics.html, which Congo's analytics.html calls in
      production builds only. The tag and the Do Not Track rule are Hugo's, unchanged; what is
-     added is a set of parameters given to GA before its first page view, so that the page view
-     and every later event (assets/js/telemetry.js) carry them:
+     added is a set of parameters given to the tag's config, so that the page view and every
+     later event (assets/js/telemetry.js) carry them:
 
      - content_group: what kind of page this is (Home, Blog post, Project, Space, a section's
        list, Taxonomy, Not found, or a standalone page's name from its address: About,
@@ -54,7 +54,11 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      (function () {
+      /* The context goes in the tag's `config`, not in a `set` command: GA4 drops custom
+         parameters given to `set` (checked on the live site, 2026-10-12: they never reached
+         a hit), while those given to `config` travel on the page view and on every later
+         event. The user properties do work through `set`. */
+      var context = (function () {
         function stored(key) {
           try {
             return localStorage.getItem(key);
@@ -75,19 +79,19 @@
         try {
           zone = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
         } catch (e) {}
-        gtag("set", {
+        gtag("set", "user_properties", {
+          theme_preference: stored("appearance") || "system",
+          pokemon_seen: met
+        });
+        return {
           content_group: {{ $group }},
           color_scheme: document.documentElement.classList.contains("dark") ? "dark" : "light",
           viewport_band: width < 640 ? "<640" : width < 768 ? "640-767" : width < 1024 ? "768-1023" : width < 1280 ? "1024-1279" : "1280+",
           time_zone: zone || "(unknown)",
           webdriver: navigator.webdriver ? "yes" : "no"
-        });
-        gtag("set", "user_properties", {
-          theme_preference: stored("appearance") || "system",
-          pokemon_seen: met
-        });
+        };
       })();
-      gtag("config", {{ $id }});
+      gtag("config", {{ $id }}, context);
     }
   </script>
 {{- end }}
