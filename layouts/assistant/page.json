@@ -1,0 +1,56 @@
+{{- /* The assistant's knowledge, as JSON: facts.md whole, then every page it may
+     name, with the text of the ones it may read. Which pages fall in which group is
+     set in content/assistant/index.md. Thoughts and the press kit are not in the
+     site's lists at all, so they never get this far. */ -}}
+{{- $cfg := .Params.assistant -}}
+{{- $exclude := $cfg.exclude | default slice -}}
+{{- $catalogOnly := $cfg.catalogOnly | default slice -}}
+
+{{- /* The comment at the top of facts.md is for whoever edits it, not for the model. */ -}}
+{{- $facts := "" -}}
+{{- with resources.Get "assistant/facts.md" -}}
+  {{- $facts = .Content | replaceRE `(?s)<!--.*?-->` "" | strings.TrimSpace -}}
+{{- else -}}
+  {{- errorf "assistant: assets/assistant/facts.md is missing" -}}
+{{- end -}}
+
+{{- $pages := slice -}}
+{{- range site.RegularPages -}}
+  {{- if in $exclude .RelPermalink -}}{{- continue -}}{{- end -}}
+  {{- $page := dict
+    "url" .RelPermalink
+    "title" .Title
+    "section" .Section
+    "description" (.Description | default .Summary | plainify)
+    "date" (.Date.Format "2006-01-02")
+    "tags" (.Params.tags | default slice)
+    "categories" (.Params.categories | default slice)
+  -}}
+  {{- if not (in $catalogOnly .RelPermalink) -}}
+    {{- /* .Plain runs headings into the paragraph after them, with Congo's "#"
+         anchor in between. Built from .Content instead: anchors dropped, headings
+         kept as "## …" lines and every block ending on its own line, so the
+         assistant's passages split where the page does. The breaks travel through
+         plainify as a marker (␤) and become newlines after it, because plainify
+         turns newlines into spaces and merges the ones it makes itself. */ -}}
+    {{- $text := .Content
+      | replaceRE `<a [^>]*aria-label="Anchor"[^>]*>#</a>` ""
+      | replaceRE `<h[1-6][^>]*>` "␤␤## "
+      | replaceRE `</(p|h[1-6]|li|tr|pre|blockquote|figcaption|table)>|<br\s*/?>` "$0␤"
+      | plainify
+      | htmlUnescape
+      | replaceRE `\s*␤\s*` "\n"
+      | replaceRE `[ \t]+` " "
+      | replaceRE `\n{3,}` "\n\n"
+      | strings.TrimSpace
+    -}}
+    {{- $page = merge $page (dict "text" $text) -}}
+  {{- end -}}
+  {{- $pages = $pages | append $page -}}
+{{- end -}}
+
+{{- dict
+  "site" site.Home.Permalink
+  "facts" $facts
+  "pages" $pages
+  | jsonify -}}
