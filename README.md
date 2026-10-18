@@ -20,6 +20,7 @@ The site's symbol is **Caesar's Window**, the hypocycloid Caesar draws in *Rise 
 | `layouts/` | Overrides of Congo and Hugo templates, plus custom shortcodes (see below) |
 | `assets/` | Files processed by Hugo: author photo, Caesar's Window (SVG and PNG), color scheme, stylesheets, scripts and the data the preflop tools read |
 | `static/` | Files served as-is: favicons, web manifest, share cards (`og/`) and standalone apps (`apps/`) |
+| `worker/` | The site's assistant: a Cloudflare Worker, deployed on its own (see [Assistant](#assistant)) |
 
 ## Customizations
 
@@ -198,6 +199,18 @@ GA only shows a parameter in its reports once it is registered (**Admin > Custom
 - **Custom metrics, event scope:** `engaged_seconds` and `act_seconds` (seconds), `reading_minutes` (minutes), `lcp_ms`, `inp_ms`, `fcp_ms` and `ttfb_ms` (milliseconds), `cls`, `characters`, `result_count`, `result_position`, `seen_count` (standard).
 
 **Configured outside this repo, in GA:** event data retention of 14 months; a data filter, "Solo hostname sitio principal", that keeps only events whose hostname is exactly `montenegrodanielfelipe.com` (copies of the site that kept its tag have sent data under other hostnames), created in Testing on 2026-10-12, which marks events without discarding any until it is made Active; and the link with Search Console. There is no internal-traffic rule: it would need a fixed IP address.
+
+## Assistant
+
+An AI assistant answers visitors' questions about me, from what the site publishes and nothing else. Its code lives in its own repository. What lives in the site itself is **what it knows**:
+
+| File | Purpose |
+| --- | --- |
+| `assets/assistant/facts.md` | Everything the assistant knows about me for certain, written for it in plain sentences. Read whole on every question. What is not here, it answers it does not know |
+| `content/assistant/index.md` | Which pages the assistant may use: `exclude` keeps a page from it entirely, `catalogOnly` lets it name and link a page without reading it. Any other page in the site's lists is used, so new posts and projects need nothing here |
+| `layouts/assistant/page.json` | Builds `/assistant/index.json` with the site: `facts.md`, then each page with its title, description and URL and, unless excluded, its text with the headings kept |
+
+The page is JSON only, kept out of lists, the sitemap and search. A change to `facts.md` or to a page reaches the assistant when the index is rebuilt from the deployed site (`npm run index` in `worker/`).
 
 ## Build and Deploy
 
