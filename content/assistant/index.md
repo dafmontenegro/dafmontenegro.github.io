@@ -19,8 +19,6 @@ assistant:
     # Personal pages
     - /blog/my-birthday/
     - /blog/a-house-in-the-middle-of-nowhere/
-    - /blog/poem-of-oblivion-jose-angel-buesa/
-    - /spaces/literature/
     - /thoughts/
     - /spaces/paw-prints/
     # Pages about the site rather than about Daniel
@@ -30,5 +28,4 @@ assistant:
   catalogOnly:
     # Named and linked, not read
     - /about/
-    - /spaces/mi-amigo-melquiades/
 ---

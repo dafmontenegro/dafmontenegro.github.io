@@ -77,7 +77,7 @@ Caesar from the Planet of the Apes trilogy is **my favorite fictional character*
 
 ![Caesar in War for the Planet of the Apes](img/caesar-ape.jpg "Caesar in War for the Planet of the Apes")
 
-For these reasons, I decided to make Caesar's symbol **my personal symbol** as well, because I believe in others as much as I believe in myself, and because **I dream to be a great leader one day**. I prepare myself every day with all my efforts to be worthy of that dream and many others that I carry **in my heart**.
+For these reasons, I decided to make Caesar's symbol **my personal symbol** as well, because I believe in others as much as I believe in myself, and because **I dream to be a great leader like Caesar one day**. I prepare myself every day with all my efforts to be worthy of that dream and many others that I carry **in my heart**.
 
 ![Apes Together Strong: Apes making Caesar's symbol with their arms](img/apes-together-strong.jpg "Apes Together Strong: Apes making Caesar's symbol with their arms")
 
