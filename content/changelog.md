@@ -12,6 +12,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-18 | [Privacy](/privacy/#roz-the-sites-assistant) | New section on Roz, the site's assistant: what it keeps of each question, what it never keeps, and for how long |
 | 2026-10-12 | [Privacy](/privacy)             | Updated Privacy Policy: the site now measures how its pages and interactive pieces are used, and lists exactly what it sends to Google Analytics |
 | 2026-10-12 | [Projects](/projects/texas-holdem-preflop-trainer/) | The grid of all 169 starting hands in "Texas Hold'em Preflop" shows again: since the other four tools arrived it had been stuck on "Loading" |
 | 2026-10-12 | [Home](/)                       | New Pokémon for the Poké Ball: Porygon, which turns the homepage into code, and Sylveon now gives the photo a makeover |

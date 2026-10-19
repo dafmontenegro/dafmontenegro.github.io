@@ -1,18 +1,21 @@
 ---
 title: "Privacy Policy"
-description: "How montenegrodanielfelipe.com and dafmontenegro.com handle your data: anonymous analytics, cookies, embedded content and the services that host the sites."
+description: "How montenegrodanielfelipe.com, dafmontenegro.com and Roz, the site's assistant, handle your data: analytics, what Roz keeps, embedded content and hosting."
 images: ["/og/privacy.jpg"]
 date: 2024-10-12
-lastmod: 2026-10-12
+lastmod: 2026-10-18
 showReadingTime: false
 showPagination: false
 showAuthor: false
 ---
 
-This Privacy Policy explains how I, **Daniel Felipe Montenegro**, handle information when you visit my websites: **montenegrodanielfelipe.com** and **dafmontenegro.com** (which redirects to the first one).
+This Privacy Policy explains how I, **Daniel Felipe Montenegro**, handle information when you visit my websites, **montenegrodanielfelipe.com** and **dafmontenegro.com** (which redirects to the first one), and when you chat with **Roz**, the site's assistant.
 
 ## Information I Collect
-I do not ask for, collect or sell any **personal information**. There are no accounts, forms or newsletters on these sites. The only data gathered is **anonymous usage data** through **Google Analytics**, which helps me understand how visitors use the content so I can improve it.
+I do not ask for or sell any **personal information**, and there are no accounts, forms or newsletters on these sites. Two things are gathered:
+
+- **Anonymous usage data** through **Google Analytics**, which helps me understand how visitors use the content so I can improve it (see [Google Analytics](#google-analytics)).
+- **What you ask Roz**, and what Roz answers, so I can see what people want to know and where Roz falls short (see [Roz, the Site's Assistant](#roz-the-sites-assistant)). Whatever you type into a question is kept, so please don't write personal information there.
 
 ## Google Analytics
 These sites use **Google Analytics 4**, a web analytics service provided by **Google LLC** ("Google"). It uses **cookies** (such as `_ga`) to collect aggregated information like the pages you visit, how long you stay, your approximate location (country or city), your device and browser, and the site that referred you. Google Analytics 4 **does not log or store IP addresses**.
@@ -34,6 +37,28 @@ None of this includes your name, your address or anything else that identifies y
 {{< alert "circle-info" >}}
 For more information on how Google handles your data, please visit the [**Google Privacy Policy**](https://policies.google.com/privacy).
 {{< /alert >}}
+
+## Roz, the Site's Assistant
+**Roz** is an AI assistant that answers questions about me from what this site publishes. It runs on **Cloudflare Workers** and **Cloudflare Workers AI**: your questions are processed by Cloudflare, under [**Cloudflare's privacy policy**](https://www.cloudflare.com/privacypolicy/), and never sent to Google Analytics.
+
+**What is kept, for each question:**
+
+- The question and Roz's answer, in full.
+- When it was asked, and how: typed, or picked from Roz's suggestions.
+- A random identifier for your browser tab, so the questions of one visit can be read together. It is created when you open Roz, forgotten when you close the tab, and never tied to who you are.
+- How it ended: answered, not known, refused because of the limits on questions per minute and per day, or failed.
+- The pages of this site the answer was built from, and how long it took.
+- Your browser's language, your approximate location (**country and city**, as Cloudflare estimates them for your connection), whether you use a phone or a computer, your browser's user agent, the page you came from, the light or dark theme and your window's width.
+
+**What happens on the page:** visits to it, which of Roz's suggestions are tapped, taps on Roz, opening "Why Roz?", changing the theme, and, when you leave, how long you stayed and how many questions you asked.
+
+**What is not kept:** your **IP address**, or anything that identifies you, unless you type it into a question.
+
+**For how long:** **12 months**. Older records are deleted automatically every day.
+
+**In your browser:** the conversation itself is kept in the tab (session storage), so it survives a reload and disappears when you close the tab. If you choose light or dark, that choice is remembered in your browser (local storage).
+
+The data is stored in a database in my own Cloudflare account, which only I have access to, and it is never sold or shared. If you want something you asked to be deleted, message me on Telegram, saying roughly when you asked and what, and I will remove it.
 
 ## Hosting and Delivery
 The sites are hosted on **GitHub Pages** and delivered through **Cloudflare**. To serve the pages and protect them from abuse, these services process technical data such as your **IP address** and browser information, under their own privacy policies: [**GitHub**](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement) and [**Cloudflare**](https://www.cloudflare.com/privacypolicy/).
