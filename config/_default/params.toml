@@ -14,6 +14,9 @@ enableImageWebp = true
 
 fingerprintAlgorithm = "sha256"
 
+# Roz, the site's assistant (worker/), linked from the menu, the footer and the ask-roz shortcode
+rozUrl = "https://roz.montenegrodanielfelipe.com"
+
 [header]
   layout = "hybrid"
   # logo is shown on the light theme, logoDark on the dark theme

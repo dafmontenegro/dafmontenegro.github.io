@@ -141,3 +141,45 @@ button.cw-badge:focus-visible {
   min-height: 4.5em;
   min-height: calc(3 * 1lh);
 }
+
+/* ------------------------------------------------------------------- Ask Roz */
+
+/* The invitation to talk to Roz (layouts/_shortcodes/ask-roz.html). On the homepage it
+   is one compact line with Roz waving, shrink-wrapped so it is never wider than the
+   thought above it and the page still fits on one screen; elsewhere, a sentence.
+   Built from Congo's palette; the sprites swap with cw-light/cw-dark. */
+.cw-ask-roz-wrap {
+  margin: 1.25rem 0 0;
+  text-align: center;
+}
+.cw-ask-roz {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 100%;
+  padding: 0.15rem 1rem 0.15rem 0.4rem;
+  border: 1px solid rgb(var(--color-neutral-200));
+  border-radius: 9999px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 150ms ease-in-out;
+}
+.dark .cw-ask-roz { border-color: rgb(var(--color-neutral-700)); }
+.cw-ask-roz:hover { border-color: rgb(var(--color-primary-500)); }
+.cw-ask-roz-art { flex: none; display: block; line-height: 0; }
+.cw-ask-roz-art img {
+  width: 68px;
+  height: 52px;
+  image-rendering: pixelated;
+}
+.cw-ask-roz-text { text-align: left; font-size: 1rem; line-height: 1.4; }
+.cw-ask-roz-text strong { color: rgb(var(--color-primary-600)); }
+.dark .cw-ask-roz-text strong { color: rgb(var(--color-primary-400)); }
+
+/* The 404 page's link to Roz, coloured like the site's links (the page is not prose). */
+.cw-404-link {
+  color: rgb(var(--color-primary-700));
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.dark .cw-404-link { color: rgb(var(--color-primary-400)); }

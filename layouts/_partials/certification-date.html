@@ -1,0 +1,9 @@
+{{- /* The date a credential was earned, as precisely as its source records it: a day
+     ("16 October 2026") or only a month ("March 2023"). Takes one credential from
+     data/certifications.json. Pass "short" as .short for "16 Oct 2026". */ -}}
+{{- $raw := .credential.earned -}}
+{{- if eq .credential.datePrecision "month" -}}
+  {{- (time.AsTime (printf "%s-01" $raw)).Format (cond .short "Jan 2006" "January 2006") -}}
+{{- else -}}
+  {{- (time.AsTime $raw).Format (cond .short "2 Jan 2006" "2 January 2006") -}}
+{{- end -}}

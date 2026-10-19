@@ -13,7 +13,7 @@
     "@type" "Person"
     "name" $author.name
     "url" site.Home.Permalink
-    "jobTitle" "AI Software Developer"
+    "jobTitle" "Technology Solutions Analyst"
     "description" site.Params.description
     "knowsAbout" (slice "Artificial Intelligence" "AI Platform Engineering" "Model Context Protocol" "Retrieval-Augmented Generation" "Software Engineering" "Data Engineering")
     "sameAs" $sameAs
@@ -97,6 +97,15 @@
   <script type="application/json" id="preflop-sources">{{ $sources | jsonify | safeJS }}</script>
   {{ with resources.Get "js/preflop.js" | minify | fingerprint site.Params.fingerprintAlgorithm }}
     <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+  {{ end }}
+{{ end }}
+
+{{/* Pages that set `certifications` list the credentials of data/certifications.json
+     through the `certifications` shortcode; its stylesheet is small and used by that
+     page alone, so it loads here instead of riding along in the site-wide bundle. */}}
+{{ if .Params.certifications }}
+  {{ with resources.Get "css/certifications.css" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" />
   {{ end }}
 {{ end }}
 

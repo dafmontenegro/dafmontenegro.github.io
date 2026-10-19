@@ -3,7 +3,7 @@ title: "Who am I?"
 description: "Who is Daniel Felipe Montenegro? A Systems and Computer Engineer and AI software developer who builds AI platforms and loves cinema, music and literature."
 summary: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
 Date: 2024-10-12
-lastmod: 2026-10-10
+lastmod: 2026-10-19
 images: ["img/og-about.jpg"]
 tags: []
 showBreadcrumbs: false
@@ -16,9 +16,17 @@ butterflies: true
 ## My Professional Journey
 I'm a **Systems and Computer Engineer**, a licensed professional engineer and an **AI software developer**. My work lives where **artificial intelligence meets real-world systems**: designing the platforms that let AI assistants work **safely and reliably** with the tools and data people depend on every day.
 
-Most recently, I designed and built from the ground up an **AI platform based on the Model Context Protocol (MCP)**, and today I lead the team that carries it forward. It is a single core that takes care of what every integration needs (**identity, permissions, credentials and observability**), so new integrations can be switched on or off through configuration, with no redeployments. Every change that touches real data is **previewed and confirmed by a person** before it runs, and every action leaves a trace. I also build **AI-driven QA** that tries to break the system before anyone else does.
+Today I work as a **Technology Solutions Analyst**. I lead the technical side of corporate technology projects: **architecture, vendors and delivery to operations**.
 
-Before that, I built **data pipelines and BI dashboards** that turned hours of manual analysis into minutes, developed **RAG systems, computer vision and backend APIs** as a freelancer, taught **workshops and tutoring** in Python, IoT and machine learning, and started my career in **customer experience**, where I learned that technology only matters when it solves a real problem for someone.
+Before that, I designed and built from the ground up an **AI platform based on the Model Context Protocol (MCP)**, and led the team that carried it forward. It is a single core that takes care of what every integration needs (**identity, permissions, credentials and observability**), so new integrations can be switched on or off through configuration, with no redeployments. Every change that touches real data is **previewed and confirmed by a person** before it runs, and every action leaves a trace. I also built **AI-driven QA** that tries to break the system before anyone else does.
+
+Earlier, I built **data pipelines and BI dashboards** that turned hours of manual analysis into minutes, developed **RAG systems, computer vision and backend APIs** as a freelancer, taught **workshops and tutoring** in Python, IoT and machine learning, and started my career in **customer experience**, where I learned that technology only matters when it solves a real problem for someone.
+
+I studied **Systems and Computer Engineering** at the **Universidad Nacional de Colombia** and graduated on April 21, 2026. My undergraduate thesis, advised by Juan David García Arteaga, is the [Prisoner's Dilemma in Dynamic Networks](/projects/prisoners-dilemma-dynamic-networks/), a computational tool to study cooperation and isolation among agents.
+
+I keep learning: in October 2026 I earned **Microsoft Certified: Azure Fundamentals**, and every certification and course certificate I hold is on my [Certifications](/certifications/) page.
+
+{{< ask-roz style="line" >}}
 
 ## Your Friendly Neighborhood Software Engineer
 Well, let's just say I'm your friendly neighborhood **software engineer.**
@@ -120,7 +128,7 @@ In the novel the **yellow butterflies** arrive before anyone can explain them. N
 They don't last. Reach one. Nothing holds them for long. Try anyway.
 
 ## Where can we be friends?
-Keep in mind that **I don't use social networks, so you won't find me there.** 
+**I don't use social networks: this website is my only home on the internet.**
 
 For a while I used **X** as something similar to an open journal where I collected everything I learned... Everything that was there **now lives here (on my website)**, in [Literature](/spaces/literature/); which makes this my unique and cozy place.
 
@@ -130,7 +138,7 @@ So, I invite you to be my friend on:
 ![Duolingo QR @dafmontenegro](img/duolingo-qr.jpg)
 
 ## Contact Me
-If you want to contact me, the easiest way is through **Telegram**. Alternatively, you can use my social links on the [home page](/).
+If you want to contact me, the easiest way is through **Telegram**. Alternatively, you can use the links on the [home page](/).
 
 If what you need is a photo of me, they are all in [/press](/press/): full length, cut out, on white, and cropped for profiles.
 

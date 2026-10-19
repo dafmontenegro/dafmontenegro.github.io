@@ -33,7 +33,7 @@ These files override templates from Congo or Hugo. **Review them whenever Congo 
 | `layouts/_partials/opengraph.html` | Hugo 0.167 | Shared title is "Page · Daniel Felipe Montenegro" outside the homepage |
 | `layouts/_partials/twitter_cards.html` | Hugo 0.167 | Same title change for X cards |
 | `layouts/_shortcodes/button.html` | Congo 2.14 | Adds `rel="noopener noreferrer"` to links that open a new tab |
-| `layouts/404.html` | Congo 2.14 | 404 page with Caesar's Window |
+| `layouts/404.html` | Congo 2.14 | 404 page with Caesar's Window, and a line pointing to Roz |
 | `layouts/_partials/google_analytics.html` | Hugo 0.167 | Same tag and Do Not Track rule; sets the page's context (content group, colour scheme, viewport band, time zone, automation flag) and two user properties before the first page view. See [Analytics](#analytics) |
 
 These are additions, not overrides:
@@ -41,7 +41,11 @@ These are additions, not overrides:
 | File | Purpose |
 | --- | --- |
 | `layouts/_partials/extend-head.html` | schema.org `Person` data on the homepage and About page, and the per-page assets behind a front matter flag: the book-chapter stylesheet on `bookChapter`, the butterflies assets on `butterflies`, the preflop stylesheet, script and data on `preflop`, and the Literature stylesheet and script on `literature`; plus, on every page, the analytics events through `telemetry.html`, and, unless it sets `koi: false`, the Poké Ball through `koi.html` (Congo hook) |
-| `assets/css/custom.css` | Caesar's Window styles for the badge, the 404 page and light/dark variants (bundled by Congo) |
+| `assets/css/custom.css` | Caesar's Window styles for the badge, the 404 page and light/dark variants, and the Ask Roz card (bundled by Congo) |
+| `assets/css/certifications.css` | Styles for the Certifications page: the featured Microsoft certification, the lists and the folded Platzi list (loaded only on pages with `certifications: true`) |
+| `assets/img/roz/` | Roz waving beside Brightbill, one animated GIF per theme, for the Ask Roz card. Drawn from the same grids as the chat page (`worker/public/roz.js`) |
+| `data/certifications.json` | Every certification and course certificate (103), with issuer, date, credential ID and verification link: the only source of the Certifications page |
+| `layouts/_partials/certification-date.html` | A credential's date, as precise as its source (day or month) |
 | `assets/css/butterflies.css` | Styles for the butterflies shortcode: the button, the 3D wings and their beat, and the quote card (loaded only on pages with `butterflies: true`) |
 | `assets/js/butterflies.js` | The flight engine behind the butterflies shortcode: the arrivals, the wandering, the dodging and the catching |
 | `assets/css/preflop.css` | Styles for the preflop tools: the 13 x 13 grid, the card picker, the panels and the table view (loaded only on pages with `preflop: true`) |
@@ -92,6 +96,8 @@ On top of Congo's own (`alert`, `button`, `katex`, `lead`…) and Hugo's (`youtu
 | `{{< butterflies label="..." >}}` | A button that brings yellow butterflies drifting in from the edges of the page. Their wings turn in 3D on a hinge at the body, they dodge the pointer, one that is caught shows a line of *Cien años de soledad*, and they fade out after a few seconds. The page must also set `butterflies: true` in its front matter |
 | `{{< quote cite="..." date="2023-04-07" url="..." image="img/art.jpg" alt="..." credit="..." >}}` | One quote of the open journal: the text verbatim (line breaks kept, nothing parsed as Markdown), its attribution, the artwork it travelled with and a link to the original post. `cite`, `image`, `alt` and `credit` are optional, `date` and `url` are not |
 | `{{< quote-random >}}` | A button that jumps to one of the quotes on the page at random and lights it for a moment. The page must also set `literature: true` in its front matter |
+| `{{< certifications group="vendor" >}}` | One group of `data/certifications.json`: `counts`, `vendor`, `university`, `short` or `platzi`. The page writes the headings in Markdown so they reach the table of contents, and sets `certifications: true` |
+| `{{< ask-roz >}}` | A card inviting the reader to talk to Roz, with her waving; `style="line"` gives a single sentence instead. The address is `rozUrl` in `params.toml` |
 | `{{< preflop-grid >}}` | The 13 x 13 grid of all 169 Texas Hold'em starting hands, shaded by a metric the reader chooses, with a legend, a hand panel and a table view |
 | `{{< preflop-picker >}}` | Pick two real cards and read what that hand is worth |
 | `{{< preflop-headsup >}}` | One hand against another: wins, ties and losses |

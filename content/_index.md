@@ -8,4 +8,6 @@ summary: "By day, I'm a passionate software developer who loves to dive into cod
 The days are long, but the years are short.
 {{< /alert >}}
 
+{{< ask-roz >}}
+
 Let's make something happen — [say hello](https://t.me/dafmontenegro)

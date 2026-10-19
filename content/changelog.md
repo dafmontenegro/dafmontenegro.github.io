@@ -12,6 +12,12 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-19 | [Home](/)                       | A more vivid red on a deeper night blue, across the whole site and Roz |
+| 2026-10-19 | [Roz](https://roz.montenegrodanielfelipe.com) | Meet Roz, my assistant, named after the robot of *The Wild Robot*: she answers questions about me and my work from everything on this site. She waves from the homepage and is linked from the menu, the footer, About, Projects and the 404 page |
+| 2026-10-19 | [About](/about/#my-professional-journey) | What I do today, where I studied and my Microsoft certification; the MCP platform moves to the past, and the page says plainly that this website is my only home on the internet |
+| 2026-10-19 | [Certifications](/certifications/) | New page: "Certifications", with Microsoft Certified: Azure Fundamentals first, then university courses, short courses and the Platzi certificates, each with where to verify it; linked from the footer |
+| 2026-10-19 | [Home](/)                       | The X link is gone from the profile: everything I kept there now lives in [Literature](/spaces/literature/) |
+| 2026-10-19 | [Privacy](/privacy/#roz-the-sites-assistant) | Roz's section now explains the bot check and the per-visitor limits, and the short-lived fingerprint used to count them |
 | 2026-10-18 | [Privacy](/privacy/#roz-the-sites-assistant) | New section on Roz, the site's assistant: what it keeps of each question, what it never keeps, and for how long |
 | 2026-10-12 | [Privacy](/privacy)             | Updated Privacy Policy: the site now measures how its pages and interactive pieces are used, and lists exactly what it sends to Google Analytics |
 | 2026-10-12 | [Projects](/projects/texas-holdem-preflop-trainer/) | The grid of all 169 starting hands in "Texas Hold'em Preflop" shows again: since the other four tools arrived it had been stuck on "Loading" |

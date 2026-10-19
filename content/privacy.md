@@ -52,7 +52,9 @@ For more information on how Google handles your data, please visit the [**Google
 
 **What happens on the page:** visits to it, which of Roz's suggestions are tapped, taps on Roz, opening "Why Roz?", changing the theme, and, when you leave, how long you stayed and how many questions you asked.
 
-**What is not kept:** your **IP address**, or anything that identifies you, unless you type it into a question.
+**Keeping bots out and the limits fair:** before your first question, the page runs **Cloudflare Turnstile**, which checks that you are a person, usually without you noticing, under Cloudflare's privacy policy. Each visitor can ask up to **6 questions a minute and 40 a day**. To count them, Roz keeps a one-way fingerprint of your IP address, made with a secret key so that the address cannot be recovered from it, separately from the questions and for at most **26 hours**.
+
+**What is not kept:** your **IP address** itself, or anything that identifies you, unless you type it into a question.
 
 **For how long:** **12 months**. Older records are deleted automatically every day.
 

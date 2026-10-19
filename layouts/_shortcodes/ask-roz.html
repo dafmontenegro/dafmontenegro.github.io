@@ -1,0 +1,20 @@
+{{- /* An invitation to talk to Roz, the site's assistant (worker/). Two shapes:
+       {{< ask-roz >}}               a compact link with Roz waving, for the homepage
+       {{< ask-roz style="line" >}}  one sentence with a link, for the end of a page
+     The address lives in params.toml (`rozUrl`) so it is written once. The animated
+     sprites are drawn from the same grids as the chat page (worker/public/roz.js), one
+     per theme; the classes cw-light/cw-dark in custom.css show the right one. */ -}}
+{{- $url := site.Params.rozUrl -}}
+{{- if eq (.Get "style") "line" -}}
+<p class="cw-ask-roz-line">Have a question about me or my work? <a href="{{ $url }}" target="_blank" rel="noopener">Ask Roz</a>, my assistant: she answers from everything on this site.</p>
+{{- else -}}
+<p class="cw-ask-roz-wrap not-prose">
+  <a class="cw-ask-roz" href="{{ $url }}" target="_blank" rel="noopener">
+    <span class="cw-ask-roz-art" aria-hidden="true">
+      {{- with resources.Get "img/roz/roz-wave-light.gif" | fingerprint site.Params.fingerprintAlgorithm }}<img class="cw-light" src="{{ .RelPermalink }}" alt="" width="68" height="52" />{{ end -}}
+      {{- with resources.Get "img/roz/roz-wave-dark.gif" | fingerprint site.Params.fingerprintAlgorithm }}<img class="cw-dark" src="{{ .RelPermalink }}" alt="" width="68" height="52" />{{ end -}}
+    </span>
+    <span class="cw-ask-roz-text">Questions? <strong>Ask Roz</strong>, my assistant</span>
+  </a>
+</p>
+{{- end -}}

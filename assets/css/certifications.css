@@ -1,0 +1,151 @@
+/* The Certifications page (layouts/_shortcodes/certifications.html). Loaded by
+   layouts/_partials/extend-head.html on pages that set `certifications: true`.
+
+   Every colour is built from Congo's palette, exposed as RGB triplets in custom
+   properties, and Congo switches the dark theme with the "dark" class on <html>, so the
+   page follows the reader's theme like the rest of the site. Plain CSS rather than
+   Tailwind utilities: Tailwind only keeps the classes it finds in Congo's templates. */
+
+/* Read by screen readers, not shown: lets a short link ("Verify") name what it verifies. */
+.cw-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cw-certs-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.5rem;
+  color: rgb(var(--color-neutral-500));
+}
+.cw-certs-counts strong { color: rgb(var(--color-neutral-800)); }
+.dark .cw-certs-counts strong { color: rgb(var(--color-neutral-100)); }
+.cw-certs-sep { margin-right: 0.35rem; }
+
+.cw-certs h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.cw-cert-meta,
+.cw-cert-links,
+.cw-cert-note,
+.cw-cert-kicker {
+  margin: 0.25rem 0 0;
+  font-size: 0.92rem;
+}
+.cw-cert-meta { color: rgb(var(--color-neutral-500)); }
+.dark .cw-cert-meta { color: rgb(var(--color-neutral-400)); }
+.cw-cert-id {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+  overflow-wrap: anywhere;
+  color: rgb(var(--color-neutral-600));
+}
+.dark .cw-cert-id { color: rgb(var(--color-neutral-300)); }
+.cw-cert-note { font-style: italic; }
+.cw-cert-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; align-items: center; }
+
+/* The one vendor certification, set apart in the site's red. */
+.cw-cert-featured {
+  margin: 1rem 0 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgb(var(--color-primary-300));
+  border-left-width: 4px;
+  border-radius: 0.5rem;
+  background: rgb(var(--color-primary-50));
+}
+.dark .cw-cert-featured {
+  border-color: rgb(var(--color-primary-800));
+  background: rgb(var(--color-primary-950) / 0.35);
+}
+.cw-cert-featured h3 { font-size: 1.2rem; }
+.cw-cert-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgb(var(--color-primary-700));
+}
+.dark .cw-cert-kicker { color: rgb(var(--color-primary-400)); }
+
+/* Same treatment as the site's `button` shortcode, so the page has one kind of button. */
+.cw-cert-button {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  border-radius: 0.375rem;
+  background-color: rgb(var(--color-primary-600));
+  color: rgb(var(--color-neutral)) !important;
+  text-decoration: none !important;
+  font-weight: 500;
+}
+.cw-cert-button:hover { background-color: rgb(var(--color-primary-500)); }
+.dark .cw-cert-button { background-color: rgb(var(--color-primary-800)); }
+.dark .cw-cert-button:hover { background-color: rgb(var(--color-primary-700)); }
+
+.cw-cert-list {
+  list-style: none;
+  padding-left: 0 !important;
+}
+.cw-cert-list > li {
+  margin: 0 0 1.1rem;
+  padding-left: 0 !important;
+}
+.cw-cert-list > li::before { content: none !important; }
+
+/* Platzi: folded away, and compact once open. */
+.cw-cert-platzi {
+  margin-top: 0.75rem;
+  border: 1px solid rgb(var(--color-neutral-200));
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+}
+.dark .cw-cert-platzi { border-color: rgb(var(--color-neutral-700)); }
+.cw-cert-platzi summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: rgb(var(--color-primary-700));
+}
+.dark .cw-cert-platzi summary { color: rgb(var(--color-primary-400)); }
+.cw-cert-compact {
+  list-style: none;
+  padding-left: 0 !important;
+  margin: 0.75rem 0 0;
+  font-size: 0.92rem;
+}
+.cw-cert-compact > li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.6rem;
+  margin: 0;
+  padding: 0.35rem 0 !important;
+  border-top: 1px solid rgb(var(--color-neutral-100));
+}
+.dark .cw-cert-compact > li { border-top-color: rgb(var(--color-neutral-800)); }
+.cw-cert-compact > li::before { content: none !important; }
+.cw-cert-compact time {
+  flex: 0 0 6.5rem;
+  color: rgb(var(--color-neutral-500));
+  font-variant-numeric: tabular-nums;
+}
+.cw-cert-compact .cw-cert-name { flex: 1 1 14rem; }
+.cw-cert-retired {
+  padding: 0 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  background: rgb(var(--color-neutral-100));
+  color: rgb(var(--color-neutral-600));
+}
+.dark .cw-cert-retired {
+  background: rgb(var(--color-neutral-800));
+  color: rgb(var(--color-neutral-300));
+}

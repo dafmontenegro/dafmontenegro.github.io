@@ -1,0 +1,107 @@
+{{- /* One group of the credentials in data/certifications.json, chosen with `group`:
+     "counts" (the totals), "vendor", "university", "short" or "platzi". The page writes
+     the headings itself, in Markdown, so they reach the table of contents; this only
+     lists. Nothing here is typed by hand: names, dates, IDs, links and counts all come
+     from the data file, so a new credential is a new entry there and nothing else.
+     Styles: assets/css/certifications.css, loaded by extend-head.html on pages that set
+     `certifications: true`. */ -}}
+{{- $all := hugo.Data.certifications.credentials -}}
+{{- $group := .Get "group" -}}
+{{- $names := dict
+  "Microsoft Learn" "Microsoft"
+  "Credly" "AWS Academy"
+  "Cognitive Class" "IBM Cognitive Class"
+  "Coursera" "Coursera"
+  "MathWorks" "MathWorks"
+  "Platzi" "Platzi"
+-}}
+
+{{- if eq $group "counts" }}
+{{- $order := slice "Microsoft Learn" "Coursera" "Cognitive Class" "MathWorks" "Credly" "Platzi" }}
+<p class="cw-certs-counts">
+  <strong>{{ len $all }} credentials</strong>
+  {{- range $order }}
+    {{- $n := len (where $all "platform" .) }}
+    {{- if $n }}<span><span class="cw-certs-sep" aria-hidden="true">·</span> {{ index $names . }} {{ $n }}</span>{{ end }}
+  {{- end }}
+</p>
+
+{{- else if eq $group "vendor" }}
+{{- range $c := where $all "tier" 1 }}
+<article class="cw-cert cw-cert-featured">
+  <p class="cw-cert-kicker">{{ .issuer }}{{ with .examCode }} · Exam {{ . }}{{ end }}</p>
+  <h3>{{ .name }}</h3>
+  <p class="cw-cert-meta">
+    Earned <time datetime="{{ .earned }}">{{ partial "certification-date.html" (dict "credential" .) }}</time>
+    {{- with .credentialId }} · Credential ID <span class="cw-cert-id">{{ . }}</span>{{ end }}
+  </p>
+  {{- with .verifyUrl }}
+  <p class="cw-cert-links"><a class="cw-cert-button" href="{{ . }}" target="_blank" rel="noopener noreferrer">Verify<span class="cw-sr"> {{ $c.name }}</span> on {{ $c.platform }}</a></p>
+  {{- end }}
+</article>
+<script type="application/ld+json">
+{{ dict
+  "@context" "https://schema.org"
+  "@type" "EducationalOccupationalCredential"
+  "name" .name
+  "credentialCategory" "certification"
+  "dateCreated" .earned
+  "identifier" .credentialId
+  "url" .verifyUrl
+  "recognizedBy" (dict "@type" "Organization" "name" .issuer)
+  | jsonify | safeJS }}
+</script>
+{{- end }}
+
+{{- else if eq $group "university" }}
+<ul class="cw-cert-list">
+{{- range $c := sort (where (where $all "tier" 2) "platform" "!=" "Platzi") "earned" "desc" }}
+  <li class="cw-cert">
+    <h3 {{ if eq .issuer "Universidad de los Andes" }}lang="es"{{ end }}>{{ .name }}</h3>
+    <p class="cw-cert-meta">
+      {{ .issuer }} · {{ index $names .platform }} · <time datetime="{{ .earned }}">{{ partial "certification-date.html" (dict "credential" .) }}</time>
+      {{- with .approxHours }} · about {{ . }} hours{{ end }}
+      {{- with .credentialId }} · ID <span class="cw-cert-id">{{ . }}</span>{{ end }}
+    </p>
+    {{- with .verifyUrl }}
+    <p class="cw-cert-links"><a href="{{ . }}" target="_blank" rel="noopener noreferrer">Verify<span class="cw-sr"> {{ $c.name }}</span> on {{ $c.platform }}</a></p>
+    {{- end }}
+  </li>
+{{- end }}
+</ul>
+
+{{- else if eq $group "short" }}
+<ul class="cw-cert-list">
+{{- range $c := sort (where (where $all "tier" 3) "platform" "!=" "Platzi") "earned" "desc" }}
+  <li class="cw-cert">
+    <h3>{{ .name }}</h3>
+    <p class="cw-cert-meta">
+      {{ .issuer }} · <time datetime="{{ .earned }}">{{ partial "certification-date.html" (dict "credential" .) }}</time>
+      {{- with .credentialId }} · ID <span class="cw-cert-id">{{ . }}</span>{{ end }}
+    </p>
+    {{- with .verifyUrl }}
+    <p class="cw-cert-links"><a href="{{ . }}" target="_blank" rel="noopener noreferrer">Verify<span class="cw-sr"> {{ $c.name }}</span> on {{ $c.platform }}</a></p>
+    {{- end }}
+  </li>
+{{- end }}
+</ul>
+
+{{- else if eq $group "platzi" }}
+{{- $platzi := sort (where $all "platform" "Platzi") "earned" "desc" }}
+<details class="cw-cert-platzi">
+  <summary>Show all {{ len $platzi }} Platzi certificates, newest first</summary>
+  <ol class="cw-cert-compact">
+  {{- range $c := $platzi }}
+    <li>
+      <time datetime="{{ .earned }}">{{ partial "certification-date.html" (dict "credential" . "short" true) }}</time>
+      <span class="cw-cert-name" lang="es">{{ .name }}</span>
+      {{- if .deprecated }} <span class="cw-cert-retired">no longer offered</span>{{ end }}
+      {{- with .verifyUrl }} <a href="{{ . }}" target="_blank" rel="noopener noreferrer">Diploma<span class="cw-sr"> for {{ $c.name }}</span></a>{{ end }}
+    </li>
+  {{- end }}
+  </ol>
+</details>
+
+{{- else }}
+  {{- errorf "certifications: unknown group %q in %s" $group .Position }}
+{{- end }}

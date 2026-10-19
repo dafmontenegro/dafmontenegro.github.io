@@ -2,7 +2,8 @@
 :root {
     --color-neutral: 255, 255, 255;
 
-    /* Neutral */
+    /* Neutral: Tailwind's slate in the light tones; the dark tones deepened into a
+       night blue, so the red stands out more (palette "B", chosen 2026-10-19) */
     --color-neutral-50: 248, 250, 252;
     --color-neutral-100: 241, 245, 249;
     --color-neutral-200: 226, 232, 240;
@@ -10,23 +11,23 @@
     --color-neutral-400: 148, 163, 184;
     --color-neutral-500: 100, 116, 139;
     --color-neutral-600: 71, 85, 105;
-    --color-neutral-700: 51, 65, 85;
-    --color-neutral-800: 30, 41, 59;
-    --color-neutral-900: 15, 23, 42;
-    --color-neutral-950: 10, 10, 10;
+    --color-neutral-700: 38, 49, 74;
+    --color-neutral-800: 21, 28, 44;
+    --color-neutral-900: 12, 18, 32;
+    --color-neutral-950: 6, 10, 20;
 
-    /* Primary (Red) */
-    --color-primary-50: 254, 242, 242;
-    --color-primary-100: 254, 226, 226;
-    --color-primary-200: 254, 202, 202;
-    --color-primary-300: 252, 165, 165;
-    --color-primary-400: 248, 113, 113;
-    --color-primary-500: 239, 68, 68;
-    --color-primary-600: 220, 38, 38;
-    --color-primary-700: 185, 28, 28;
-    --color-primary-800: 153, 27, 27;
-    --color-primary-900: 127, 29, 29;
-    --color-primary-950: 69, 10, 10;
+    /* Primary: a vivid red, more saturated than Tailwind's, Daniel Felipe's favourite colour */
+    --color-primary-50: 255, 241, 241;
+    --color-primary-100: 255, 224, 224;
+    --color-primary-200: 255, 199, 199;
+    --color-primary-300: 255, 158, 158;
+    --color-primary-400: 255, 99, 99;
+    --color-primary-500: 255, 56, 56;
+    --color-primary-600: 240, 22, 38;
+    --color-primary-700: 200, 12, 30;
+    --color-primary-800: 160, 10, 27;
+    --color-primary-900: 122, 10, 22;
+    --color-primary-950: 72, 4, 10;
 
     /* Secondary (Yellow) */
     --color-secondary-50: 254, 252, 232;

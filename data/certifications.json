@@ -1,0 +1,1862 @@
+{
+ "generated": "2026-10-17",
+ "owner": "Daniel Felipe Montenegro",
+ "platziProfile": "https://platzi.com/p/dafmontenegro/",
+ "tierMeaning": {
+  "1": "vendor certification",
+  "2": "university-issued or substantial course (Platzi tier 2 is provisional, by topic; hours are not public)",
+  "3": "short course, onramp or training badge"
+ },
+ "count": 103,
+ "credentials": [
+  {
+   "id": "microsoft-azure-fundamentals",
+   "name": "Microsoft Certified: Azure Fundamentals",
+   "examCode": "AZ-900",
+   "issuer": "Microsoft",
+   "platform": "Microsoft Learn",
+   "earned": "2026-10-16",
+   "datePrecision": "day",
+   "credentialId": "B5F13B9CF1247991",
+   "certificationNumber": "4D6FX2-92DE8D",
+   "verifyUrl": "https://learn.microsoft.com/api/credentials/share/en-us/DanielFelipeMontenegroHerrera-9665/B5F13B9CF1247991?sharingId=6FDFBC67DA21219C",
+   "kind": "vendor-certification",
+   "tier": 1,
+   "topics": [
+    "Azure",
+    "Cloud fundamentals"
+   ],
+   "expires": null,
+   "deprecated": false
+  },
+  {
+   "id": "aws-academy-cloud-foundations",
+   "name": "AWS Academy Graduate - Cloud Foundations - Training Badge",
+   "issuer": "Amazon Web Services Training and Certification",
+   "platform": "Credly",
+   "earned": "2025-07-10",
+   "datePrecision": "day",
+   "verifyUrl": "https://www.credly.com/badges/63969fe5-9854-435e-9f78-549537bdeaa3",
+   "kind": "training-badge",
+   "tier": 3,
+   "topics": [
+    "AWS Architecture",
+    "AWS Cloud",
+    "AWS Core Services",
+    "AWS Pricing",
+    "AWS Support"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "web-application-technologies-django",
+   "name": "Web Application Technologies and Django",
+   "issuer": "University of Michigan",
+   "platform": "Coursera",
+   "earned": "2024-01-19",
+   "datePrecision": "day",
+   "credentialId": "P5HSF5MANXHT",
+   "verifyUrl": "https://www.coursera.org/account/accomplishments/verify/P5HSF5MANXHT",
+   "kind": "university-course",
+   "approxHours": 11,
+   "tier": 2,
+   "topics": [
+    "Django",
+    "HTTP",
+    "CSS"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "introduccion-ciencia-datos-aplicada",
+   "name": "Introducción a la ciencia de datos aplicada",
+   "issuer": "Universidad de los Andes",
+   "platform": "Coursera",
+   "earned": "2023-12-26",
+   "datePrecision": "day",
+   "credentialId": "99JWDY6MLFCP",
+   "verifyUrl": "https://www.coursera.org/account/accomplishments/verify/99JWDY6MLFCP",
+   "kind": "university-course",
+   "approxHours": 19,
+   "tier": 2,
+   "topics": [
+    "Data science methodology (ASUM-DM)",
+    "Business analytics"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "fundamentos-probabilidad-aplicaciones",
+   "name": "Fundamentos de probabilidad y aplicaciones",
+   "issuer": "Universidad de los Andes",
+   "platform": "Coursera",
+   "earned": "2023-10-27",
+   "datePrecision": "day",
+   "credentialId": "6XXNSVCTY2JC",
+   "verifyUrl": "https://www.coursera.org/account/accomplishments/verify/6XXNSVCTY2JC",
+   "kind": "university-course",
+   "approxHours": 16,
+   "tier": 2,
+   "topics": [
+    "Probability",
+    "Random experiments",
+    "Risk quantification"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "building-web-applications-php",
+   "name": "Building Web Applications in PHP",
+   "issuer": "University of Michigan",
+   "platform": "Coursera",
+   "earned": "2023-03-19",
+   "datePrecision": "day",
+   "credentialId": "MVWLHHF7M753",
+   "verifyUrl": "https://www.coursera.org/account/accomplishments/verify/MVWLHHF7M753",
+   "kind": "university-course",
+   "approxHours": 28,
+   "tier": 2,
+   "topics": [
+    "PHP",
+    "Web applications"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "ibm-python-for-data-science",
+   "name": "Python for Data Science",
+   "issuer": "IBM (Cognitive Class)",
+   "platform": "Cognitive Class",
+   "earned": "2023-03",
+   "datePrecision": "month",
+   "credentialId": "e973fc9acb4b4ce5afa6f3b65958cb23",
+   "verifyUrl": null,
+   "kind": "online-course",
+   "tier": 3,
+   "topics": [
+    "Python",
+    "Data science"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "ibm-data-analysis-with-python",
+   "name": "Data Analysis with Python",
+   "issuer": "IBM (Cognitive Class)",
+   "platform": "Cognitive Class",
+   "earned": "2023-03",
+   "datePrecision": "month",
+   "credentialId": "c4a490fe6d994211808e9671b7e1ab19",
+   "verifyUrl": null,
+   "kind": "online-course",
+   "tier": 3,
+   "topics": [
+    "Python",
+    "Data analysis"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "ibm-data-visualization-with-python",
+   "name": "Data Visualization with Python",
+   "issuer": "IBM (Cognitive Class)",
+   "platform": "Cognitive Class",
+   "earned": "2023-03",
+   "datePrecision": "month",
+   "credentialId": "0d613e75e2304591b8206200baa94f64",
+   "verifyUrl": null,
+   "kind": "online-course",
+   "tier": 3,
+   "topics": [
+    "Python",
+    "Data visualization"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "mathworks-matlab-onramp",
+   "name": "MATLAB Onramp",
+   "issuer": "MathWorks",
+   "platform": "MathWorks",
+   "earned": "2025-01",
+   "datePrecision": "month",
+   "verifyUrl": null,
+   "kind": "onramp",
+   "tier": 3,
+   "topics": [
+    "MATLAB"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "mathworks-optimization-onramp",
+   "name": "Optimization Onramp",
+   "issuer": "MathWorks",
+   "platform": "MathWorks",
+   "earned": "2025-01",
+   "datePrecision": "month",
+   "verifyUrl": null,
+   "kind": "onramp",
+   "tier": 3,
+   "topics": [
+    "Optimization",
+    "MATLAB"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "mathworks-intro-linear-algebra-matlab",
+   "name": "Introduction to Linear Algebra with MATLAB",
+   "issuer": "MathWorks",
+   "platform": "MathWorks",
+   "earned": "2025-01",
+   "datePrecision": "month",
+   "verifyUrl": null,
+   "kind": "onramp",
+   "tier": 3,
+   "topics": [
+    "Linear algebra",
+    "MATLAB"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-11818-github-copilot",
+   "name": "Curso de GitHub Copilot",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2025-03-16",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 11818,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/11818-github-copilot/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 2,
+   "tierProvisional": true,
+   "topics": [
+    "GitHub Copilot"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-8781-docker-fundamentos",
+   "name": "Curso de Docker: Fundamentos",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2025-03-15",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 8781,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/8781-docker-fundamentos/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 2,
+   "tierProvisional": true,
+   "topics": [
+    "Docker: Fundamentos"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1584-portafolios",
+   "name": "Curso de Creación de Portafolio y CV",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-11-30",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1584,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1584-portafolios/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Creación de Portafolio y CV"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1420-sistemas-diseno",
+   "name": "Curso de Sistemas de Diseño Efectivos",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-11-17",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1420,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1420-sistemas-diseno/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Sistemas de Diseño Efectivos"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2513-fundamentos-fastapi",
+   "name": "Curso de FastAPI: Fundamentos, Path Operations y Validaciones",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-11-15",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2513,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2513-fundamentos-fastapi/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 2,
+   "tierProvisional": true,
+   "topics": [
+    "FastAPI: Fundamentos, Path Operations y Validaciones"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1744-practico-css",
+   "name": "Curso Práctico de Maquetación en CSS",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-11-15",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1744,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1744-practico-css/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Maquetación en CSS"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2508-backend-introduccion",
+   "name": "Curso de Introducción al Desarrollo Backend",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-11-13",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2508,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2508-backend-introduccion/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Introducción al Desarrollo Backend"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1906-diseno-programadores",
+   "name": "Curso de Diseño para Developers",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-11-10",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1906,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1906-diseno-programadores/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Diseño para Developers"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2157-desarrollo-moderno-codestream",
+   "name": "Curso de Flujo de Desarrollo Moderno CodeStream",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-13",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2157,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2157-desarrollo-moderno-codestream/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Flujo de Desarrollo Moderno CodeStream"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1642-javascript-profesional",
+   "name": "Curso Profesional de JavaScript",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-13",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1642,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1642-javascript-profesional/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "JavaScript"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-2395-fechas-horas-expresiones-simples",
+   "name": "Curso de Inglés Básico A1: Fechas, Horas y Expresiones Simples",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-11",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2395,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2395-fechas-horas-expresiones-simples/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Inglés Básico A1: Fechas, Horas y Expresiones Simples"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1763-npm-js",
+   "name": "Curso de Gestión de Dependencias y Paquetes con NPM",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-09",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1763,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1763-npm-js/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Gestión de Dependencias y Paquetes con NPM"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1789-asincronismo-js-old",
+   "name": "Curso de Asincronismo con JavaScript 2019",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-08",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1789,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1789-asincronismo-js-old/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Asincronismo con JavaScript 2019"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1815-ecmascript",
+   "name": "Curso de ECMAScript 6+",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-04",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1815,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1815-ecmascript/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "ECMAScript 6+"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1807-scope",
+   "name": "Curso de Closures y Scope en JavaScript 2020",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-03",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1807,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1807-scope/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Closures y Scope en JavaScript 2020"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-2005-taller-descripciones-personales",
+   "name": "Curso de Inglés Práctico para Descripciones Personales (2020=",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-03",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2005,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2005-taller-descripciones-personales/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Inglés Práctico para Descripciones Personales (2020="
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-2327-javascript-practico-2021",
+   "name": "Curso Práctico de JavaScript",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-02",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2327,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2327-javascript-practico-2021/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "JavaScript"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-2393-presente-simple-vocabulario-comun-2021",
+   "name": "Curso de Inglés Básico A1: Presente Simple y Vocabulario Común (2021)",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-02",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2393,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2393-presente-simple-vocabulario-comun-2021/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Inglés Básico A1: Presente Simple y Vocabulario Común (2021)"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1814-basico-javascript",
+   "name": "Curso Básico de JavaScript",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-01",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1814,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1814-basico-javascript/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "JavaScript"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-2477-frontend-developer-practico",
+   "name": "Curso Práctico de Frontend Developer",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-01",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2477,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2477-frontend-developer-practico/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Frontend Developer"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2383-prework-linux-2021",
+   "name": "Curso de Configuración de Entorno de Desarrollo en Linux",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-01",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2383,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2383-prework-linux-2021/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Configuración de Entorno de Desarrollo en Linux"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2467-frontend-developer",
+   "name": "Curso de Frontend Developer",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-01",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2467,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2467-frontend-developer/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 2,
+   "tierProvisional": true,
+   "topics": [
+    "Frontend Developer"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2214-prework-macos",
+   "name": "Curso de Configuración de Entorno de Desarrollo en macOS",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-01",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2214,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2214-prework-macos/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Configuración de Entorno de Desarrollo en macOS"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1741-computacion-basica-2019",
+   "name": "Curso de Computación Básica",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-10-01",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1741,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1741-computacion-basica-2019/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Computación Básica"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-2397-python-profesional",
+   "name": "Curso Profesional de Python",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-09-23",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2397,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2397-python-profesional/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Python"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1927-intro-selenium",
+   "name": "Curso de Introducción a Selenium con Python",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-09-22",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1927,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1927-intro-selenium/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 2,
+   "tierProvisional": true,
+   "topics": [
+    "Introducción a Selenium con Python"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1220-marca-personal-2018",
+   "name": "Curso Gratis de Marca Personal 2018",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-09-18",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1220,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1220-marca-personal-2018/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Marca Personal 2018"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1050-basico-programacion",
+   "name": "Curso Básico de Programación",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-09-18",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1050,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1050-basico-programacion/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Programación"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1474-oop",
+   "name": "Curso de Programación Orientada a Objetos: POO",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-09-18",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1474,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1474-oop/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Programación Orientada a Objetos: POO"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-2255-python-intermedio",
+   "name": "Curso de Python Intermedio: Comprehensions, Lambdas y Manejo de Errores",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-09-18",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2255,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2255-python-intermedio/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Python Intermedio: Comprehensions, Lambdas y Manejo de Errores"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-2434-jupyter-notebook",
+   "name": "Curso de Entorno de Trabajo para Ciencia de Datos con Jupyter Notebooks y Anaconda",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-09-13",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2434,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2434-jupyter-notebook/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Entorno de Trabajo para Ciencia de Datos con Jupyter Notebooks y Anaconda"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1945-ingles-principiantes-2020",
+   "name": "Curso de Inglés Básico A1: Conversaciones Cortas y Habituales (2020)",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-09-13",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1945,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1945-ingles-principiantes-2020/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Inglés Básico A1: Conversaciones Cortas y Habituales (2020)"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1944-estrategias-ingles-2020",
+   "name": "Curso de Estrategias para Aprender Inglés Online 2020",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-09-13",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1944,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1944-estrategias-ingles-2020/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Estrategias para Aprender Inglés Online 2020"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1566-fundamentos-db",
+   "name": "Curso de Fundamentos de Bases de Datos 2019",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-09-11",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1566,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1566-fundamentos-db/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 2,
+   "tierProvisional": true,
+   "topics": [
+    "Fundamentos de Bases de Datos 2019"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2292-terminal-21",
+   "name": "Curso de Introducción a la Terminal y Línea de Comandos",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-09-02",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2292,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2292-terminal-21/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Introducción a la Terminal y Línea de Comandos"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-2296-desarrollar-habilidades-emprendimiento",
+   "name": "Curso de Innovación para Emprendimiento",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-09-02",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2296,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2296-desarrollar-habilidades-emprendimiento/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Innovación para Emprendimiento"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2370-mundo-startups",
+   "name": "Audiocurso de Introducción al Mundo de las Startups",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-08-21",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2370,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2370-mundo-startups/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Introducción al Mundo de las Startups"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2166-intro-finanzas",
+   "name": "Curso de Introducción a Educación Financiera",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-08-17",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2166,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2166-intro-finanzas/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Introducción a Educación Financiera"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2024-php-composer",
+   "name": "Curso de PHP con Composer",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-06-30",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2024,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2024-php-composer/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "PHP con Composer"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2222-css-grid-layout",
+   "name": "Curso Profesional de CSS Grid Layout",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-06-13",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2222,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2222-css-grid-layout/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "CSS Grid Layout"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1640-frontend-developer-2019",
+   "name": "Curso de Frontend Developer 2019",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-06-13",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1640,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1640-frontend-developer-2019/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Frontend Developer 2019"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1230-photoshop-basico-2018",
+   "name": "Curso Básico de Photoshop",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-06-08",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1230,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1230-photoshop-basico-2018/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Photoshop"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2017-color",
+   "name": "Curso de Uso y Manejo del Color",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-05-13",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2017,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2017-color/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Uso y Manejo del Color"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2004-tecnicas-creatividad-2020",
+   "name": "Curso para Desarrollar tu Creatividad: Técnicas y Hábitos",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-05-12",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2004,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2004-tecnicas-creatividad-2020/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Desarrollar tu Creatividad: Técnicas y Hábitos"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1130-illustrator-old",
+   "name": "Curso de Adobe Illustrator",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-05-10",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1130,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1130-illustrator-old/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Adobe Illustrator"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1754-diseno-interfaces-ux",
+   "name": "Curso de Fundamentos UI/UX",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-05-09",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1754,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1754-diseno-interfaces-ux/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Fundamentos UI/UX"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-2042-prework-windows",
+   "name": "Curso de Prework: Configuración de Entorno de Desarrollo en Windows",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-04-26",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2042,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2042-prework-windows/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Prework: Configuración de Entorno de Desarrollo en Windows"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1228-fundamentos-diseno",
+   "name": "Curso de Introducción al Diseño",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-04-25",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1228,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1228-fundamentos-diseno/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Introducción al Diseño"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1210-design-thinking",
+   "name": "Curso de Design Thinking con Minds Garage",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-04-12",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1210,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1210-design-thinking/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Design Thinking con Minds Garage"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-2030-mobile-first-2020",
+   "name": "Curso de Responsive Design: Maquetación Mobile First",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-03-30",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2030,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2030-mobile-first-2020/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Responsive Design: Maquetación Mobile First"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1758-html-practico",
+   "name": "Curso Práctico de HTML y CSS",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-03-23",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1758,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1758-html-practico/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "HTML y CSS"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1557-git-github",
+   "name": "Curso Profesional de Git y GitHub",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-03-20",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1557,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1557-git-github/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 2,
+   "tierProvisional": true,
+   "topics": [
+    "Git y GitHub"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2008-html-css-2020",
+   "name": "Curso Definitivo de HTML y CSS",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-03-12",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2008,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2008-html-css-2020/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "HTML y CSS"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2053-intro-historia-internet",
+   "name": "Curso de Introducción a la Web: Historia y Funcionamiento de Internet",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-03-09",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2053,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2053-intro-historia-internet/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Introducción a la Web: Historia y Funcionamiento de Internet"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-2069-negocios-data-science-2020",
+   "name": "Curso de Análisis de Negocios para Ciencia de Datos",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-03-06",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2069,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2069-negocios-data-science-2020/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Análisis de Negocios para Ciencia de Datos"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1506-iot",
+   "name": "Curso de Introducción al IoT",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-03-06",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1506,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1506-iot/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 2,
+   "tierProvisional": true,
+   "topics": [
+    "Introducción al IoT"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1632-fundamentos-circuitos",
+   "name": "Curso Básico de Circuitos Electrónicos",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-03-04",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1632,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1632-fundamentos-circuitos/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Circuitos Electrónicos"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1609-electronica",
+   "name": "Curso de Fundamentos de Electricidad y Electrónica",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-26",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1609,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1609-electronica/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Fundamentos de Electricidad y Electrónica"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2155-calculo-data-science",
+   "name": "Curso de Matemáticas para Data Science: Cálculo Básico",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-24",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2155,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2155-calculo-data-science/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Matemáticas para Data Science: Cálculo Básico"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1725-algebra-lineal-python-2019",
+   "name": "Curso de Fundamentos de Álgebra Lineal con Python",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-22",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1725,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1725-algebra-lineal-python-2019/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Fundamentos de Álgebra Lineal con Python"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2127-intro-algebra-2020",
+   "name": "Curso de Introducción al Álgebra Lineal: Vectores",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-20",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2127,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2127-intro-algebra-2020/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Introducción al Álgebra Lineal: Vectores"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-2081-ds-probabilidad",
+   "name": "Curso de Matemáticas para Data Science: Probabilidad",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-18",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2081,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2081-ds-probabilidad/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Matemáticas para Data Science: Probabilidad"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1841-probabilistica",
+   "name": "Curso de Introducción al Pensamiento Probabilístico",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-15",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1841,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1841-probabilistica/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Introducción al Pensamiento Probabilístico"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1835-programacion-estocastica",
+   "name": "Curso de Estadística Computacional con Python",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-13",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1835,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1835-programacion-estocastica/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 2,
+   "tierProvisional": true,
+   "topics": [
+    "Estadística Computacional con Python"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1775-algoritmos-python",
+   "name": "Curso de Complejidad Algorítmica con Python",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-11",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1775,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1775-algoritmos-python/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 2,
+   "tierProvisional": true,
+   "topics": [
+    "Complejidad Algorítmica con Python"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1764-python-cs",
+   "name": "Curso de Introducción al Pensamiento Computacional con Python",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-11",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1764,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1764-python-cs/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 2,
+   "tierProvisional": true,
+   "topics": [
+    "Introducción al Pensamiento Computacional con Python"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1937-python-basico",
+   "name": "Curso Básico de Python",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-10",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1937,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1937-python-basico/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Python"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1748-terminal-2019",
+   "name": "Curso de Introducción a la Terminal y Línea de Comandos 2019",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-10",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1748,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1748-terminal-2019/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Introducción a la Terminal y Línea de Comandos 2019"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1899-modelos-numericos",
+   "name": "Taller de Aplicación de Modelos Numéricos",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-10",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1899,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1899-modelos-numericos/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Aplicación de Modelos Numéricos"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1729-matematicas-ai-2019",
+   "name": "Curso de Fundamentos Matemáticos para Inteligencia Artificial 2019",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-09",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1729,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1729-matematicas-ai-2019/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Fundamentos Matemáticos para Inteligencia Artificial 2019"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1317-inversion-criptomonedas",
+   "name": "Curso de Blockchain y Criptomonedas 2018",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-08",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1317,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1317-inversion-criptomonedas/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Blockchain y Criptomonedas 2018"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1320-ecuaciones",
+   "name": "Curso de Ecuaciones Diferenciales",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-07",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1320,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1320-ecuaciones/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Ecuaciones Diferenciales"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1319-discretas",
+   "name": "Curso de Matemáticas Discretas",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-05",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1319,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1319-discretas/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Matemáticas Discretas"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1444-pensamiento-logico-2018",
+   "name": "Curso de Pensamiento Lógico 2018",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-04",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1444,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1444-pensamiento-logico-2018/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Pensamiento Lógico 2018"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1280-calculo-multivariable",
+   "name": "Curso de Cálculo Multivariable",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-03",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1280,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1280-calculo-multivariable/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Cálculo Multivariable"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-2218-pensamiento-logico-2020",
+   "name": "Curso Básico de Algoritmos y Pensamiento Lógico",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-02-03",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 2218,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/2218-pensamiento-logico-2020/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Algoritmos y Pensamiento Lógico"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1894-integracion-por-partes",
+   "name": "Curso de Cálculo Integral: Integración por Partes, Cíclicas e Integrales Definidas",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-01-30",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1894,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1894-integracion-por-partes/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Cálculo Integral: Integración por Partes, Cíclicas e Integrales Definidas"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1893-calculo-integral-sustitucion",
+   "name": "Curso de Cálculo Integral: Integrales por Sustitución",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-01-30",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1893,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1893-calculo-integral-sustitucion/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Cálculo Integral: Integrales por Sustitución"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1892-calculo-integral",
+   "name": "Curso de Cálculo Integral: Integrales Directas",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-01-30",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1892,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1892-calculo-integral/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Cálculo Integral: Integrales Directas"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1195-fundamentos-appsco",
+   "name": "Fundamentos de Ingeniería de Software",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-01-29",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1195,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1195-fundamentos-appsco/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Fundamentos de Ingeniería de Software"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1098-ingenieria2017",
+   "name": "Fundamentos de Ingeniería de Software",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-01-29",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1098,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1098-ingenieria2017/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Fundamentos de Ingeniería de Software"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1267-calculo-datos",
+   "name": "Curso de Cálculo para Análisis de Datos",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-01-29",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1267,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1267-calculo-datos/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Cálculo para Análisis de Datos"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1471-estatica",
+   "name": "Curso de Física Mecánica Estática",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-01-28",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1471,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1471-estatica/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Física Mecánica Estática"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1417-astrobiologia",
+   "name": "Curso de Astrobiología",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-01-28",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1417,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1417-astrobiologia/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Astrobiología"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1275-excel-analisis-datos",
+   "name": "Curso de Excel para el Análisis de Datos",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-01-27",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1275,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1275-excel-analisis-datos/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Excel para el Análisis de Datos"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1914-economia-digital-2020",
+   "name": "Curso de Lectura Economía Digital: Bitcoin y Criptomonedas",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-01-27",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1914,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1914-economia-digital-2020/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Lectura Economía Digital: Bitcoin y Criptomonedas"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1749-gestion-tiempo-2019",
+   "name": "Curso de Gestión Efectiva del Tiempo",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-01-26",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1749,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1749-gestion-tiempo-2019/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Gestión Efectiva del Tiempo"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1447-fisica-matematica",
+   "name": "Curso de Fundamentos de Matemáticas para Física",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-01-26",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1447,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1447-fisica-matematica/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Fundamentos de Matemáticas para Física"
+   ],
+   "deprecated": false
+  },
+  {
+   "id": "platzi-1449-algebra-2018",
+   "name": "Curso de Álgebra",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-01-26",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1449,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1449-algebra-2018/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Álgebra"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1393-fundamentos-matematicas-2018",
+   "name": "Curso de Fundamentos de Matemáticas",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-01-26",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1393,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1393-fundamentos-matematicas-2018/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Fundamentos de Matemáticas"
+   ],
+   "deprecated": true
+  },
+  {
+   "id": "platzi-1608-aprender-2019",
+   "name": "Curso de Estrategias para Aprender en Línea Efectivamente 2019",
+   "issuer": "Platzi",
+   "platform": "Platzi",
+   "earned": "2021-01-25",
+   "datePrecision": "day",
+   "dateNote": "Platzi approved_date; many courses are older editions",
+   "platziCourseId": 1608,
+   "verifyUrl": "https://platzi.com/p/dafmontenegro/curso/1608-aprender-2019/diploma/detalle/",
+   "kind": "platzi-course",
+   "tier": 3,
+   "tierProvisional": false,
+   "topics": [
+    "Estrategias para Aprender en Línea Efectivamente 2019"
+   ],
+   "deprecated": true
+  }
+ ]
+}
