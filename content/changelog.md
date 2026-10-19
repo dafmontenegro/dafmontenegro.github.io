@@ -12,6 +12,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-19 | [Cinema](/spaces/cinema/)            | The Last of Us: of the two games, the second is my favorite, and I never watched the second season |
 | 2026-10-19 | [About](/about/#caesars-window) | Caesar's Window: the dream is to be a great leader like Caesar one day |
 | 2026-10-19 | [Home](/)                       | A more vivid red on a deeper night blue, across the whole site and Roz |
 | 2026-10-19 | [Roz](https://roz.montenegrodanielfelipe.com) | Meet Roz, my assistant, named after the robot of *The Wild Robot*: she answers questions about me and my work from everything on this site. She waves from the homepage and is linked from the menu, the footer, About, Projects and the 404 page |

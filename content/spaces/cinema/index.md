@@ -334,7 +334,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 - **Arcane (2021 - 2024)**
 - **Baby Reindeer (2024).** The monologue in chapter six is too honest: [Donny Dunn Breaks Down On Stage](https://www.youtube.com/watch?v=khstPnH89ZM)
 - **South Park (1997).** My favorite comedy show, with its own space for my favorite episodes: [South Park](/spaces/south-park/)
-- **The Last of Us (2023).** Episode 3: Wow! My favorite game is the second one, so I’m really looking forward to the second season.
+- **The Last of Us (2023).** Episode 3: Wow! Of the two games, my favorite is the second one: a great game that deserves its place on the podium. I never watched the second season, though: it seems to be very bad.
 - **Love, Death & Robots (2019).** My Favorite Episodes:
     - **S1.E7** ∙ Beyond the Aquila Rift
     - **S1.E14** ∙ Zima Blue **(best)**
