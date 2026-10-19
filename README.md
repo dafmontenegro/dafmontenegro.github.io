@@ -202,7 +202,7 @@ GA only shows a parameter in its reports once it is registered (**Admin > Custom
 
 ## Assistant
 
-An AI assistant answers visitors' questions about me, from what the site publishes and nothing else. Its code lives in its own repository. What lives in the site itself is **what it knows**:
+An AI assistant, **Roz** (after the robot of *The Wild Robot*), answers visitors' questions about me, from what the site publishes and nothing else. Its code lives in its own repository. What lives in the site itself is **what it knows**:
 
 | File | Purpose |
 | --- | --- |
