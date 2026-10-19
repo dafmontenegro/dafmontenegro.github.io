@@ -1,6 +1,7 @@
 /* The carp that climbs the waterfall, and the Poké Ball of the homepage.
 
-   On every page long enough to scroll except the homepage, a shiny Magikarp comes out at
+   On every article long enough to scroll (koi.html says which pages are: never the
+   homepage, a list of other pages, or a page that sets `climb: false`), a shiny Magikarp comes out at
    the foot of the screen's right edge, a waterfall pours down from a torii at its head,
    and the carp climbs the fall as the page is read: its height is how far down the page
    the reader is, and the golden trail behind it is the stretch already climbed. At the
@@ -928,6 +929,7 @@
       }, 900);
     }
 
+    if (!sprites.climb) return;
     buildClimb();
     measure();
     window.addEventListener("scroll", onScroll, { passive: true });

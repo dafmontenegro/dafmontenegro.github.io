@@ -32,6 +32,12 @@
 {{- if .IsHome }}
   {{- $config = merge $config (dict "home" true) -}}
 {{- end }}
+{{/* The carp climbs only on a page that is read from top to bottom: never on a list of
+     other pages (/spaces/, /projects/, /blog/, the tags), where it was in the way, nor on
+     a page that sets `climb: false`. koi.js still needs the page's size to decide. */}}
+{{- if and (eq .Kind "page") (ne .Params.climb false) }}
+  {{- $config = merge $config (dict "climb" true) -}}
+{{- end }}
 {{- if eq .Kind "404" }}
   {{- $config = merge $config (dict "missing" true) -}}
 {{- end }}

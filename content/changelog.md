@@ -4,6 +4,8 @@ description: "A timeline of updates outlining new features, content, and enhance
 images: ["/og/changelog.jpg"]
 date: 2024-12-22
 showReadingTime: false
+# A list to look things up in, not an article: no carp climbing beside it
+climb: false
 showPagination: false
 showDate: false
 ---
@@ -12,6 +14,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-19 | [Spaces](/spaces/)                | The carp now climbs only beside long articles, no longer on pages that lead to other pages, such as Spaces, Projects and the blog, nor on Certifications or this Changelog |
 | 2026-10-19 | [Cinema](/spaces/cinema/)            | The Last of Us: of the two games, the second is my favorite, and I never watched the second season |
 | 2026-10-19 | [About](/about/#caesars-window) | Caesar's Window: the dream is to be a great leader like Caesar one day |
 | 2026-10-19 | [Home](/)                       | A more vivid red on a deeper night blue, across the whole site and Roz |

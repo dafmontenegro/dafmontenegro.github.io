@@ -7,6 +7,8 @@ lastmod: 2026-10-19
 showDate: false
 showDateUpdated: false
 showReadingTime: false
+# A list to look things up in, not an article: no carp climbing beside it
+climb: false
 showPagination: false
 showAuthor: false
 certifications: true
