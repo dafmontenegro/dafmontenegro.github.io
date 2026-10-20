@@ -3,7 +3,7 @@ title: "Privacy Policy"
 description: "How montenegrodanielfelipe.com, dafmontenegro.com and Roz, the site's assistant, handle your data: analytics, what Roz keeps, embedded content and hosting."
 images: ["/og/privacy.jpg"]
 date: 2024-10-12
-lastmod: 2026-10-18
+lastmod: 2026-10-20
 showReadingTime: false
 showPagination: false
 showAuthor: false
@@ -54,9 +54,9 @@ For more information on how Google handles your data, please visit the [**Google
 
 **Keeping bots out and the limits fair:** before your first question, the page runs **Cloudflare Turnstile**, which checks that you are a person, usually without you noticing, under Cloudflare's privacy policy. Each visitor can ask up to **6 questions a minute and 40 a day**. To count them, Roz keeps a one-way fingerprint of your IP address, made with a secret key so that the address cannot be recovered from it, separately from the questions and for at most **26 hours**.
 
-**What is not kept:** your **IP address** itself, or anything that identifies you, unless you type it into a question.
+**Your IP address, when you ask a question:** it is kept **encrypted**, only for security and to answer requests from the authorities, and deleted after **6 months**. Only I can decrypt it. It is never kept for visits to the page that ask nothing.
 
-**For how long:** **12 months**. Older records are deleted automatically every day.
+**For how long:** **12 months**, except your IP address (6 months). Older records are deleted automatically every day.
 
 **In your browser:** the conversation itself is kept in the tab (session storage), so it survives a reload and disappears when you close the tab. If you choose light or dark, or Spanish or English, that choice is remembered in your browser (local storage).
 
