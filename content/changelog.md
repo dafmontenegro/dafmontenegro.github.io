@@ -14,6 +14,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-20 | [Paw Prints](/spaces/paw-prints/) | Dogo, as he is: a brindle big guy with a paintbrush tail like a beagle's, and pure heart |
 | 2026-10-19 | [Spaces](/spaces/)                | The carp now climbs only beside long articles, no longer on pages that lead to other pages, such as Spaces, Projects and the blog, nor on Certifications or this Changelog |
 | 2026-10-19 | [Cinema](/spaces/cinema/)            | The Last of Us: of the two games, the second is my favorite, and I never watched the second season |
 | 2026-10-19 | [About](/about/#caesars-window) | Caesar's Window: the dream is to be a great leader like Caesar one day |

@@ -4,7 +4,7 @@ description: "Max, Dante, Luna, Cosmo, Kiki and Dogo: the companions who have sh
 summary: "Max, Dante, Luna, Cosmo, Kiki and Dogo: the companions who have shared my home and left their paw prints on my heart. Some of them are still here and the others live on in every memory, from Max's first day to Dogo's, the dog Dante adopted before he left. This is their corner of my website, so they can stay here forever."
 date: 2024-02-01
 weight: 70
-lastmod: 2026-10-01
+lastmod: 2026-10-20
 featureAlt: "A collage of my dogs and cats around the words Te amamos"
 coverAlt: "A collage of my dogs and cats around the words Te amamos"
 thumbnailAlt: "A collage of my dogs and cats around the words Te amamos"
@@ -37,6 +37,6 @@ Visit Kiki's website
 {{< /button >}}
 
 ### Dogo
-My dog **without limits**. **Dante adopted him** before he left, and this is Dogo on his very first day with us.
+My dog **without limits**: a big guy who is **pure heart**, as sweet and tender as they come, with a brindle coat and a magical **paintbrush tail**, like a beagle's. **Dante adopted him** before he left, and this is Dogo on his very first day with us.
 
-![Dogo, a brindle and white dog, smiling with his tongue out on his first day home](img/dogo.png?2x=true)
+![Dogo, a brindle dog, smiling with his tongue out on his first day home](img/dogo.png?2x=true)
