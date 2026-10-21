@@ -50,7 +50,7 @@ For more information on how Google handles your data, please visit the [**Google
 - The pages of this site the answer was built from, and how long it took.
 - Your browser's language, your approximate location (**country and city**, as Cloudflare estimates them for your connection), whether you use a phone or a computer, your browser's user agent, the page you came from, the light or dark theme and your window's width.
 
-**What happens on the page:** visits to it, which of Roz's suggestions are tapped, taps on Roz, opening "Why Roz?", changing the theme or the language, and, when you leave, how long you stayed and how many questions you asked.
+**What happens on the page:** visits to it, which of Roz's suggestions are tapped, taps on Roz, opening "Why Roz?", changing the theme or the language, rating an answer as helpful or not, copying or sharing an answer, and, when you leave, how long you stayed and how many questions you asked.
 
 **Keeping bots out and the limits fair:** before your first question, the page runs **Cloudflare Turnstile**, which checks that you are a person, usually without you noticing, under Cloudflare's privacy policy. Each visitor can ask up to **6 questions a minute and 40 a day**. To count them, Roz keeps a one-way fingerprint of your IP address, made with a secret key so that the address cannot be recovered from it, separately from the questions and for at most **26 hours**.
 
