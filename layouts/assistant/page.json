@@ -1,18 +1,10 @@
-{{- /* The assistant's knowledge, as JSON: facts.md whole, then every page it may
-     name, with the text of the ones it may read. Which pages fall in which group is
+{{- /* The public pages the assistant may use, as JSON: every page it may name,
+     with the text of the ones it may read. Which pages fall in which group is
      set in content/assistant/index.md. Thoughts and the press kit are not in the
      site's lists at all, so they never get this far. */ -}}
 {{- $cfg := .Params.assistant -}}
 {{- $exclude := $cfg.exclude | default slice -}}
 {{- $catalogOnly := $cfg.catalogOnly | default slice -}}
-
-{{- /* The comment at the top of facts.md is for whoever edits it, not for the model. */ -}}
-{{- $facts := "" -}}
-{{- with resources.Get "assistant/facts.md" -}}
-  {{- $facts = .Content | replaceRE `(?s)<!--.*?-->` "" | strings.TrimSpace -}}
-{{- else -}}
-  {{- errorf "assistant: assets/assistant/facts.md is missing" -}}
-{{- end -}}
 
 {{- $pages := slice -}}
 {{- range site.RegularPages -}}
@@ -51,6 +43,5 @@
 
 {{- dict
   "site" site.Home.Permalink
-  "facts" $facts
   "pages" $pages
   | jsonify -}}

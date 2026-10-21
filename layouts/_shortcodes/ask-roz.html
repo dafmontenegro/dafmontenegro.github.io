@@ -1,8 +1,8 @@
-{{- /* An invitation to talk to Roz, the site's assistant (worker/). Two shapes:
+{{- /* An invitation to talk to Roz, the site's assistant. Two shapes:
        {{< ask-roz >}}               a compact link with Roz waving, for the homepage
        {{< ask-roz style="line" >}}  one sentence with a link, for the end of a page
      The address lives in params.toml (`rozUrl`) so it is written once. The animated
-     sprites are drawn from the same grids as the chat page (worker/public/roz.js), one
+     sprites are drawn from the same grids as Roz's chat page, one
      per theme; the classes cw-light/cw-dark in custom.css show the right one. */ -}}
 {{- $url := site.Params.rozUrl -}}
 {{- if eq (.Get "style") "line" -}}

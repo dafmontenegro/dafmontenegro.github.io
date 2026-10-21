@@ -14,7 +14,7 @@ enableImageWebp = true
 
 fingerprintAlgorithm = "sha256"
 
-# Roz, the site's assistant (worker/), linked from the menu, the footer and the ask-roz shortcode
+# Roz, the site's assistant, linked from the menu, the footer and the ask-roz shortcode
 rozUrl = "https://roz.montenegrodanielfelipe.com"
 
 [header]
