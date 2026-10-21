@@ -14,6 +14,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-21 | [Projects](/projects/roz/) | New project page: "Roz", how my assistant is designed, with diagrams of her architecture and of how she chooses what to read |
 | 2026-10-20 | [Roz](https://roz.montenegrodanielfelipe.com) | Each answer can be rated, copied or shared, and Roz suggests two questions to keep the conversation going |
 | 2026-10-20 | [Privacy](/privacy/#roz-the-sites-assistant) | Roz now keeps the IP address of whoever asks a question, encrypted, for security and requests from the authorities, for 6 months |
 | 2026-10-20 | [Paw Prints](/spaces/paw-prints/) | Dogo, as he is: a brindle big guy with a paintbrush tail like a beagle's, and pure heart |

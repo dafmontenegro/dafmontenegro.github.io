@@ -183,3 +183,33 @@ button.cw-badge:focus-visible {
   text-underline-offset: 0.2em;
 }
 .dark .cw-404-link { color: rgb(var(--color-primary-400)); }
+
+/* ------------------------------------------------------------------- Diagrams */
+
+/* SVG diagrams inlined by layouts/_shortcodes/diagram.html. The drawing only names
+   classes; the colours come from here, so one file serves light and dark. */
+.cw-diagram { margin: 2rem auto; max-width: 30rem; }
+.cw-diagram svg { display: block; width: 100%; height: auto; font-family: inherit; }
+.cw-diagram figcaption { text-align: center; }
+.cw-diagram .dg-box { fill: rgb(var(--color-neutral-50)); stroke: rgb(var(--color-neutral-300)); stroke-width: 1.5; }
+.cw-diagram .dg-key { fill: rgb(var(--color-primary-50)); stroke: rgb(var(--color-primary-500)); stroke-width: 1.5; }
+.cw-diagram .dg-band { fill: rgba(var(--color-primary-500), 0.12); }
+.cw-diagram .dg-t { fill: rgb(var(--color-neutral-800)); font-size: 15px; font-weight: 600; }
+.cw-diagram .dg-s { fill: rgb(var(--color-neutral-500)); font-size: 13px; }
+.cw-diagram .dg-sec { fill: rgb(var(--color-primary-700)); font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; }
+.cw-diagram .dg-l { fill: none; stroke: rgb(var(--color-neutral-400)); stroke-width: 1.5; }
+.cw-diagram .dg-div { fill: none; stroke: rgb(var(--color-neutral-300)); stroke-width: 1.5; stroke-dasharray: 5 5; }
+.cw-diagram .dg-a { fill: rgb(var(--color-neutral-400)); }
+.cw-diagram .dg-on { fill: rgb(var(--color-primary-500)); stroke: rgb(var(--color-neutral-50)); stroke-width: 2; }
+.cw-diagram .dg-off { fill: rgb(var(--color-neutral-50)); stroke: rgb(var(--color-neutral-400)); stroke-width: 1.5; }
+.dark .cw-diagram .dg-box { fill: rgb(var(--color-neutral-800)); stroke: rgb(var(--color-neutral-600)); }
+.dark .cw-diagram .dg-key { fill: rgb(var(--color-primary-950)); stroke: rgb(var(--color-primary-400)); }
+.dark .cw-diagram .dg-band { fill: rgba(var(--color-primary-400), 0.16); }
+.dark .cw-diagram .dg-t { fill: rgb(var(--color-neutral-100)); }
+.dark .cw-diagram .dg-s { fill: rgb(var(--color-neutral-400)); }
+.dark .cw-diagram .dg-sec { fill: rgb(var(--color-primary-400)); }
+.dark .cw-diagram .dg-l { stroke: rgb(var(--color-neutral-500)); }
+.dark .cw-diagram .dg-div { stroke: rgb(var(--color-neutral-600)); }
+.dark .cw-diagram .dg-a { fill: rgb(var(--color-neutral-500)); }
+.dark .cw-diagram .dg-on { fill: rgb(var(--color-primary-400)); stroke: rgb(var(--color-neutral-800)); }
+.dark .cw-diagram .dg-off { fill: rgb(var(--color-neutral-800)); stroke: rgb(var(--color-neutral-500)); }

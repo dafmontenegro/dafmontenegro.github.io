@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" aria-hidden="true" focusable="false">
+  <!-- x = 40 + (score - 0.38) * 1800: 0.40 at 76, 0.45 at 166, 0.50 at 256, 0.55 at 346.
+       The same ten passages in both rows, scored 0.40 to 0.52 against one question. -->
+
+  <text class="dg-sec" x="20" y="30">BEFORE: ABOVE A FLOOR, UP TO FIVE</text>
+  <path class="dg-l" d="M40 66 H400"/>
+  <circle class="dg-off" cx="76" cy="66" r="7"/>
+  <circle class="dg-off" cx="103" cy="66" r="7"/>
+  <circle class="dg-off" cx="130" cy="66" r="7"/>
+  <circle class="dg-off" cx="157" cy="66" r="7"/>
+  <circle class="dg-off" cx="175" cy="66" r="7"/>
+  <circle class="dg-on" cx="193" cy="66" r="7"/>
+  <circle class="dg-on" cx="211" cy="66" r="7"/>
+  <circle class="dg-on" cx="238" cy="66" r="7"/>
+  <circle class="dg-on" cx="265" cy="66" r="7"/>
+  <circle class="dg-on" cx="292" cy="66" r="7"/>
+
+  <text class="dg-sec" x="20" y="124">NOW: CLOSE TO THE BEST</text>
+  <rect class="dg-band" x="224" y="142" width="76" height="36" rx="8"/>
+  <path class="dg-div" d="M112 140 V180"/>
+  <path class="dg-l" d="M40 160 H400"/>
+  <circle class="dg-off" cx="76" cy="160" r="7"/>
+  <circle class="dg-off" cx="103" cy="160" r="7"/>
+  <circle class="dg-off" cx="130" cy="160" r="7"/>
+  <circle class="dg-off" cx="157" cy="160" r="7"/>
+  <circle class="dg-off" cx="175" cy="160" r="7"/>
+  <circle class="dg-off" cx="193" cy="160" r="7"/>
+  <circle class="dg-off" cx="211" cy="160" r="7"/>
+  <circle class="dg-on" cx="238" cy="160" r="7"/>
+  <circle class="dg-on" cx="265" cy="160" r="7"/>
+  <circle class="dg-on" cx="292" cy="160" r="7"/>
+  <text class="dg-s" x="112" y="198" text-anchor="middle">floor</text>
+  <text class="dg-s" x="256" y="198" text-anchor="middle">within 0.04 of the best</text>
+
+  <text class="dg-s" x="76" y="232" text-anchor="middle">0.40</text>
+  <text class="dg-s" x="166" y="232" text-anchor="middle">0.45</text>
+  <text class="dg-s" x="256" y="232" text-anchor="middle">0.50</text>
+  <text class="dg-s" x="346" y="232" text-anchor="middle">0.55</text>
+  <text class="dg-s" x="210" y="252" text-anchor="middle">similarity to the question →</text>
+
+  <circle class="dg-on" cx="96" cy="282" r="7"/>
+  <text class="dg-s" x="110" y="286">sent to the model</text>
+  <circle class="dg-off" cx="250" cy="282" r="7"/>
+  <text class="dg-s" x="264" y="286">left out</text>
+</svg>

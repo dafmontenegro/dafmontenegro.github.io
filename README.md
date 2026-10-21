@@ -20,7 +20,6 @@ The site's symbol is **Caesar's Window**, the hypocycloid Caesar draws in *Rise 
 | `layouts/` | Overrides of Congo and Hugo templates, plus custom shortcodes (see below) |
 | `assets/` | Files processed by Hugo: author photo, Caesar's Window (SVG and PNG), color scheme, stylesheets, scripts and the data the preflop tools read |
 | `static/` | Files served as-is: favicons, web manifest, share cards (`og/`) and standalone apps (`apps/`) |
-| `worker/` | The site's assistant: a Cloudflare Worker, deployed on its own (see [Assistant](#assistant)) |
 
 ## Customizations
 
@@ -41,9 +40,9 @@ These are additions, not overrides:
 | File | Purpose |
 | --- | --- |
 | `layouts/_partials/extend-head.html` | schema.org `Person` data on the homepage and About page, and the per-page assets behind a front matter flag: the book-chapter stylesheet on `bookChapter`, the butterflies assets on `butterflies`, the preflop stylesheet, script and data on `preflop`, and the Literature stylesheet and script on `literature`; plus, on every page, the analytics events through `telemetry.html`, and, unless it sets `koi: false`, the Poké Ball through `koi.html` (Congo hook) |
-| `assets/css/custom.css` | Caesar's Window styles for the badge, the 404 page and light/dark variants, and the Ask Roz card (bundled by Congo) |
+| `assets/css/custom.css` | Caesar's Window styles for the badge, the 404 page and light/dark variants, and the Ask Roz card and the diagrams (bundled by Congo) |
 | `assets/css/certifications.css` | Styles for the Certifications page: the featured Microsoft certification, the lists and the folded Platzi list (loaded only on pages with `certifications: true`) |
-| `assets/img/roz/` | Roz waving beside Brightbill, one animated GIF per theme, for the Ask Roz card. Drawn from the same grids as the chat page (`worker/public/roz.js`) |
+| `assets/img/roz/` | Roz waving beside Brightbill, one animated GIF per theme, for the Ask Roz card. Drawn from the same grids as Roz's chat page |
 | `data/certifications.json` | Every certification and course certificate (103), with issuer, date, credential ID and verification link: the only source of the Certifications page |
 | `layouts/_partials/certification-date.html` | A credential's date, as precise as its source (day or month) |
 | `assets/css/butterflies.css` | Styles for the butterflies shortcode: the button, the 3D wings and their beat, and the quote card (loaded only on pages with `butterflies: true`) |
@@ -97,6 +96,7 @@ On top of Congo's own (`alert`, `button`, `katex`, `lead`…) and Hugo's (`youtu
 | `{{< quote cite="..." date="2023-04-07" url="..." image="img/art.jpg" alt="..." credit="..." >}}` | One quote of the open journal: the text verbatim (line breaks kept, nothing parsed as Markdown), its attribution, the artwork it travelled with and a link to the original post. `cite`, `image`, `alt` and `credit` are optional, `date` and `url` are not |
 | `{{< quote-random >}}` | A button that jumps to one of the quotes on the page at random and lights it for a moment. The page must also set `literature: true` in its front matter |
 | `{{< certifications group="vendor" >}}` | One group of `data/certifications.json`: `counts`, `vendor`, `university`, `short` or `platzi`. The page writes the headings in Markdown so they reach the table of contents, and sets `certifications: true` |
+| `{{< diagram src="architecture.svg" alt="..." caption="..." >}}` | An SVG from the page bundle, inlined so it is drawn in the site's colours and follows light and dark on its own: the drawing only names `dg-*` classes, coloured in `custom.css`. `alt` describes the whole drawing; `caption` is optional |
 | `{{< ask-roz >}}` | A card inviting the reader to talk to Roz, with her waving; `style="line"` gives a single sentence instead. The address is `rozUrl` in `params.toml` |
 | `{{< preflop-grid >}}` | The 13 x 13 grid of all 169 Texas Hold'em starting hands, shaded by a metric the reader chooses, with a legend, a hand panel and a table view |
 | `{{< preflop-picker >}}` | Pick two real cards and read what that hand is worth |
@@ -208,15 +208,14 @@ GA only shows a parameter in its reports once it is registered (**Admin > Custom
 
 ## Assistant
 
-An AI assistant, **Roz** (after the robot of *The Wild Robot*), answers visitors' questions about me, from what the site publishes and nothing else. Its code lives in its own repository. What lives in the site itself is **what it knows**:
+An AI assistant, **Roz** (after the robot of *The Wild Robot*), answers visitors' questions about me; how she is designed is on [her project page](https://montenegrodanielfelipe.com/projects/roz/). Her code lives in its own repository. What lives in the site is **which public pages she may use**:
 
 | File | Purpose |
 | --- | --- |
-| `assets/assistant/facts.md` | Everything the assistant knows about me for certain, written for it in plain sentences. Read whole on every question. What is not here, it answers it does not know |
 | `content/assistant/index.md` | Which pages the assistant may use: `exclude` keeps a page from it entirely, `catalogOnly` lets it name and link a page without reading it. Any other page in the site's lists is used, so new posts and projects need nothing here |
-| `layouts/assistant/page.json` | Builds `/assistant/index.json` with the site: `facts.md`, then each page with its title, description and URL and, unless excluded, its text with the headings kept |
+| `layouts/assistant/page.json` | Builds `/assistant/index.json` with the site: each page with its title, description and URL and, unless excluded, its text with the headings kept |
 
-The page is JSON only, kept out of lists, the sitemap and search. A change to `facts.md` or to a page reaches the assistant when the index is rebuilt from the deployed site (`npm run index` in `worker/`).
+The page is JSON only, kept out of lists, the sitemap and search, and holds nothing a visitor cannot already read on the site. A change to a page reaches the assistant when her index is rebuilt from the deployed site.
 
 ## Build and Deploy
 

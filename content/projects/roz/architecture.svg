@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 580" aria-hidden="true" focusable="false">
+  <defs>
+    <marker id="roz-arch-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="dg-a" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <text class="dg-sec" x="20" y="24">WHEN THE SITE CHANGES</text>
+
+  <rect class="dg-box" x="20" y="40" width="180" height="64" rx="10"/>
+  <text class="dg-t" x="110" y="67" text-anchor="middle">Public pages</text>
+  <text class="dg-s" x="110" y="88" text-anchor="middle">what any visitor reads</text>
+
+  <rect class="dg-box" x="220" y="40" width="180" height="64" rx="10"/>
+  <text class="dg-t" x="310" y="67" text-anchor="middle">Curated notes</text>
+  <text class="dg-s" x="310" y="88" text-anchor="middle">written for her, private</text>
+
+  <path class="dg-l" d="M110 104 V124 H310 V104"/>
+  <path class="dg-l" d="M210 124 V148" marker-end="url(#roz-arch-arrow)"/>
+
+  <rect class="dg-box" x="110" y="152" width="200" height="60" rx="10"/>
+  <text class="dg-t" x="210" y="177" text-anchor="middle">Indexer</text>
+  <text class="dg-s" x="210" y="198" text-anchor="middle">splits · embeds · stores</text>
+
+  <path class="dg-l" d="M210 212 V244" marker-end="url(#roz-arch-arrow)"/>
+
+  <rect class="dg-key" x="110" y="248" width="200" height="60" rx="10"/>
+  <text class="dg-t" x="210" y="273" text-anchor="middle">Knowledge</text>
+  <text class="dg-s" x="210" y="294" text-anchor="middle">notes, passages, vectors</text>
+
+  <path class="dg-div" d="M20 344 H400"/>
+  <text class="dg-sec" x="20" y="372">ON EVERY QUESTION</text>
+
+  <path class="dg-l" d="M260 308 V388" marker-end="url(#roz-arch-arrow)"/>
+
+  <rect class="dg-box" x="20" y="392" width="140" height="60" rx="10"/>
+  <text class="dg-t" x="90" y="417" text-anchor="middle">Question</text>
+  <text class="dg-s" x="90" y="438" text-anchor="middle">in any language</text>
+
+  <path class="dg-l" d="M160 422 H196" marker-end="url(#roz-arch-arrow)"/>
+
+  <rect class="dg-box" x="200" y="392" width="200" height="60" rx="10"/>
+  <text class="dg-t" x="300" y="417" text-anchor="middle">Search</text>
+  <text class="dg-s" x="300" y="438" text-anchor="middle">the closest passages</text>
+
+  <path class="dg-l" d="M300 452 V496" marker-end="url(#roz-arch-arrow)"/>
+
+  <rect class="dg-box" x="200" y="500" width="200" height="60" rx="10"/>
+  <text class="dg-t" x="300" y="525" text-anchor="middle">Language model</text>
+  <text class="dg-s" x="300" y="546" text-anchor="middle">rules · notes · passages</text>
+
+  <path class="dg-l" d="M200 530 H164" marker-end="url(#roz-arch-arrow)"/>
+
+  <rect class="dg-key" x="20" y="500" width="140" height="60" rx="10"/>
+  <text class="dg-t" x="90" y="525" text-anchor="middle">Answer</text>
+  <text class="dg-s" x="90" y="546" text-anchor="middle">streamed, with links</text>
+</svg>

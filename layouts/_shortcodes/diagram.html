@@ -1,0 +1,16 @@
+{{- /* An SVG diagram from the page bundle, inlined so it is drawn in the site's
+     colours and follows light and dark on its own (the dg-* classes in custom.css):
+       {{< diagram src="architecture.svg" alt="..." caption="..." >}}
+     `alt` describes the whole drawing for screen readers; `caption` is optional and
+     takes Markdown. The SVG itself is marked aria-hidden. */ -}}
+{{- $src := .Get "src" -}}
+{{- with .Page.Resources.Get $src -}}
+<figure class="cw-diagram">
+  <div role="img" aria-label="{{ $.Get "alt" }}">{{ .Content | safeHTML }}</div>
+  {{- with $.Get "caption" }}
+  <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end }}
+</figure>
+{{- else -}}
+  {{- errorf "diagram: %q not found in the bundle of %s" $src $.Page.File.Path -}}
+{{- end -}}
