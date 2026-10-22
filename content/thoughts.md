@@ -26,6 +26,10 @@ All my thoughts, everywhere, at the same time...
 
 ---
 
+{{< mahoraga >}}
+
+That is the wheel of **Mahoraga**, the shikigami of *Jujutsu Kaisen* that adapts to whatever strikes it: nothing wounds it twice, and the wheel above its head turns each time it learns. This one whirls each time you come back, because adapting is the superpower I claim on [About](/about/#about-me). (Mahoraga © Gege Akutami, MAPPA; the wheel is drawn here as an homage.)
+
 | Date       | Thought | Insight |
 | ---------- | ------- | ------- |
 | 2026-04-21 | The days are long, but the years are short. | |
@@ -37,3 +41,5 @@ All my thoughts, everywhere, at the same time...
 | 2024-11-07 | I can't imagine a more beautiful vocation than ***the best profession in the world***. | ***The best profession in the world:** being a parent.* |
 | 2024-10-27 | Lately, I've been thinking about: ***«Confiar y esperar»***. | [Le Comte De Monte-Cristo: attendre et esperer](/blog/le-comte-de-monte-cristo-attendre-et-esperer/) |
 | 2024-10-12 | I watched 🤖[**The Wild Robot**](https://www.imdb.com/title/tt29623480/)🦆 and **I loved it**! |  |
+| 2023-11-28 | Soy una persona con vocación de servicio a quien le gusta ayudar siempre que puede, también soy profundamente curioso y hago con pasión las cosas que me llenan el corazón. | From the card I made for Joanita Barbosa's art class |
+| 2023-11-28 | Para mí el arte es esa manifestación por medio de la cual compartimos nuestra experiencia de lo real, entregando al mundo una parte de lo que somos y que solo puede ser entendida cuando ese mundo mira también para dentro de sí mismo. | From the same card |

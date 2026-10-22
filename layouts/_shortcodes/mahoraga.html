@@ -1,0 +1,196 @@
+{{- /* Mahoraga's wheel (Thoughts), and, with figure="true", Mahoraga under it. The wheel is the eight-handled chakra of the
+     shikigami of Jujutsu Kaisen, drawn as a real 3D object: a ring, eight spokes and
+     eight golden spheres in a plane, spun about its axis, seen from a low angle, and
+     projected onto a pixel grid on every frame, so it turns in perspective like a halo
+     and every pixel stays crisp. It turns slowly all the time; when a reader comes back
+     it whirls, then settles. Mahoraga stands under it, hand-drawn pixel art as an homage
+     (no official sprite exists), breathing. A visit counts once: the first time the page
+     is actually visible (Safari preloads a page while its address is typed), never twice
+     within a minute, never on a reload of the same tab (localStorage "cw-wheel-turns",
+     sessionStorage "cw-wheel-seen"). With prefers-reduced-motion nothing moves. */ -}}
+<figure class="cw-mahoraga" data-figure="{{ .Get "figure" | default "false" }}" aria-label="{{ if eq (.Get "figure") "true" }}Mahoraga, drawn in pixels, standing under his golden eight-handled wheel, which whirls each time you come back{{ else }}Mahoraga's golden eight-handled wheel, drawn in pixels and turning in perspective; it whirls each time you come back{{ end }}">
+  <canvas aria-hidden="true"></canvas>
+  <figcaption class="cw-mahoraga-caption"></figcaption>
+</figure>
+<script>
+(() => {
+  const figure = document.currentScript.previousElementSibling;
+  const canvas = figure.querySelector("canvas");
+  const caption = figure.querySelector(".cw-mahoraga-caption");
+  const ctx = canvas.getContext("2d");
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const withFigure = figure.dataset.figure === "true"; // the hand-drawn Mahoraga stays off until there is a sprite worth showing
+
+  // Mahoraga, one character per pixel: o outline, w skin, s shade, d hakama, g sash, m stitches.
+  const SPRITE = [
+    "......................ooo...........",
+    "...................ooowwwoo.........",
+    ".................oowwwwwwwwo........",
+    "...............oowwwwwwwwwwwo.......",
+    "..............owwwwwoooowwwwwo......",
+    ".............owwwwwo....owwwwo......",
+    "............owwwwo.......owwwo......",
+    "...........owwwwo.........owwo......",
+    "..........owwwwo...oooo....owo......",
+    ".........owwwwo..oowwwwoo...o.......",
+    "........owwwwo..owwwwwwwwo..........",
+    ".......owwwwo..owwwwwwwwwwo.........",
+    ".......owwwo..owwwwwwwwwwwwo........",
+    "......owwwo..owwwwwwssswwwwwo.......",
+    "......owwo...owwwwwwwwwwwwwwo.......",
+    "......oww....owwwwmmmmmmwwwwo.......",
+    "......ow.....owwwwwwwwwwwwwo........",
+    "......o.......owwwwwwwwwwwo.........",
+    "...............oowwwwwwwoo..........",
+    "..........oooooooowwwwooooooo.......",
+    ".......oowwwwwwwwwwwwwwwwwwwwoo.....",
+    ".....oowwwwwwwwwwwwwwwwwwwwwwwwoo...",
+    "....owwwwwwooowwwwwwwwwwooowwwwwwo..",
+    "...owwwwwwowwwwwwmmmmmwwwwwowwwwwwo.",
+    "...owwwwwowwwwwwwm.m.mwwwwwwowwwwwo.",
+    "...owwwwwowwwwwwwwwwwwwwwwwwowwwwwo.",
+    "...owwwwwowwwwwwssswwwwwwwwwowwwwwo.",
+    "...osswwwowwwwwwwwwwwwwwwwwwowwwsso.",
+    "...owwwwwo.wwwwwwwwwwwwwwww.owwwwwo.",
+    "...owwwwwo.owwwwwwwwwwwwwwo.owwwwwo.",
+    "....owwwo..owwwwwwwwwwwwwwo..owwwo..",
+    "....owwwo..oggggggggggggggo..owwwo..",
+    ".....ooo...ogggggggggggggggo..ooo...",
+    "...........odddddddddddddddo........",
+    "..........oddddddddddddddddddo......",
+    "..........oddddddddddddddddddo......",
+    ".........oddddddddddddddddddddo.....",
+    ".........oddddddddddddddddddddo.....",
+    "........odddddddddddddddddddddddo...",
+    "........oddddddddddo.odddddddddddo..",
+    "........odddddddddo...odddddddddo...",
+    "........oddddddddo.....oddddddddo...",
+    ".........oooooooo.......oooooooo....",
+    ".........owwwwwwo.......owwwwwwo....",
+    ".........owwwwwwo.......owwwwwwo....",
+    "........owwwwwwwo.......owwwwwwwo...",
+    "........oooooooooo......ooooooooo..."
+  ];
+  const SW = Math.max(...SPRITE.map((r) => r.length)), SH = SPRITE.length;
+
+  // The wheel's geometry, in its own units (one unit = one art pixel).
+  const R = 17, NECK = 4.5, SPHERE = 3.1, HUB = 3.4, ELEVATION = (26 * Math.PI) / 180;
+  const LIGHT = [-0.5, -0.7, -0.5];
+  const GOLD = ["#7a5818", "#c99c32", "#f0d56f", "#fff6c8"];
+
+  // Art-pixel grid: the wheel's box, a gap, the sprite, the ground.
+  const WHEEL_H = Math.ceil(2 * (R + NECK + SPHERE) * Math.sin(ELEVATION)) + 2 * Math.ceil(SPHERE) + 4;
+  const WHEEL_W = 2 * (R + NECK + SPHERE) + 4;
+  const GAP = 2, GROUND = 3;
+  const GH = withFigure ? WHEEL_H + GAP + SH + GROUND : WHEEL_H + 2, GW = (withFigure ? Math.max(WHEEL_W, SW) : WHEEL_W) + 8;
+  let scale = 4;
+
+  const css = () => getComputedStyle(figure);
+  const rgb = (name, fallback) => `rgb(${css().getPropertyValue(name).trim() || fallback})`;
+  const palette = () => ({ o: rgb("--cw-m-outline", "42,47,54"), w: rgb("--cw-m-skin", "236,239,243"), s: rgb("--cw-m-shade", "195,202,211"), d: rgb("--cw-m-hakama", "27,31,38"), g: rgb("--cw-m-sash", "154,164,176"), m: rgb("--cw-m-stitch", "58,63,71"), grass: rgb("--cw-m-grass", "106,154,74") });
+
+  const px = (x, y, color) => { ctx.fillStyle = color; ctx.fillRect(Math.round(x) * scale, Math.round(y) * scale, scale, scale); };
+
+  // The wheel at angle theta, centred on (cx, cy) in art pixels. Items are projected,
+  // sorted back to front and painted; the spheres are shaded by a fixed light.
+  function wheel(cx, cy, theta, tilt) {
+    const cosE = Math.cos(ELEVATION + tilt), sinE = Math.sin(ELEVATION + tilt);
+    const items = [];
+    const put = (kind, x, z, r = 0) => items.push({ z: z * cosE, x, y: -(-z * sinE), kind, r });
+    for (let i = 0; i < 300; i++) { const a = (i * 2 * Math.PI) / 300; put("ring", R * Math.cos(a), R * Math.sin(a)); }
+    for (let k = 0; k < 8; k++) {
+      const a = theta + (k * Math.PI) / 4, c = Math.cos(a), s = Math.sin(a);
+      for (let t = 0; t <= 1; t += 1 / 40) put("spoke", R * t * c, R * t * s);
+      for (let t = 0; t <= 1; t += 0.2) put("spoke", (R + NECK * t) * c, (R + NECK * t) * s);
+      put("sphere", (R + NECK + SPHERE * 0.6) * c, (R + NECK + SPHERE * 0.6) * s, SPHERE);
+    }
+    put("sphere", 0, 0, HUB);
+    items.sort((a, b) => a.z - b.z);
+    for (const it of items) {
+      const X = cx + it.x, Y = cy + it.y;
+      if (it.kind !== "sphere") { px(X, Y, it.z < 0 ? GOLD[1] : GOLD[2]); continue; }
+      const rr = it.r, n = Math.ceil(rr);
+      for (let dy = -n; dy <= n; dy++) for (let dx = -n; dx <= n; dx++) {
+        if (dx * dx + dy * dy > rr * rr) continue;
+        const nx = dx / rr, ny = dy / rr, nz = Math.sqrt(Math.max(0, 1 - nx * nx - ny * ny));
+        const l = -(nx * LIGHT[0] + ny * LIGHT[1] + nz * LIGHT[2]);
+        px(X + dx, Y + dy, l > 0.95 ? GOLD[3] : l > 0.6 ? GOLD[2] : l > 0.25 ? GOLD[1] : GOLD[0]);
+      }
+    }
+  }
+
+  function sprite(x0, y0, breath, p) {
+    SPRITE.forEach((row, ry) => {
+      // the chest rows rise by one pixel on the in-breath (rows 19 to 32 of the drawing)
+      const lift = breath && ry >= 19 && ry <= 32 ? -1 : 0;
+      [...row].forEach((c, rx) => { if (c !== ".") px(x0 + rx, y0 + ry + lift, p[c]); });
+    });
+  }
+
+  let theta = 0, extra = 0, tilt = 0, burst = null;
+  function draw(now) {
+    const p = palette();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (withFigure) {
+      const groundY = GH - GROUND;
+      ctx.fillStyle = p.grass; ctx.fillRect(0, groundY * scale, GW * scale, scale);
+      for (let x = 3; x < GW; x += 11 + ((x * 7) % 9)) { px(x, groundY - 1, p.grass); px(x + 1, groundY - 2, p.grass); }
+      const breath = !still && Math.floor(now / 1400) % 2 === 1;
+      sprite(Math.floor((GW - SW) / 2), groundY - SH, breath, p);
+    }
+    const float = still ? 0 : Math.sin(now / 900) * 1.2;
+    wheel(GW / 2, (withFigure ? WHEEL_H / 2 : GH / 2) + float, theta + extra, tilt);
+  }
+
+  // How many times this reader has come back, counted once per real visit.
+  let turns = 0;
+  function countVisit() {
+    try {
+      const seen = localStorage.getItem("cw-wheel-turns");
+      turns = Number(seen) || 0;
+      const last = Number(localStorage.getItem("cw-wheel-at")) || 0;
+      if (!sessionStorage.getItem("cw-wheel-seen") && Date.now() - last > 60000) {
+        sessionStorage.setItem("cw-wheel-seen", "1");
+        if (seen !== null) turns += 1;
+        localStorage.setItem("cw-wheel-turns", String(turns));
+        localStorage.setItem("cw-wheel-at", String(Date.now()));
+      }
+    } catch {}
+  }
+  const words = (n) => (n === 0 ? "Your first visit. The wheel is turning." : `You have come back ${n === 1 ? "once" : `${n} times`}. The wheel turned for each of them.`);
+
+  function resize() {
+    const avail = Math.max(120, Math.floor(figure.getBoundingClientRect().width));
+    scale = Math.max(2, Math.min(4, Math.floor(avail / GW)));
+    canvas.width = GW * scale; canvas.height = GH * scale;
+    canvas.style.width = `${GW * scale}px`; canvas.style.height = `${GH * scale}px`;
+  }
+
+  let last = 0;
+  function loop(now) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    theta += 0.35 * dt; // the slow, constant turn of a halo
+    if (burst) {
+      // coming back: a whirl of two full turns that eases out, and a nod of the wheel
+      const t = Math.min(1, (now - burst) / 2600), e = 1 - Math.pow(1 - t, 3);
+      extra = e * 4 * Math.PI; tilt = Math.sin(t * Math.PI) * 0.18;
+      if (t >= 1) { theta += extra; extra = 0; tilt = 0; burst = null; }
+    }
+    draw(now);
+    requestAnimationFrame(loop);
+  }
+
+  function start() {
+    countVisit();
+    caption.textContent = words(turns);
+    resize();
+    theta = turns * (Math.PI / 4);
+    if (still) { draw(0); return; }
+    if (turns > 0) setTimeout(() => (burst = performance.now()), 700);
+    requestAnimationFrame((now) => { last = now; loop(now); });
+  }
+  window.addEventListener("resize", () => { resize(); if (still) draw(0); });
+  if (document.visibilityState === "visible") start();
+  else document.addEventListener("visibilitychange", function once() { if (document.visibilityState === "visible") { document.removeEventListener("visibilitychange", once); start(); } });
+})();
+</script>

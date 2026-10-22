@@ -221,3 +221,32 @@ button.cw-badge:focus-visible {
    the table move to the box, so the spacing stays as it was. */
 .cw-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 2em 0; }
 .cw-table-wrap > table { margin: 0; }
+
+/* ------------------------------------------------------------------- Mahoraga */
+
+/* Thoughts (layouts/_shortcodes/mahoraga.html): Mahoraga under his golden wheel. The
+   wheel is gold on both themes (it is gold in the films); the figure takes the site's
+   neutrals, with the outline lifted on the dark theme as Roz's is. */
+.cw-mahoraga {
+  --cw-m-outline: 42, 47, 54;
+  --cw-m-skin: var(--color-neutral-100);
+  --cw-m-shade: var(--color-neutral-300);
+  --cw-m-hakama: var(--color-neutral-800);
+  --cw-m-sash: var(--color-neutral-400);
+  --cw-m-stitch: var(--color-neutral-600);
+  --cw-m-grass: 106, 154, 74;
+  margin: 1.5rem auto 2rem;
+  text-align: center;
+}
+.dark .cw-mahoraga {
+  --cw-m-outline: 91, 104, 117;
+  --cw-m-skin: var(--color-neutral-200);
+  --cw-m-shade: var(--color-neutral-400);
+  --cw-m-hakama: var(--color-neutral-950);
+  --cw-m-sash: var(--color-neutral-500);
+  --cw-m-stitch: var(--color-neutral-600);
+  --cw-m-grass: 77, 122, 53;
+}
+.cw-mahoraga canvas { display: block; margin: 0 auto; max-width: 100%; image-rendering: pixelated; image-rendering: crisp-edges; }
+.cw-mahoraga-caption { font-size: 0.875rem; color: rgb(var(--color-neutral-500)); margin-top: 0.75rem; }
+.dark .cw-mahoraga-caption { color: rgb(var(--color-neutral-400)); }
