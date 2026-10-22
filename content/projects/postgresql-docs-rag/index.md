@@ -1,6 +1,6 @@
 ---
 title: "PostgreSQL Docs RAG"
-description: "Retrieval over the PostgreSQL docs where the table of contents defines the chunks. Both of its real bugs raised no error at all — here is how each was caught."
+description: "Retrieval over the PostgreSQL docs where the table of contents defines the chunks. Its two real bugs raised no error at all: how each was caught."
 summary: "A retrieval system over four chapters of the PostgreSQL documentation. Both of the bugs that mattered were silent: a parser that returned the right number of chunks and left every one of them empty, and an out-of-scope threshold that confidently answered questions whose answers lived in other chapters. Neither raised an error, and each needed a different kind of test to surface."
 date: 2026-08-07
 lastmod: 2026-10-04

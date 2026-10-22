@@ -1,6 +1,6 @@
 ---
 title: "Roz"
-description: "The assistant that answers questions about me, in your language, from what this website says. How she is designed: the idea, the architecture, the search that decides what she reads, and the rules that keep her honest."
+description: "How Roz, the assistant that answers questions about me from this website, is designed: the idea, the search that decides what she reads, and her rules."
 summary: "Roz answers questions about me in the visitor's language, from what this website publishes and a set of notes written for her, with links to where each answer comes from. This is how she is designed: the idea behind her, her architecture, the search that decides what she reads, and the rules that keep her honest."
 date: 2026-10-18
 lastmod: 2026-10-21

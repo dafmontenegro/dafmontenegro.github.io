@@ -1,6 +1,6 @@
 ---
 title: "La traición necesaria, by Mónica Páez"
-description: "La traición necesaria, an artwork by Mónica Páez where AI describes a gallery and recreates it from its own words, made with Juan David García Arteaga and me."
+description: "La traición necesaria, an artwork by Mónica Páez where AI describes a gallery and recreates it from its own words, made with Juan David García Arteaga."
 summary: "La traición necesaria (The Necessary Betrayal) is an artwork by Mónica Páez inspired by the adage traduttore, traditore: an AI describes the exhibition space and creates a new image from that description, again and again. Exhibited in March 2026 in an exhibition hall at the Universidad de los Andes. I had the privilege of collaborating on it with Juan David García Arteaga."
 date: 2026-03-11
 lastmod: 2026-03-11

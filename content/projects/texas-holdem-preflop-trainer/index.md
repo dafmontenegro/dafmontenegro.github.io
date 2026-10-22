@@ -1,6 +1,6 @@
 ---
 title: "Texas Hold'em Preflop: What Every Starting Hand Is Worth"
-description: "Exact preflop odds for all 169 Texas Hold'em starting hands: equity against 1 to 8 opponents, against ranges, and the all-in decision. Every figure computed, not quoted."
+description: "Exact preflop odds for all 169 Texas Hold'em starting hands: equity against 1 to 8 opponents and ranges, and the all-in decision. Every figure computed."
 summary: "Every one of the 169 starting hands in Texas Hold'em, worked out from scratch: how often each one wins, what it is worth against one opponent or eight, how it does against a player who only plays strong hands, and when calling an all-in makes money. The figures come from complete enumeration where that is possible and from simulation with measured error where it is not, and the page says which is which, every time."
 date: 2026-10-03
 lastmod: 2026-10-03
