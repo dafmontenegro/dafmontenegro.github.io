@@ -3,7 +3,7 @@ title: "Privacy Policy"
 description: "How montenegrodanielfelipe.com, dafmontenegro.com and Roz, the site's assistant, handle your data: analytics, what Roz keeps, embedded content and hosting."
 images: ["/og/privacy.jpg"]
 date: 2024-10-12
-lastmod: 2026-10-20
+lastmod: 2026-10-22
 showReadingTime: false
 showPagination: false
 showAuthor: false
@@ -46,13 +46,13 @@ For more information on how Google handles your data, please visit the [**Google
 - The question and Roz's answer, in full.
 - When it was asked, and how: typed, or picked from Roz's suggestions.
 - A random identifier for your browser tab, so the questions of one visit can be read together. It is created when you open Roz, forgotten when you close the tab, and never tied to who you are.
-- How it ended: answered, not known, refused because of the limits on questions per minute and per day, or failed.
+- How it ended: answered, not known, refused because of the limits on questions per minute and per day (yours or the site's), refused because the check that you are a person had not passed, or failed.
 - The pages of this site the answer was built from, and how long it took.
 - Your browser's language, your approximate location (**country and city**, as Cloudflare estimates them for your connection), whether you use a phone or a computer, your browser's user agent, the page you came from, the light or dark theme and your window's width.
 
 **What happens on the page:** visits to it, which of Roz's suggestions are tapped, taps on Roz, opening "Why Roz?", changing the theme or the language, rating an answer as helpful or not, copying or sharing an answer, and, when you leave, how long you stayed and how many questions you asked.
 
-**Keeping bots out and the limits fair:** before your first question, the page runs **Cloudflare Turnstile**, which checks that you are a person, usually without you noticing, under Cloudflare's privacy policy. Each visitor can ask up to **6 questions a minute and 40 a day**. To count them, Roz keeps a one-way fingerprint of your IP address, made with a secret key so that the address cannot be recovered from it, separately from the questions and for at most **26 hours**.
+**Keeping bots out and the limits fair:** before your first question, the page runs **Cloudflare Turnstile**, which checks that you are a person, usually without you noticing, under Cloudflare's privacy policy, and gives your browser a pass for an hour that only works from your connection. Each visitor can ask up to **6 questions a minute and 20 a day**, and Roz answers at most **140 questions a day for everyone together**, so that the free service she runs on lasts the whole day. To count them, Roz keeps a one-way fingerprint of your connection (your IP address, or for IPv6 its network block), made with a secret key so that the address cannot be recovered from it, separately from the questions and for at most **26 hours**.
 
 **Your IP address, when you ask a question:** it is kept **encrypted**, only for security and to answer requests from the authorities, and deleted after **6 months**. Only I can decrypt it. It is never kept for visits to the page that ask nothing.
 
@@ -60,7 +60,7 @@ For more information on how Google handles your data, please visit the [**Google
 
 **In your browser:** the conversation itself is kept in the tab (session storage), so it survives a reload and disappears when you close the tab. If you choose light or dark, or Spanish or English, that choice is remembered in your browser (local storage).
 
-The data is stored in a database in my own Cloudflare account, which only I have access to, and it is never sold or shared. If you want something you asked to be deleted, message me on Telegram, saying roughly when you asked and what, and I will remove it.
+The data is stored in a database in my own Cloudflare account, which only I have access to, and it is never sold or shared. Cloudflare also keeps, for a few days, the technical logs of Roz's code (errors and the usual request metadata), as it does for any service it runs. If you want something you asked to be deleted, message me on Telegram, saying roughly when you asked and what, and I will remove it.
 
 ## Hosting and Delivery
 The sites are hosted on **GitHub Pages** and delivered through **Cloudflare**. To serve the pages and protect them from abuse, these services process technical data such as your **IP address** and browser information, under their own privacy policies: [**GitHub**](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement) and [**Cloudflare**](https://www.cloudflare.com/privacypolicy/).

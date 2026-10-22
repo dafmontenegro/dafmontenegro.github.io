@@ -14,6 +14,8 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-22 | [Privacy](/privacy/#roz-the-sites-assistant) | Roz's limits are now 20 questions a day per visitor and 140 a day for everyone, the hour's pass only works from your own connection, and the policy says that Cloudflare keeps technical logs for a few days |
+| 2026-10-22 | [Projects](/projects/) | Wide tables scroll sideways inside their own box on phones instead of pushing the page wider than the screen |
 | 2026-10-21 | [Projects](/projects/roz/) | New project page: "Roz", how my assistant is designed, with diagrams of her architecture and of how she chooses what to read |
 | 2026-10-20 | [Roz](https://roz.montenegrodanielfelipe.com) | Each answer can be rated, copied or shared, and Roz suggests two questions to keep the conversation going |
 | 2026-10-20 | [Privacy](/privacy/#roz-the-sites-assistant) | Roz now keeps the IP address of whoever asks a question, encrypted, for security and requests from the authorities, for 6 months |
