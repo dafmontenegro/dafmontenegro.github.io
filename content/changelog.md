@@ -14,6 +14,11 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-22 | [Blog](/blog/my-first-day-of-school/) | New post, dated to its day: "My First Day of School", three photographs of that day and an earlier Christmas, when I was caught stealing the sheep from the nativity scene |
+| 2026-10-22 | [Thoughts](/thoughts/) | Mahoraga's golden wheel, drawn in pixels and turning in perspective, which whirls each time you come back; and two lines from the card I once made for an art class |
+| 2026-10-22 | [About](/about/) | Why I say adaptation is my superpower, why there is a clover on every page, and the teachers I owe the most to |
+| 2026-10-22 | [Literature](/spaces/literature/#mark-twain) | Adam at Eve's grave, with Viniegra's *El primer beso* and a line of my own |
+| 2026-10-22 | [Paw Prints](/spaces/paw-prints/#max) | Max, at three months old, in two photographs I took, and what he means to me |
 | 2026-10-22 | [Privacy](/privacy/#roz-the-sites-assistant) | Roz's limits are now 20 questions a day per visitor and 140 a day for everyone, the hour's pass only works from your own connection, and the policy says that Cloudflare keeps technical logs for a few days |
 | 2026-10-22 | [Projects](/projects/) | Wide tables scroll sideways inside their own box on phones instead of pushing the page wider than the screen |
 | 2026-10-21 | [Projects](/projects/roz/) | New project page: "Roz", how my assistant is designed, with diagrams of her architecture and of how she chooses what to read |
