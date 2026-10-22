@@ -3,7 +3,7 @@ title: "Who am I?"
 description: "Who is Daniel Felipe Montenegro? A Systems and Computer Engineer and AI software developer who builds AI platforms and loves cinema, music and literature."
 summary: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
 Date: 2024-10-12
-lastmod: 2026-10-19
+lastmod: 2026-10-22
 images: ["img/og-about.jpg"]
 tags: []
 showBreadcrumbs: false
@@ -23,6 +23,8 @@ Before that, I designed and built from the ground up an **AI platform based on t
 Earlier, I built **data pipelines and BI dashboards** that turned hours of manual analysis into minutes, developed **RAG systems, computer vision and backend APIs** as a freelancer, taught **workshops and tutoring** in Python, IoT and machine learning, and started my career in **customer experience**, where I learned that technology only matters when it solves a real problem for someone.
 
 I studied **Systems and Computer Engineering** at the **Universidad Nacional de Colombia** and graduated on April 21, 2026. My undergraduate thesis, advised by Juan David García Arteaga, is the [Prisoner's Dilemma in Dynamic Networks](/projects/prisoners-dilemma-dynamic-networks/), a computational tool to study cooperation and isolation among agents.
+
+Some of the people I met there did more than teach a course. **Joanita Barbosa**, an architect, taught the art appreciation electives that gave me the habit of stopping to look. **Francisco Meluk Orozco** and the engineer **Ricardo Perdomo González** trusted a student to create [Raspberry Pi 101 UNAL](/projects/raspberry-pi-101-unal/) beside them. And **Juan David García Arteaga**, after directing my thesis, shared with me Mónica Páez's artworks, [La traición necesaria](/projects/la-traicion-necesaria/) and [Visiones inestables](/projects/visiones-inestables/). I keep learning from all of them.
 
 I keep learning: in October 2026 I earned **Microsoft Certified: Azure Fundamentals**, and every certification and course certificate I hold is on my [Certifications](/certifications/) page.
 
@@ -67,6 +69,10 @@ If you want to know something more about me, you should know that the **most imp
 {{< gifv src="img/spirit.webm" alt="Spirit: Stallion of the Cimarron" width="500" height="212" caption="Spirit: Stallion of the Cimarron" >}}
 
 Everything is an **ephemeral moment**, but that is what makes it beautiful and worthy of ***being appreciated***. Nothing is as **trivial** as it seems and when **we realize** all the things that had to **fall into place** to make this instant **possible**; we can live with **fascination** this beautiful experience ***that is life.***
+
+If I have a superpower, it is that **I adapt**: every new stage of my life has begun hard and ended easy. In *Jujutsu Kaisen*, Mahoraga is the shikigami that adapts to whatever strikes it, and the wheel above its head turns a notch each time it learns. Its wheel turns on my [Thoughts](/thoughts/) page, and whirls each time you come back.
+
+And there is a clover at the foot of every page because **I am lucky**, and because I believe luck is **made**: life is talent and opportunity, and either one alone is nothing, so I spend my days making opportunities. The good things tend to follow.
 
 ## Caesar's window
 Caesar's window is a hypocycloid that he draws while locked in captivity to **remember his home**. Later, the other apes will remember this symbol as a representation of Caesar and *his essence*.
