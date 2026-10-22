@@ -333,6 +333,20 @@ To love that well which thou must leave ere long."
 
 ---
 
+## Mark Twain
+
+{{< quote
+  cite="Adán en la tumba de Eva. El diario de Eva, Mark Twain"
+  note="Perder el jardín fue encontrarse. El paraíso nunca fue un lugar, siempre lo fue su compañía."
+  date="2023-08-18"
+  image="img/viniegra-1891-el-primer-beso.jpg"
+  alt="Adam and Eve lying together on the grass of a forest clearing, her long hair falling over him as she leans in to kiss him, a serpent coiled round the tree beside them and two lions resting in the distance"
+  credit="Viniegra, S. (1891). El primer beso." >}}
+«Dondequiera que ella estaba, allí era el Edén.»
+{{< /quote >}}
+
+---
+
 ## Takehiko Inoue
 
 {{< quote
