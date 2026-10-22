@@ -1,0 +1,43 @@
+{{- /* Markdown tables, wrapped so a wide one scrolls sideways on its own instead of
+     pushing the whole page wider than a phone's screen (Congo's prose styles do not
+     do this by themselves). The table is rendered as Hugo would without this hook:
+     the same elements, the same alignment attributes. */ -}}
+<div class="cw-table-wrap">
+<table
+  {{- range $k, $v := .Attributes }}
+    {{- if $v }}
+      {{- printf " %s=%q" $k $v | safeHTMLAttr }}
+    {{- end }}
+  {{- end }}>
+  <thead>
+    {{- range .THead }}
+    <tr>
+      {{- range . }}
+      <th
+        {{- with .Alignment }}
+          {{- printf " style=%q" (printf "text-align: %s" .) | safeHTMLAttr }}
+        {{- end -}}
+      >
+        {{- .Text -}}
+      </th>
+      {{- end }}
+    </tr>
+    {{- end }}
+  </thead>
+  <tbody>
+    {{- range .TBody }}
+    <tr>
+      {{- range . }}
+      <td
+        {{- with .Alignment }}
+          {{- printf " style=%q" (printf "text-align: %s" .) | safeHTMLAttr }}
+        {{- end -}}
+      >
+        {{- .Text -}}
+      </td>
+      {{- end }}
+    </tr>
+    {{- end }}
+  </tbody>
+</table>
+</div>
