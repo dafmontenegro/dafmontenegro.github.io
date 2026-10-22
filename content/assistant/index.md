@@ -18,7 +18,6 @@ assistant:
     # Personal pages
     - /blog/my-birthday/
     - /blog/a-house-in-the-middle-of-nowhere/
-    - /thoughts/
     - /spaces/paw-prints/
     # Pages about the site rather than about Daniel
     - /press/
