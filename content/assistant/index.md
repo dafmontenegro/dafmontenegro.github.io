@@ -19,10 +19,9 @@ assistant:
     - /blog/my-birthday/
     - /blog/a-house-in-the-middle-of-nowhere/
     - /spaces/paw-prints/
-    # Pages about the site rather than about Daniel
+    # Pages about the site rather than about Daniel (the changelog is read: Roz tells what is new)
     - /press/
     - /privacy/
-    - /changelog/
   catalogOnly:
     # Named and linked, not read
     - /about/
