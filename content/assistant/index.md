@@ -21,6 +21,7 @@ assistant:
     - /spaces/paw-prints/
     # Pages about the site rather than about Daniel (the changelog is read: Roz tells what is new)
     - /press/
+    - /roz-remember/
     - /privacy/
   catalogOnly:
     # Named and linked, not read

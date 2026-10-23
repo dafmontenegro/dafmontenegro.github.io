@@ -1,0 +1,10 @@
+{{- /* One of Roz's knowledge files (facts.md, notes.md, now.md), copied into the page
+     bundle of /roz-remember/ by the export script of Roz's private repository and
+     rendered here as Markdown. Headings are pushed down one level, so the file's own
+     "##" sections sit under the page's "## The core", "## The notes"… */ -}}
+{{- $file := .Get "file" -}}
+{{- with .Page.Resources.Get $file -}}
+  {{- .RawContent | replaceRE "(?m)^(#{1,4}) " "#$1 " | $.Page.RenderString (dict "display" "block") -}}
+{{- else -}}
+  {{- errorf "roz-knowledge: %q not found in %s" $file $.Page.File.Path -}}
+{{- end -}}

@@ -97,6 +97,7 @@ On top of Congo's own (`alert`, `button`, `katex`, `lead`…) and Hugo's (`youtu
 | `{{< quote-random >}}` | A button that jumps to one of the quotes on the page at random and lights it for a moment. The page must also set `literature: true` in its front matter |
 | `{{< certifications group="vendor" >}}` | One group of `data/certifications.json`: `counts`, `vendor`, `university`, `short` or `platzi`. The page writes the headings in Markdown so they reach the table of contents, and sets `certifications: true` |
 | `{{< diagram src="architecture.svg" alt="..." caption="..." >}}` | An SVG from the page bundle, inlined so it is drawn in the site's colours and follows light and dark on its own: the drawing only names `dg-*` classes, coloured in `custom.css`. `alt` describes the whole drawing; `caption` is optional |
+| `{{< roz-knowledge file="facts.md" >}}` | One of Roz's knowledge files from the page bundle, rendered as Markdown with its headings one level down. Used only by `/roz-remember/` |
 | `{{< ask-roz >}}` | A card inviting the reader to talk to Roz, with her waving; `style="line"` gives a single sentence instead. The address is `rozUrl` in `params.toml` |
 | `{{< preflop-grid >}}` | The 13 x 13 grid of all 169 Texas Hold'em starting hands, shaded by a metric the reader chooses, with a legend, a hand panel and a table view |
 | `{{< preflop-picker >}}` | Pick two real cards and read what that hand is worth |
@@ -216,6 +217,10 @@ An AI assistant, **Roz** (after the robot of *The Wild Robot*), answers visitors
 | `layouts/assistant/page.json` | Builds `/assistant/index.json` with the site: each page with its title, description and URL and, unless excluded, its text with the headings kept |
 
 The page is JSON only, kept out of lists, the sitemap and search, and holds nothing a visitor cannot already read on the site. A change to a page reaches the assistant when her index is rebuilt from the deployed site.
+
+## If One Day I Am Not Here
+
+`content/roz-remember/` (`/roz-remember/`) is a page in no menu, but in the sitemap and open to search engines and archives, so that the more places keep it, the longer it lasts; `content/assistant/index.md` keeps it out of Roz's own index. It holds everything Roz knows about me: how she answers (`voice.md`), the core she reads on every question (`facts.md`), the notes she looks up (`notes.md`) and what I was up to on its date (`now.md`). Roz's code and rules live in a private repository; these three files are copied here by its export script every time her knowledge is rebuilt, so that her knowledge outlives it. The page opens with why, in my words. The `roz-knowledge` shortcode renders each file. Do not edit the four files here: they are overwritten on the next export, which also sets the page's `lastmod`. After every deploy, the workflow asks the Internet Archive to save the homepage and this page, and `static/llms.txt` points AI readers to it.
 
 ## Build and Deploy
 
