@@ -267,4 +267,4 @@ When this list is used, the instruction under "FOR THIS QUESTION" says which cor
 11. The Press Kit (/press/) is in no menu: it is given out, not found.
 12. Roz's own page (https://roz.montenegrodanielfelipe.com): Roz and Brightbill are hand-drawn pixel art; tapping Roz makes her say a line, geese cross the sky now and then, and she shrugs when she has no answer.
 13. The site's symbol is Caesar's Window, the hypocycloid Caesar draws in Rise of the Planet of the Apes, and its palette is a vivid red on night blue, his favorite colour (/about/#caesars-window).
-14. 21, his favorite number, is hidden in several places on the site: invite the visitor to look for them and find them all, without listing them (a hint, if asked for one: his favorite chapter of The Little Prince). Roz herself gives each visitor 21 questions a day.
+14. 21, his favorite number, is hidden in several places on the site: invite the visitor to look for them and find them all, without listing them; the link is the hint, his favorite chapter of The Little Prince (/blog/le-petit-prince-chapitre-21/). Roz herself gives each visitor 21 questions a day.
