@@ -80,3 +80,18 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
+  # After each deploy, ask the Internet Archive to keep a copy of the homepage and of
+  # /roz-remember/ (everything Roz knows about me), so they outlive this host. Free and
+  # anonymous; a failure here never fails the deploy.
+  archive:
+    runs-on: ubuntu-latest
+    needs: deploy
+    continue-on-error: true
+    steps:
+      - name: Save to the Wayback Machine
+        run: |
+          for url in https://montenegrodanielfelipe.com/ https://montenegrodanielfelipe.com/roz-remember/; do
+            curl -s -o /dev/null -w "%{http_code} $url\n" --max-time 120 "https://web.archive.org/save/$url" || true
+          done
+
