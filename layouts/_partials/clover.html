@@ -1,0 +1,25 @@
+{{/* The clover at the foot of every page (assets/js/clover.js, assets/css/clover.css).
+     Tapping it calls a Nintendo guest, chosen at random; holding it lets the visitor
+     choose. Called from extend-head.html on every page.
+
+     clover.js is small and loads with the page. guests.js, which draws the guests, and
+     their sprite sheet (assets/img/nintendo/, written by scripts/nintendo/build.py) are
+     only fetched the first time the clover is used, so their addresses are handed to
+     clover.js through a <script type="application/json"> block. */}}
+{{ with resources.Get "css/clover.css" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" />
+{{ end }}
+{{- $config := dict -}}
+{{- with resources.Get "js/guests.js" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+  {{- $config = merge $config (dict "script" .RelPermalink "integrity" .Data.Integrity) -}}
+{{- end }}
+{{- with resources.Get "img/nintendo/link.png" | fingerprint site.Params.fingerprintAlgorithm }}
+  {{- $config = merge $config (dict "link" .RelPermalink) -}}
+{{- end }}
+{{- with resources.Get "img/nintendo/kirby.png" | fingerprint site.Params.fingerprintAlgorithm }}
+  {{- $config = merge $config (dict "kirby" .RelPermalink) -}}
+{{- end }}
+<script type="application/json" id="clover-guests">{{ $config | jsonify | safeJS }}</script>
+{{ with resources.Get "js/clover.js" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+  <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+{{ end }}

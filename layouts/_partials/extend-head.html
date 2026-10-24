@@ -123,6 +123,9 @@
   {{ end }}
 {{ end }}
 
+{{/* Every page carries the clover at its foot, which calls a Nintendo guest (clover.html). */}}
+{{ partial "clover.html" . }}
+
 {{/* Every page carries the site's analytics events (telemetry.html). Before koi.html, whose
      script reports through it. */}}
 {{ partial "telemetry.html" . }}

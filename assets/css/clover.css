@@ -1,0 +1,168 @@
+/* The clover at the foot of every page and the guests it calls (assets/js/clover.js,
+   assets/js/guests.js). Loaded on every page by layouts/_partials/clover.html. */
+
+.cw-clover-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+/* The clover keeps the look of the emoji it replaces: no button chrome. */
+.cw-clover {
+  display: inline-block;
+  padding: 0 0.1em;
+  border: 0;
+  border-radius: 0.25rem;
+  background: none;
+  font: inherit;
+  line-height: inherit;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+  transition: transform 0.15s ease;
+}
+
+.cw-clover:hover,
+.cw-clover:focus-visible {
+  transform: rotate(-12deg) scale(1.2);
+}
+
+.cw-clover:focus-visible {
+  outline: 2px solid rgb(var(--color-primary-500));
+  outline-offset: 2px;
+}
+
+.cw-clover.is-busy {
+  animation: cw-clover-spin 1.2s linear infinite;
+}
+
+@keyframes cw-clover-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* The menu that holding the clover opens: a games' window above it. */
+.cw-guests {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  z-index: 50;
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+  padding: 10px 12px 12px;
+  border: 3px solid #334155;
+  border-radius: 6px;
+  background: #f8fafc;
+  box-shadow:
+    inset 0 0 0 3px #f8fafc,
+    inset 0 0 0 5px #94a3b8,
+    0 6px 18px rgba(0, 0, 0, 0.25);
+  color: #1e293b;
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  font-size: 9px;
+  line-height: 1.6;
+  white-space: nowrap;
+  translate: -50% 0;
+}
+
+.cw-guests[hidden] {
+  display: none;
+}
+
+.cw-guests-title {
+  position: absolute;
+  top: -1.9em;
+  left: 0;
+  margin: 0 !important;
+  color: rgb(var(--color-neutral-500));
+  font-size: 8px;
+}
+
+.cw-guests-choice {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  padding: 6px 8px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.cw-guests-choice:hover,
+.cw-guests-choice:focus-visible {
+  border-color: #334155;
+  outline: none;
+}
+
+/* Each guest's face, a frame of its own sheet at twice its size. */
+.cw-guests-face {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
+
+.cw-guests-face-link {
+  background-position: -384px -32px; /* the frame facing us, sixth cell */
+  background-size: 448px 96px;
+}
+
+.cw-guests-face-kirby {
+  background-position: -8px -16px; /* standing, first cell */
+  background-size: 1008px 48px;
+}
+
+/* While Kirby holds it, the clover is gone from the footer. */
+.cw-clover.is-taken {
+  visibility: hidden;
+}
+
+/* The stage the guests act on, across the bottom of the screen. */
+.cw-guest-stage {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 40;
+  width: 100%;
+  pointer-events: none;
+  image-rendering: pixelated;
+}
+
+/* While a guest is on stage, the games' text box speaks above it. */
+.cw-guest-on .koi-box {
+  bottom: calc(var(--cw-stage-h, 0px) + 12px);
+}
+
+/* The plain text box, for pages without the site's own. */
+.cw-guest-say {
+  position: fixed;
+  bottom: calc(var(--cw-stage-h, 0px) + 12px);
+  left: 50%;
+  z-index: 45;
+  width: min(27rem, calc(100% - 32px));
+  padding: 14px 18px;
+  border: 3px solid #334155;
+  border-radius: 6px;
+  background: #f8fafc;
+  color: #1e293b;
+  font-family: "Press Start 2P", ui-monospace, monospace;
+  font-size: 10px;
+  line-height: 1.9;
+  translate: -50% 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cw-clover,
+  .cw-clover.is-busy {
+    transition: none;
+    animation: none;
+  }
+}
