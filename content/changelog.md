@@ -14,6 +14,8 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-24 | Every page | The clover at the foot of every page now calls a Nintendo guest: press it and Link or Kirby comes by, hold it to choose who |
+| 2026-10-24 | [Certifications](/certifications/#microsoft-certification) | The Azure Fundamentals certificate itself, as an image and a PDF, beside the link to verify it on Microsoft Learn |
 | 2026-10-22 | [Blog](/blog/my-first-day-of-school/) | New post, dated to its day: "My First Day of School", three photographs of that day and an earlier Christmas, when I was caught stealing the sheep from the nativity scene |
 | 2026-10-23 | [Roz](https://roz.montenegrodanielfelipe.com) | 21 questions a day, my favorite number, and Roz can now tell you what is new on the site |
 | 2026-10-22 | [Thoughts](/thoughts/) | Mahoraga's golden wheel, drawn in pixels and turning in perspective, which whirls each time you come back; and two lines from the card I once made for an art class |
