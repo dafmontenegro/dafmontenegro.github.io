@@ -77,6 +77,19 @@
 }
 .dark .cw-cert-kicker { color: rgb(var(--color-primary-400)); }
 
+/* The certificate itself, linked to its PDF; framed like the card so it reads as part of it. */
+.cw-cert-image {
+  display: block;
+  margin: 0.85rem 0 0.75rem;
+  max-width: 42rem;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.15);
+  line-height: 0;
+}
+.cw-cert-image img { width: 100%; height: auto; margin: 0 !important; }
+.cw-cert-image:focus-visible { outline: 2px solid rgb(var(--color-primary-500)); outline-offset: 2px; }
+
 /* Same treatment as the site's `button` shortcode, so the page has one kind of button. */
 .cw-cert-button {
   display: inline-block;

@@ -35,9 +35,19 @@
     Earned <time datetime="{{ .earned }}">{{ partial "certification-date.html" (dict "credential" .) }}</time>
     {{- with .credentialId }} · Credential ID <span class="cw-cert-id">{{ . }}</span>{{ end }}
   </p>
-  {{- with .verifyUrl }}
-  <p class="cw-cert-links"><a class="cw-cert-button" href="{{ . }}" target="_blank" rel="noopener noreferrer">Verify<span class="cw-sr"> {{ $c.name }}</span> on {{ $c.platform }}</a></p>
+  {{- with .certificate }}
+  {{- with resources.Get .image }}
+  {{- $small := .Resize "720x webp q82" }}
+  {{- $large := .Resize "1440x webp q82" }}
+  <a class="cw-cert-image" href="{{ $c.certificate.pdf }}" target="_blank" rel="noopener">
+    <img src="{{ $small.RelPermalink }}" srcset="{{ $small.RelPermalink }} 720w, {{ $large.RelPermalink }} 1440w" sizes="(min-width: 768px) 42rem, 100vw" width="{{ $small.Width }}" height="{{ $small.Height }}" loading="lazy" decoding="async" alt="{{ $c.name }} certificate, awarded to Daniel Felipe Montenegro Herrera on {{ partial "certification-date.html" (dict "credential" $c) }}">
+  </a>
   {{- end }}
+  {{- end }}
+  <p class="cw-cert-links">
+    {{- with .verifyUrl }}<a class="cw-cert-button" href="{{ . }}" target="_blank" rel="noopener noreferrer">Verify<span class="cw-sr"> {{ $c.name }}</span> on {{ $c.platform }}</a>{{ end }}
+    {{- with .certificate }}<a href="{{ .pdf }}" target="_blank" rel="noopener">Certificate (PDF)<span class="cw-sr"> for {{ $c.name }}</span></a>{{ end }}
+  </p>
 </article>
 <script type="application/ld+json">
 {{ dict

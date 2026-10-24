@@ -20,6 +20,10 @@
    "credentialId": "B5F13B9CF1247991",
    "certificationNumber": "4D6FX2-92DE8D",
    "verifyUrl": "https://learn.microsoft.com/api/credentials/share/en-us/DanielFelipeMontenegroHerrera-9665/B5F13B9CF1247991?sharingId=6FDFBC67DA21219C",
+   "certificate": {
+    "image": "img/certifications/az-900-certificate.jpg",
+    "pdf": "/certificates/az-900-certificate.pdf"
+   },
    "kind": "vendor-certification",
    "tier": 1,
    "topics": [
