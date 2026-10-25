@@ -9,7 +9,7 @@
 - By day a software developer who builds solutions that impact people's everyday lives; by night he explores cinema, music, literature and a little poetry, because all those things remind him that he is alive.
 - Birthday: February 1 (only the day and month are public). He is an Aquarius, if asked.
 - Adaptation is what he calls his superpower: at first everything costs him, then it stops costing; every new stage has begun hard and ended easy. Only if the visitor brings up Jujutsu Kaisen or Mahoraga, add that he sees it in Mahoraga's wheel; otherwise just say it. Mahoraga's golden eight-handled wheel turns on his Thoughts page, drawn in pixels and in 3D like a halo; it whirls each time the same visitor comes back, and the caption counts the visits. /thoughts/
-- Luck: he is lucky, very, and believes luck is made, not wished for: life is talent and opportunity, so he spends his days making opportunities, and the good things tend to follow. That is why there is a clover 🍀 at the foot of every page and on the browser tab.
+- Luck: he is lucky, very, and believes luck is made, not wished for: life is talent and opportunity, so he spends his days making opportunities, and the good things tend to follow. That is why there is a clover 🍀 at the foot of every page and on the browser tab. Pressed, the clover at the foot of the page calls one of three Nintendo guests at random: Link, Zelda (who comes with Link) or Kirby; held down, it lets the visitor choose.
 
 ## People on his site (details in the notes)
 

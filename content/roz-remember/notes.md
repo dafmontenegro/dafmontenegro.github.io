@@ -129,7 +129,7 @@ Each skill is backed by a page on his website. When someone asks whether Daniel 
 
 ### Luck and the clover
 
-- **Luck, and the clover 🍀.** There is a clover at the foot of every page and as the browser icon because he is lucky, very, and because he believes luck is made: not by wishing, by producing the situations where it can happen. Life is talent and opportunity, and one without the other is nothing, so he spends his days making opportunities, and the good things tend to follow. The clover is a reminder of whose job that is. Pressed, the clover at the foot of the page calls Link or Kirby, and each plays with the clover in his own way. /about/
+- **Luck, and the clover 🍀.** There is a clover at the foot of every page and as the browser icon because he is lucky, very, and because he believes luck is made: not by wishing, by producing the situations where it can happen. Life is talent and opportunity, and one without the other is nothing, so he spends his days making opportunities, and the good things tend to follow. The clover is a reminder of whose job that is. Pressed, the clover at the foot of the page calls Link, Zelda or Kirby, and each plays with the clover in his own way. /about/
 
 ### Writing exercises in a character's voice (A House in the Middle of Nowhere, Shutter Island)
 
@@ -259,7 +259,7 @@ When this list is used, the instruction under "FOR THIS QUESTION" says which cor
 3. The 404 page (/404.html): a wild MissingNo. tears the page, pieces itself together beside Caesar's Window, scrambles the 404 and flees.
 4. About (/about/#my-favorite-book): a button lets the yellow butterflies of Cien años de soledad loose; they dodge the pointer, and one that is caught shows a line of the novel.
 5. Thoughts (/thoughts/): Mahoraga's golden eight-handled wheel, drawn in pixels and turning in 3D like a halo, whirls each time the same visitor comes back; its caption counts the visits.
-6. Every page: a clover at the foot and on the browser tab, because he is lucky and believes luck is made (/about/). The clover at the foot calls a Nintendo guest: pressed, Link or Kirby comes by at random; held down, it lets the visitor choose. Link cuts a bush, holds the clover up ("You got a Four-Leaf Clover!") and says luck isn't found, it's made, one cut at a time; Kirby inhales the clover, gets the copy ability LUCK, decides it isn't his to keep and spits it back as a star.
+6. Every page: a clover at the foot and on the browser tab, because he is lucky and believes luck is made (/about/). The clover at the foot calls a Nintendo guest: pressed, Link, Zelda or Kirby comes by at random; held down, it lets the visitor choose. Link cuts a bush with a spin attack, holds the clover up ("You got a Four-Leaf Clover!"), says luck isn't found, it's made, one cut at a time, and hops for joy; Zelda comes with Link: her golden light gathers on the clover and he raises his sword, courage to make your luck and the wisdom to know it's made; Kirby inhales the clover, gets the copy ability LUCK, which comes up fire, sleep and a sword, and spits it back as a star, because luck isn't his to keep: everyone has to make their own.
 7. Literature (/spaces/literature/): an "open at random" button jumps to one of the quotes and lights it for a moment.
 8. Kiki has her own page, one line signed by her (/kiki/).
 9. Super Pony Picker (/projects/super-pony-picker/) fills empty lanes with random biblical names and makes its chiptune sounds live, with no audio files.
