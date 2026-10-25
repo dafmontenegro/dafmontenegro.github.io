@@ -2,7 +2,7 @@
 title: "Roz Remember"
 description: "Everything Roz, the assistant of this site, knows about Daniel Felipe Montenegro, and how she answers, kept here so that it outlives her."
 date: 2026-10-23
-lastmod: 2026-10-23
+lastmod: 2026-10-24
 showDate: false
 showDateUpdated: true
 showAuthor: false
