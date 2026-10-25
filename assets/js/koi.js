@@ -11,7 +11,8 @@
 
    On a phone there is no margin to climb in: the fall would run over the text. There the
    reader is left alone while reading, and only the end is kept: at the foot of the page
-   the carp leaps up from the bottom of the screen, evolves in mid-air and rises away.
+   the carp leaps up from the bottom of the screen by its right edge, evolves in mid-air
+   and rises off the top of the screen.
 
    The homepage has a Poké Ball instead, beside the photo's Caesar's Window badge, which
    is a second way to press it: each press releases a Pokémon from assets/js/pokemon.js,
@@ -47,7 +48,7 @@
   /* The climb is framed evenly: the gate stands as far from the head of the screen as the
      foot of the fall from its foot. */
   var MARGIN = 24;
-  var LEAP_HEIGHT = 0.4; // on a phone, how far up the screen the carp leaps, as a share
+  var LEAP_HEIGHT = 0.3; // on a phone, how far up the screen the carp leaps, as a share
   var LEAP_MS = 900; // and how long the leap takes
   var CARP_REACH = 26; // px from the tilted carp's centre to its lowest pixel, as measured
   var MIN_SCROLL = 0.5; // pages scrolling less than this share of a screen get no climb
@@ -101,6 +102,29 @@
   var CLOUD_COLOURS = { w: "#ffffff", g: "#c7d2fe", o: "#94a3b8" };
   var SPARKLE = ["..y..", "..y..", "yywyy", "..y..", "..y.."];
   var SPARKLE_COLOURS = { y: "#ffd34d", w: "#ffffff" };
+  /* The burst of light where the carp evolves: rays, drawn in pixels like the rest. */
+  var BURST = [
+    "......y......",
+    "......y......",
+    "..y...w...y..",
+    "...y..w..y...",
+    "....y.w.y....",
+    ".....www.....",
+    "yywwwwwwwwwyy",
+    ".....www.....",
+    "....y.w.y....",
+    "...y..w..y...",
+    "..y...w...y..",
+    "......y......",
+    "......y......"
+  ];
+  /* Foam where the fall meets the foot of the screen, in two frames that take turns. */
+  var FOAM = [
+    ["..w..w...w..", ".w.ww.w.ww.w", "wwwwwwwwwwww", ".bbbbbbbbbb."],
+    [".w...w..w...", "w.ww.ww.w.w.", "wwwwwwwwwwww", ".bbbbbbbbbb."]
+  ];
+  var FOAM_COLOURS = { w: "#ffffff", b: "#7dd3fc" };
+  var BURST_COLOURS = { y: "#ffd34d", w: "#ffffff" };
 
   var config = document.getElementById("koi-sprites");
   if (!config) return;
@@ -532,7 +556,7 @@
   /* ---------------------------------------------------------------------------------
      The climb. */
 
-  var layer, gate, fall, trail, fish, carp, dragon, story;
+  var layer, gate, fall, foam, trail, fish, carp, dragon, story;
   var room = 0; // how far the page scrolls, in px
   var long = false; // whether the page scrolls enough to be climbed
   var narrow = false; // whether the climb has to run over the text
@@ -572,6 +596,7 @@
 
     fall = document.createElement("div");
     fall.className = "koi-fall";
+    foam = pixelFrames(FOAM, FOAM_COLOURS, "koi-foam");
     trail = document.createElement("div");
     trail.className = "koi-trail";
     fall.appendChild(trail);
@@ -608,6 +633,7 @@
       track("koi_story_click");
     });
 
+    body.appendChild(pixels(BURST, BURST_COLOURS, "koi-burst"));
     body.appendChild(carp);
     body.appendChild(story);
     for (var i = 0; i < 4; i++) {
@@ -619,6 +645,7 @@
     fish.appendChild(body);
 
     layer.appendChild(fall);
+    layer.appendChild(foam);
     layer.appendChild(gate);
     layer.appendChild(fish);
     document.body.appendChild(layer);
@@ -638,8 +665,8 @@
      Where the page has a margin (768px and up, Congo's md breakpoint) the climb runs up
      the very edge of the screen, like a scrollbar of its own, framed by the same margin
      at its head and its foot. On a narrower screen there is no climb, only the leap at
-     the end: from under the bottom of the screen, in its middle, up to the point where
-     the carp evolves. */
+     the end: from under the bottom of the screen, by its right edge, where it covers
+     the least of the page, up to the point where the carp evolves. */
   function measure() {
     room = root.scrollHeight - window.innerHeight;
     long = room > window.innerHeight * MIN_SCROLL;
@@ -647,7 +674,7 @@
     set(layer, "is-narrow", narrow);
 
     if (narrow) {
-      col = root.clientWidth / 2;
+      col = root.clientWidth - EDGE - 28; // room for the dragon, wider than the carp
       gateY = window.innerHeight * (1 - LEAP_HEIGHT) - 40;
       rest = window.innerHeight + 60;
       fish.style.left = col + "px";
@@ -666,6 +693,8 @@
     fall.style.top = fallTop + "px";
     fall.style.left = col + "px";
     fall.style.height = Math.max(0, fallBottom - fallTop) + "px";
+    foam.style.top = fallBottom - 4 + "px";
+    foam.style.left = col - (FOAM[0][0].length * PX) / 2 + "px";
     fish.style.left = col + "px";
   }
 

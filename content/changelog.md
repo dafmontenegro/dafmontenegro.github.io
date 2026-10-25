@@ -14,6 +14,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-25 | Every long article | The Magikarp climbs a proper pixel waterfall now, with foam at its foot and a glint in the golden trail; it evolves in a burst of pixel light, and on a phone it leaps by the edge of the screen instead of over the page
 | 2026-10-24 | Every page | A third guest for the clover: Zelda, with Link, who bless it with her light and his sword. Link now cuts the bush with a spin attack and hops for joy with the clover, Kirby tries out his LUCK (fire, sleep and a sword), and all of them are smaller |
 | 2026-10-24 | Every page | The clover at the foot of every page now calls a Nintendo guest: press it and Link or Kirby comes by, hold it to choose who |
 | 2026-10-24 | [Certifications](/certifications/#microsoft-certification) | The Azure Fundamentals certificate itself, as an image and a PDF, beside the link to verify it on Microsoft Learn |

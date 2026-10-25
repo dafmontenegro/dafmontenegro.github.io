@@ -266,7 +266,8 @@
 /* On a phone or a narrow tablet there is no margin for the climb, so there is none: no
    gate and no fall, only the carp's leap at the end of the page. */
 .koi.is-narrow .koi-gate,
-.koi.is-narrow .koi-fall {
+.koi.is-narrow .koi-fall,
+.koi.is-narrow .koi-foam {
   display: none;
 }
 
@@ -302,26 +303,21 @@
   }
 }
 
-/* The waterfall, from the foot of the torii down to the ball; the script sets where it
-   starts and its height. It pours down when the carp comes out, and drains up into the dragon at the
-   end, both by scaling from its top. */
+/* The waterfall, from the foot of the torii down to the foam; the script sets where it
+   starts and its height. A band of water four art pixels wide, square like the rest of
+   the pixel art. It pours down when the carp comes out, and drains up into the dragon
+   at the end, both by scaling from its top. */
 .koi-fall {
   position: absolute;
-  width: 4px;
-  margin-left: -2px;
+  width: 8px;
+  margin-left: -4px;
   overflow: hidden;
-  border-radius: 2px;
-  background: linear-gradient(to bottom, rgba(14, 165, 233, 0.55), rgba(14, 165, 233, 0.25));
+  background: linear-gradient(to bottom, rgba(14, 165, 233, 0.6), rgba(14, 165, 233, 0.35));
   transform-origin: top;
 }
 
 .dark .koi-fall {
-  background: linear-gradient(to bottom, rgba(125, 211, 252, 0.5), rgba(125, 211, 252, 0.18));
-}
-
-.koi.is-narrow .koi-fall {
-  width: 3px;
-  margin-left: -1.5px;
+  background: linear-gradient(to bottom, rgba(125, 211, 252, 0.55), rgba(56, 189, 248, 0.3));
 }
 
 .koi.is-born .koi-fall {
@@ -344,41 +340,91 @@
   }
 }
 
-/* Streaks of water falling. They only run while the page moves, so a page left still
-   asks nothing of the compositor. */
+/* Streaks of water falling, in two columns out of step, as pixel water falls. They
+   always run while the fall is shown: one composited layer sliding, which costs the
+   page nothing to draw. */
 .koi-fall::before {
   position: absolute;
-  top: -16px;
+  top: -18px;
   right: 0;
   bottom: 0;
   left: 0;
   content: "";
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.85) 0 4px,
-    transparent 4px 16px
-  );
-  animation: koi-flow 0.45s linear infinite paused;
-}
-
-.koi.is-swimming .koi-fall::before,
-.koi.is-born .koi-fall::before {
-  animation-play-state: running;
+  background:
+    repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 0 6px, transparent 6px 18px) 2px 0 / 2px 100% no-repeat,
+    repeating-linear-gradient(to bottom, transparent 0 9px, rgba(255, 255, 255, 0.65) 9px 13px, transparent 13px 18px) 4px 0 / 2px 100% no-repeat;
+  animation: koi-flow 0.5s linear infinite;
 }
 
 @keyframes koi-flow {
   to {
-    transform: translateY(16px);
+    transform: translateY(18px);
   }
 }
 
-/* The golden trail: the stretch of the fall the carp has already climbed. */
+/* The foam at the foot of the fall, two frames taking turns. */
+.koi-foam {
+  position: absolute;
+}
+
+.koi-foam .px-frame-1 {
+  visibility: hidden;
+}
+
+.koi.is-on .koi-foam .px-frame-0 {
+  animation: koi-foam-0 0.4s steps(1) infinite;
+}
+
+.koi.is-on .koi-foam .px-frame-1 {
+  animation: koi-foam-1 0.4s steps(1) infinite;
+}
+
+@keyframes koi-foam-0 {
+  50% {
+    visibility: hidden;
+  }
+}
+
+@keyframes koi-foam-1 {
+  50% {
+    visibility: visible;
+  }
+}
+
+.koi.is-born .koi-foam {
+  animation: koi-gate-in 0.3s ease-out 0.6s both;
+}
+
+.koi.is-draining .koi-foam {
+  animation: koi-gate-out 0.6s ease-in forwards;
+}
+
+/* The golden trail: the stretch of the fall the carp has already climbed, the band's
+   width, with a glint that runs up it. */
 .koi-trail {
   position: absolute;
   inset: 0;
+  overflow: hidden;
   background: linear-gradient(to top, #f59e0b, #fcd34d);
   transform: scaleY(0);
   transform-origin: bottom;
+}
+
+.koi-trail::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: -24px;
+  left: 0;
+  content: "";
+  background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.55) 0 2px, transparent 2px 24px) 2px 0 / 4px 100% no-repeat;
+  animation: koi-glint 0.9s linear infinite;
+}
+
+@keyframes koi-glint {
+  to {
+    transform: translateY(-24px);
+  }
 }
 
 /* The fish is a point on the line; the script slides it up and down. Its body is what
@@ -529,37 +575,37 @@
 /* The evolution, as the games draw it: both forms as glowing silhouettes, swapped faster
    and faster by the script until the dragon holds. */
 .koi.is-evolving .koi-sprite {
-  filter: brightness(0) invert(1) drop-shadow(0 0 2px #ffd34d) drop-shadow(0 0 6px #ffb800);
+  filter: brightness(0) invert(1) drop-shadow(1px 0 0 #ffb800) drop-shadow(-1px 0 0 #ffb800)
+    drop-shadow(0 1px 0 #ffb800) drop-shadow(0 -1px 0 #ffb800);
   transition: none;
 }
 
-/* Then a burst of light where the carp stood. */
-.koi-body::before {
+/* Then a burst of light where the carp stood: pixel rays that spring out in steps and
+   go, as the games flash an evolution. */
+.koi-burst {
   position: absolute;
   top: 0;
   left: 0;
-  width: 10rem;
-  height: 10rem;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff 0%, #fff6c8 30%, rgba(255, 214, 77, 0.45) 55%, transparent 72%);
   opacity: 0;
   translate: -50% -50%;
-  content: "";
   pointer-events: none;
 }
 
-.koi.is-flashing .koi-body::before {
-  animation: koi-flash 0.9s ease-out;
+.koi.is-flashing .koi-burst {
+  animation: koi-flash 0.8s steps(5) both;
 }
 
 @keyframes koi-flash {
   0% {
     opacity: 1;
-    scale: 0.3;
+    scale: 0.5;
+  }
+  70% {
+    opacity: 1;
   }
   100% {
     opacity: 0;
-    scale: 1.4;
+    scale: 2.6;
   }
 }
 
@@ -665,10 +711,15 @@
   animation: koi-ascend 1.8s ease-in forwards;
 }
 
+/* All the way off the top of the screen, whole until it is nearly gone, never fading
+   out over the page. */
 @keyframes koi-ascend {
+  85% {
+    opacity: 1;
+  }
   to {
     opacity: 0;
-    transform: translateY(-160px);
+    transform: translateY(-100vh);
   }
 }
 
@@ -2153,11 +2204,13 @@ html.pkmn-wireframe body footer * {
   .koi.is-born .koi-body,
   .koi.is-born .koi-gate,
   .koi.is-born .koi-fall,
-  .koi.is-born .koi-fall::before,
-  .koi.is-swimming .koi-fall::before,
+  .koi-fall::before,
+  .koi-trail::after,
+  .koi.is-on .koi-foam .px-frame,
+  .koi.is-born .koi-foam,
   .koi.is-swimming .koi-carp,
   .koi.is-splashing .koi-body,
-  .koi.is-flashing .koi-body::before,
+  .koi.is-flashing .koi-burst,
   .koi.is-sparkling .koi-sparkle,
   .koi.is-draining .koi-fall,
   .koi.is-clouded .koi-cloud,
