@@ -101,28 +101,36 @@
   outline: none;
 }
 
-/* Each guest's face, a frame of its own sheet at twice its size. */
+/* Each guest's face, drawn by clover.js on a small canvas, in a box of the same height. */
 .cw-guests-face {
-  display: block;
-  width: 32px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   height: 32px;
-  background-repeat: no-repeat;
+}
+
+.cw-guests-face canvas {
+  display: block;
   image-rendering: pixelated;
-}
-
-.cw-guests-face-link {
-  background-position: -384px -32px; /* the frame facing us, sixth cell */
-  background-size: 448px 96px;
-}
-
-.cw-guests-face-kirby {
-  background-position: -8px -16px; /* standing, first cell */
-  background-size: 1008px 48px;
 }
 
 /* While Kirby holds it, the clover is gone from the footer. */
 .cw-clover.is-taken {
   visibility: hidden;
+}
+
+/* Blessed by Zelda, it glows gold while she speaks. */
+.cw-clover.is-blessed {
+  animation: cw-clover-blessed 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes cw-clover-blessed {
+  from {
+    filter: drop-shadow(0 0 2px #facc15);
+  }
+  to {
+    filter: drop-shadow(0 0 8px #facc15) brightness(1.15);
+  }
 }
 
 /* The stage the guests act on, across the bottom of the screen. */
@@ -137,14 +145,29 @@
 }
 
 /* While a guest is on stage, the games' text box speaks above it. */
+/* While a guest acts at the foot of the screen, the text box moves to the top, as Link's
+   Awakening moves it when Link is in the lower half, so it never covers the act. The
+   homepage's hints step aside meanwhile. */
 .cw-guest-on .koi-box {
-  bottom: calc(var(--cw-stage-h, 0px) + 12px);
+  top: calc(16px + env(safe-area-inset-top, 0px));
+  bottom: auto;
+}
+
+.cw-guest-on .koi-hint {
+  display: none;
+}
+
+/* On a phone the box leaves the Poké Ball's corner free; up top it needs not. */
+@media (max-width: 767px) {
+  .cw-guest-on .koi-box {
+    right: 16px;
+  }
 }
 
 /* The plain text box, for pages without the site's own. */
 .cw-guest-say {
   position: fixed;
-  bottom: calc(var(--cw-stage-h, 0px) + 12px);
+  top: calc(16px + env(safe-area-inset-top, 0px));
   left: 50%;
   z-index: 45;
   width: min(27rem, calc(100% - 32px));
@@ -164,5 +187,10 @@
   .cw-clover.is-busy {
     transition: none;
     animation: none;
+  }
+
+  .cw-clover.is-blessed {
+    animation: none;
+    filter: drop-shadow(0 0 6px #facc15);
   }
 }

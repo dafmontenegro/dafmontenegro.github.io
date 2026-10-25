@@ -3,7 +3,7 @@
      choose. Called from extend-head.html on every page.
 
      clover.js is small and loads with the page. guests.js, which draws the guests, and
-     their sprite sheet (assets/img/nintendo/, written by scripts/nintendo/build.py) are
+     their sprite sheets (assets/img/nintendo/, written by scripts/nintendo/build.py) are
      only fetched the first time the clover is used, so their addresses are handed to
      clover.js through a <script type="application/json"> block. */}}
 {{ with resources.Get "css/clover.css" | minify | fingerprint site.Params.fingerprintAlgorithm }}
@@ -18,6 +18,9 @@
 {{- end }}
 {{- with resources.Get "img/nintendo/kirby.png" | fingerprint site.Params.fingerprintAlgorithm }}
   {{- $config = merge $config (dict "kirby" .RelPermalink) -}}
+{{- end }}
+{{- with resources.Get "img/nintendo/zelda.png" | fingerprint site.Params.fingerprintAlgorithm }}
+  {{- $config = merge $config (dict "zelda" .RelPermalink) -}}
 {{- end }}
 <script type="application/json" id="clover-guests">{{ $config | jsonify | safeJS }}</script>
 {{ with resources.Get "js/clover.js" | minify | fingerprint site.Params.fingerprintAlgorithm }}

@@ -68,11 +68,37 @@
   /* ---------------------------------------------------------------------------------
      The menu: one button per guest, above the clover. */
 
+  /* A guest's face for the menu: one frame of its sheet, about `size` times its size,
+     but a whole number of the screen's own pixels per sprite pixel, so it stays crisp
+     (Zelda's finer sprite is drawn smaller than Link's and Kirby's to match them). */
+  function portrait(face) {
+    var ratio = window.devicePixelRatio || 1;
+    var k = Math.max(1, Math.round(face.size * ratio));
+    var canvas = document.createElement("canvas");
+    canvas.width = face.w * k;
+    canvas.height = face.h * k;
+    canvas.style.width = (face.w * k) / ratio + "px";
+    canvas.style.height = (face.h * k) / ratio + "px";
+    var img = new Image();
+    img.onload = function () {
+      var ctx = canvas.getContext("2d");
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(img, face.x, face.y, face.w, face.h, 0, 0, canvas.width, canvas.height);
+    };
+    img.src = config[face.sheet];
+    return canvas;
+  }
+
   function openMenu() {
     if (playing) return;
     load().then(function (guests) {
       if (!menu) buildMenu(guests);
       menu.hidden = false;
+      /* Centred over the clover, but never past the edge of the screen. */
+      menu.style.marginLeft = "";
+      var rect = menu.getBoundingClientRect();
+      var shift = Math.max(8 - rect.left, Math.min(0, window.innerWidth - 8 - rect.right));
+      if (shift) menu.style.marginLeft = shift + "px";
       button.setAttribute("aria-expanded", "true");
       var first = menu.querySelector("button");
       if (first) first.focus();
@@ -110,9 +136,9 @@
       choice.type = "button";
       choice.className = "cw-guests-choice";
       var face = document.createElement("span");
-      face.className = "cw-guests-face cw-guests-face-" + guest.id;
+      face.className = "cw-guests-face";
       face.setAttribute("aria-hidden", "true");
-      if (config[guest.id]) face.style.backgroundImage = "url(" + config[guest.id] + ")";
+      if (guest.face && config[guest.face.sheet]) face.appendChild(portrait(guest.face));
       choice.appendChild(face);
       var name = document.createElement("span");
       name.textContent = guest.name;
