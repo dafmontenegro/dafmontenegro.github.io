@@ -7,7 +7,8 @@
    the reader is, and the golden trail behind it is the stretch already climbed. At the
    end of the page it reaches the gate and evolves into a Gyarados, the way the old story
    has the carp that leaps the falls become a dragon; the dragon then rises into the
-   clouds. Scrolling back up brings the carp out again. Nothing but the scroll starts it.
+   clouds, and the climb is over for that visit to the page: going back up does not bring
+   the carp out again. Nothing but the scroll starts it.
 
    On a phone there is no margin to climb in: the fall would run over the text. There the
    reader is left alone while reading, and only the end is kept: at the foot of the page
@@ -53,7 +54,6 @@
   var CARP_REACH = 26; // px from the tilted carp's centre to its lowest pixel, as measured
   var MIN_SCROLL = 0.5; // pages scrolling less than this share of a screen get no climb
   var EVOLVE_AT = 0.995; // share of the page read that counts as reaching the gate
-  var REBIRTH_BELOW = 0.9; // after the dragon has gone, scrolling back under this share
   var BIRTH_MS = 650; // the carp coming out and the waterfall pouring
   var HOLD_DEX_MS = 400; // how long the homepage's ball is held down to open the Pokédex
   var HOLD_SLACK = 24; // px a held pointer may wander before the hold no longer counts
@@ -568,7 +568,9 @@
 
   /* hidden: the carp has not come out yet. born: it is out and climbing. evolving: from
      the gate to the dragon's ascent, a sequence nothing interrupts. ascended: the dragon
-     has gone, and the carp comes out again when the reader goes back up the page. */
+     has gone, and the story is told: it does not start over on the way back up, where a
+     carp reborn mid-page only jumped and flickered. A new visit to the page tells it
+     again. */
   var stage = "hidden";
   var gliding = false; // the carp swimming from the foot of the fall to the reader's height
   var gateOpacity = -1;
@@ -790,7 +792,7 @@
   function evolve() {
     if (stage !== "born") return;
     stage = "evolving";
-    /* Once per page view: scrolling back up and down again evolves it again. */
+    /* Once per page view. */
     if (!evolvedOnce) {
       evolvedOnce = true;
       track("koi_evolve", { mode: narrow ? "leap" : "climb" });
@@ -904,15 +906,14 @@
       lastY = y;
       if (!long) return;
 
-      /* On a phone nothing shows while the page is read: the carp is only armed again once
-         the reader has gone back up, and leaps when the end is reached. */
+      /* On a phone nothing shows while the page is read: the carp leaps when the end is
+         reached. */
       if (narrow) {
-        if (stage === "ascended" && scrolled() < REBIRTH_BELOW) stage = "hidden";
         if (stage === "hidden" && scrolled() >= EVOLVE_AT) leap();
         return;
       }
 
-      if (stage === "hidden" || (stage === "ascended" && scrolled() < REBIRTH_BELOW)) {
+      if (stage === "hidden") {
         birth(scrolled());
         return;
       }
