@@ -1,0 +1,55 @@
+#!/bin/sh
+# Runs on git push, before anything is sent. The same hook lives in the site's repository
+# and in Roz's; keep both copies equal.
+# To skip it knowingly, once: git push --no-verify
+#
+# Blocks:  a commit about to be pushed whose message carries an AI attribution, even if it
+#          was made with --no-verify or on another machine.
+# Reminds: what a push does not do. Roz learns from the published site and is deployed
+#          by hand, so after a push that changes what she should know, it says what to
+#          run (npm run sync, in Roz's repository, which asks before every step).
+
+status=0
+changed=""
+zero=0000000000000000000000000000000000000000
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ "$local_sha" = "$zero" ] && continue
+  if [ "$remote_sha" = "$zero" ]; then range="$local_sha --not --remotes"; else range="$remote_sha..$local_sha"; fi
+  for c in $(git rev-list $range); do
+    if git log -1 --format=%B "$c" | grep -Eiq 'co-authored-by|generated (with|by)|claude|anthropic|🤖'; then
+      printf '  x %s carries an AI attribution: %s\n' "$(git rev-parse --short "$c")" "$(git log -1 --format=%s "$c")" >&2
+      status=1
+    fi
+  done
+  if [ "$remote_sha" = "$zero" ]; then
+    changed="$changed $(git log --name-only --format= $range)"
+  else
+    changed="$changed $(git diff --name-only "$remote_sha" "$local_sha")"
+  fi
+done
+
+if [ "$status" -ne 0 ]; then
+  printf '\nNothing pushed. Reword those commits (git rebase -i), or push with --no-verify.\n' >&2
+  exit 1
+fi
+
+has() { printf '%s\n' $changed | grep -Eq "$1"; }
+
+if [ -f wrangler.jsonc ]; then
+  # Roz's repository.
+  if has '^knowledge/' || has '^(src|public)/|^wrangler\.jsonc$'; then
+    printf '\nRoz: a push does not reach her.\n'
+    has '^knowledge/' && printf '  - her knowledge changed: it needs an index, and /roz-remember/ a commit.\n'
+    has '^(src|public)/|^wrangler\.jsonc$' && printf '  - her code changed: the Worker needs a deploy.\n'
+    printf '  When you want it: npm run sync (asks before each step).\n'
+  fi
+else
+  # The site's repository.
+  if printf '%s\n' $changed | grep -E '^(content|data|layouts)/' | grep -vq '^content/roz-remember/'; then
+    printf '\nRoz reads the published site. Once GitHub Pages has published this push, if she\n'
+    printf 'should know about it, run in her repository: npm run sync (it waits for the\n'
+    printf 'deploy and asks before indexing).\n'
+  fi
+fi
+exit 0

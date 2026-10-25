@@ -1,0 +1,66 @@
+#!/bin/sh
+# Checks a commit message before git makes the commit (git passes the file that holds
+# it). The same hook lives in the site's repository and in Roz's; keep both copies equal.
+# Enabled once per clone with: git config core.hooksPath .githooks
+# To skip it knowingly, for one commit: git commit --no-verify
+#
+# Blocks:  the Conventional Commits form `type(scope): subject`; a subject over 72
+#          characters, ending in a period, or with no blank line after it; any AI
+#          attribution (Co-Authored-By, "Generated with", Claude, Anthropic);
+#          Spanish (ñ ¿ ¡, or several common Spanish words); private addresses of the
+#          tailnet, which must never reach a public history.
+# Warns:   a subject that does not read as an imperative ("added", "fixes"); body
+#          lines over 100 characters.
+
+file="$1"
+msg=$(grep -v '^#' "$file")
+subject=$(printf '%s\n' "$msg" | sed -n '1p')
+second=$(printf '%s\n' "$msg" | sed -n '2p')
+status=0
+
+bad() { printf '  x %s\n' "$1" >&2; status=1; }
+note() { printf '  ! %s\n' "$1" >&2; }
+chars() { printf '%s' "$1" | LC_ALL=en_US.UTF-8 wc -m | tr -d ' '; }
+
+# Messages git writes itself pass as they are.
+case "$subject" in
+  "Merge "* | "Revert \""* | "fixup! "* | "squash! "* | "amend! "*) exit 0 ;;
+esac
+
+types='feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert'
+if ! printf '%s\n' "$subject" | grep -Eq "^($types)(\([a-z0-9][a-z0-9./-]*\))?!?: [^ ]"; then
+  bad "the subject must read type(scope): subject, with type one of: $(printf "%s" "$types" | sed "s/|/, /g")"
+fi
+[ "$(chars "$subject")" -gt 72 ] && bad "the subject has $(chars "$subject") characters; 72 at most"
+case "$subject" in *.) bad "the subject ends in a period" ;; esac
+[ -n "$second" ] && bad "the subject must be followed by a blank line"
+
+if printf '%s\n' "$msg" | grep -Eiq 'co-authored-by|generated (with|by)|claude|anthropic|🤖'; then
+  bad "AI attribution: the commit is his alone (no Co-Authored-By, no 'Generated with')"
+fi
+
+if printf '%s\n' "$msg" | grep -q '[ñÑ¿¡]'; then
+  bad "Spanish characters (ñ, ¿, ¡): commit messages are written in English"
+else
+  spanish=$(printf '%s\n' "$msg" | tr 'A-Z' 'a-z' | tr -c 'a-záéíóúü\n' ' ' | tr ' ' '\n' |
+    grep -Ex 'el|los|las|que|para|con|del|por|una|pero|porque|cuando|esta|este|esto|está|están|también|muy|sin|sobre|desde|hasta|hay|sus|como|más|qué|cómo' | sort -u | wc -l | tr -d ' ')
+  [ "$spanish" -ge 2 ] && bad "it reads as Spanish ($spanish common Spanish words): commit messages are written in English"
+fi
+
+if printf '%s\n' "$msg" | grep -Eiq '\.ts\.net|(^|[^0-9.])100\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7])\.[0-9]'; then
+  bad "a tailnet name or address: it must not reach a public history"
+fi
+
+first=$(printf '%s\n' "$subject" | sed -E 's/^[a-z]+(\([^)]*\))?!?: //' | awk '{print tolower($1)}')
+case "$first" in
+  added | adds | fixed | fixes | updated | updates | removed | removes | changed | changes | improved | improves | refactored | moved | renamed)
+    note "\"$first\": the subject reads best as an imperative (add, fix, update...)" ;;
+esac
+
+printf '%s\n' "$msg" | sed '1,2d' | grep -v 'https\?://' | awk 'length($0) > 100 { found = 1 } END { exit !found }' &&
+  note "a body line is over 100 characters; wrapping near 72 reads best in git log"
+
+if [ "$status" -ne 0 ]; then
+  printf '\nCommit not made. Fix the message, or skip this check once with --no-verify.\n' >&2
+fi
+exit "$status"

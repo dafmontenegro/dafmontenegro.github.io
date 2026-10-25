@@ -1,0 +1,35 @@
+#!/bin/sh
+# Checks what is about to be committed, before git makes the commit. The same hook lives
+# in the site's repository and in Roz's; keep both copies equal.
+# To skip it knowingly, for one commit: git commit --no-verify
+#
+# Blocks:  agent-instruction files (CLAUDE.md, CLAUDE.local.md, .claude/), which never
+#          belong in a repository; .env files; added lines that carry a tailnet name or
+#          address, which must never reach a public history.
+
+status=0
+bad() { printf '  x %s\n' "$1" >&2; status=1; }
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR)
+
+for path in $staged; do
+  case "$path" in
+    CLAUDE.md | */CLAUDE.md | CLAUDE.local.md | */CLAUDE.local.md | .claude/* | */.claude/*)
+      bad "$path: agent instructions never go in a repository" ;;
+    .env | */.env | .env.* | */.env.*)
+      bad "$path: environment files hold secrets and stay out of git" ;;
+  esac
+done
+
+leaks=$(git diff --cached -U0 --diff-filter=ACMR --no-ext-diff -- . ':(exclude).githooks' |
+  grep -E '^\+[^+]' |
+  grep -Ei '\.ts\.net|(^|[^0-9.])100\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7])\.[0-9]+\.[0-9]')
+if [ -n "$leaks" ]; then
+  bad "a tailnet name or address in the staged changes:"
+  printf '%s\n' "$leaks" | head -5 | sed 's/^/      /' >&2
+fi
+
+if [ "$status" -ne 0 ]; then
+  printf '\nCommit not made. Unstage or fix the above, or skip this check once with --no-verify.\n' >&2
+fi
+exit "$status"
