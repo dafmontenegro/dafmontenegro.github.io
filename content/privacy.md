@@ -3,7 +3,7 @@ title: "Privacy Policy"
 description: "How montenegrodanielfelipe.com, dafmontenegro.com and Roz, the site's assistant, handle your data: analytics, what Roz keeps, embedded content and hosting."
 images: ["/og/privacy.jpg"]
 date: 2024-10-12
-lastmod: 2026-10-23
+lastmod: 2026-11-01
 showReadingTime: false
 showPagination: false
 showAuthor: false
@@ -60,7 +60,7 @@ For more information on how Google handles your data, please visit the [**Google
 
 **In your browser:** the conversation itself is kept in the tab (session storage), so it survives a reload and disappears when you close the tab. If you choose light or dark, or Spanish or English, that choice is remembered in your browser (local storage).
 
-The data is stored in a database in my own Cloudflare account, which only I have access to, and it is never sold or shared. Cloudflare also keeps, for a few days, the technical logs of Roz's code (errors and the usual request metadata), as it does for any service it runs. If you want something you asked to be deleted, message me on Telegram, saying roughly when you asked and what, and I will remove it.
+The data is stored in a database in my own Cloudflare account, which only I have access to, and it is never sold or shared. I also receive a regular summary of it by email: the questions and answers, how they ended, and the approximate locations and devices, but **never IP addresses**. It reaches my personal inbox, which only I read, and stays there until I delete it. Cloudflare also keeps, for a few days, the technical logs of Roz's code (errors and the usual request metadata), as it does for any service it runs. If you want something you asked to be deleted, message me on Telegram, saying roughly when you asked and what, and I will remove it.
 
 ## Hosting and Delivery
 The sites are hosted on **GitHub Pages** and delivered through **Cloudflare**. To serve the pages and protect them from abuse, these services process technical data such as your **IP address** and browser information, under their own privacy policies: [**GitHub**](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement) and [**Cloudflare**](https://www.cloudflare.com/privacypolicy/).
