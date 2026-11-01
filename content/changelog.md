@@ -14,6 +14,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-10-26 | [Projects](/projects/la-traicion-necesaria/) | Mónica Páez's two artworks, closer to her own portfolio: the idea behind *La traición necesaria* and its technique, and the exhibition and closing thought of *Visiones inestables* |
 | 2026-10-25 | [Blog](/blog/nanami-kento/) | New post: "Nanami Kento: Redemption and Sacrifice", why I see myself in him, with the fan edit I love
 | 2026-10-25 | Every long article | The Magikarp climbs a proper pixel waterfall now, with foam at its foot and a glint in the golden trail; it evolves in a burst of pixel light, and on a phone it leaps by the edge of the screen instead of over the page; once it has evolved, it does not come back when you scroll up
 | 2026-10-24 | Every page | A third guest for the clover: Zelda, with Link, who bless it with her light and his sword. Link now cuts the bush with a spin attack and hops for joy with the clover, Kirby tries out his LUCK (fire, sleep and a sword), and all of them are smaller |

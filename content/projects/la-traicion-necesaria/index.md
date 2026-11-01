@@ -19,26 +19,34 @@ tags: ["monica-paez", "contemporary-art", "artificial-intelligence", "generative
 
 ## 1. About the Artwork
 
-The piece is inspired by the Italian adage ***traduttore, traditore*** (*translator, traitor*), which invites us to ask how faithful any translation or transcription can really be.
+The piece explores the limits of **artificial intelligence when it translates and generates content**, through the analogy the writer **Ted Chiang** proposes for ChatGPT: a ***blurry JPEG*** that loses information every time it compresses. Machines can produce answers that are plausible and coherent, but they lack the discernment that would keep the truth from being lost on the way. From there, the piece takes up the Italian adage ***traduttore, traditore*** (*to translate is to betray*), and asks how faithful a machine can be when it describes and recreates an image.
 
 The proposed image is **the exhibition space where the artwork is shown**. The AI describes it, and from that description it generates a new image, in a gesture that recalls the **ouroboros** (the serpent that bites its own tail) and the **Droste effect** (the infinite repetition of an image between two facing mirrors).
 
-Because the generating agent can never return to the original image, what visitors see are **inexact copies and representations of the gallery, in real time**: a betrayal of the eye speaking to the brain, or perhaps of our belief that the space we see is, in fact, that same place.
-## 2. Texts
+Because the generating agent can never return to the original image, what visitors see are **inexact copies and representations of the gallery, in real time**: a betrayal of the eye, in which technological mediation turns our perception of reality into a **distorted, circular representation**.
+
+## 2. Technique
+
+- **Video projection**
+- **Python 3 programming**
+- **Images produced from the model's own descriptions**, with an agent based on the language model **gemini-2.5-flash-image**
+- Variable dimensions
+
+## 3. Texts
 
 The artwork is accompanied by two texts, both available (in Spanish) on the [**artwork page**](https://monicapaez.com/portfolio/la-traicion-necesaria/):
 
 - ***El tipo de seres que somos***, by **Juan Nicolás Donoso**: from medieval theologians to Wittgenstein and Merleau-Ponty, a reflection on whether words name the essence of things, and on what it means to ask an AI about *meaning*.
 - ***La traición necesaria***, by **Mónica Páez**: from the first machine translation experiments of the 1950s to Ted Chiang's *"ChatGPT is a blurry JPEG of the Web"*, a reflection on how much information is lost every time a machine translates, describes or recreates.
 
-## 3. Credits
+## 4. Credits
 
 - **Artist:** [Mónica Páez](https://monicapaez.com/)
 - **In collaboration with:** Juan David García Arteaga and Daniel Felipe Montenegro
 - **Text:** Juan Nicolás Donoso
 - **Video:** Tangrama
 
-## 4. A Note of Gratitude
+## 5. A Note of Gratitude
 
 *La traición necesaria* is, first and foremost, **Mónica's work**: her idea, her questions about translation and her way of turning a gallery into a mirror of itself. Being invited into her process was a privilege, and I am deeply grateful for her **generosity, her trust and her friendship**.
 

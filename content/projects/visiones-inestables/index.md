@@ -11,7 +11,7 @@ thumbnailAlt: "Exhibition view of Visiones inestables"
 categories: ["art", "software"]
 tags: ["monica-paez", "contemporary-art", "artificial-intelligence", "generative-ai", "llm", "gemini", "python", "museum", "unal"]
 ---
-**Visiones inestables** (*Unstable Visions*) is an artwork by the Colombian artist **[Mónica Páez](https://monicapaez.com/)**, made in collaboration with **Juan David García Arteaga** and **Daniel Felipe Montenegro**, and exhibited on **June 17, 2026** at the **Art Museum of the Universidad Nacional de Colombia** (Museo de Arte de la Universidad Nacional de Colombia). It explores our interaction with **large language models** as a synthesized, amplified and distorted reflection of each person's digital footprint.
+**Visiones inestables** (*Unstable Visions*) is an artwork by the Colombian artist **[Mónica Páez](https://monicapaez.com/)**, made in collaboration with **Juan David García Arteaga** and **Daniel Felipe Montenegro**, and exhibited on **June 17, 2026** in the exhibition ***Expediciones restaurativas*** at the **Art Museum of the Universidad Nacional de Colombia** (Museo de Arte de la Universidad Nacional de Colombia). It explores our interaction with **large language models** as a synthesized, amplified and distorted reflection of each person's digital footprint.
 
 [**Artwork page**](https://monicapaez.com/portfolio/visiones-intestables/) | [**Video**](https://vimeo.com/1206859326) | [**Mónica Páez**](https://monicapaez.com/)
 
@@ -25,9 +25,11 @@ The AI reorganizes and mixes discourses that have traditionally tried to stabili
 
 The title refers to Harlan Ellison's anthology ***Dangerous Visions*** (1967), where science fiction is not a projection of the future but a tool to read the present. When the AI is asked to imagine possible futures for the museum, the images it returns reveal what usually remains invisible: its **mechanisms of conservation, its promises of permanence and its inevitable changes**.
 
-> The instability is not in the eye that looks, but in the very nature of the institution.
+> The instability does not belong to the eye that looks, but to the very nature of the institution.
 >
-> — <cite>From the artist's statement</cite>
+> — <cite>From the artist's statement (translated)</cite>
+
+Alongside the photographs, **quotes about the museum and its institutionality** were also turned into generated images. The statement closes with an idea that links this piece to [*La traición necesaria*](/projects/la-traicion-necesaria/): the contemporary museum seems to have become **a degraded translation of its own concept**, and its future may lie not in staying intact, but in accepting the **inevitable deformations of every translation**.
 
 ## 2. Technique
 
