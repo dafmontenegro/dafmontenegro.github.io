@@ -47,7 +47,7 @@ For more information on how Google handles your data, please visit the [**Google
 - When it was asked, and how: typed, or picked from Roz's suggestions.
 - A random identifier for your browser tab, so the questions of one visit can be read together. It is created when you open Roz, forgotten when you close the tab, and never tied to who you are.
 - How it ended: answered, not known, refused because of the limits on questions per minute and per day (yours or the site's), refused because the check that you are a person had not passed, or failed.
-- The pages of this site the answer was built from, and how long it took.
+- The pages of this site the answer was built from, how long it took, and which version of Roz wrote it.
 - Your browser's language, your approximate location (**country and city**, as Cloudflare estimates them for your connection), whether you use a phone or a computer, your browser's user agent, the page you came from, the light or dark theme and your window's width.
 
 **What happens on the page:** visits to it, which of Roz's suggestions are tapped, taps on Roz, opening "Why Roz?", changing the theme or the language, rating an answer as helpful or not, copying or sharing an answer, and, when you leave, how long you stayed and how many questions you asked.

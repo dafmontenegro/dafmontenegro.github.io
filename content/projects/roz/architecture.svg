@@ -13,7 +13,7 @@
 
   <rect class="dg-box" x="220" y="40" width="180" height="64" rx="10"/>
   <text class="dg-t" x="310" y="67" text-anchor="middle">Curated notes</text>
-  <text class="dg-s" x="310" y="88" text-anchor="middle">written for her, private</text>
+  <text class="dg-s" x="310" y="88" text-anchor="middle">written for her</text>
 
   <path class="dg-l" d="M110 104 V124 H310 V104"/>
   <path class="dg-l" d="M210 124 V148" marker-end="url(#roz-arch-arrow)"/>

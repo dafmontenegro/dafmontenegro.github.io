@@ -14,6 +14,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-11-01 | [Projects](/projects/roz/) | Roz's page catches up with her: how her notes are split and published, the bench that measures her answers, the check that keeps her quotes exact, and what is new on her page |
 | 2026-11-01 | [Privacy Policy](/privacy/#roz-the-sites-assistant) | The section on Roz now says that I receive a summary of her conversations by email, never with IP addresses |
 | 2026-10-26 | [Projects](/projects/la-traicion-necesaria/) | Mónica Páez's two artworks, closer to her own portfolio: the idea behind *La traición necesaria* and its technique, and the exhibition and closing thought of *Visiones inestables* |
 | 2026-10-25 | [Blog](/blog/nanami-kento/) | New post: "Nanami Kento: Redemption and Sacrifice", why I see myself in him, with the fan edit I love

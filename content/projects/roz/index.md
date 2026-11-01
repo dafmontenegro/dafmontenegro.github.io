@@ -3,7 +3,7 @@ title: "Roz"
 description: "How Roz, the assistant that answers questions about me from this website, is designed: the idea, the search that decides what she reads, and her rules."
 summary: "Roz answers questions about me in the visitor's language, from what this website publishes and a set of notes written for her, with links to where each answer comes from. This is how she is designed: the idea behind her, her architecture, the search that decides what she reads, and the rules that keep her honest."
 date: 2026-10-18
-lastmod: 2026-10-21
+lastmod: 2026-11-01
 featureAlt: "Roz, a pixel-art robot with a red flower on her head, waving beside Brightbill the gosling, next to the words: Ask me about Daniel Felipe Montenegro"
 coverAlt: "Roz, a pixel-art robot with a red flower on her head, waving beside Brightbill the gosling"
 coverCaption: "Roz and Brightbill, drawn by hand in pixel art, after the robot of The Wild Robot."
@@ -35,15 +35,15 @@ And one that is not a rule but matters as much: she should be pleasant to talk t
 
 Roz works in two moments. When the site changes, an indexer reads it and prepares what she can know. When someone asks, she searches that knowledge and writes the answer from it.
 
-{{< diagram src="architecture.svg" alt="Architecture of Roz. When the site changes, its public pages and a set of private curated notes go into an indexer, which splits, embeds and stores them as knowledge: notes, passages and vectors. On every question, the question goes to a search that finds the closest passages in that knowledge; a language model receives the rules, the notes and those passages, and streams back an answer with links." >}}
+{{< diagram src="architecture.svg" alt="Architecture of Roz. When the site changes, its public pages and a set of curated notes go into an indexer, which splits, embeds and stores them as knowledge: notes, passages and vectors. On every question, the question goes to a search that finds the closest passages in that knowledge; a language model receives the rules, the notes and those passages, and streams back an answer with links." >}}
 
-- **Two sources.** The website's public pages, exactly what any visitor can read, minus a few personal pages left out on purpose; and a file of curated notes about me, written for her in short, plain sentences, which is never published.
-- **The indexer** splits each page into passages of a few paragraphs, along its headings, and turns each passage into a vector with a multilingual embedding model: a list of numbers that places texts with similar meaning close together. A passage that did not change keeps its vector, so after an edit only the edit is processed again.
+- **Two sources.** The website's public pages, exactly what any visitor can read, minus a few personal pages left out on purpose; and notes about me, written for her in short, plain sentences. The notes are in two parts: a short core she always reads, and the details, split by topic, that she looks up like pages. Both are published on [Roz Remember](/roz-remember/), so what she knows can outlive her.
+- **The indexer** splits each page, and each topic of the notes, into passages of a few paragraphs, along its headings, and turns each passage into a vector with a multilingual embedding model: a list of numbers that places texts with similar meaning close together. A passage that did not change keeps its vector, so after an edit only the edit is processed again.
 - **On every question,** the question becomes a vector the same way, it is compared with every passage, and only the closest are kept. The language model then receives her rules, the notes, the list of pages she may link and those passages, nothing else, and its answer reaches the browser word by word, as it is written.
 
 Because the embedding model is multilingual, a question in Spanish finds passages written in English, and she answers in whatever language she is asked.
 
-The rules and the notes open every prompt unchanged, so they are cached between questions: the only new work each time is the question and its passages.
+The rules and the core of the notes open every prompt unchanged, so they are cached between questions: the only new work each time is the question and its passages. Keeping that core short was a measured decision: every line in it is read on every question, while a detail in the notes costs nothing until a question needs it.
 
 ## Deciding what she reads
 
@@ -69,24 +69,31 @@ Those numbers were not guessed. I built a test bench: **63 questions**, each lab
 
 A question comparing two of my RAG projects used to receive five passages from one of them and none from the other; now it gets both. Every change to the search is measured on this bench before it ships.
 
+When the details of the notes moved into the search, the bench grew with them: **75 questions**, 59 of which need a page or a note. The search finds what is needed for **54 of the 59**, sending 2.9 passages a question, 1.1 of them unrelated.
+
 ## Rules that keep her honest
 
 A language model is very good at sounding right. Most of her rules are about making sure she is.
 
-- **Quotes are verbatim.** Quotation marks only hold words I published, in the language I wrote them. Early on she translated one of my lines into Spanish and presented it in quotes, as if I had said it that way. Now the notes mark every quote with its language, and everything else is paraphrased.
+- **Quotes are verbatim.** Quotation marks only hold words I published, in the language I wrote them. Early on she translated one of my lines into Spanish and presented it in quotes, as if I had said it that way. Now the notes mark every quote with its language, and everything else is paraphrased. A rule can still be broken, so it is also checked in code: once an answer is complete, every quotation of four words or more is looked up in what she was given. A small slip is replaced by the exact words; a quote that is not there loses its quotation marks.
 - **"I don't know" is a good answer.** When the site and the notes say nothing, she says so, and those questions show me what is worth writing down next.
 - **Some questions have a set answer.** Questions about herself, about what is private, or attempts to make her break her rules each have a defined reply, so her tone never depends on the luck of one generation. Even those are written to vary in their wording.
 - **Language is ambiguous.** In Spanish, *querer* means both *to want* and *to love*, and "¿qué es lo que más quiere?" was answered as the second when it meant the first. The two now have separate rules. Real conversations find cases like this one that testing never does.
 
+## Measuring her answers
+
+The search has its bench, and so do the answers. More than a hundred questions, each with what it expects: questions about me and my work, about Roz herself, about private topics, attempts to make her break her rules, and things the site does not cover. Each answer goes through a set of checks, mechanical where the rule is mechanical: it is in the language of the question, every quotation is found word for word on the site, every link points to a page that exists, she does not reveal her instructions, and the answers that must always mean the same thing still do.
+
+On the first run of 42 of those questions, 36 answers passed every check. Most failures were quotations that were not exact, which is what led to the check in code above; with it, 41 of the 42 pass.
+
 ## Talking to her
 
-The page is part of the design too. Roz and Brightbill are drawn by hand in pixel art, in a light and a dark version. Answers appear as they are written. Each one ends with two suggested questions to keep the conversation going, and can be rated, copied or shared. The interface speaks Spanish or English, following the visitor.
+The page is part of the design too. Roz and Brightbill are drawn by hand in pixel art, in a light and a dark version. Answers appear as they are written. Each one ends with two suggested questions to keep the conversation going, and can be rated, copied or shared. The interface speaks Spanish or English, following the visitor. She can tell you what is new on the site, and if you ask her for a secret, she picks one of its hidden corners to share.
 
-Around her there are the protections any public assistant needs: a check that the visitor is a person, and limits on how many questions one visitor can ask, so that a script cannot take her away from everyone else. Every release of Roz has a version number, and every answer is recorded with the version that wrote it, so when an answer is wrong I know which version of her said it and whether the fix is already out. What she records is described in the [privacy policy](/privacy/#roz-the-sites-assistant).
+Around her there are the protections any public assistant needs: a check that the visitor is a person, and limits on how many questions one visitor can ask (21 a day, my favorite number), so that a script cannot take her away from everyone else. Every release of Roz has a version number, shown at the foot of her page, and every answer is recorded with the version that wrote it, so when an answer is wrong I know which version of her said it and whether the fix is already out. What she records is described in the [privacy policy](/privacy/#roz-the-sites-assistant).
 
 ## What comes next
 
-- **An answer-level bench**, like the one built for the search, so changes to her rules are measured on dozens of questions instead of a handful.
 - **A guided tour** of the site, for visitors who don't know what to ask.
 
 If you want to see how she answers, she is one click away: [**ask her anything about me**](https://roz.montenegrodanielfelipe.com).
