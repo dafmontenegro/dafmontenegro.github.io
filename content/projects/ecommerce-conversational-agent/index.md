@@ -119,7 +119,7 @@ diagram_1 = """graph TD
 
 render_mermaid(diagram_1)
 ```
-![General Agent Flow](images/diagram_1.png)
+![General Agent Flow](images/diagram_1.jpg)
 
 ### 2.2 Comparative Model Architecture
 
@@ -140,7 +140,7 @@ diagram_2 = """graph LR
 
 render_mermaid(diagram_2)
 ```
-![Comparative Model Architecture](images/diagram_2.png)
+![Comparative Model Architecture](images/diagram_2.jpg)
 
 ## 3. Google Colab Setup
 
