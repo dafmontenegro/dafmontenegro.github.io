@@ -63,14 +63,15 @@ Each skill is backed by a page on his website. When someone asks whether Daniel 
 
 - **Web, games and front end:** Super Pony Picker — a free, fair random name picker disguised as an 8-bit pony race (a horse race game), built with p5.js, the Web Crypto API and live Web Audio chiptune. /projects/super-pony-picker/ His own website is built with Hugo and the Congo theme, deployed by GitHub Actions to GitHub Pages, with hand-written JavaScript features (the climbing carp, the homepage Pokémon, the wheel on About).
 - **Data engineering and BI:** data pipelines and BI dashboards (from the professional summary).
-- **Cloud:** Microsoft Azure, backed by Microsoft Certified: Azure Fundamentals (October 2026). AWS: he completed the AWS Academy Cloud Foundations course (training badge, July 2025); he holds no AWS certification.
+- **Cloud:** Microsoft Azure, backed by Microsoft Certified: Azure Fundamentals (October 2026) and Microsoft Certified: Azure AI Fundamentals (November 2026). AWS: he completed the AWS Academy Cloud Foundations course (training badge, July 2025); he holds no AWS certification.
 - **Languages and tools seen across his projects:** Python, C, JavaScript, LangChain, ChromaDB, Ollama, NetworkX, NumPy, Matplotlib, OpenCV, TensorFlow Lite, Flask, BeautifulSoup, sentence-transformers, p5.js, Hugo, Git and GitHub, Google Colab, Raspberry Pi.
 - **Teaching:** workshops and tutoring in Python, IoT and machine learning; Raspberry Pi 101 UNAL; tutorials on his blog (Markdown, Ollama on Colab, downloading folders from Colab).
 
-## Certifications: Azure Fundamentals (AZ-900), AWS badge, Coursera, Platzi
+## Certifications: Azure AI Fundamentals (AI-901), Azure Fundamentals (AZ-900), AWS badge, Coursera, Platzi
 
 - Daniel has studied continuously for years and keeps certifying himself. Many of his certificates are on his Platzi profile (dafmontenegro) and the most significant ones are on Coursera.
-- He earned Microsoft Certified: Azure Fundamentals (exam AZ-900) on 16 October 2026, his only vendor certification.
+- He holds two Microsoft certifications, his only vendor certifications: Microsoft Certified: Azure Fundamentals (exam AZ-900), earned on 16 October 2026, and Microsoft Certified: Azure AI Fundamentals (exam AI-901), earned on 7 November 2026.
+- He is now preparing for exam AI-103, Developing AI Apps and Agents on Azure.
 - The AWS Academy Cloud Foundations item (July 2025) is a training badge for a completed course, not an AWS certification.
 - The full list, with verification links, is at /certifications/.
 
