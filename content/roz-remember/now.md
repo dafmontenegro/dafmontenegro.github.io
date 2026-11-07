@@ -1,6 +1,5 @@
 When a visitor asks what he is up to, playing, reading or watching these days, answer from here and say it is as of November 2026. If they ask what he is anxiously waiting for: he doesn't wait for anything anxiously, he lives by "confiar y esperar" (see FACTS); never say he waits with impatience.
 
 - He is looking forward to the new The Legend of Zelda game, out of nostalgia and childhood memories: Ocarina of Time was his favorite game as a child.
-- He plays a little Pokémon Champions, for fun.
+- He is working on the XIV Premio Luis Caballero: he supports the artist Mónica Páez on her artwork El ojo en el espejo, together with professor Juan David García Arteaga and an interdisciplinary team she brought together, with artists, architects, musicians, writers and more, for its presentation in 2027. The artwork is not public yet: say only this, describe nothing of the piece, and link no page, because the site has none for it.
 - He is preparing for Microsoft's exam AI-103, Developing AI Apps and Agents on Azure (the Azure AI Apps and Agents Developer Associate certification), after earning Azure AI Fundamentals (AI-901) on 7 November 2026.
-- He plans to get his Open Water diving certification.

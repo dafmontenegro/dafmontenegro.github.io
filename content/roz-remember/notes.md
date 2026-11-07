@@ -35,12 +35,13 @@ Each skill is backed by a page on his website. When someone asks whether Daniel 
 - **LLM agents and tool calling:** E-Commerce Conversational Agent with Ollama and LangChain — product search, recommendations, order tracking, technical support and RAG-powered FAQ; benchmarks Qwen3 4B, Llama 3.2 3B and Phi-4-mini on tool-calling accuracy, multi-intent handling and response time. /projects/ecommerce-conversational-agent/
 - **Local LLMs:** Ollama (including running it on Google Colab), open-weight models (Qwen, Llama, Phi, DeepSeek-R1), embeddings. /blog/run-ollama-colab/
 
-### Skills: generative AI in art with Mónica Páez (La traición necesaria, Visiones inestables)
+### Skills: generative AI in art with Mónica Páez (La traición necesaria, Visiones inestables, El ojo en el espejo)
 
 - **Generative AI in contemporary art:** collaborated with the artist Mónica Páez (with Juan David García Arteaga) on two exhibited artworks:
   - La traición necesaria (Universidad de los Andes, March 11, 2026) — an AI describes the exhibition space and generates a new image from its own description, again and again. /projects/la-traicion-necesaria/
   - Visiones inestables (Art Museum of the Universidad Nacional de Colombia, June 17, 2026) — Python and an agent based on gemini-2.5-flash-image imagine unstable futures of the museum. /projects/visiones-inestables/
   - The artworks are Mónica Páez's; his part was the technical side of each piece, from hardware to installation, working with both professors. Say it in one modest sentence and do not list or embellish his contributions: the pages do not detail them.
+  - Now: He is working on the XIV Premio Luis Caballero: he supports the artist Mónica Páez on her artwork El ojo en el espejo, together with professor Juan David García Arteaga and an interdisciplinary team she brought together, with artists, architects, musicians, writers and more, for its presentation in 2027. The artwork is not public yet: say only this, describe nothing of the piece, and link no page, because the site has none for it.
 
 ### Skills: game theory, the Prisoner's Dilemma and his thesis
 
@@ -169,10 +170,10 @@ Each skill is backed by a page on his website. When someone asks whether Daniel 
 - **Poem:** "Amémonos", by the Mexican poet Manuel María Flores, is very special to him: he once had the same idea the poem has, writing to the love of his life before meeting her, and finding that the idea was not only his was a happy surprise. Also José Ángel Buesa's "Poema del olvido", which he recited on his channel.
 - **Verses:** after a long day in which he gave his best, or after a big event or a test, he likes to tell himself 2 Timothy 4:7, "He peleado la buena batalla, he llegado al término de la carrera, me he mantenido fiel" (his favorite). Others he loves: 1 Corinthians 13:13 (faith, hope and love, and the greatest is love), 2 John 1:6, Proverbs 28:1 (the just live as confident as a lion) and Psalm 143:8. All in his Bible space, in Spanish. /spaces/bible/
 
-### Video games (Hellblade, Zelda, The Last of Us), Pokémon, Pokémon Champions and the cards
+### Video games (Hellblade, Zelda, The Last of Us), Pokémon and the cards
 
 - Now and then he goes back to The Witcher 3 and plays it again: a great game, he says.
-- He plays a little Pokémon Champions, not much time, because it is fun. He finds Pokémon cards beautiful to look at; he does not play the trading card game, in person or otherwise. There is no video games page on the site yet: never link Cinema or any page for games.
+- He finds Pokémon cards beautiful to look at; he does not play the trading card game, in person or otherwise. There is no video games page on the site yet: never link Cinema or any page for games.
 
 - **Video games:** his favorite is Hellblade: Senua's Sacrifice, the first one. He has analysed it in depth and loves it as a work of art full of meaning: how it portrays psychosis and makes you feel the voices, how it deals with grief and with facing your fears, the role of Dillion, the symbolism of the rot. Its ending is a spoiler: if asked, say why he loves it, and warn before revealing how it ends. He also loves The Last of Us Part II (of the two The Last of Us games, the second is his favorite, a great game on his podium, but Hellblade comes first), The Witcher 3 and decision-driven games such as Detroit: Become Human, which he calls another work of art. His favorite game from childhood is The Legend of Zelda: Ocarina of Time, on the Nintendo 64, and he loves The Legend of Zelda: Breath of the Wild and Tears of the Kingdom. He loves Pokémon and the Game Boy; SoulSilver and Emerald are his favorite Pokémon games. He plans a video games space on the site, with much more detail.
 - **Pokémon:** he hasn't decided on a favorite yet, but he is especially fond of the red Gyarados of the Lake of Rage, the first shiny Pokémon so many players met, in SoulSilver (it is also the dragon at the top of his site's waterfall).
@@ -181,7 +182,7 @@ Each skill is backed by a page on his website. When someone asks whether Daniel 
 
 - **Food:** what he loves most is Mexican food, tacos al pastor above all, and spicy food: in food, as in life, he likes things with character. He also loves seafood, especially the dishes called, in Spanish, jaibas gratinadas and langosta al ajillo (also calamari and octopus). Two Colombian flavors he loves and would miss abroad: bocadillo (guava paste) and panela.
 - **Travel:** he would love to visit Hawaii, for its curious place on the map. But for him travelling is about seeing the beautiful work that is life, in all its forms, made by God: he would love to see animals in their natural habitat (gorillas fascinate him), and he can spend hours watching animals, which is what he loved most at Parque Explora, in Colombia. One of the most beautiful places he has visited in Colombia is San Andrés, and he loves diving.
-- **Sports and games:** he trained karate for years at the Liga de Karate de Bogotá, in the Club Chrysler (/blog/club-chrysler-karate/); he loves diving and plans to get his Open Water certification; and he likes chess. His karate belt, how long he dived and whether he follows any sport as a spectator are not things he shares: for those, say so lightly and point to Telegram, never a yes or a no. On chess he recommends Stefan Zweig's novella The Royal Game (Schachnovelle; in Spanish, Novela de ajedrez), which he finds very good.
+- **Sports and games:** he trained karate for years at the Liga de Karate de Bogotá, in the Club Chrysler (/blog/club-chrysler-karate/); he loves diving; and he likes chess. His karate belt, how long he dived and whether he follows any sport as a spectator are not things he shares: for those, say so lightly and point to Telegram, never a yes or a no. On chess he recommends Stefan Zweig's novella The Royal Game (Schachnovelle; in Spanish, Novela de ajedrez), which he finds very good.
 
 ### Humor and comedy (South Park, Cantinflas) and music (AlcolirykoZ, Jam of the Moment)
 
