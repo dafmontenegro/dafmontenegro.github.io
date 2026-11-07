@@ -3,7 +3,7 @@ title: "Who am I?"
 description: "Who is Daniel Felipe Montenegro? A Systems and Computer Engineer and AI software developer who builds AI platforms and loves cinema, music and literature."
 summary: "By day, I'm a passionate software developer who loves to dive into code with the purpose of building solutions that impact people's everyday lives. By night? I'm exploring cinema, music, literature, and a little bit of poetry; sometimes all at once, because all those things remind me that I'm alive."
 Date: 2024-10-12
-lastmod: 2026-10-22
+lastmod: 2026-11-07
 images: ["img/og-about.jpg"]
 tags: []
 showBreadcrumbs: false
@@ -24,7 +24,7 @@ Earlier, I built **data pipelines and BI dashboards** that turned hours of manua
 
 I studied **Systems and Computer Engineering** at the **Universidad Nacional de Colombia** and graduated on April 21, 2026. My undergraduate thesis, advised by Juan David García Arteaga, is the [Prisoner's Dilemma in Dynamic Networks](/projects/prisoners-dilemma-dynamic-networks/), a computational tool to study cooperation and isolation among agents.
 
-Some of the people I met there did more than teach a course. **Joanita Barbosa**, an architect, taught the art appreciation electives that gave me the habit of stopping to look. **Francisco Meluk Orozco** and the engineer **Ricardo Perdomo González** trusted a student to create [Raspberry Pi 101 UNAL](/projects/raspberry-pi-101-unal/) beside them. And **Juan David García Arteaga**, after directing my thesis, shared with me Mónica Páez's artworks, [La traición necesaria](/projects/la-traicion-necesaria/) and [Visiones inestables](/projects/visiones-inestables/). I keep learning from all of them.
+Some of the people I met there did more than teach a course. **Joanita Barbosa**, an architect, taught the art appreciation electives that gave me the habit of stopping to look. **Francisco Meluk Orozco** and the engineer **Ricardo Perdomo González** trusted a student to create [Raspberry Pi 101 UNAL](/projects/raspberry-pi-101-unal/) beside them. And **Juan David García Arteaga**, after directing my thesis, shared with me Mónica Páez's artworks, [La traición necesaria](/projects/la-traicion-necesaria/) and [Visiones inestables](/projects/visiones-inestables/). Today I am working with Mónica and Juan David again: I support her on *El ojo en el espejo*, her artwork for the XIV Premio Luis Caballero, alongside him and the interdisciplinary team she brought together, with artists, architects, musicians, writers and more, toward its presentation in 2027. I keep learning from all of them.
 
 I keep learning: in October 2026 I earned **Microsoft Certified: Azure Fundamentals**, in November **Microsoft Certified: Azure AI Fundamentals**, and every certification and course certificate I hold is on my [Certifications](/certifications/) page.
 
