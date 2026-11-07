@@ -7,8 +7,32 @@
   "2": "university-issued or substantial course (Platzi tier 2 is provisional, by topic; hours are not public)",
   "3": "short course, onramp or training badge"
  },
- "count": 103,
+ "count": 104,
  "credentials": [
+  {
+   "id": "microsoft-azure-ai-fundamentals",
+   "name": "Microsoft Certified: Azure AI Fundamentals",
+   "examCode": "AI-901",
+   "issuer": "Microsoft",
+   "platform": "Microsoft Learn",
+   "earned": "2026-11-07",
+   "datePrecision": "day",
+   "credentialId": "2E3000BA9DB01C7A",
+   "certificationNumber": "6646BE-8220S0",
+   "verifyUrl": "https://learn.microsoft.com/api/credentials/share/en-us/DanielFelipeMontenegroHerrera-9665/2E3000BA9DB01C7A?sharingId=6FDFBC67DA21219C",
+   "certificate": {
+    "image": "img/certifications/ai-901-certificate.jpg",
+    "pdf": "/certificates/ai-901-certificate.pdf"
+   },
+   "kind": "vendor-certification",
+   "tier": 1,
+   "topics": [
+    "Azure",
+    "AI fundamentals"
+   ],
+   "expires": null,
+   "deprecated": false
+  },
   {
    "id": "microsoft-azure-fundamentals",
    "name": "Microsoft Certified: Azure Fundamentals",

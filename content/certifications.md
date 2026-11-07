@@ -1,9 +1,9 @@
 ---
 title: "Certifications"
-description: "The certifications and course certificates of Daniel Felipe Montenegro, Microsoft Certified: Azure Fundamentals first, each with where it can be verified."
-summary: "The certifications and course certificates I have earned, from Microsoft Certified: Azure Fundamentals to university courses on Coursera and more than ninety courses on Platzi."
+description: "The certifications and course certificates of Daniel Felipe Montenegro, his two Microsoft certifications first, each with where it can be verified."
+summary: "The certifications and course certificates I have earned, from Microsoft Certified: Azure AI Fundamentals and Azure Fundamentals to university courses on Coursera and more than ninety courses on Platzi."
 date: 2026-10-18
-lastmod: 2026-10-19
+lastmod: 2026-11-07
 showDate: false
 showDateUpdated: false
 showReadingTime: false
@@ -18,11 +18,11 @@ certifications: true
 The certifications and course certificates I have earned, each with the page where it can be verified.
 {{< /lead >}}
 
-I have been learning for years and I keep going: from mathematics and programming to data, cloud and AI. Here it is in order of weight, from my Microsoft certification to university courses, short courses and the Platzi library. My full work history lives on [LinkedIn](https://linkedin.com/in/dafmontenegro).
+I have been learning for years and I keep going: from mathematics and programming to data, cloud and AI. Here it is in order of weight, from my Microsoft certifications to university courses, short courses and the Platzi library. My full work history lives on [LinkedIn](https://linkedin.com/in/dafmontenegro).
 
 {{< certifications group="counts" >}}
 
-## Microsoft Certification
+## Microsoft Certifications {#microsoft-certification}
 
 {{< certifications group="vendor" >}}
 

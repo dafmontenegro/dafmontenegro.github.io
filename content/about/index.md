@@ -26,7 +26,7 @@ I studied **Systems and Computer Engineering** at the **Universidad Nacional de 
 
 Some of the people I met there did more than teach a course. **Joanita Barbosa**, an architect, taught the art appreciation electives that gave me the habit of stopping to look. **Francisco Meluk Orozco** and the engineer **Ricardo Perdomo González** trusted a student to create [Raspberry Pi 101 UNAL](/projects/raspberry-pi-101-unal/) beside them. And **Juan David García Arteaga**, after directing my thesis, shared with me Mónica Páez's artworks, [La traición necesaria](/projects/la-traicion-necesaria/) and [Visiones inestables](/projects/visiones-inestables/). I keep learning from all of them.
 
-I keep learning: in October 2026 I earned **Microsoft Certified: Azure Fundamentals**, and every certification and course certificate I hold is on my [Certifications](/certifications/) page.
+I keep learning: in October 2026 I earned **Microsoft Certified: Azure Fundamentals**, in November **Microsoft Certified: Azure AI Fundamentals**, and every certification and course certificate I hold is on my [Certifications](/certifications/) page.
 
 {{< ask-roz style="line" >}}
 
