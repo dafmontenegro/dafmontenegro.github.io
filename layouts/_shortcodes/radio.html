@@ -1,0 +1,32 @@
+{{- /* The radio: a small yellow car, parked over its reflection at the foot of the Music
+       page. Pressed, its headlights come on, it hops, and it comes apart pixel by pixel
+       to put itself back together as a radio, which tunes in a few song titles between
+       bursts of static: a sentence said only through songs, the way he sometimes says
+       what he feels, and the way Bumblebee speaks in Transformers. Pressed again, it
+       tunes in another; left alone, it turns back into a car: the yellow Beetle and the
+       yellow Camaro take turns.
+
+       The page must set `radio: true` in its front matter, which is what loads
+       assets/css/radio.css, assets/js/radio.js and the messages in data/radio.json,
+       through layouts/_partials/extend-head.html (a shortcode cannot do that itself,
+       because Hugo renders a page's content more than once per build).
+
+       The drawings are original pixel art, in assets/js/radio.js, after the many pixel
+       Bumblebees on the web; none of them is copied. The messages are song titles only:
+       never lyrics, never audio. */ -}}
+
+{{- if not .Page.Params.radio -}}
+  {{- errorf "radio: %s uses the shortcode but does not set `radio: true` in its front matter, so nothing would load" .Page.File.Path -}}
+{{- end -}}
+
+<figure class="cw-radio" data-cw-radio-root>
+  <div class="cw-radio-stage">
+    <p class="cw-radio-bubble" aria-live="polite" hidden></p>
+    <button type="button" class="cw-radio-button" data-cw-radio aria-label="A small yellow Beetle. Press it.">
+      <canvas class="cw-radio-canvas" width="240" height="160" aria-hidden="true"></canvas>
+    </button>
+  </div>
+  <figcaption class="cw-radio-caption">
+    I like to say things through other things, the way Bumblebee does in <em>Transformers</em>: through music, for one. Press the car.
+  </figcaption>
+</figure>

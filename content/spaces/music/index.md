@@ -4,17 +4,22 @@ description: "These are the soundtracks of my life, carefully selected for appro
 summary: "These are the soundtracks of my life, carefully selected for appropriate character development and growth in each arc."
 date: 2024-10-21
 weight: 40
-lastmod: 2026-10-04
+lastmod: 2026-11-08
 featureAlt: "La La Land"
 coverAlt: "La La Land"
 coverCaption: "La La Land"
 thumbnailAlt: "La La Land"
 categories: ["music"]
 tags: ["alcolirykoz"]
+radio: true
 ---
 {{< lead >}}
 These are the soundtracks of my life, carefully selected for appropriate **character development** and **growth** in each arc.
 {{< /lead >}}
+
+---
+
+{{< radio >}}
 
 ---
 

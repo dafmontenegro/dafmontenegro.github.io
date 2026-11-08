@@ -14,6 +14,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-11-08 | [Music](/spaces/music/) | A small yellow car parked at the top of the page, over its reflection: press it and its headlights come on, it hops and it turns, pixel by pixel, into a radio that tunes in the titles of a few of my songs between bursts of static, the way Bumblebee speaks in *Transformers*; left alone, it turns back into a car, the Beetle or the Camaro, taking turns |
 | 2026-11-07 | [About](/about/) | What I am working on now: supporting Mónica Páez on *El ojo en el espejo*, her artwork for the XIV Premio Luis Caballero, toward its presentation in 2027 |
 | 2026-11-07 | [Certifications](/certifications/#microsoft-certification) | My second Microsoft certification: Azure AI Fundamentals (AI-901), earned on November 7, with the certificate as an image and a PDF and the link to verify it on Microsoft Learn |
 | 2026-11-01 | [Projects](/projects/roz/) | Roz's page catches up with her: how her notes are split and published, the bench that measures her answers, the check that keeps her quotes exact, and what is new on her page |

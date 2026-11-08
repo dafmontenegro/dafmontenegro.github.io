@@ -1,0 +1,153 @@
+/* The radio on the Music page (see layouts/_shortcodes/radio.html and assets/js/radio.js;
+   the assets are loaded by layouts/_partials/extend-head.html on pages that set
+   `radio: true`). The cars, the radio and their reflection are drawn on the canvas in
+   fixed colours, like any sprite; only the ground line, the bubble and the caption
+   follow the theme. */
+
+.cw-radio {
+  margin: 1.5rem auto 2rem;
+  max-width: 26rem;
+  text-align: center;
+}
+
+.cw-radio-stage {
+  position: relative;
+  padding-top: 4.25rem; /* room for the bubble above the radio */
+}
+
+.cw-radio-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* The ground line, where the drawing meets its reflection: the canvas is 48 x 32
+   cells and the ground is 8 cells up from its bottom edge. */
+.cw-radio-button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 25%;
+  height: 2px;
+  background: rgb(var(--color-neutral-300));
+}
+
+.dark .cw-radio-button::after {
+  background: rgb(var(--color-neutral-600));
+}
+
+.cw-radio-button:focus-visible {
+  outline: 2px solid rgb(var(--color-primary-500));
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+.cw-radio-canvas {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+/* What the radio is saying: one song title at a time, with where it comes from. */
+.cw-radio-bubble {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.55rem 0.95rem 0.5rem;
+  border: 2px solid rgb(var(--color-neutral-800));
+  border-radius: 0.6rem;
+  background: rgb(var(--color-neutral-50));
+  color: rgb(var(--color-neutral-900));
+  line-height: 1.25;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.cw-radio-bubble.is-on {
+  opacity: 1;
+}
+
+/* The tail, pointing down at the radio's speaker. */
+.cw-radio-bubble::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -9px;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-right: 2px solid rgb(var(--color-neutral-800));
+  border-bottom: 2px solid rgb(var(--color-neutral-800));
+  background: inherit;
+  transform: rotate(45deg);
+}
+
+.dark .cw-radio-bubble {
+  border-color: rgb(var(--color-neutral-300));
+  background: rgb(var(--color-neutral-800));
+  color: rgb(var(--color-neutral-50));
+}
+
+.dark .cw-radio-bubble::after {
+  border-color: rgb(var(--color-neutral-300));
+}
+
+.cw-radio-title {
+  display: block;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.cw-radio-title::before { content: "“"; }
+.cw-radio-title::after { content: "”"; }
+
+.cw-radio-from {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+}
+
+/* Static between two stations. */
+.cw-radio-bubble.is-static .cw-radio-title {
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+
+.cw-radio-bubble.is-static .cw-radio-title::before,
+.cw-radio-bubble.is-static .cw-radio-title::after {
+  content: none;
+}
+
+.cw-radio-caption {
+  max-width: 26rem;
+  margin: 0.9rem auto 0;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: rgb(var(--color-neutral-500));
+}
+
+.cw-radio-caption a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.dark .cw-radio-caption {
+  color: rgb(var(--color-neutral-400));
+}

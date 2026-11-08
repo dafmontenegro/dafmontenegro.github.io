@@ -23,7 +23,7 @@ These sites use **Google Analytics 4**, a web analytics service provided by **Go
 Beyond page views, the site itself tells Google Analytics **what you do on a page**, so I can see what works and what breaks:
 
 - **Reading:** how far down a page you scroll, and whether you reach the end of an article and after how long.
-- **Clicks on the site's controls:** links to my social profiles, the table of contents, the search box, the light/dark button, the code copy button, the Press Kit downloads, the embedded players, and the interactive pieces (the Poké Ball and its Pokémon, the carp, the butterflies, the random quote, the preflop tools except the trainer, which promises that nothing you do in it is sent).
+- **Clicks on the site's controls:** links to my social profiles, the table of contents, the search box, the light/dark button, the code copy button, the Press Kit downloads, the embedded players, and the interactive pieces (the Poké Ball and its Pokémon, the carp, the butterflies, the random quote, the car that turns into a radio, the preflop tools except the trainer, which promises that nothing you do in it is sent).
 - **Search:** the words you type into the site's search box, and how many results they found.
 - **Copying:** only **how many characters** you copied, never the text itself.
 - **Technical context:** whether the page is shown light or dark, the width band of your window, your browser's **time zone** (such as America/Bogota), whether the browser says it is driven by automation software, whether it was translated by the browser, how fast the page loaded and responded, and the errors my scripts run into.

@@ -83,6 +83,18 @@
      the page. The head-to-head matrix is ten times the size and only the
      hand-versus-hand calculator wants it, so its URL is passed but the file is
      fetched on demand. */}}
+{{/* Pages that set `radio` carry the car that turns into a radio (layouts/_shortcodes/
+     radio.html). Its messages, song titles only, come from data/radio.json. */}}
+{{ if .Params.radio }}
+  {{ with resources.Get "css/radio.css" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" />
+  {{ end }}
+  {{ with resources.Get "js/radio.js" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+    <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+  {{ end }}
+  <script type="application/json" class="cw-radio-messages">{{ dict "messages" hugo.Data.radio.messages | jsonify | safeJS }}</script>
+{{ end }}
+
 {{ if .Params.preflop }}
   {{ with resources.Get "css/preflop.css" | minify | fingerprint site.Params.fingerprintAlgorithm }}
     <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" />

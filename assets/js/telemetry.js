@@ -229,6 +229,10 @@
       track("butterflies_release");
       return;
     }
+    if (target.closest("[data-cw-radio]")) {
+      track("radio_tune");
+      return;
+    }
     if (target.closest(".cw-quote-random")) {
       track("quote_random");
       return;

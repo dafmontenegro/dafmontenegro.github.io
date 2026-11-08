@@ -1,0 +1,13 @@
+{
+ "note": "What the radio on the Music page says. Each message is a few song titles, tuned in one after another, the way someone who can only talk through the radio would put a sentence together. Titles only: never lyrics, never audio.",
+ "messages": [
+  [{ "title": "Sigo aquí", "from": "Treasure Planet" }],
+  [{ "title": "Di que eres tú", "from": "Mufasa: The Lion King" }],
+  [{ "title": "Hablar de ti", "from": "Gepe & Silvana Estrada" }],
+  [{ "title": "Hijo de hombre", "from": "Tarzan" }, { "title": "Sigo aquí", "from": "Treasure Planet" }],
+  [{ "title": "Protagonista estelar", "from": "El Kalvo" }],
+  [{ "title": "Comedy", "from": "Gen Hoshino" }],
+  [{ "title": "Cielito lindo", "from": "Pedro Infante" }],
+  [{ "title": "No me sé rajar", "from": "Vicente Fernández" }]
+ ]
+}
