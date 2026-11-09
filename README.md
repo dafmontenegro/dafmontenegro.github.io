@@ -33,6 +33,7 @@ These files override templates from Congo or Hugo. **Review them whenever Congo 
 | `layouts/_partials/twitter_cards.html` | Hugo 0.167 | Same title change for X cards |
 | `layouts/_shortcodes/button.html` | Congo 2.14 | Adds `rel="noopener noreferrer"` to links that open a new tab |
 | `layouts/404.html` | Congo 2.14 | 404 page with Caesar's Window, and a line pointing to Roz |
+| `layouts/alias.html` | Hugo 0.167 | The page left at an old address (`aliases`, and /page/1/ of every list) is `noindex` instead of carrying a canonical, so Google does not report it as a Soft 404 or a duplicate |
 | `layouts/_partials/google_analytics.html` | Hugo 0.167 | Same tag and Do Not Track rule; sets the page's context (content group, colour scheme, viewport band, time zone, automation flag) and two user properties before the first page view. See [Analytics](#analytics) |
 
 These are additions, not overrides:

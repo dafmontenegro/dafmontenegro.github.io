@@ -1,0 +1,23 @@
+{{- /* The page Hugo writes at an old address (a page's `aliases`, and /page/1/ of every
+       list) to send the reader on to the current one. Based on Hugo 0.167's built-in
+       alias template, with one change: `noindex` instead of a canonical link.
+
+       GitHub Pages cannot answer with a real 301, so these pages are served with a 200
+       and nothing in them but a meta refresh. Google Search Console reported some as
+       "Soft 404" and as "Duplicate, Google chose different canonical than user"
+       (2026-11-09). An address that only forwards is not a page to index: `noindex`
+       says so plainly, the refresh still takes readers and crawlers on, and the
+       current page carries its own canonical. A canonical here as well would send
+       Google two different signals, so it is left out. */ -}}
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}">
+  <head>
+    <title>{{ .Permalink }}</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+    <meta http-equiv="refresh" content="0; url={{ .Permalink }}">
+  </head>
+  <body>
+    <a href="{{ .Permalink }}">{{ .Permalink }}</a>
+  </body>
+</html>

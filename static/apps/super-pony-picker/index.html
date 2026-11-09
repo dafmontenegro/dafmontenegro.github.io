@@ -5,8 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Super Pony Picker — Random Name Picker Horse Race</title>
   <meta name="description" content="Play Super Pony Picker: enter up to 20 names and let an 8-bit pony race pick a winner. Free, fair and fun random name picker.">
-  <!-- The project page (with the full explanation) is the main page for search engines -->
-  <link rel="canonical" href="https://montenegrodanielfelipe.com/projects/super-pony-picker/">
+  <!-- The project page, which embeds this game and explains it, is the page for search
+       engines; this one is the game alone, for the iframe and for playing full screen.
+       It used to point its canonical at the project page, but the two are not the same
+       content, and Google Search Console reported it as "Duplicate, Google chose
+       different canonical than user" (and an almost empty canvas reads as a "Soft 404").
+       noindex says what is meant; indexifembedded keeps the game counted as part of the
+       project page that embeds it. -->
+  <meta name="robots" content="noindex, indexifembedded">
   <meta name="author" content="Daniel Felipe Montenegro">
   <meta name="theme-color" content="#000000">
 
