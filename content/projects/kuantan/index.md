@@ -1,9 +1,9 @@
 ---
 title: "Kuantan: Generative Paper Marbling"
-description: "Twelve designs of marbled paper drawn live in WebGL, each a real marbling technique, in twenty-two vivid palettes: the patterns and colors that calm me."
-summary: "Marbled paper that never dries: twelve designs, each a real marbling technique, drawn live in the browser in twenty-two vivid palettes, flowing slowly and never repeating. The patterns and colors I love most, and the ones that calm me."
+description: "Eleven designs of marbled paper drawn live in WebGL, each a real marbling technique, in twenty-two vivid palettes: the patterns and colors that calm me."
+summary: "Marbled paper that never dries: eleven designs, each a real marbling technique, drawn live in the browser in twenty-two vivid palettes, flowing slowly and never repeating. The patterns and colors I love most, and the ones that calm me."
 date: 2026-11-11
-lastmod: 2026-11-11
+lastmod: 2026-11-12
 featureAlt: "Fine bands of yellow, black, cyan and pink paint curled into eddies, in the Marble design of Kuantan"
 coverAlt: "Fine bands of yellow, black, cyan and pink paint curled into eddies, in the Marble design of Kuantan"
 coverCaption: "Marble, in the David palette"
@@ -82,7 +82,17 @@ tags: ["generative-art", "marbling", "ebru", "suminagashi", "webgl", "glsl", "sh
 
 [**Open Kuantan**](/kuantan/) | [**The designs**](#the-designs) | [**The palettes**](#the-palettes) | [**How it is made**](#how-it-is-made)
 
-It starts on a design and a palette at random. Every few minutes the design changes, and within a design the palette changes now and then while the pattern keeps flowing. The arrow keys change the design (left, right) and the palette (up, down), the space bar holds the rotation, and **F** goes full screen; on a phone, a tap changes the design.
+It starts on a design and a palette at random. Every few minutes the design changes, and within a design the palette changes now and then while the pattern keeps flowing. On a computer:
+
+- **← →** change the design, **↑ ↓** the palette.
+- **I** shows the name of what is on screen without changing it.
+- **Space** holds the design on screen, **F** goes full screen, and **H** lists all of this.
+
+On a phone:
+
+- A tap shows the name.
+- A swipe sideways changes the design, up or down the palette.
+- Holding a finger down opens the help.
 
 ## Why "Kuantan"
 
@@ -97,12 +107,6 @@ Each design is a real marbling technique, or, in Marble's case, the bath simply 
 ![Combed, in the Endpaper palette: bands of turquoise, carmine and cream pulled up into flames](img/designs/01-combed.jpg "Combed · Endpaper")
 
 The first one, and the one that started everything. Bands of paint, a comb pulled up through them with uneven pressure, and one wavy stroke across. The flames are the comb's tines: paint right by a tine travels far, paint between them barely moves.
-
-### Stones
-
-![Stones, in the Lucy palette: flat stones of violet, cyan, pink and night blue, each with the faint rings of its drop, and pale veins between them](img/designs/02-stones.jpg "Stones · Lucy")
-
-The oldest Turkish style, *battal* ebru: drops of paint, each its own size, that crowd each other into stones. The paint stays flat, as it does on the bath; inside each stone the faint rings of the drop that made it still show, and a thin vein of the bath runs between neighbours.
 
 ### Ink Rings
 
@@ -154,9 +158,9 @@ Bands rolled by two slow waves that cross each other, the way the Turkish *şal*
 
 ### Drops
 
-![Drops, in the Rosa mexicano palette: drops of pink, orange, yellow and turquoise opening in rings over combed bands](img/designs/11-drops.jpg "Drops · Rosa mexicano")
+![Drops, in the Rosa mexicano palette: drops of pink, orange, yellow and turquoise pressed against each other and drawn into the bands](img/designs/11-drops.jpg "Drops · Rosa mexicano")
 
-Drops fallen on combed bands, as in *hatip* ebru: each one opens in rings and pushes the bands aside around it.
+Drops fallen on combed bands, as in *hatip* ebru: each one opens in rings and pushes the bands aside around it. The drops fall one after another, and each new one pushes the earlier ones aside too, so they press against each other and never overlap. Then a stylus is drawn gently through the bath, which pulls the drops into teardrops and winds the bands around them, so the drops and the bands mix.
 
 ### Marble
 
