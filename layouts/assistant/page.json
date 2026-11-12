@@ -5,6 +5,7 @@
 {{- $cfg := .Params.assistant -}}
 {{- $exclude := $cfg.exclude | default slice -}}
 {{- $catalogOnly := $cfg.catalogOnly | default slice -}}
+{{- $hidden := $cfg.hidden | default slice -}}
 
 {{- $pages := slice -}}
 {{- range site.RegularPages -}}
@@ -39,6 +40,24 @@
     {{- $page = merge $page (dict "text" $text) -}}
   {{- end -}}
   {{- $pages = $pages | append $page -}}
+{{- end -}}
+
+{{- /* Hidden pages are kept out of the site's lists, so the loop above never sees
+     them: each is added by path, to be named and linked only. */ -}}
+{{- range $hidden -}}
+  {{- with site.GetPage . -}}
+    {{- $pages = $pages | append (dict
+      "url" .RelPermalink
+      "title" .Title
+      "section" .Section
+      "description" (.Description | default .Summary | plainify)
+      "date" (.Date.Format "2006-01-02")
+      "tags" (.Params.tags | default slice)
+      "categories" (.Params.categories | default slice)
+    ) -}}
+  {{- else -}}
+    {{- errorf "assistant: hidden page %q not found" . -}}
+  {{- end -}}
 {{- end -}}
 
 {{- dict

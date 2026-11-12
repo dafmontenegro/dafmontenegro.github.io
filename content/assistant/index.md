@@ -3,9 +3,10 @@
 # /assistant/index.json by layouts/assistant/page.json. Nothing renders as HTML.
 #
 # A page in `exclude` never reaches it in any form; a page in `catalogOnly` can be
-# named and linked, but its text is never given to the model. Every other page in
-# the site's lists is fair game, so a new post or project is picked up on the next
-# build.
+# named and linked, but its text is never given to the model. A page in `hidden` is
+# kept out of the site's lists (build.list: never) but may still be named and linked,
+# never read. Every other page in the site's lists is fair game, so a new post or
+# project is picked up on the next build.
 title: "Assistant knowledge"
 outputs: ["json"]
 build:
@@ -26,4 +27,7 @@ assistant:
   catalogOnly:
     # Named and linked, not read
     - /about/
+  hidden:
+    # Easter eggs Roz may lead to: the page itself, not only its project page
+    - /kuantan/
 ---
