@@ -3,7 +3,7 @@ title: "Nanami Kento: Redemption and Sacrifice"
 description: "Why Nanami Kento, from Jujutsu Kaisen, is one of my favorite characters: a good man who did things right, who in the end only wanted peace, and a story of redemption and sacrifice."
 summary: "Some characters you enjoy; others you recognize. Nanami Kento is one of the second kind for me: a good man who did things right with nobody watching, who in the end only wanted peace, and who gave himself up for others."
 date: 2026-10-05
-lastmod: 2026-10-05
+lastmod: 2026-11-11
 featureAlt: "Nanami Kento in profile, eyes closed, in front of a sea full of light"
 coverAlt: "Nanami Kento in profile, eyes closed, in front of a sea full of light"
 coverCaption: "Nanami Kento, from the fan edit Nothing's New by Killah Maze"
@@ -39,4 +39,4 @@ There is a fan edit of Nanami, ***Nothing's New*** by **Killah Maze**, that I lo
 
 {{< youtube id="Qa0L-fGsgD4" loading="lazy" >}}
 
-I hope he finally got his beach.
+I hope he finally got [his beach](/kuantan/). I made one too, in my own way: marbled paper that moves slowly and never repeats, in the patterns and colors I love most. It is where I rest.
