@@ -19,19 +19,47 @@
   {{ partial "google_analytics.html" . }}
   {{- end }}
   <style>
-    html, body { margin: 0; height: 100%; overflow: hidden; background: #000; touch-action: manipulation; }
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #000; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
     body.idle { cursor: none; }
     canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity 3s ease-in-out; }
     canvas.on { opacity: 1; }
     #label { position: fixed; left: 24px; bottom: 20px; font: 500 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       letter-spacing: .08em; color: #fff; mix-blend-mode: difference; opacity: 0; transition: opacity .6s; pointer-events: none; }
     #label.on { opacity: .8; }
+    #help { position: fixed; left: 16px; bottom: 16px; max-width: calc(100% - 32px); box-sizing: border-box; padding: 18px 22px;
+      font: 400 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #fff;
+      background: rgba(0, 0, 0, .62); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-radius: 14px; }
+    #help[hidden], #help [hidden] { display: none; }
+    #help b { display: block; font-weight: 600; letter-spacing: .08em; margin-bottom: 8px; }
+    #help dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 16px; margin: 0; }
+    #help dt { font-weight: 500; opacity: .95; white-space: nowrap; }
+    #help dd { margin: 0; opacity: .75; }
+    #help a { color: inherit; }
+    #help p { margin: 10px 0 0; opacity: .55; font-size: 12px; }
   </style>
 </head>
 <body>
   <div id="label" aria-live="polite"></div>
+  <div id="help" role="dialog" aria-label="Kuantan controls" hidden>
+    <b>KUANTAN</b>
+    <dl class="keys">
+      <dt>← →</dt><dd>design</dd>
+      <dt>↑ ↓</dt><dd>palette</dd>
+      <dt>I</dt><dd>show the name of what is on screen</dd>
+      <dt>Space</dt><dd>hold this design (or let it change again)</dd>
+      <dt>F</dt><dd>full screen (or double-click)</dd>
+      <dt>H</dt><dd>this help</dd>
+    </dl>
+    <dl class="touch">
+      <dt>Tap</dt><dd>show the name of what is on screen</dd>
+      <dt>Swipe ← →</dt><dd>design</dd>
+      <dt>Swipe ↑ ↓</dt><dd>palette</dd>
+      <dt>Hold</dt><dd>this help</dd>
+    </dl>
+    <p>Eleven designs, twenty-two palettes. <a href="{{ "projects/kuantan/" | relURL }}">How it is made</a></p>
+  </div>
   <noscript><p style="color:#fff;font-family:sans-serif;padding:24px">Kuantan needs JavaScript and WebGL to paint.</p></noscript>
-  {{- $js := resources.Get "js/kuantan.js" | minify | fingerprint }}
+  {{- $js := slice (resources.Get "js/kuantan-paper.js") (resources.Get "js/kuantan.js") | resources.Concat "js/kuantan-page.js" | minify | fingerprint }}
   <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
 </body>
 </html>
