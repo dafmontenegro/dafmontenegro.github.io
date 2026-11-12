@@ -24,7 +24,7 @@ const FREQ = Number(new URLSearchParams(location.search).get("freq")) || 2.2;
 const SPEED = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0.4 : 1;
 
 // Designs: marbling techniques (see the shader functions of the same number).
-const DESIGNS = ["Combed", "Stones", "Ink rings", "Nonpareil", "Chevrons", "Bouquet", "Swirls", "Feathers", "Spiral", "Waves", "Drops"];
+const DESIGNS = ["Combed", "Stones", "Ink rings", "Nonpareil", "Chevrons", "Bouquet", "Swirls", "Feathers", "Spiral", "Waves", "Drops", "Marble"];
 
 // Palettes: the paint in the bath, in band order. A number after a colour is its share (default 10).
 const PALETTES = [
@@ -320,6 +320,25 @@ vec3 drops(vec2 p, float t) {
   return threaded(q.y * 1.4 + 0.15 * fbm(vec3(q, t * 0.02)));
 }
 
+// 11 · Marble: liquid paint stirred by many hands. Eddies of every size, each
+// turning its own way, wind fine bands around themselves and into each other,
+// the way paint curls when it is stirred freely rather than combed.
+vec3 marble(vec2 p, float t) {
+  p = flow(p, t, 0.55);
+  float aspect = uRes.x / uRes.y * uScale;
+  for (int i = 0; i < 9; i++) {
+    float k = float(i);
+    vec2 h = hash2(uSeed + k * 5.13);
+    vec2 c = vec2(aspect * h.x, uScale * h.y);
+    c += 0.12 * vec2(sin(t * 0.017 + k * 1.7), cos(t * 0.015 + k * 2.3));
+    float r = 0.08 + 0.22 * hash2(uSeed + k * 9.7).x; // small and large eddies
+    float spin = (mod(k, 2.0) < 1.0 ? 1.0 : -1.0) * (4.0 + 2.0 * sin(t * 0.011 + k));
+    vec2 d = p - c;
+    p = c + rotate(d, spin * r / (length(d) + r) * exp(-dot(d, d) / (9.0 * r * r)));
+  }
+  return threaded(p.y * 1.3 + 0.35 * fbm(vec3(p * 1.1, t * 0.02)));
+}
+
 void main() {
   vec2 p = gl_FragCoord.xy / uRes.y * uScale;
   float t = uTime;
@@ -334,7 +353,8 @@ void main() {
   else if (uTech == 7) color = feathers(p, t);
   else if (uTech == 8) color = spiral(p, t);
   else if (uTech == 9) color = waves(p, t);
-  else color = drops(p, t);
+  else if (uTech == 10) color = drops(p, t);
+  else color = marble(p, t);
   // paper grain, fixed to the sheet
   color += 0.018 * (fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) - 0.5);
   gl_FragColor = vec4(color, 1.0);
