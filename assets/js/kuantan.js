@@ -332,7 +332,8 @@ vec3 marble(vec2 p, float t) {
     vec2 c = vec2(aspect * h.x, uScale * h.y);
     c += 0.12 * vec2(sin(t * 0.017 + k * 1.7), cos(t * 0.015 + k * 2.3));
     float r = 0.08 + 0.22 * hash2(uSeed + k * 9.7).x; // small and large eddies
-    float spin = (mod(k, 2.0) < 1.0 ? 1.0 : -1.0) * (4.0 + 2.0 * sin(t * 0.011 + k));
+    // winding stays gentle: a tight eddy would squeeze the bands into a blur
+    float spin = (mod(k, 2.0) < 1.0 ? 1.0 : -1.0) * (2.4 + 1.2 * sin(t * 0.011 + k));
     vec2 d = p - c;
     p = c + rotate(d, spin * r / (length(d) + r) * exp(-dot(d, d) / (9.0 * r * r)));
   }
