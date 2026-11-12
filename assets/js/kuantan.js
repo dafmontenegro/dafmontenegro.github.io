@@ -19,6 +19,8 @@ const DESIGN_MINUTES = [3, 5]; // a new design this often
 const PALETTE_SECONDS = [60, 100]; // and within it, a new palette this often
 const FADE_SECONDS = 3;
 const MAX_PIXELS = 1280 * 720; // render budget: the canvas is upscaled smoothly, and marbling is soft
+const DENSITY = Number(new URLSearchParams(location.search).get("density")) || 1.4;
+const FREQ = Number(new URLSearchParams(location.search).get("freq")) || 2.2;
 const SPEED = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0.4 : 1;
 
 // Designs: marbling techniques (see the shader functions of the same number).
@@ -58,6 +60,8 @@ precision highp float;
 uniform vec2 uRes;
 uniform float uTime;
 uniform vec2 uSeed;
+uniform float uFreq; // how many times the palette repeats in a band of the bath
+uniform float uScale; // how much of the bath fits on the screen: more is denser
 uniform int uTech;
 uniform vec3 uPal[9];
 uniform float uCut[9];
@@ -130,6 +134,7 @@ vec3 combed(float s) {
 // and a darker one near each edge, and fade out where they would be finer than
 // a pixel, so they never shimmer.
 vec3 threaded(float s) {
+  s *= uFreq; // more turns of the palette across the same swirl: finer bands
   vec3 color = combed(s);
   float w = fwidth(s);
   float fade = 1.0 - smoothstep(0.004, 0.012, w);
@@ -197,7 +202,7 @@ vec3 stones(vec2 p, float t) {
 // area, so the older rings thin as they travel; their edges bleed a little.
 vec3 rings(vec2 p, float t) {
   p = flow(p, t, 0.5);
-  float aspect = uRes.x / uRes.y * 1.4;
+  float aspect = uRes.x / uRes.y * uScale;
   for (int i = 0; i < 4; i++) {
     float k = float(i);
     vec2 h = hash2(uSeed + k * 7.31);
@@ -246,7 +251,7 @@ vec3 bouquet(vec2 p, float t) {
 // 6 · Swirls: a few slow vortices that wind and unwind the bands.
 vec3 swirls(vec2 p, float t) {
   p = flow(p, t, 0.4);
-  float aspect = uRes.x / uRes.y * 1.4;
+  float aspect = uRes.x / uRes.y * uScale;
   for (int i = 0; i < 3; i++) {
     float k = float(i);
     vec2 h = hash2(uSeed + k * 3.7);
@@ -277,7 +282,7 @@ vec3 feathers(vec2 p, float t) {
 // 8 · Spiral: one large stir that slowly winds the whole bath.
 vec3 spiral(vec2 p, float t) {
   p = flow(p, t, 0.35);
-  float aspect = uRes.x / uRes.y * 1.4;
+  float aspect = uRes.x / uRes.y * uScale;
   vec2 c = vec2(aspect * 0.5, 0.7) + 0.2 * vec2(sin(t * 0.017), cos(t * 0.013));
   vec2 d = p - c;
   float wind = 5.0 + 4.0 * sin(t * 0.009);
@@ -316,7 +321,7 @@ vec3 drops(vec2 p, float t) {
 }
 
 void main() {
-  vec2 p = gl_FragCoord.xy / uRes.y * 1.4;
+  vec2 p = gl_FragCoord.xy / uRes.y * uScale;
   float t = uTime;
   vec3 color;
   if (uTech == 0) color = classic(p, t);
@@ -360,7 +365,7 @@ class Sheet {
     gl.enableVertexAttribArray(0);
     gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
     this.gl = gl;
-    this.u = Object.fromEntries(["uRes", "uTime", "uSeed", "uTech", "uPal", "uCut", "uVein", "uAvg"].map((n) => [n, gl.getUniformLocation(program, n)]));
+    this.u = Object.fromEntries(["uRes", "uTime", "uSeed", "uTech", "uPal", "uCut", "uVein", "uAvg", "uScale", "uFreq"].map((n) => [n, gl.getUniformLocation(program, n)]));
   }
 
   /** Paint `design` with `palette`; with `from`, continue that sheet's bath so only the colours change. */
@@ -387,6 +392,8 @@ class Sheet {
     this.seed = from ? from.seed : [Math.random() * 40, Math.random() * 40];
     this.time = from ? from.time : Math.random() * 500; // a different bath every time
     gl.uniform2f(this.u.uSeed, ...this.seed);
+    gl.uniform1f(this.u.uScale, DENSITY);
+    gl.uniform1f(this.u.uFreq, FREQ);
   }
 
   draw(dt) {
