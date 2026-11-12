@@ -14,6 +14,8 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-11-12 | [Home](/) | The Caesar's Window at the top of the homepage is now painted with marbled paper that moves, and pressing it lets the paper grow until it fills the screen, a title card with my photo and name over it |
+| 2026-11-12 | [Projects](/projects/kuantan/) | Kuantan lets go of Stones, the one design that never convinced me; in Drops the drops now press against each other instead of overlapping, and a stylus pulls them into the bands. It also tells you what is on screen without changing it (I, or a tap on a phone), and H, or holding a finger down, lists every control |
 | 2026-11-11 | [Projects](/projects/kuantan/) | New project page: "Kuantan", generative paper marbling, twelve designs and twenty-two palettes, each with what it is and how it is made |
 | 2026-11-11 | [Blog](/blog/nanami-kento/) | The Nanami post now ends at a beach of its own: follow its last line to a hidden page of marbled paper that moves slowly and never repeats, in the patterns and colors that calm me |
 | 2026-11-08 | [Music](/spaces/music/) | A small yellow car parked at the top of the page, over its reflection: press it and its headlights come on, it hops and it turns, pixel by pixel, into a radio that tunes in the titles of a few of my songs between bursts of static, the way Bumblebee speaks in *Transformers*; left alone, it turns back into a car, the Beetle or the Camaro, taking turns |
