@@ -14,6 +14,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-11-12 | [Projects](/projects/kuantan/) | In Kuantan, Drops no longer splits into straight-edged pieces after a while, and in Ink rings the rings squeezed against a new drop read as one fine line instead of grain |
 | 2026-11-12 | [Home](/) | The Caesar's Window at the top of the homepage is now painted with marbled paper that moves, and pressing it lets the paper grow until it fills the screen, a title card with my photo and name over it |
 | 2026-11-12 | [Projects](/projects/kuantan/) | Kuantan lets go of Stones, the one design that never convinced me; in Drops the drops now press against each other instead of overlapping, and a stylus pulls them into the bands. It also tells you what is on screen without changing it (I, or a tap on a phone), and H, or holding a finger down, lists every control |
 | 2026-11-11 | [Projects](/projects/kuantan/) | New project page: "Kuantan", generative paper marbling, twelve designs and twenty-two palettes, each with what it is and how it is made |

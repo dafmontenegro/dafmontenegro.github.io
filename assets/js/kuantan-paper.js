@@ -169,8 +169,15 @@ vec3 classic(vec2 p, float t) {
 // 1 · Ink rings (suminagashi): ink dropped again and again at a few points,
 // spreading in rings. Each drop pushes the older paint outward while keeping its
 // area, so the older rings thin as they travel; their edges bleed a little.
+//
+// Right against a drop's edge, the older rings are squeezed finer than a pixel:
+// drawn as they are, they break into a dotted, grainy line. There they become one
+// thin line of the palette's average colour, the way squeezed ink reads.
 vec3 rings(vec2 p, float t) {
   p = flow(p, t, 0.5);
+  float px = max(fwidth(p).x, fwidth(p).y);
+  float stretch = 1.0;  // about how much bigger the pixel is, in the older paint
+  float edge = 1e4;     // how far, in pixels, outside the nearest newer drop's edge
   float aspect = uRes.x / uRes.y * uScale;
   for (int i = 0; i < 4; i++) {
     float k = float(i);
@@ -184,8 +191,11 @@ vec3 rings(vec2 p, float t) {
       // uneven ring widths, and a slightly ragged edge where the ink bleeds
       float s = sqrt(L2) * (5.0 + 1.5 * h.y) + 0.35 * fbm(vec3(d * 3.0, t * 0.03 + k)) - t * 0.03 + k * 0.37;
       s += 0.04 * noise(vec3(d * 40.0, k));
-      return combed(s);
+      return mix(uAvg, combed(s), smoothstep(1.0, 2.0, edge));
     }
+    edge = min(edge, (sqrt(L2) - sqrt(R2)) / (px * min(stretch, 2.0)));
+    // the push undone: radially, the pixel grows by L / sqrt(L² - R²)
+    stretch *= min(sqrt(L2 / max(L2 - R2, 1e-8)), 1e4);
     p = c + d * sqrt(1.0 - R2 / L2);
   }
   return uPal[0]; // bare paper
@@ -289,18 +299,30 @@ vec3 drops(vec2 p, float t) {
   // it outward, keeping its area: earlier drops included, so drops press against
   // each other and never overlap. Undone latest first: a pixel inside a drop has
   // its paint; otherwise it moves back to where it was before that drop fell.
-  vec2 g = floor(q);
-  float later = 2.0; // the fall time of the drop undone last
-  for (int n = 0; n < 9; n++) {
+  // The nine cells are looked up again around the pixel after every step: it moves as
+  // drops are undone, and a drop outside its nine cells is out of its reach, so the
+  // drops it skips would not have moved it anyway. (A fixed set of nine cut the paper
+  // in straight lines along the cells' edges.)
+  // Fall times come from a hash with few distinct values on a GPU, so two drops often
+  // share one; the cell breaks the tie, or neighbouring pixels would undo different
+  // drops and the paper would split between them.
+  float later = 2.0, laterId = 1e9; // the drop undone last: its fall time, its cell
+  for (int n = 0; n < 16; n++) {
     // the latest drop among the nine cells around that has not been undone yet
-    float when = -1.0;
+    vec2 g = floor(q);
+    float when = -1.0, whenId = -1e9;
     vec2 cell = g;
     for (int j = -1; j <= 1; j++) for (int i = -1; i <= 1; i++) {
       vec2 o = g + vec2(float(i), float(j));
       float at = hash2(o + uSeed + 17.3).x;
-      if (at < later && at > when) { when = at; cell = o; }
+      float id = o.y * 4096.0 + o.x;
+      bool before = at < later || (at == later && id < laterId);
+      bool after = at > when || (at == when && id > whenId);
+      if (before && after) { when = at; whenId = id; cell = o; }
     }
+    if (when < 0.0) break; // every drop around undone
     later = when;
+    laterId = whenId;
     vec2 h = hash2(cell + uSeed);
     vec2 pc = cell + 0.5 + 0.3 * sin(t * 0.05 + 6.2831 * h);
     float R2 = 0.11 + 0.03 * sin(t * 0.04 + 6.2831 * h.y);
@@ -308,8 +330,9 @@ vec3 drops(vec2 p, float t) {
     float L2 = dot(d, d);
     if (L2 < R2) return combed(L2 / 0.05 - t * 0.02 + h.x * 3.0);
     // area-preserving, fading out within a cell's reach: every drop that could still
-    // move a pixel is among the nine it looks at, so neighbouring pixels agree (no seams)
-    q = pc + d * mix(1.0, sqrt(1.0 - R2 / L2), smoothstep(1.0, 0.55, sqrt(L2)));
+    // move a pixel is among the nine it looks at, so neighbouring pixels agree (no seams).
+    // (smoothstep with its edges reversed is undefined in GLSL: written the long way.)
+    q = pc + d * mix(1.0, sqrt(1.0 - R2 / L2), 1.0 - smoothstep(0.55, 1.0, sqrt(L2)));
   }
   return threaded(q.y * 1.4 + 0.15 * fbm(vec3(q, t * 0.02)));
 }
