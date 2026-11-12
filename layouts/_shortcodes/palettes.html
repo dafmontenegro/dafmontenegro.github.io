@@ -1,0 +1,17 @@
+{{- /* A grid of palette cards for the Kuantan project page: each a preview image from
+     the page bundle, the palette's name and what its colours are. The list lives in
+     the page's front matter, `palettes`, each item { name, image, about } (about takes
+     Markdown):
+       {{< palettes >}} */ -}}
+<ul class="cw-palettes">
+  {{- range .Page.Params.palettes }}
+  {{- $img := $.Page.Resources.Get .image }}
+  {{- if not $img }}{{ errorf "palettes: %q not found in the bundle of %s" .image $.Page.File.Path }}{{ end }}
+  {{- $small := $img.Resize "480x webp q80" }}
+  <li>
+    <img src="{{ $small.RelPermalink }}" width="{{ $small.Width }}" height="{{ $small.Height }}" alt="{{ .name }}, painted on the Marble design" loading="lazy" decoding="async">
+    <strong>{{ .name }}</strong>
+    <span>{{ .about | markdownify }}</span>
+  </li>
+  {{- end }}
+</ul>
