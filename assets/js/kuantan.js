@@ -231,7 +231,7 @@ vec3 chevrons(vec2 p, float t) {
   // the comb goes one way, then back: a continuous zigzag, its points slightly rounded
   float z = abs(fract(p.y / 0.4 + t * 0.003) - 0.5) * 4.0 - 1.0;
   p.x -= 0.14 * z * (1.0 - 0.15 * z * z);
-  return combed(p.x * 1.6 + 0.2 * fbm(vec3(p * 1.5, t * 0.02)));
+  return threaded(p.x * 1.6 + 0.2 * fbm(vec3(p * 1.5, t * 0.02)));
 }
 
 // 5 · Bouquet: a nonpareil, then a wide comb drawn through it in waves.
@@ -256,7 +256,7 @@ vec3 swirls(vec2 p, float t) {
     float wind = 7.0 * sin(t * 0.012 + k * 2.1);
     p = c + rotate(d, -wind * 0.22 / (length(d) + 0.22));
   }
-  return combed(p.y * 2.0 + 0.2 * fbm(vec3(p * 1.4, t * 0.02)));
+  return threaded(p.y * 2.0 + 0.2 * fbm(vec3(p * 1.4, t * 0.02)));
 }
 
 // 7 · Feathers: a nonpareil, then a wide comb drawn through it, its tines going
@@ -282,7 +282,7 @@ vec3 spiral(vec2 p, float t) {
   vec2 d = p - c;
   float wind = 5.0 + 4.0 * sin(t * 0.009);
   p = c + rotate(d, -wind * 0.45 / (length(d) + 0.45));
-  return combed(p.y * 2.2 + 0.25 * fbm(vec3(p * 1.2, t * 0.02)));
+  return threaded(p.y * 2.2 + 0.25 * fbm(vec3(p * 1.2, t * 0.02)));
 }
 
 // 9 · Waves: bands rolled by two slow crossing waves (the Turkish shawl pattern).
@@ -291,7 +291,7 @@ vec3 waves(vec2 p, float t) {
   p.y += 0.18 * sin(p.x * 2.2 + t * 0.03);
   p.x += 0.12 * sin(p.y * 3.1 - t * 0.025);
   p.y += 0.06 * sin(p.x * 6.3 - t * 0.04);
-  return combed(p.y * 2.0);
+  return threaded(p.y * 2.0);
 }
 
 // 10 · Drops: drops of paint fallen on combed bands, each spreading in rings.
@@ -312,7 +312,7 @@ vec3 drops(vec2 p, float t) {
     push += d * (1.0 - sqrt(1.0 - R2 / L2)) * smoothstep(1.3, 0.7, sqrt(L2));
   }
   q -= push;
-  return combed(q.y * 1.4 + 0.15 * fbm(vec3(q, t * 0.02)));
+  return threaded(q.y * 1.4 + 0.15 * fbm(vec3(q, t * 0.02)));
 }
 
 void main() {
