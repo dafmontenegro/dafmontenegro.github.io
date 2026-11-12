@@ -174,26 +174,31 @@ vec3 classic(vec2 p, float t) {
 }
 
 // 1 · Stones (ebru battal): drops of paint, each its own size, crowding each other
-// into rounded stones. A drop's paint gathers at its rim, and a thin vein of the
-// bath shows between neighbours.
+// into stones. The paint stays flat, as it does on the bath; inside each stone the
+// faint rings of the drop that made it show, and a vein of the bath runs between
+// neighbours. Neighbours are searched two cells out, so a large stone never ends
+// in a straight seam.
 vec3 stones(vec2 p, float t) {
-  p = flow(p, t, 0.6) * 2.4;
+  p = flow(p, t, 0.5) * 4.2;
   vec2 g = floor(p), f = fract(p);
   float d1 = 9.0, d2 = 9.0;
   vec2 id = vec2(0.0);
-  for (int j = -1; j <= 1; j++) for (int i = -1; i <= 1; i++) {
+  for (int j = -2; j <= 2; j++) for (int i = -2; i <= 2; i++) {
     vec2 o = vec2(float(i), float(j));
     vec2 h = hash2(g + o);
-    vec2 pt = o + 0.5 + 0.35 * sin(t * 0.05 + 6.2831 * h) - f;
-    // weighted by the drop's size, so the borders between stones curve
-    float size = 0.75 + 0.5 * hash2(g + o + 5.0).x;
+    vec2 pt = o + 0.5 + 0.38 * sin(t * 0.05 + 6.2831 * h) - f;
+    float size = 0.6 + 0.8 * hash2(g + o + 5.0).x;
     float d = length(pt) / size;
     if (d < d1) { d2 = d1; d1 = d; id = g + o; } else if (d < d2) { d2 = d; }
   }
   vec3 color = paint(hash2(id + 17.0).x);
   float e = (d2 - d1) / (d2 + d1); // 0 on a border, growing toward the middle
-  color *= 0.84 + 0.16 * smoothstep(0.0, 0.18, e); // the darker rim
-  float vein = 1.0 - smoothstep(0.006, 0.018 + fwidth(e), e);
+  // the drop's own rings, faint and fine
+  float r = d1 * 7.0 + hash2(id).y * 6.0;
+  float ring = 1.0 - smoothstep(0.0, 0.12 + fwidth(r), abs(fract(r) - 0.5));
+  color = mix(color, mix(color, uVein, 0.6), ring * 0.35 * smoothstep(0.05, 0.25, e));
+  color *= 0.9 + 0.1 * smoothstep(0.0, 0.1, e); // a slightly darker rim
+  float vein = 1.0 - smoothstep(0.01, 0.026 + fwidth(e), e);
   return mix(color, uVein, vein);
 }
 
