@@ -1,0 +1,190 @@
+/* Kuantan on the homepage (layouts/_partials/kuantan-home.html, assets/js/kuantan-home.js).
+
+   The window: the site's logo, Caesar's Window, painted with Kuantan's paper, alive.
+   The logo's own drawing masks the paper, so its ring and star are the paper and the
+   rest stays the page's colour; the logo image stays in place, unseen, for its size
+   and its alt text. */
+.cw-window-logo {
+  position: relative;
+  display: inline-block;
+}
+.cw-window-logo img {
+  opacity: 0;
+}
+.cw-window {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask: var(--cw-mask) center / contain no-repeat;
+  mask: var(--cw-mask) center / contain no-repeat;
+}
+.cw-window canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.koi-logo.is-spinning .cw-window {
+  animation: cw-spin 1.1s cubic-bezier(0.25, 1.25, 0.5, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .koi-logo.is-spinning .cw-window {
+    animation: none;
+  }
+}
+
+/* The card: the paper fills the screen in a circle that grows from what opened it; on it,
+   his photo and name, centred. Everything else on the page stays under it. */
+.cw-bath {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  visibility: hidden;
+  clip-path: circle(var(--r0, 20px) at var(--x, 100%) var(--y, 100%));
+  transition: clip-path 1.1s cubic-bezier(0.65, 0, 0.35, 1), visibility 0s 1.1s;
+  cursor: pointer;
+  touch-action: none;
+}
+.cw-bath.is-open {
+  visibility: visible;
+  clip-path: circle(var(--r1, 150vmax) at var(--x, 100%) var(--y, 100%));
+  transition: clip-path 1.1s cubic-bezier(0.65, 0, 0.35, 1), visibility 0s;
+}
+.cw-bath canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0;
+  transition: opacity 3s ease-in-out;
+}
+.cw-bath canvas.on {
+  opacity: 1;
+}
+.cw-bath canvas.now {
+  transition: none;
+}
+html.cw-titled body {
+  overflow: hidden;
+}
+
+.cw-card {
+  position: fixed;
+  inset: 0;
+  z-index: 61;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 1rem 1rem 5rem;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s 0.4s;
+}
+html.cw-titled .cw-card {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.8s ease 0.7s, transform 0.8s ease 0.7s, visibility 0s;
+}
+.cw-card img {
+  width: 9rem;
+  height: 9rem;
+  margin: 0;
+  border-radius: 9999px;
+  object-fit: cover;
+  box-shadow: 0 0 0 5px #f4f1ea, 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+.cw-card p {
+  margin: 0;
+  padding: 0.25em 0.6em 0.3em;
+  background: #f4f1ea;
+  color: #0b0b0b;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-align: center;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* The bar at the foot of the card: the design, with arrows to change it, the way to
+   Kuantan itself, and the way back. */
+.cw-titlebar {
+  position: fixed;
+  left: 50%;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 62;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  max-width: calc(100% - 32px);
+  padding: 6px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.62);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: #fff;
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
+}
+html.cw-titled .cw-titlebar {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  transition: opacity 0.6s ease 0.9s, transform 0.6s ease 0.9s, visibility 0s;
+}
+.cw-titlebar-name {
+  overflow: hidden;
+  min-width: 0;
+  padding: 0 4px;
+  text-overflow: ellipsis;
+  opacity: 0.8;
+}
+.cw-titlebar a,
+.cw-titlebar button {
+  flex: none;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 9999px;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.cw-titlebar [data-step] {
+  padding: 6px 10px;
+  font-size: 18px;
+  line-height: 1;
+}
+.cw-titlebar a {
+  margin-left: 6px;
+  background: #f4f1ea;
+  color: #0b0b0b;
+}
+.cw-titlebar button:hover,
+.cw-titlebar button:focus-visible {
+  background: rgba(255, 255, 255, 0.15);
+}
+@media (max-width: 480px) {
+  .cw-titlebar-name {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cw-bath,
+  .cw-bath.is-open {
+    transition: none;
+  }
+}

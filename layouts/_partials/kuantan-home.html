@@ -1,0 +1,13 @@
+{{- /* Kuantan on the homepage (from extend-head.html, homepage only): the stylesheet and
+       the script that paint the site's logo, Caesar's Window, with Kuantan's paper,
+       alive (the logo's own drawing is the mask, data-mask). Pressed (koi.js handles the click), the paper grows out of the window to
+       fill the screen: the homepage becomes a title card, his photo and name over the
+       paper. The script is assets/js/kuantan-paper.js followed by
+       assets/js/kuantan-home.js; it builds the window's canvas, the card and its bar. */ -}}
+{{- with resources.Get "css/kuantan-home.css" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" />
+{{- end }}
+{{- $mask := (resources.Get "svg/white-caesars-window.svg").RelPermalink }}
+{{- with slice (resources.Get "js/kuantan-paper.js") (resources.Get "js/kuantan-home.js") | resources.Concat "js/kuantan-home-bundle.js" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+<script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" data-kuantan="{{ "kuantan/" | relURL }}" data-mask="{{ $mask }}"></script>
+{{- end }}

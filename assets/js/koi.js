@@ -388,15 +388,20 @@
       });
     });
 
-    /* So is the site's logo, Caesar's Window at the top of every page: everywhere else it
-       goes home, but here it is home already, and a link to the page it is on only reloads
-       it. Here it spins and opens the ball instead. */
+    /* The site's logo, Caesar's Window at the top of every page: everywhere else it goes
+       home, but here it is home already, and a link to the page it is on only reloads it.
+       Here it is a window onto Kuantan's paper, alive behind it (assets/js/kuantan-home.js):
+       it spins and opens that. Without WebGL, where there is no paper, it opens the ball. */
     var logo = document.querySelector("body > header nav a[href='/']");
     if (logo) {
       logo.classList.add("koi-logo");
       logo.addEventListener("click", function (e) {
         e.preventDefault();
         replay(logo, "is-spinning");
+        if (window.KuantanHome && window.KuantanHome.open(logo)) {
+          track("kuantan_open", { trigger: "logo" });
+          return;
+        }
         track("pokeball_press", { trigger: "logo" });
         release();
       });
@@ -497,7 +502,7 @@
           if (!shownThisVisit) return hint(document.querySelector(".cw-avatar .cw-badge"), "Caesar's Window opens it too.", true, "badge");
         })
         .then(function () {
-          if (!shownThisVisit) return hint(document.querySelector(".koi-logo"), "And so does this one, up here.", false, "logo");
+          if (!shownThisVisit) return hint(document.querySelector(".koi-logo"), window.KuantanHome ? "And this one opens a window." : "And so does this one, up here.", false, "logo");
         });
     }, 2500);
   }

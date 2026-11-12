@@ -135,6 +135,11 @@
   {{ end }}
 {{ end }}
 
+{{/* The homepage carries Kuantan's paper in the logo and the title card it opens (kuantan-home.html). */}}
+{{ if .IsHome }}
+  {{ partial "kuantan-home.html" . }}
+{{ end }}
+
 {{/* Every page carries the clover at its foot, which calls a Nintendo guest (clover.html). */}}
 {{ partial "clover.html" . }}
 
