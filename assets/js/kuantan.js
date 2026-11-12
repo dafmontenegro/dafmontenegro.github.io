@@ -125,6 +125,37 @@ vec3 combed(float s) {
   return bands(s) * (1.0 + 0.02 * sin(s * 190.0)); // fine hairlines left by the comb
 }
 
+// Threads: inside a wide band, the thin lines real paint leaves when it is laid
+// in several passes. They run exactly along the band (same s), a few light ones
+// and a darker one near each edge, and fade out where they would be finer than
+// a pixel, so they never shimmer.
+vec3 threaded(float s) {
+  vec3 color = combed(s);
+  float w = fwidth(s);
+  float fade = 1.0 - smoothstep(0.004, 0.012, w);
+  if (fade <= 0.0) return color;
+  float x = fract(s);
+  float k = floor(s);
+  vec3 light = mix(color, uVein, 0.8);
+  vec3 dark = color * 0.62;
+  float a = 0.0;
+  // three light threads at fixed places in each turn of the palette, each its own width
+  for (int i = 0; i < 3; i++) {
+    float fi = float(i);
+    float at = fract(0.17 + fi * 0.31 + 0.07 * sin(k * 3.1 + fi));
+    float half_ = 0.0016 + 0.0012 * fi;
+    float d = abs(x - at);
+    d = min(d, 1.0 - d);
+    a = max(a, 1.0 - smoothstep(half_, half_ + w, d));
+  }
+  color = mix(color, light, a * fade);
+  // a darker line just inside every change of colour
+  vec3 here = paint(s), ahead = paint(s + 0.006);
+  float edge = step(0.001, distance(here, ahead));
+  color = mix(color, dark, edge * 0.5 * fade);
+  return color;
+}
+
 vec2 rotate(vec2 v, float a) { float c = cos(a), s = sin(a); return vec2(c * v.x - s * v.y, s * v.x + c * v.y); }
 
 // 0 · Combed: bands, a comb pulled up with uneven pressure, a wavy stroke.
@@ -134,7 +165,7 @@ vec3 classic(vec2 p, float t) {
   p.y -= tine(p.x, 0.26, t * 0.008, pressure, 0.03);
   p.x += 0.07 * sin(p.y * 7.0 + t * 0.06);
   float s = p.y * 0.85 + 0.25 * fbm(vec3(p * 1.7, t * 0.014 + 7.0));
-  return combed(s);
+  return threaded(s);
 }
 
 // 1 · Stones (ebru battal): drops of paint, each its own size, crowding each other
