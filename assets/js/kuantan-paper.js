@@ -56,8 +56,10 @@ uniform vec2 uSeed;
 uniform float uFreq; // how many times the palette repeats in a band of the bath
 uniform float uScale; // how much of the bath fits on the screen: more is denser
 uniform int uTech;
-uniform vec3 uPal[9];
-uniform float uCut[9];
+// The palette: rgb is a colour, w where its band ends (0 to 1; 2 for an unused slot).
+// One vec4 per colour, not a vec3 array and a float array: some phone GPUs read
+// those with the wrong stride and mix the channels of neighbouring colours.
+uniform vec4 uPal[9];
 uniform vec3 uVein;
 uniform vec3 uAvg;
 
@@ -105,8 +107,8 @@ float tine(float x, float spacing, float phase, float L, float lambda) {
 // The paint laid in the bath, as bands of the palette.
 vec3 paint(float x) {
   x = fract(x);
-  for (int i = 0; i < 9; i++) if (x < uCut[i]) return uPal[i];
-  return uPal[8];
+  for (int i = 0; i < 9; i++) if (x < uPal[i].w) return uPal[i].rgb;
+  return uPal[8].rgb;
 }
 // Bands with antialiasing: four samples across the pixel's footprint. Where the
 // bands get finer than a pixel they blend into the palette's average colour
@@ -198,7 +200,7 @@ vec3 rings(vec2 p, float t) {
     stretch *= min(sqrt(L2 / max(L2 - R2, 1e-8)), 1e4);
     p = c + d * sqrt(1.0 - R2 / L2);
   }
-  return uPal[0]; // bare paper
+  return uPal[0].rgb; // bare paper
 }
 
 // 2 · Nonpareil: many thin bands combed with a fine comb, then a gentle wave.
@@ -405,7 +407,7 @@ class Sheet {
     gl.enableVertexAttribArray(0);
     gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
     this.gl = gl;
-    this.u = Object.fromEntries(["uRes", "uTime", "uSeed", "uTech", "uPal", "uCut", "uVein", "uAvg", "uScale", "uFreq"].map((n) => [n, gl.getUniformLocation(program, n)]));
+    this.u = Object.fromEntries(["uRes", "uTime", "uSeed", "uTech", "uPal", "uVein", "uAvg", "uScale", "uFreq"].map((n) => [n, gl.getUniformLocation(program, n)]));
   }
 
   /** Paint `design` with `palette`; with `from`, continue that sheet's bath so only the colours change. */
@@ -413,18 +415,16 @@ class Sheet {
     const gl = this.gl;
     const entries = palette.colors.map((c) => (Array.isArray(c) ? c : [c, 10]));
     const total = entries.reduce((sum, [, w]) => sum + w, 0);
-    const colors = new Float32Array(27);
-    const cuts = new Float32Array(9).fill(2);
+    const colors = new Float32Array(36);
+    for (let i = 3; i < 36; i += 4) colors[i] = 2; // unused slots never match
     let sum = 0;
     entries.slice(0, 9).forEach(([c, w], i) => {
-      colors.set(hex(c), i * 3);
       sum += w / total;
-      cuts[i] = sum;
+      colors.set([...hex(c), sum], i * 4);
     });
     // veins between stones take the palette's lightest colour
     const light = entries.map(([c]) => hex(c)).sort((x, y) => (y[0] + y[1] + y[2]) - (x[0] + x[1] + x[2]))[0];
-    gl.uniform3fv(this.u.uPal, colors);
-    gl.uniform1fv(this.u.uCut, cuts);
+    gl.uniform4fv(this.u.uPal, colors);
     gl.uniform3fv(this.u.uVein, light);
     const avg = [0, 1, 2].map((k) => entries.reduce((acc, [c, w]) => acc + hex(c)[k] * w, 0) / total);
     gl.uniform3fv(this.u.uAvg, avg);
