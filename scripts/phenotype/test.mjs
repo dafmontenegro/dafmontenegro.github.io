@@ -143,7 +143,10 @@ test('draw: what is worn shows on the doll and is not in the genome', () => {
   const genome = G.fromMeasurement({ traits: M.geometry(points), colours: { skin: null, hair: null, iris: null, lips: null } }, population);
   const strip = text => text.replace(/ph\d+/g, 'ph');
   const bare = strip(D.svg(genome, { scheme: 0 }));
-  for (const wear of [{ glasses: true }, { beard: 1 }]) assert.ok(strip(D.svg(genome, { scheme: 0, wear })).length > bare.length + 40, JSON.stringify(wear));
+  assert.ok(strip(D.svg(genome, { scheme: 0, wear: { glasses: true } })).length > bare.length + 40, 'glasses');
+  // A beard adds its own piece (clipped to the head) and redraws the mouth on it, so the length is no guide.
+  const bearded = strip(D.svg(genome, { scheme: 0, wear: { beard: 1 } }));
+  assert.ok(bearded !== bare && (bearded.match(/-head\)/g) || []).length > (bare.match(/-head\)/g) || []).length, 'beard');
   // No hair mask was given: the hair genes fall back to "like most people", never to NaN.
   for (const gene of G.SCALARS) assert.ok(genome.genes[gene[0]] >= 0 && genome.genes[gene[0]] <= 1, gene[0]);
 });

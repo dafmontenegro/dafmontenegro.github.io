@@ -84,7 +84,7 @@
     m.top = HEAD_Y - m.ry;
 
     // Eyes: two big white discs.
-    m.eyeR = clamp(15.5 + 1.5 * z('eyeSize'), 12, 19);
+    m.eyeR = clamp(14.5 + 1.4 * z('eyeSize'), 11.5, 17.5);
     m.eyeX = clamp(m.eyeR + 3.5 + 1.6 * z('eyeSpacing'), m.eyeR + 0.8, m.eyeR + 8);
     m.eyeY = HEAD_Y - 3 + 1.4 * z('eyeHeight');
     m.lid = clamp(0.03 - 0.12 * z('eyeOpen'), 0, 0.34);            // how much of the eye the lid covers
@@ -209,8 +209,10 @@
     var px = x - side * r * 0.22, py = y + r * 0.08;
     var out = ellipse(x, y, r, r * 1.08, '#ffffff', turn) +
       // The iris and pupil are one group: the page moves it so the doll looks at the pointer.
-      '<g class="ph-pupil" data-reach="' + n(r * 0.3) + '"><circle cx="' + n(px) + '" cy="' + n(py) + '" r="' + n(r * 0.36) + '" fill="' + hex(genome.colours.eye) + '"/>' +
-      '<circle cx="' + n(px) + '" cy="' + n(py) + '" r="' + n(r * 0.17) + '" fill="#17131c"/></g>';
+      '<g class="ph-pupil" data-reach="' + n(r * 0.3) + '"><circle cx="' + n(px) + '" cy="' + n(py) + '" r="' + n(r * 0.5) + '" fill="' + hex(genome.colours.eye) + '"/>' +
+      '<circle cx="' + n(px) + '" cy="' + n(py) + '" r="' + n(r * 0.27) + '" fill="#17131c"/>' +
+      // A point of light: without it a large pupil stares.
+      '<circle cx="' + n(px - r * 0.14) + '" cy="' + n(py - r * 0.16) + '" r="' + n(r * 0.1) + '" fill="#ffffff"/></g>';
     if (m.lashes) {
       // Three short strokes at the outer top of the eye.
       [28, 48, 68].forEach(function (degrees) {
@@ -402,7 +404,11 @@
         body += '<circle cx="' + n(CX + f[0] * (m.eyeX + 3) + f[1]) + '" cy="' + n(m.eyeY + m.eyeR + 5 + f[2]) + '" r="1.3" fill="' + skin.shade + '"/>';
       });
     }
-    body += mouth(m, genome, m.beard === 2);
+    if (m.beard === 2 && !m.grin) {
+      // On a full beard a thin line gets lost: the closed mouth is a small lip of rose paper.
+      var mw = m.mouthW, my = m.mouthY;
+      body += '<path d="M' + n(CX - mw) + ' ' + n(my) + 'Q' + CX + ' ' + n(my + 2 * m.smile + 5) + ' ' + n(CX + mw) + ' ' + n(my) + 'Q' + CX + ' ' + n(my + 2 * m.smile - 1) + ' ' + n(CX - mw) + ' ' + n(my) + 'Z" fill="#d98a86"/>';
+    } else body += mouth(m, genome, m.beard === 2);
     if (given.moustache) body += piece(moustache(m, beardColour));
     body += piece(eye(m, -1, genome, options.blink, skin) + eye(m, 1, genome, options.blink, skin));
     if (!m.bald && !m.receding) body += piece(hairFront(m, id, hair));
