@@ -32,6 +32,20 @@
     return node;
   }
 
+  /* What a doll written in the page wears: either marks (g glasses, b beard, s stubble) or a
+     list like "glasses=square,frame=#f08a00,beard=0.9,hair=receding". */
+  function writtenWear(text) {
+    if (text.indexOf('=') < 0) {
+      return { glasses: text.indexOf('g') >= 0, beard: text.indexOf('b') >= 0 ? 0.9 : text.indexOf('s') >= 0 ? 0.45 : 0 };
+    }
+    var wear = {};
+    text.split(',').forEach(function (pair) {
+      var at = pair.indexOf('='), key = pair.slice(0, at).trim(), value = pair.slice(at + 1).trim();
+      if (key) wear[key] = value === 'true' ? true : value !== '' && !isNaN(value) ? Number(value) : value;
+    });
+    return wear;
+  }
+
   /* A doll in its frame: the drawing is an SVG, written by phenotype-draw.js. */
   function paint(frame, genome, options) {
     frame.innerHTML = D.svg(genome, options);
@@ -44,6 +58,7 @@
   function look(scope) {
     if (!pointer) return;
     Array.prototype.forEach.call((scope || document).querySelectorAll('.ph-pupil'), function (pupil) {
+      if (pupil.closest('[data-phenotype="specimens"]')) return;   // the sheets of dolls do not follow
       var box = pupil.ownerSVGElement.getBoundingClientRect();
       if (!box.width) return;
       var dx = pointer.x - (box.left + box.width / 2), dy = pointer.y - (box.top + box.height * 0.4);
@@ -181,10 +196,11 @@
     watchers: []
   };
   function plainWear(beard) {
-    return { glasses: false, beard: beard, moustache: false, hair: '', hat: '', coat: '', skin: '', blush: false, freckles: false, earrings: false, lashes: false, lips: false };
+    return { glasses: false, beard: beard, moustache: false, hair: '', hat: '', coat: '', outfit: '', skin: '', blush: false, freckles: false, earrings: false, lashes: false, lips: false };
   }
   // The wardrobe: what each row offers. A swatch row shows colours, the others words.
   var WARDROBE = [
+    { key: 'outfit', label: 'Outfit', options: [['Coat', ''], ['Suit', 'suit']] },
     { key: 'glasses', label: 'Glasses', options: [['None', false], ['Round', 'round'], ['Square', 'square'], ['Shades', 'shades']] },
     { key: 'beard', label: 'Beard', options: [['None', 0], ['Stubble', 0.45], ['Full', 0.9]], toggles: [['moustache', 'Moustache']] },
     { key: 'hair', label: 'Hair', options: [['As read', ''], ['Curls', 'curls'], ['Tied back', 'tied'], ['Receding', 'receding']] },
@@ -254,9 +270,8 @@
   function mountMe(root, population) {
     // Until a photo arrives, the frame shows a doll written in the page:
     // its code, what it wears (g, b, s) and the name of its paper.
-    var marks = root.getAttribute('data-wear') || '';
     var sample = G.decode(root.getAttribute('data-sample') || '') || G.resident();
-    var sampleWear = { glasses: marks.indexOf('g') >= 0, beard: marks.indexOf('b') >= 0 ? 0.9 : marks.indexOf('s') >= 0 ? 0.45 : 0 };
+    var sampleWear = writtenWear(root.getAttribute('data-wear') || '');
     var samplePaper = D.SCHEMES.map(function (scheme) { return scheme.name; }).indexOf(root.getAttribute('data-paper') || '');
 
     root.textContent = '';
@@ -555,12 +570,13 @@
     root.textContent = '';
     root.classList.add('phenotype-ready');
     codes.forEach(function (entry, index) {
-      // code, then optional marks: g = glasses, b = beard, s = stubble.
-      var parts = entry.split(':'), genome = G.decode(parts[0]), marks = parts[1] || '';
+      // The code, then after a colon what it wears (see writtenWear).
+      var at = entry.indexOf(':'), genome = G.decode(at < 0 ? entry : entry.slice(0, at));
       if (!genome) return;
       var canvas = element('div', 'phenotype-art');
-      paint(canvas, genome, { scheme: index, label: 'A paper doll read from a face that belongs to nobody',
-        wear: { glasses: marks.indexOf('g') >= 0, beard: marks.indexOf('b') >= 0 ? 0.9 : marks.indexOf('s') >= 0 ? 0.45 : 0 } });
+      // A whole sheet of dolls following the pointer is too much: these look straight ahead.
+      canvas.innerHTML = D.svg(genome, { scheme: index, label: 'A paper doll read from a face that belongs to nobody',
+        wear: writtenWear(at < 0 ? '' : entry.slice(at + 1)) });
       root.append(canvas);
     });
   }

@@ -204,7 +204,7 @@
 .phenotype-specimens .phenotype-art { box-shadow: 0 0.25rem 0 var(--ph-lift); }
 
 @media (max-width: 30rem) {
-  .phenotype-specimens.phenotype-ready { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .phenotype-specimens.phenotype-ready { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.7rem 0.5rem; }
   .phenotype-button { flex: 1 1 40%; }
   .phenotype-primary { flex-basis: 100%; }
 }
@@ -308,6 +308,7 @@
 .phenotype-art .ph-pupil { transition: transform 0.12s ease-out; }
 
 .phenotype-art { cursor: pointer; }
+.phenotype-specimens .phenotype-art { cursor: default; }
 .phenotype-hop { animation: ph-hop 0.42s cubic-bezier(0.3, 0, 0.3, 1); }
 @keyframes ph-hop {
   30% { transform: translateY(-0.9rem) rotate(-2deg); }

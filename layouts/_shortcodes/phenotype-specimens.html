@@ -1,8 +1,8 @@
 {{- /* A sheet of dolls, each read from the photo of a face that belongs to nobody (the
        synthetic sample photos of the Meiosis project). A doll is written here as it
        travels in a link: its 54 characters, straight from assets/data/phenotype/specimens.json.
-       After a colon come the things it wears, which are not in the genome: g = glasses,
-       b = a beard, s = stubble. Needs `phenotype: true` in the page's front matter. */ -}}
+       After a colon come the things it wears, which are not in the genome: either marks
+       (g = glasses, b = a beard, s = stubble) or a list such as glasses=round,hair=receding. Needs `phenotype: true` in the page's front matter. */ -}}
 {{- /* With a `dolls` parameter the sheet shows those dolls instead (same notation, separated
        by spaces), and `label` says what they are for a screen reader. */ -}}
 {{- $dolls := slice -}}

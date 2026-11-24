@@ -17,6 +17,7 @@
                  skin       a hex colour instead of the skin read from the photo
                  hat        'beanie', 'bow' or 'crown'
                  coat       a hex colour instead of the paper's own coat
+                 outfit     'suit': a jacket open over a white shirt and a tie (`tie`: its colour)
      blink     the frame with the eyes closed.
      scheme    which paper and coat (a number); by default drawn from the genome.
      assemble  mark every piece with its order, so the page can drop them in one
@@ -50,8 +51,11 @@
     { name: 'sun', sky: '#facc15', ground: '#fff4c2', coat: '#26314a', trim: '#151c2c' },
     { name: 'sky', sky: '#38bdf8', ground: '#f1f5f9', coat: '#f01626', trim: '#a00a1b' },
     { name: 'rose', sky: '#ff5fa2', ground: '#ffe1ee', coat: '#facc15', trim: '#ca8a04' },
-    { name: 'red', sky: '#f01626', ground: '#ffe0e0', coat: '#26314a', trim: '#151c2c' }
+    { name: 'red', sky: '#f01626', ground: '#ffe0e0', coat: '#26314a', trim: '#151c2c' },
+    // Chosen by hand only (see DEFAULT_PAPERS): a deep blue.
+    { name: 'ocean', sky: '#2a60ad', ground: '#dce8f8', coat: '#444444', trim: '#2a2a2a' }
   ];
+  var DEFAULT_PAPERS = 5;   // a doll gets one of the first five on its own
   // Coats a doll can be given instead of its paper's own.
   var COATS = ['#f01626', '#26314a', '#facc15', '#17131c', '#f3ead2', '#1d4fd8', '#15803d', '#ff5fa2', '#7c4dff'];
 
@@ -312,7 +316,7 @@
   function schemeIndex(genome) {
     var code = G.encode({ generation: 0, genes: genome.genes, colours: genome.colours }), h = 0;
     for (var i = 0; i < code.length; i++) h = (h * 31 + code.charCodeAt(i)) >>> 0;
-    return h % SCHEMES.length;
+    return h % DEFAULT_PAPERS;
   }
 
   function schemeOf(genome, options) {
@@ -329,7 +333,9 @@
     var m = model(genome, wear);
     var id = m.id = 'ph' + (++counter);
     var scheme = schemeOf(genome, options);
-    var coat = given.coat || scheme.coat, trim = given.coat ? shade(given.coat, 0.62) : scheme.trim;
+    // A suit with no colour chosen is navy, whatever the paper's own coat is.
+    var chosen = given.coat || (given.outfit === 'suit' ? '#26314a' : '');
+    var coat = chosen || scheme.coat, trim = chosen ? shade(chosen, 0.62) : scheme.trim;
     // The skin as it was read, or the tone the reader chose instead.
     var skinLab = given.skin ? M.hexToOklab(given.skin) : genome.colours.skin;
     var skin = { lit: hex(skinLab), shade: hex(darker(skinLab, 0.07)) };
@@ -366,9 +372,21 @@
     body += piece(ellipse(CX - 19, 187, 21, 6.5, '#17131c') + ellipse(CX + 19, 187, 21, 6.5, '#17131c'));
     body += piece(ellipse(CX - 40, 153, 11, 22, coat, ' transform="rotate(14 ' + (CX - 40) + ' 153)"') +
       ellipse(CX + 40, 153, 11, 22, coat, ' transform="rotate(-14 ' + (CX + 40) + ' 153)"'));
-    body += piece('<path d="M' + (CX - 31) + ' 122H' + (CX + 31) + 'L' + (CX + 40) + ' 178Q' + CX + ' 190 ' + (CX - 40) + ' 178Z" fill="' + coat + '"/>' +
-      '<path d="M' + CX + ' 126V184" stroke="' + trim + '" stroke-width="2"/>' +
-      '<circle cx="' + (CX + 6) + '" cy="150" r="2.2" fill="' + trim + '"/><circle cx="' + (CX + 6) + '" cy="164" r="2.2" fill="' + trim + '"/>');
+    var torso = '<path d="M' + (CX - 31) + ' 122H' + (CX + 31) + 'L' + (CX + 40) + ' 178Q' + CX + ' 190 ' + (CX - 40) + ' 178Z" fill="' + coat + '"/>';
+    if (given.outfit === 'suit') {
+      // A suit: the jacket open in a V over a white shirt, a tie, the lapels and one button.
+      var tie = given.tie || '#c1121f';
+      body += piece(torso) +
+        piece('<path d="M' + (CX - 16) + ' 122H' + (CX + 16) + 'L' + CX + ' 166Z" fill="#f8f8f5"/>') +
+        piece('<path d="M' + (CX - 4) + ' 128H' + (CX + 4) + 'L' + (CX + 5.5) + ' 152L' + CX + ' 160L' + (CX - 5.5) + ' 152Z" fill="' + tie + '"/>') +
+        '<path d="M' + (CX - 16) + ' 122L' + CX + ' 166L' + (CX + 16) + ' 122" fill="none" stroke="' + trim + '" stroke-width="2.4" stroke-linejoin="round"/>' +
+        '<path d="M' + CX + ' 166V184" stroke="' + trim + '" stroke-width="2"/>' +
+        '<circle cx="' + (CX + 5) + '" cy="174" r="2.2" fill="' + trim + '"/>';
+    } else {
+      body += piece(torso +
+        '<path d="M' + CX + ' 126V184" stroke="' + trim + '" stroke-width="2"/>' +
+        '<circle cx="' + (CX + 6) + '" cy="150" r="2.2" fill="' + trim + '"/><circle cx="' + (CX + 6) + '" cy="164" r="2.2" fill="' + trim + '"/>');
+    }
     body += piece(ellipse(CX - 45, 171, 8.5, 8, skin.lit) + ellipse(CX + 45, 171, 8.5, 8, skin.lit));
     // The head and what is on it.
     if (m.curly) body += piece(curls(m, hairDark));

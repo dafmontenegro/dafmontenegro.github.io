@@ -13,9 +13,9 @@ tags: ["generative-art", "computer-vision", "mediapipe", "avatars", "cut-out-ani
 phenotype: true
 ---
 
-Give this page a photo of a face and it draws that face as **a paper doll**: a big head on a small body, cut out of flat coloured paper. Yours, a friend's, anyone's. Then dress it: glasses, a beard, a crown, a coat, a paper of another colour behind it. Save it as a picture, or send it to someone.
+Give this page a photo of a face and it draws that face as **a paper doll**: a big head on a small body, cut out of flat coloured paper. Yours, a friend's, anyone's. Then dress it: glasses, a beard, a crown, a coat or a suit, a paper of another colour behind it. Save it as a picture, or send it to someone.
 
-{{< phenotype sample="AQAAtn-Okr7ikXen8C_D8qBuVUxyh1cAAIA-AICHjUiBhNmNkr2Yjw" wear="gb" paper="night" >}}
+{{< phenotype sample="AQAAtn-Okr7ikXen8C_D8qBuVUy7h1cAAIA-AKGCo0iBhNmNkr2Yjw" wear="glasses=round,beard=0.9,outfit=suit,coat=#8a8676,tie=#8c1c2c" paper="night" >}}
 
 It all happens in your browser. The photo is not uploaded anywhere: the page looks at it, draws the doll and forgets it.
 
