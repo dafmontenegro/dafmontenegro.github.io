@@ -1,0 +1,38 @@
+{{- /* Phenotype's two interactive parts.
+
+       {{< phenotype sample="<code>" wear="gb" paper="night" >}}
+                                             any face as a paper doll: a photo in, a doll out,
+                                             dressed from a wardrobe and saved as a PNG.
+                                             `sample` is the doll shown before the first photo
+                                             (its 54 characters), `wear` what it has on
+                                             (g glasses, b beard, s stubble) and `paper` the
+                                             name of its paper in phenotype-draw.js. They are
+                                             three parameters because Hugo turns ":gb:" into
+                                             an emoji.
+       {{< phenotype part="mix" >}}           two faces in, and the doll that is their child:
+                                             half of the features of each.
+
+       Pair it with `phenotype: true` in the page's front matter, which is what makes
+       layouts/_partials/extend-head.html load the face reader (face-kit.html), the
+       population statistics and the four phenotype scripts. Without that flag the mount
+       points below stay as their fallback text.
+
+       The script finds each part by its `data-phenotype`. The fallback is what a reader
+       sees with JavaScript off, written to say what the tool does rather than to apologise. */ -}}
+
+{{- if eq (.Get "part") "mix" -}}
+<div class="phenotype" data-phenotype="mix">
+  <p>
+    Here two photos of faces become one paper doll, their child, with half of the features
+    of each. It is drawn by a script in your own browser, so it needs JavaScript; no photo
+    ever leaves your device.
+  </p>
+</div>
+{{- else -}}
+<div class="phenotype" data-phenotype="me" data-sample="{{ .Get "sample" }}" data-wear="{{ .Get "wear" }}" data-paper="{{ .Get "paper" }}">
+  <p>
+    Here a photo of a face becomes a paper doll you can save. It is read and drawn by a
+    script in your own browser, so it needs JavaScript; the photo never leaves your device.
+  </p>
+</div>
+{{- end -}}

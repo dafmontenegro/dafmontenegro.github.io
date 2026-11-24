@@ -14,6 +14,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-11-24 | [Projects](/projects/phenotype/) | New project: Phenotype turns a photo of any face into a paper cut-out doll you can dress and save, all in your own browser, with no photo uploaded; give it two faces and it draws the doll that is their child |
 | 2026-11-24 | [Projects](/projects/kuantan/) | Kuantan is now also a film of 21 minutes, 12 seconds and 9 frames, with music written from its own palettes: each palette a chord, each color a voice, each design the sound of its tool. The project page shows it and tells how the music is made |
 | 2026-11-21 | [Blog](/blog/felis-ignis/) | New post: "Felis Ignis: An Ontological Ascension Before the Infinite Fire of Its Own Becoming", an acrylic on canvas read state by state, as the critics saw it |
 | 2026-11-21 | [Un lugar lejos del ruido](/spaces/mi-amigo-melquiades/) | The channel is now called "Un lugar lejos del ruido": its Space takes the new name, tells why, and has a new cover, Caesar's window over a painting of mine; the handle and the story of Melquíades stay |

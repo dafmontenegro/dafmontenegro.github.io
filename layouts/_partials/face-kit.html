@@ -1,0 +1,17 @@
+{{/* The face reader shared by the pages that read faces in the browser (assets/js/face-kit.js):
+     the script, and the addresses of MediaPipe's runtime and models, which this site serves
+     itself from static/vendor/mediapipe/<version>/ so that nothing comes from a third party.
+     Nothing in that folder is fetched until the reader gives a photo. To upgrade MediaPipe,
+     add the new version's folder beside the old one and change the version here. */}}
+{{- $base := "vendor/mediapipe/1.2.0/" | relURL -}}
+{{- $sources := dict
+  "bundle" (printf "%svision_bundle.mjs" $base)
+  "wasmLoader" (printf "%swasm/vision_wasm_internal.js" $base)
+  "wasmBinary" (printf "%swasm/vision_wasm_internal.wasm" $base)
+  "landmarker" (printf "%smodels/face_landmarker.task" $base)
+  "hair" (printf "%smodels/hair_segmenter.tflite" $base)
+-}}
+<script type="application/json" id="face-kit-sources">{{ $sources | jsonify | safeJS }}</script>
+{{ with resources.Get "js/face-kit.js" | minify | fingerprint site.Params.fingerprintAlgorithm }}
+  <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
+{{ end }}

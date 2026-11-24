@@ -1,0 +1,351 @@
+/* phenotype.css: the paper doll's page (the `phenotype` and `phenotype-specimens` shortcodes).
+ *
+ * Loaded only by pages that set `phenotype` in their front matter, from
+ * layouts/_partials/extend-head.html.
+ *
+ * Congo switches themes with a `dark` class on <html>, so the dark values live
+ * under `.dark` and nothing here reads prefers-color-scheme. The dolls carry
+ * their own colours (each sits on its own backdrop) and look the same in both
+ * themes; only the text and the controls around them change.
+ */
+
+.phenotype,
+.phenotype-specimens {
+  --ph-line: rgb(var(--color-neutral-300));
+  --ph-ink: rgb(var(--color-neutral-900));
+  --ph-muted: rgb(var(--color-neutral-500));
+  --ph-accent: rgb(var(--color-primary-600));
+  --ph-lift: rgb(var(--color-neutral-900), 0.16);
+  margin: 2rem 0;
+  color: var(--ph-ink);
+}
+
+.dark .phenotype,
+.dark .phenotype-specimens {
+  --ph-line: rgb(var(--color-neutral-600));
+  --ph-ink: rgb(var(--color-neutral-100));
+  --ph-muted: rgb(var(--color-neutral-400));
+  --ph-accent: rgb(var(--color-primary-500));
+  --ph-lift: rgb(0, 0, 0, 0.45);
+}
+
+/* Before the script runs (or without it) the mount point is its fallback text. */
+.phenotype:not(.phenotype-ready),
+.phenotype-specimens:not(.phenotype-ready) {
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--ph-line);
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--ph-muted);
+}
+
+/* ---- a doll: a square of cut paper ---- */
+
+.phenotype-art {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 12.5%;
+  /* A hard shadow, one step down: the doll is a card on the table. */
+  box-shadow: 0 0.4rem 0 var(--ph-lift);
+}
+
+.phenotype-art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.phenotype .phenotype-card {
+  margin: 0;
+  min-width: 0;
+  text-align: center;
+}
+
+.phenotype .phenotype-caption {
+  margin-top: 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ph-muted);
+}
+
+.phenotype-doll {
+  width: min(100%, 19rem);
+  margin: 0 auto !important;
+}
+
+.phenotype-doll .phenotype-art { transition: opacity 0.2s; }
+.phenotype-busy .phenotype-doll .phenotype-art { opacity: 0.45; }
+
+.phenotype-story {
+  max-width: 32rem;
+  margin: 1.1rem auto 0;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* You + the doll before: what the doll on top was made from. */
+.phenotype-parents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1.4rem;
+}
+
+.phenotype-parents[hidden],
+.phenotype-chips[hidden],
+.phenotype-actions[hidden] { display: none; }
+
+.phenotype-parents .phenotype-card { width: min(34%, 8rem); }
+.phenotype-parents .phenotype-art { box-shadow: 0 0.25rem 0 var(--ph-lift); }
+.phenotype-parents .phenotype-caption { margin-top: 0.7rem; font-size: 0.64rem; }
+
+.phenotype-plus {
+  margin-bottom: 1.4rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ph-accent);
+}
+
+/* ---- controls ---- */
+
+.phenotype-actions,
+.phenotype-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.1rem;
+}
+
+.phenotype-actions-quiet { margin-top: 0.4rem; }
+
+.phenotype-button,
+.phenotype-chip {
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 0.65rem 1.1rem;
+  border: 1.5px solid var(--ph-line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ph-ink);
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.1s;
+}
+
+.phenotype-button:hover,
+.phenotype-chip:hover { border-color: var(--ph-accent); }
+.phenotype-button:active,
+.phenotype-chip:active { transform: translateY(1px); }
+
+.phenotype-button:focus-visible,
+.phenotype-chip:focus-visible {
+  outline: 2px solid var(--ph-accent);
+  outline-offset: 2px;
+}
+
+.phenotype-button:disabled { opacity: 0.5; cursor: progress; }
+
+.phenotype-primary {
+  border-color: rgb(var(--color-primary-600));
+  background: rgb(var(--color-primary-600));
+  color: #fff;
+}
+.phenotype-primary:hover { border-color: rgb(var(--color-primary-500)); background: rgb(var(--color-primary-500)); }
+
+.phenotype-quiet {
+  border-color: transparent;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--ph-muted);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.phenotype-chip {
+  font-size: 0.8rem;
+  padding: 0.4rem 0.85rem;
+}
+
+.phenotype-chip[aria-pressed="true"] {
+  border-color: var(--ph-ink);
+  background: var(--ph-ink);
+  color: rgb(var(--color-neutral));
+}
+.dark .phenotype-chip[aria-pressed="true"] { color: rgb(var(--color-neutral-900)); }
+
+.phenotype-notes,
+.phenotype-privacy {
+  max-width: 32rem;
+  margin: 0.9rem auto 0;
+  text-align: center;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--ph-muted);
+}
+
+.phenotype-notes:empty { display: none; }
+
+/* ---- the specimen sheet: dolls read from faces that belong to nobody ---- */
+
+.phenotype-specimens.phenotype-ready {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem 0.75rem;
+  padding-bottom: 0.4rem;
+}
+
+.phenotype-specimens .phenotype-art { box-shadow: 0 0.25rem 0 var(--ph-lift); }
+
+@media (max-width: 30rem) {
+  .phenotype-specimens.phenotype-ready { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .phenotype-button { flex: 1 1 40%; }
+  .phenotype-primary { flex-basis: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phenotype-doll .phenotype-art,
+  .phenotype-button,
+  .phenotype-chip { transition: none; }
+}
+
+/* ---- mixing two faces: the two parents side by side, their child under them ---- */
+
+.phenotype-mix { align-items: flex-start; margin: 0 0 1.6rem; }
+.phenotype-mix .phenotype-card { width: min(40%, 10rem); }
+.phenotype-mix .phenotype-plus { margin: 0; align-self: center; transform: translateY(-1.6rem); }
+.phenotype-mix .phenotype-chip { margin-top: 0.6rem; }
+
+/* A place still waiting for its face. */
+.phenotype-empty {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed var(--ph-line);
+  border-radius: 12.5%;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--ph-muted);
+}
+
+/* ---- the wardrobe: rows of things to put on the doll ---- */
+
+.phenotype-wardrobe {
+  max-width: 30rem;
+  margin: 1.2rem auto 0;
+  display: grid;
+  gap: 0.7rem;
+}
+.phenotype-wardrobe[hidden],
+.phenotype-button[hidden] { display: none; }
+
+.phenotype-row {
+  display: grid;
+  grid-template-columns: 4.6rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.6rem;
+}
+/* On a phone the label goes above its row, so every row fits on one line. */
+@media (max-width: 30rem) {
+  .phenotype-row { grid-template-columns: minmax(0, 1fr); gap: 0.35rem; }
+  .phenotype-row .phenotype-chip { padding: 0.4rem 0.7rem; }
+}
+
+.phenotype-row-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ph-muted);
+}
+
+.phenotype-row-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.phenotype-swatch {
+  width: 1.9rem;
+  height: 1.9rem;
+  padding: 0;
+  border: 2px solid var(--ph-line);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.12s;
+}
+.phenotype-swatch:hover { transform: scale(1.12); }
+.phenotype-swatch[aria-pressed="true"] {
+  border-color: var(--ph-ink);
+  box-shadow: 0 0 0 2px rgb(var(--color-neutral)), 0 0 0 4px var(--ph-accent);
+}
+.dark .phenotype-swatch[aria-pressed="true"] { box-shadow: 0 0 0 2px rgb(var(--color-neutral-800)), 0 0 0 4px var(--ph-accent); }
+.phenotype-swatch:focus-visible { outline: 2px solid var(--ph-accent); outline-offset: 3px; }
+
+/* ---- the doll is put together: its pieces drop in one after another ---- */
+
+.phenotype-card { position: relative; }
+
+.phenotype-art .ph-piece {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: ph-drop 0.5s cubic-bezier(0.2, 1.5, 0.4, 1) both;
+  animation-delay: calc(var(--ph-order) * 70ms);
+}
+@keyframes ph-drop {
+  from { opacity: 0; transform: translateY(-34px) rotate(-9deg) scale(0.86); }
+  60% { opacity: 1; }
+  to { opacity: 1; transform: none; }
+}
+
+.phenotype-art .ph-pupil { transition: transform 0.12s ease-out; }
+
+.phenotype-art { cursor: pointer; }
+.phenotype-hop { animation: ph-hop 0.42s cubic-bezier(0.3, 0, 0.3, 1); }
+@keyframes ph-hop {
+  30% { transform: translateY(-0.9rem) rotate(-2deg); }
+  60% { transform: translateY(0) rotate(1deg); }
+  80% { transform: translateY(-0.25rem); }
+}
+
+.phenotype-confetti {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  pointer-events: none;
+}
+.phenotype-confetti span {
+  position: absolute;
+  width: 0.55rem;
+  height: 0.8rem;
+  border-radius: 1px;
+  opacity: 0;
+  animation: ph-scrap 1.3s cubic-bezier(0.1, 0.7, 0.3, 1) forwards;
+}
+@keyframes ph-scrap {
+  0% { opacity: 1; transform: translate(0, 0) rotate(0); }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--ph-x), calc(var(--ph-y) + 7rem)) rotate(var(--ph-turn)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phenotype-art .ph-piece,
+  .phenotype-hop,
+  .phenotype-confetti span { animation: none; }
+  .phenotype-swatch,
+  .phenotype-art .ph-pupil { transition: none; }
+}
+
+/* One doll on its own, and a lineage in a row. */
+.phenotype-specimens.phenotype-single.phenotype-ready { grid-template-columns: minmax(0, 11rem); justify-content: center; }
+.phenotype-specimens.phenotype-line.phenotype-ready { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.5rem; }
+@media (max-width: 30rem) {
+  .phenotype-specimens.phenotype-line.phenotype-ready { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

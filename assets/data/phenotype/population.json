@@ -1,0 +1,121 @@
+{
+ "faces": 231,
+ "measured": 400,
+ "traits": {
+  "faceAspect": {
+   "mean": 1.17252,
+   "std": 0.0656
+  },
+  "jawWidth": {
+   "mean": 0.80635,
+   "std": 0.02263
+  },
+  "chinWidth": {
+   "mean": 0.56759,
+   "std": 0.02812
+  },
+  "chinLength": {
+   "mean": 0.21262,
+   "std": 0.02606
+  },
+  "eyeSpacing": {
+   "mean": 0.24628,
+   "std": 0.01439
+  },
+  "eyeSize": {
+   "mean": 0.19063,
+   "std": 0.01152
+  },
+  "eyeOpen": {
+   "mean": 0.28986,
+   "std": 0.06628
+  },
+  "eyeTilt": {
+   "mean": 0.04908,
+   "std": 0.03827
+  },
+  "eyeHeight": {
+   "mean": 0.31056,
+   "std": 0.02274
+  },
+  "browGap": {
+   "mean": 0.08395,
+   "std": 0.01594
+  },
+  "browTilt": {
+   "mean": -0.05261,
+   "std": 0.03409
+  },
+  "browThick": {
+   "mean": 0.02748,
+   "std": 0.00192
+  },
+  "noseLength": {
+   "mean": 0.28201,
+   "std": 0.01347
+  },
+  "noseWidth": {
+   "mean": 0.30196,
+   "std": 0.02286
+  },
+  "mouthWidth": {
+   "mean": 0.4196,
+   "std": 0.06079
+  },
+  "mouthDrop": {
+   "mean": 0.14178,
+   "std": 0.01507
+  },
+  "lipFull": {
+   "mean": 0.08939,
+   "std": 0.0173
+  },
+  "smile": {
+   "mean": 0.0219,
+   "std": 0.02337
+  },
+  "hairAmount": {
+   "mean": 0.62062,
+   "std": 0.37327
+  },
+  "hairTop": {
+   "mean": 0.36953,
+   "std": 0.10491
+  },
+  "hairSide": {
+   "mean": 0.11668,
+   "std": 0.12027
+  },
+  "hairLength": {
+   "mean": 0.39587,
+   "std": 0.35973
+  },
+  "hairRoom": {
+   "mean": 1.19571,
+   "std": 0.06925
+  },
+  "fringe": {
+   "mean": 0.11476,
+   "std": 0.23031
+  },
+  "parting": {
+   "mean": 0.0398,
+   "std": 0.39178
+  },
+  "skinLight": {
+   "mean": 0.71646,
+   "std": 0.08765
+  },
+  "scalp": {
+   "mean": 0.13626,
+   "std": 0.13426
+  }
+ },
+ "pose": {
+  "about": "mean |correlation| between the 18 landmark traits and the head pose, over all measured faces",
+  "yawTurnedToFrontal": 0.151,
+  "yawAsSeen": 0.212,
+  "pitchTurnedToFrontal": 0.219,
+  "pitchAsSeen": 0.36
+ }
+}

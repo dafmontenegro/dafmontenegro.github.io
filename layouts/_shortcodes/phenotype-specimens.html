@@ -1,0 +1,18 @@
+{{- /* A sheet of dolls, each read from the photo of a face that belongs to nobody (the
+       synthetic sample photos of the Meiosis project). A doll is written here as it
+       travels in a link: its 54 characters, straight from assets/data/phenotype/specimens.json.
+       After a colon come the things it wears, which are not in the genome: g = glasses,
+       b = a beard, s = stubble. Needs `phenotype: true` in the page's front matter. */ -}}
+{{- /* With a `dolls` parameter the sheet shows those dolls instead (same notation, separated
+       by spaces), and `label` says what they are for a screen reader. */ -}}
+{{- $dolls := slice -}}
+{{- with .Get "dolls" }}{{ $dolls = split . " " }}{{ else -}}
+{{- with resources.Get "data/phenotype/specimens.json" -}}
+  {{- range (. | transform.Unmarshal) -}}
+    {{- $dolls = $dolls | append (cond (ne .wear "") (printf "%s:%s" .code .wear) .code) -}}
+  {{- end -}}
+{{- end -}}
+{{- end -}}
+<div class="phenotype-specimens{{ with .Get "class" }} {{ . }}{{ end }}" data-phenotype="specimens" data-dolls="{{ delimit $dolls " " }}">
+  <p>A sheet of paper dolls read from faces that belong to nobody. They are drawn by a script, so they need JavaScript.</p>
+</div>
