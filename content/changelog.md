@@ -14,6 +14,7 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-11-24 | [Projects](/projects/kuantan/) | Kuantan is now also a film of 21 minutes, 12 seconds and 9 frames, with music written from its own palettes: each palette a chord, each color a voice, each design the sound of its tool. The project page shows it and tells how the music is made |
 | 2026-11-21 | [Blog](/blog/felis-ignis/) | New post: "Felis Ignis: An Ontological Ascension Before the Infinite Fire of Its Own Becoming", an acrylic on canvas read state by state, as the critics saw it |
 | 2026-11-21 | [Un lugar lejos del ruido](/spaces/mi-amigo-melquiades/) | The channel is now called "Un lugar lejos del ruido": its Space takes the new name, tells why, and has a new cover, Caesar's window over a painting of mine; the handle and the story of Melquíades stay |
 | 2026-11-13 | [Projects](/projects/kuantan/) | Kuantan paints on phones with the palette it names: some phones mixed up the colours, so "Red, black, white" came out red, blue and yellow |

@@ -3,7 +3,7 @@ title: "Kuantan: Generative Paper Marbling"
 description: "Eleven designs of marbled paper drawn live in WebGL, each a real marbling technique, in twenty-two vivid palettes: the patterns and colors that calm me."
 summary: "Marbled paper that never dries: eleven designs, each a real marbling technique, drawn live in the browser in twenty-two vivid palettes, flowing slowly and never repeating. The patterns and colors I love most, and the ones that calm me."
 date: 2026-11-11
-lastmod: 2026-11-12
+lastmod: 2026-11-24
 featureAlt: "Fine bands of yellow, black, cyan and pink paint curled into eddies, in the Marble design of Kuantan"
 coverAlt: "Fine bands of yellow, black, cyan and pink paint curled into eddies, in the Marble design of Kuantan"
 coverCaption: "Marble, in the David palette"
@@ -80,7 +80,7 @@ tags: ["generative-art", "marbling", "ebru", "suminagashi", "webgl", "glsl", "sh
 ---
 **Kuantan** is marbled paper that never dries. Paint floats on a bath, a comb is drawn through it, a stylus stirs it, and the pattern keeps moving, slowly, without ever repeating. I made it because these designs, patterns and colors are some of the things I love most, and watching them calms me. It runs full screen on my second monitor when I am not using it.
 
-[**Open Kuantan**](/kuantan/) | [**The designs**](#the-designs) | [**The palettes**](#the-palettes) | [**How it is made**](#how-it-is-made)
+[**Open Kuantan**](/kuantan/) | [**The film**](#the-film) | [**The designs**](#the-designs) | [**The palettes**](#the-palettes) | [**How it is made**](#how-it-is-made)
 
 It starts on a design and a palette at random. Every few minutes the design changes, and within a design the palette changes now and then while the pattern keeps flowing. On a computer:
 
@@ -97,6 +97,20 @@ On a phone:
 ## Why "Kuantan"
 
 All Nanami Kento wanted was peace: to go to Kuantan, in Malaysia, rest by the sea and read. [My post about him](/blog/nanami-kento/) ends hoping that he finally got his beach. This is mine: a place to rest my eyes.
+
+## The Film
+
+{{< youtube id="26jQ1KdWo8M" loading="lazy" >}}
+
+Kuantan is also a film of 21 minutes, 12 seconds and 9 frames, on [Un lugar lejos del ruido](/spaces/mi-amigo-melquiades/). Seven designs, three palettes each, a minute per palette: twenty-one scenes, in the order of the craft, from ink dropped on water to the bath stirred freely. Then the last bath fades for twelve seconds, and nine frames of black. At its exact center, scene eleven, is the sea in Nanami's colors.
+
+Its music comes from the same paper, with no recordings and no samples: a program reads the scenes and their palettes, and writes the sound.
+
+- **A palette is a chord.** Its key is the hue of its dominant paint: the twelve hues of the color wheel are the twelve keys, laid along the circle of fifths, so neighboring colors are neighboring keys. Light palettes are major, dark ones minor.
+- **A color is a voice**, at most nine. The darker the color, the lower its note; vivid colors sound rich, and cream, black and white sound pure. The voices play in the order the paint is laid in the bath, each for as long as its share of the palette, so the ear crosses the bands the way the eye does.
+- **A design is a gesture**, the sound of the tool that makes it. Ink rings are four bells, each with its own place, whose echoes spread and thin like the rings. The comb is seven soft notes rising. Drops are small clusters of notes that fall, and water. Waves are the sea, swelling every nine and every twelve seconds. Swirls are three held notes that circle the listener; the spiral, one voice that climbs nine steps and comes back down. Marble is the drops and the circling notes together, quietly.
+
+Twenty-one scenes, twelve keys, nine voices.
 
 ## The Designs
 
