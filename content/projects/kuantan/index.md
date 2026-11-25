@@ -112,6 +112,8 @@ Its music comes from the same paper, with no recordings and no samples: a progra
 
 Twenty-one scenes, twelve keys, nine voices.
 
+There is also [a long film](https://youtu.be/TUR_3Cz1C9I), of 3 hours, 21 minutes, 12 seconds and 9 frames: every design in every palette, 242 papers, made to be left on. Why there are two, how each is ordered and what every palette sounds like is in [**Kuantan, the Films**](/blog/kuantan-the-films/).
+
 ## The Designs
 
 Each design is a real marbling technique, or, in Marble's case, the bath simply stirred. In a tray, the marbler lays the paint on water and draws tools through it, one stroke after another. Here every pixel asks the opposite question: **where did my paint come from?** It undoes the strokes in reverse order, last one first, and reads the color that was laid there before anything moved. That idea, and the formulas for each stroke, come from Aubrey Jaffer's mathematical marbling (see [References](#references)).
