@@ -4,10 +4,10 @@ description: "Why Kuantan is two films, one of 21 minutes and one of more than 3
 summary: "Kuantan is two films: one of 21 minutes, made to be watched, and one of more than three hours, made to be left on. In both, the music is written from the paper itself: each palette is a chord, each color a voice, each design the sound of its tool."
 date: 2026-11-24
 lastmod: 2026-11-24
-featureAlt: "Bands of navy, cobalt, cyan and white paint with threads of gold, rolled by slow waves: the Waves design of Kuantan in the Nanami palette"
-coverAlt: "Bands of navy, cobalt, cyan and white paint with threads of gold, rolled by slow waves: the Waves design of Kuantan in the Nanami palette"
-coverCaption: "Waves, in the Nanami palette: the center of both films"
-thumbnailAlt: "Kuantan, the films: Waves in the Nanami palette"
+featureAlt: "The eleven designs of Kuantan side by side, each a strip of marbled paper in its own palette, from ink rings in black, blue and red to marble in yellow, black, cyan and pink"
+coverAlt: "The eleven designs of Kuantan side by side, each a strip of marbled paper in its own palette, from ink rings in black, blue and red to marble in yellow, black, cyan and pink"
+coverCaption: "The eleven designs, each in its own palette"
+thumbnailAlt: "Kuantan, the films: the eleven designs side by side"
 categories: ["art", "software"]
 tags: ["kuantan", "generative-art", "marbling", "music", "audio-synthesis", "color", "youtube"]
 ---
