@@ -237,7 +237,7 @@ An AI assistant, **Roz** (after the robot of *The Wild Robot*), answers visitors
 | `content/assistant/index.md` | Which pages the assistant may use: `exclude` keeps a page from it entirely, `catalogOnly` lets it name and link a page without reading it, `hidden` adds a page kept out of the site's lists (such as `/kuantan/`) to be named and linked only. Any other page in the site's lists is used, so new posts and projects need nothing here |
 | `layouts/assistant/page.json` | Builds `/assistant/index.json` with the site: each page with its title, description and URL and, unless excluded, its text with the headings kept |
 
-The page is JSON only, kept out of lists, the sitemap and search, and holds nothing a visitor cannot already read on the site. A change to a page reaches the assistant when her index is rebuilt from the deployed site.
+The page is JSON only, kept out of lists, the sitemap and search, and holds nothing a visitor cannot already read on the site. A change to a page reaches the assistant when her index is rebuilt from the deployed site, which happens by itself after every deploy (see [Build and Deploy](#build-and-deploy)).
 
 ## If One Day I Am Not Here
 
@@ -251,10 +251,11 @@ Every push to `master` runs `.github/workflows/hugo.yaml`, which:
 2. Restores a cache of processed images and Hugo modules, so only new or changed images are processed.
 3. Builds with `hugo --gc --minify` using the `baseURL` from `config/_default/hugo.toml`.
 4. Publishes `public/` to GitHub Pages.
+5. Asks the Internet Archive to save the homepage and `/roz-remember/`, and asks Roz to index what was published.
 
 To preview locally (Hugo extended and Go installed): `hugo server`.
 
-**Roz does not follow a push on her own.** She reads the published site when she is indexed, from her own repository. After a push that changes what she should know, once GitHub Pages has published it, run `npm run sync` there: it waits for the deploy, asks before indexing, and offers the commit of `content/roz-remember/` that the index produces. The push hook below reminds you.
+**Roz follows every deploy on her own.** The workflow's last job, `roz`, starts the "Index Roz" workflow of her repository and sends it the fingerprint (sha256) of the `/assistant/index.json` this build produced; her run waits until the published file is that one and re-embeds only what changed. It needs the secret `ROZ_INDEX_TOKEN` in this repository (**Settings > Secrets and variables > Actions**): a fine-grained GitHub token limited to her repository, with Actions: read and write. Without it the job says so and does nothing, and it never fails the deploy. What still moves by hand, from her repository, is `npm run sync`: the commit of `content/roz-remember/` when her knowledge files change, and the deploy of her Worker. The push hook below reminds you.
 
 **Git hooks.** `.githooks/` (the same three in Roz's repository), enabled once per clone with `git config core.hooksPath .githooks`:
 
@@ -262,7 +263,7 @@ To preview locally (Hugo extended and Go installed): `hugo server`.
 | --- | --- | --- |
 | `commit-msg` | A message not in Conventional Commits form (`type(scope): subject`); a subject over 72 characters, ending in a period, or without a blank line after it; any AI attribution; Spanish; tailnet names or addresses | A subject that does not read as an imperative; body lines over 100 characters |
 | `pre-commit` | `CLAUDE.md`, `CLAUDE.local.md`, `.claude/` and `.env` files; added lines with tailnet names or addresses, which this public history must never hold | |
-| `pre-push` | Any commit being pushed whose message carries an AI attribution, even one made with `--no-verify` | That Roz needs `npm run sync` when the push changes `content/`, `data/` or `layouts/` |
+| `pre-push` | Any commit being pushed whose message carries an AI attribution, even one made with `--no-verify` | That Roz indexes herself after the deploy, and what to run if she did not, when the push changes `content/`, `data/` or `layouts/` |
 
 `--no-verify` skips them, knowingly, for one commit or push.
 

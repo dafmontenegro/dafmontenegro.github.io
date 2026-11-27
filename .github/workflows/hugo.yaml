@@ -33,6 +33,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.167.0
+    outputs:
+      assistant: ${{ steps.assistant.outputs.sha }}
     steps:
       - name: Install Hugo CLI
         run: |
@@ -64,6 +66,11 @@ jobs:
           hugo \
             --gc \
             --minify
+      # The fingerprint of what Roz reads, so her index can tell when the published site
+      # is this build and not the one before it (see the roz job below).
+      - name: Fingerprint the assistant's index
+        id: assistant
+        run: echo "sha=$(sha256sum public/assistant/index.json | cut -d' ' -f1)" >> "$GITHUB_OUTPUT"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
@@ -95,3 +102,30 @@ jobs:
             curl -s -o /dev/null -w "%{http_code} $url\n" --max-time 120 "https://web.archive.org/save/$url" || true
           done
 
+  # After each deploy, Roz indexes the published site by herself: this starts the "Index
+  # Roz" workflow of her repository, which waits until the published /assistant/index.json
+  # is the one built above and then re-embeds only what changed. It needs the secret
+  # ROZ_INDEX_TOKEN (a fine-grained token limited to her repository, Actions: read and
+  # write); without it this job says so and does nothing. A failure here never fails the
+  # deploy. Her knowledge files and /roz-remember/ still move by hand: npm run sync, there.
+  roz:
+    runs-on: ubuntu-latest
+    needs: [build, deploy]
+    continue-on-error: true
+    steps:
+      - name: Ask Roz to index the published site
+        env:
+          TOKEN: ${{ secrets.ROZ_INDEX_TOKEN }}
+          EXPECT: ${{ needs.build.outputs.assistant }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::notice::ROZ_INDEX_TOKEN is not set: Roz was not asked to index. Run npm run sync in her repository."
+            exit 0
+          fi
+          curl -fsS --max-time 60 -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/dafmontenegro/roz/actions/workflows/index.yml/dispatches \
+            -d "{\"ref\":\"master\",\"inputs\":{\"expect\":\"$EXPECT\"}}"
+          echo "Roz was asked to index (expecting $EXPECT)."

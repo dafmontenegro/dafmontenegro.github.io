@@ -5,9 +5,11 @@
 #
 # Blocks:  a commit about to be pushed whose message carries an AI attribution, even if it
 #          was made with --no-verify or on another machine.
-# Reminds: what a push does not do. Roz learns from the published site and is deployed
-#          by hand, so after a push that changes what she should know, it says what to
-#          run (npm run sync, in Roz's repository, which asks before every step).
+# Reminds: what a push does and does not do. After a deploy of the site, and after a
+#          push of her knowledge, Roz indexes herself (the "Index Roz" workflow of her
+#          repository). What stays by hand: the copy of her knowledge in the site's
+#          /roz-remember/ and the deploy of her Worker (npm run sync, in Roz's repository,
+#          which asks before every step).
 
 status=0
 changed=""
@@ -39,17 +41,18 @@ has() { printf '%s\n' $changed | grep -Eq "$1"; }
 if [ -f wrangler.jsonc ]; then
   # Roz's repository.
   if has '^knowledge/' || has '^(src|public)/|^wrangler\.jsonc$'; then
-    printf '\nRoz: a push does not reach her.\n'
-    has '^knowledge/' && printf '  - her knowledge changed: it needs an index, and /roz-remember/ a commit.\n'
+    printf '\nRoz: what this push leaves to do.\n'
+    has '^knowledge/' && printf '  - her knowledge changed: she indexes herself (Actions > Index Roz: check it ran),\n    but /roz-remember/ on the site still needs its copy and a commit.\n'
     has '^(src|public)/|^wrangler\.jsonc$' && printf '  - her code changed: the Worker needs a deploy.\n'
     printf '  When you want it: npm run sync (asks before each step).\n'
   fi
 else
   # The site's repository.
   if printf '%s\n' $changed | grep -E '^(content|data|layouts)/' | grep -vq '^content/roz-remember/'; then
-    printf '\nRoz reads the published site. Once GitHub Pages has published this push, if she\n'
-    printf 'should know about it, run in her repository: npm run sync (it waits for the\n'
-    printf 'deploy and asks before indexing).\n'
+    printf '\nRoz reads the published site. Once GitHub Pages has published this push she\n'
+    printf 'indexes herself (the roz job of the deploy starts "Index Roz" in her repository).\n'
+    printf 'If that job says ROZ_INDEX_TOKEN is not set, or her run failed, run in her\n'
+    printf 'repository: npm run sync (it waits for the deploy and asks before indexing).\n'
   fi
 fi
 exit 0
