@@ -3,7 +3,7 @@ title: "Se7en: The Death of Mills?"
 description: "When Se7en ended, one question refused to leave my mind. Not John Doe’s plan, but something deeper that changed the way I see the film."
 summary: "When Se7en ended, one question refused to leave my mind. It wasn’t about John Doe’s plan or his gruesome crimes, but something deeper—something that completely changed the way I perceived the film. And the more I thought about it, the more unsettling it became..."
 date: 2025-03-12
-lastmod: 2025-03-12
+lastmod: 2026-11-26
 featureAlt: "Detective David Mills"
 coverAlt: "Detective David Mills"
 coverCaption: "Detective David Mills"
@@ -13,6 +13,12 @@ tags: ["se7en"]
 ---
 
 Every time I watch a movie, I’m passionate about feeling it and understanding it. Clearly, *Se7en* is not a film that leaves you indifferent. Kevin Spacey’s portrayal of John Doe is truly astonishing. Although his screen time is limited, every scene in which he appears has a profound impact, especially because as the end approaches, it becomes clear that everything was part of his plan: to be at that place at that exact time (evidenced by the delivery truck’s arrival). But what really captivated me about *Se7en* was the sense of having been led step by step to that inevitable outcome. As a viewer—even watching it 30 years later—I felt that I had reached the climax of the story only to discover that what awaited me was something completely different from what I had imagined: **a box**.
+
+{{< youtube id="8uaxA_hPdxA" loading="lazy" >}}
+
+{{< alert "circle-info" >}}
+This post is also a video, **narrated by me** in Spanish on my [YouTube channel](https://www.youtube.com/@MiAmigoMelquiades), *Un lugar lejos del ruido*.
+{{< /alert >}}
 
 ## The Key Moment
 For me, the turning point of the film is when Detectives Somerset and Mills arrive at John Doe’s door and he attacks them. At that moment, we are told that he already knew them, which fits with the common behavior of criminals returning to the scene of their crimes. However, I believe that the reason John Doe doesn’t kill Mills immediately is that, in his sick logic, he considered that an immediate death was not a sufficient punishment for his sin.
