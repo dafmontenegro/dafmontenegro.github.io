@@ -14,6 +14,9 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-11-26 | [Blog](/blog/toco-tu-boca-julio-cortazar/) | New post: "Toco tu boca, Julio Cortázar", chapter 7 of Rayuela, the whole chapter in Spanish with the video of my recitation of it on my YouTube channel |
+| 2026-11-26 | [Blog](/blog/amemonos-manuel-m-flores/) | New post: "Amémonos, Manuel M. Flores", my favorite poem, whole in Spanish, with the video of my recitation of it |
+| 2026-11-26 | [Blog](/blog/poem-of-oblivion-jose-angel-buesa/) | In the Buesa post, each verse of the poem and of its translation is now on its own line, as it is written |
 | 2026-11-26 | [Blog](/blog/se7en-the-death-of-mills/) | The Se7en post is now also a video, "Se7en: el pecado que John Doe dejó abierto", narrated by me in Spanish on my YouTube channel and shown inside the post |
 | 2026-11-24 | [Blog](/blog/kuantan-the-films/) | New post: "Kuantan, the Films: Music Written From the Paper", on why Kuantan is two films, one of 21 minutes and one of more than 3 hours with every design in every palette, and how their music is written from the colors and the designs of the paper |
 | 2026-11-24 | [Projects](/projects/phenotype/) | New project: Phenotype turns a photo of any face into a paper cut-out doll you can dress and save, all in your own browser, with no photo uploaded; give it two faces and it draws the doll that is their child |
