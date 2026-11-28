@@ -14,6 +14,8 @@ A timeline of updates outlining new features, content, and enhancements made to 
 
 | Date       | Area                            | Info |
 | ---------- | ------------------------------- | ---- |
+| 2026-11-27 | [Cinema](/spaces/cinema/) | Memories of Murder and Se7en now link their videos on my YouTube channel, next to their posts |
+| 2026-11-27 | [Blog](/blog/memories-of-murder/) | The Memories of Murder post is now also a video, "Memories of Murder: la película que miró a su asesino", narrated by me in Spanish on my YouTube channel and shown inside the post |
 | 2026-11-26 | [Blog](/blog/toco-tu-boca-julio-cortazar/) | New post: "Toco tu boca, Julio Cortázar", chapter 7 of Rayuela, the whole chapter in Spanish with the video of my recitation of it on my YouTube channel |
 | 2026-11-26 | [Blog](/blog/amemonos-manuel-m-flores/) | New post: "Amémonos, Manuel M. Flores", my favorite poem, whole in Spanish, with the video of my recitation of it |
 | 2026-11-26 | [Blog](/blog/poem-of-oblivion-jose-angel-buesa/) | In the Buesa post, each verse of the poem and of its translation is now on its own line, as it is written |

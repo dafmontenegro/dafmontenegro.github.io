@@ -4,7 +4,7 @@ description: "“What happens up on that screen means something.” Jack Conrad,
 summary: "\"It's not a low art, you know. I want you to know that. What I do means something to millions of people. My folks didn't have the money or the education to go to the theater... And you know what? There's beauty there. What happens up on that screen means something.\" Jack Conrad"
 date: 2024-10-12
 weight: 20
-lastmod: 2026-10-08
+lastmod: 2026-11-27
 featureAlt: "Manny from Babylon"
 coverAlt: "Manny from Babylon"
 coverCaption: "Manny from Babylon"
@@ -37,7 +37,7 @@ What was **that movie you loved** and shared with **the person you love**?
 ![Memories Of Murder poster](img/memories-of-murder.jpg "[Memories of Murder (2003). IMDb](https://www.imdb.com/title/tt0353969/)")
 
 {{< alert "circle-info" >}}
-This movie has a special review on my blog, which you can find at [/blog/memories-of-murder](/blog/memories-of-murder).
+This movie has a special review on my blog, which you can find at [/blog/memories-of-murder](/blog/memories-of-murder). It is also a video, narrated by me in Spanish on my YouTube channel: [Memories of Murder: la película que miró a su asesino](https://youtu.be/FZHLUEFMgUA).
 {{< /alert >}}
 
 ### Honorable Mentions:
@@ -129,7 +129,7 @@ This movie has a special review on my blog, which you can find at [/blog/memorie
 
 ### Honorable Mentions:
 - **Nightcrawler (2014)**
-- **Se7en (1995).** Its ending left me with a question I couldn't shake, so I wrote about it: [Se7en: The Death of Mills?](/blog/se7en-the-death-of-mills/)
+- **Se7en (1995).** Its ending left me with a question I couldn't shake, so I wrote about it, [Se7en: The Death of Mills?](/blog/se7en-the-death-of-mills/), and made it a video narrated in Spanish on my YouTube channel, [Se7en: el pecado que John Doe dejó abierto](https://youtu.be/8uaxA_hPdxA)
 - **Split (2016)**
 
 > You are different from the rest. Your heart is pure! Rejoice! The broken are the more evolved. Rejoice.
