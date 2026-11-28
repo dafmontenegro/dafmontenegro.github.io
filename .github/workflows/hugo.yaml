@@ -102,9 +102,10 @@ jobs:
             curl -s -o /dev/null -w "%{http_code} $url\n" --max-time 120 "https://web.archive.org/save/$url" || true
           done
 
-  # After each deploy, Roz indexes the published site by herself: this starts the "Index
-  # Roz" workflow of her repository, which waits until the published /assistant/index.json
-  # is the one built above and then re-embeds only what changed. It needs the secret
+  # After each deploy, Roz indexes the site by herself: this starts the "Index Roz"
+  # workflow of her repository, which builds this site itself (Cloudflare shows GitHub's
+  # machines a human check instead of the published file), checks that its
+  # /assistant/index.json is the one built above, and re-embeds only what changed. It needs the secret
   # ROZ_INDEX_TOKEN (a fine-grained token limited to her repository, Actions: read and
   # write); without it this job says so and does nothing. A failure here never fails the
   # deploy. Her knowledge files and /roz-remember/ still move by hand: npm run sync, there.
